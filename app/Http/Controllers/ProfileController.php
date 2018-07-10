@@ -47,7 +47,8 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        return view("personil.profile.detail");
+        $data['data']=User::where('id_anggota',$id)->get();
+        return view("personil.profile.detail", $data);
     }
 
     /**

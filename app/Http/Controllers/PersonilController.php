@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Personil;
 use App\Agama;
+use App\USer;
 use Illuminate\Http\Request;
 
 class PersonilController extends Controller
@@ -120,5 +121,11 @@ class PersonilController extends Controller
         $temp=Personil::find($id)->value('user_id');
         Personil::find($id)->delete();
         return redirect()->route('personil.index')->with('message', 'Data berhasil di hapus');
+    }
+
+    public function profil(Request $request){
+        $cari = $request->get('profil_id');
+        $data = User::where('id_anggota', $cari)->get();
+        return view('personil.profile.detail', compact('data'))->with('cari', $cari);
     }
 }
