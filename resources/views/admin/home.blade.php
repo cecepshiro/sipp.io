@@ -17,9 +17,11 @@
                     <li class="dropdown">
                         <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="{{ asset('asset/plugins/images/users/varun.jpg') }}" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">{{ Auth::user()->name }}</b> </a>
                         <ul class="dropdown-menu dropdown-user animated flipInY">
-                            <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                        <li><a href="{{ route('personil.show', ['personil'=>Auth::user()->id_anggota]) }}"><i class="ti-user"></i> My Profile</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                            <li><a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> Logout</a></li>
                         </ul>
                         <!-- /.dropdown-user -->
                     </li>
@@ -126,9 +128,10 @@
                         <a href="#" class="waves-effect"><img src="{{ asset('asset/plugins/images/users/varun.jpg') }}" alt="user-img" class="img-circle"> <span class="hide-menu"> {{ Auth::user()->name }}<span class="fa arrow"></span></span>
                         </a>
                         <ul class="nav nav-second-level">
-                            <li><a href="javascript:void(0)"><i class="ti-user"></i> My Profile</a></li>
-                            <li><a href="javascript:void(0)"><i class="ti-settings"></i> Account Setting</a></li>
-                            <li><a href="javascript:void(0)"><i class="fa fa-power-off"></i> Logout</a></li>
+                            <li><a href="{{ route('personil.show', ['personil'=>Auth::user()->id_anggota]) }}"><i class="ti-user"></i> My Profile</a></li>
+                            <li><a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> Logout</a></li>
                         </ul>
                     </li>
                     <li class="nav-small-cap m-t-10">--- Main Menu</li>
@@ -261,9 +264,12 @@
                         </div>
                     </div>
                 </div>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
                 
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2018 &copy; Dinas Psikologi Angkatan Darat </footer>
+            <footer class="footer text-center"> 2018 &copy; Informatika Universitas Jenderal Achmad Yani </footer>
         </div>
         <!-- /#page-wrapper -->
     </div>
