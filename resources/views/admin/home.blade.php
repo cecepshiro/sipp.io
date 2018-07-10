@@ -16,20 +16,18 @@
                     <!-- /.dropdown -->
                     <li class="dropdown">
                         <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="{{ asset('asset/plugins/images/users/varun.jpg') }}" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">{{ Auth::user()->name }}</b> </a>
-                        <ul class="dropdown-menu dropdown-user animated flipInY">
-                            <li>
-                                <form action="{{ action('PersonilController@profil') }}" method="get" enctype="multipart/form-data">
+                        <ul class="dropdown-menu dropdown-user animated flipInY">                           
+                            <form action="{{ action('PersonilController@profil') }}" method="get" enctype="multipart/form-data">
                                 {{ csrf_field() }}
-                                <input type="hidden" name="profil_id" value="{{ Auth::user()->id_anggota }}">
-                                <i class="ti-user"></i><input type="submit" class="active" value="My Profile">
-                                </form>
-                            </li>
-
-                            <li><a><i class="ti-user"></i> My Profile</a></li>
+                                <input type="hidden" name="profil_id" value="{{ Auth::user()->id_anggota }}"><a></a>
+                                <li><a><button type="submit" class="btnCustom btnCustom-default">Profil Diri</button></a>
+                                </li>
+                            </form>
+                            
                             <li role="separator" class="divider"></li>
                             <li><a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    document.getElementById('logout-form').submit();">Keluar</a></li>
                         </ul>
                         <!-- /.dropdown-user -->
                     </li>
@@ -136,10 +134,10 @@
                         <a href="#" class="waves-effect"><img src="{{ asset('asset/plugins/images/users/varun.jpg') }}" alt="user-img" class="img-circle"> <span class="hide-menu"> {{ Auth::user()->name }}<span class="fa arrow"></span></span>
                         </a>
                         <ul class="nav nav-second-level">
-                            <li><a href=""><i class="ti-user"></i> My Profile</a></li>
+                            <li><a href=""><i class="ti-user"></i>Profil Diri</a></li>
                             <li><a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
-                                   document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> Logout</a></li>
+                                   document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> Keluar</a></li>
                         </ul>
                     </li>
                     <li class="nav-small-cap m-t-10">--- Main Menu</li>
