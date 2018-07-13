@@ -13,6 +13,6 @@ class Personil extends Model
   
       protected $fillable = [
         'user_id','tempat_lahir','tgl_lahir','jenis_kelamin','kode_agama','alamat_sekarang',
-        'telp_rumah','no_hp','tempat_kerja','alamat_kantor','alamat_tempat_praktik','telp_kantor','created_at','updated_at',
+        'telp_rumah','no_hp','tempat_kerja','alamat_kantor','alamat_tempat_praktik','telp_kantor','foto','created_at','updated_at',
       ];
 }

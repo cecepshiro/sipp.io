@@ -27,6 +27,7 @@ class CreatePersonilsTable extends Migration
             $table->string('alamat_kantor');
             $table->string('alamat_tempat_praktik');
             $table->char('telp_kantor',13);
+            $table->string('foto')->default('avatar.jpg');
             $table->timestamps();
         });
     }

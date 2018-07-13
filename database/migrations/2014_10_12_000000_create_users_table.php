@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->char('id_anggota',15)->unique();
             $table->integer('akses')->default(2);
             $table->string('password');
+            $table->varchar('password');
             $table->rememberToken();
             $table->timestamps();
         });

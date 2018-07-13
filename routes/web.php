@@ -31,4 +31,5 @@ Route::group(['middleware' => ['web','auth']], function(){
 Route::resource('agama','AgamaController');
 Route::resource('personil','PersonilController');
 Route::get('profilpersonil','PersonilController@profil');
-Route::get('simpanfoto','PersonilController@foto');
+Route::post('simpanfoto','PersonilController@foto');
+Route::resource('profile','ProfileController');

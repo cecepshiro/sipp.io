@@ -134,12 +134,8 @@
                                    document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> Keluar</a></li>
                         </ul>
                     </li>
-                    <li class="nav-small-cap m-t-10">--- Main Menu</li>
-                    <li><a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Dashboard</span></a></li>
-                    
-                    <li class="nav-small-cap">--- Support</li>
-                    <li><a href="documentation.html" class="waves-effect"><i class="fa fa-circle-o text-danger"></i> <span class="hide-menu">Documentation</span></a></li>
-                    <li><a href="faq.html" class="waves-effect"><i class="fa fa-circle-o text-success"></i> <span class="hide-menu">Faqs</span></a></li>
+                    <li class="nav-small-cap m-t-10">--- Data Personil</li>
+                    <li> <a href="{{ route('personil.index') }}" class="waves-effect"><i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">List personil</span></a>
                 </ul>
             </div>
         </div>
@@ -165,11 +161,22 @@
                             <div class="user-bg"> <img width="100%" alt="user" src="{{ asset('asset/image/images/large/img1.jpg') }}">
                                 <div class="overlay-box">
                                     <div class="user-content">
-                                        <a href="javascript:void(0)"><img src="{{ asset('asset/image/avatar.png') }}" class="thumb-lg img-circle" alt="img"></a>
+                                        @foreach($data2 as $dt)
+                                            @if($dt->foto != null)
+                                                <a href="javascript:void(0)"><img src="/image/{{ $dt->foto }}" class="thumb-lg img-circle" alt="img"></a>
+                                            @else
+                                                <a href="javascript:void(0)"><img src="{{ asset('image/avatar.png') }}" class="thumb-lg img-circle" alt="img"></a>
+                                            @endif
+                                        @endforeach
                                         <?php
                                             $nama=DB::table('users')->select('name')->where('id_anggota', $cari)->value('name');
                                             $temp=DB::table('users')->select('id')->where('id_anggota', $cari)->value('id');
                                             $temp2=DB::table('data_personil')->select('no_hp')->where('user_id', $temp)->value('no_hp');
+                                            $temp3=DB::table('data_personil')->select('id')->where('user_id', $temp)->value('id');
+                                            $tmpt=DB::table('data_personil')->select('tempat_lahir')->where('id', $temp3)->value('tempat_lahir');
+                                            $tgl=DB::table('data_personil')->select('tgl_lahir')->where('id', $temp3)->value('tgl_lahir');
+                                            $kodeagama=DB::table('data_personil')->select('kode_agama')->where('id', $temp3)->value('kode_agama');
+                                            $namaagama=DB::table('data_agama')->select('agama')->where('id', $kodeagama)->value('agama');
                                         ?>
                                         <h4 class="text-white">{{ $nama }}</h4>
                                         <h5 class="text-white">{{ $cari }}</h5></div>
@@ -177,13 +184,17 @@
                             </div>
                             <div class="user-btm-box">
                                 <div class="col-md-4 col-sm-4 text-center">
-                                <form action="{{ action('PersonilController@foto', ['PersonilController@foto'=> $cari]) }}" method="post" enctype="multipart/form-data">
-                                        <input type="hidden" name="_method" value="PATCH">
+                                <?php
+                                    $kodepersonil=Db::table('data_personil')->select('id')->where('user_id', $temp)->value('id');
+                                ?>
+                                <form method="post"  action="{{ route('profile.update', ['profile'=> $kodepersonil]) }}" enctype="multipart/form-data"><input type="hidden" name="_method" value="PATCH">
                                         {{ csrf_field() }}
-                                            <input type="file"  name="fotoprofil">
-                                            <button type="submit" class="btn btn-success">Ganti Foto</button>
+                                        <input type="hidden" class="form-control" name="id" value="{{ $temp }}"  required>
+                                        <input type="file" class="form-control form-control-line" name="foto"  required>
+                                        <button type="submit" class="btn btn-success">Ganti Foto</button>
 
                                 </form>
+
                                 </div>
                             </div>
                         </div>
@@ -194,8 +205,8 @@
                                 <li class="tab">
                                     <a href="#profile" data-toggle="tab"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Profil</span> </a>
                                 </li>
-                                <li class="tab">
-                                    <a href="#settings" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Edit Profil</span> </a>
+                                <li class="tab" id="tes">
+                                    <a href="#settings" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Detail Profil</span> </a>
                                 </li>
                             </ul>
                             <div class="tab-content">
@@ -205,13 +216,13 @@
                                             <br>
                                             <p class="text-muted">{{ $nama }}</p>
                                         </div>
-                                        <div class="col-md-3 col-xs-6 b-r"> <strong>Pangkat</strong>
+                                        <div class="col-md-3 col-xs-6 b-r"> <strong>Tmpt/Tgl. Lahir</strong>
                                             <br>
-                                            <p class="text-muted"></p>
+                                            <p class="text-muted">{{ $tmpt }}  {{ $tgl }}</p>
                                         </div>
-                                        <div class="col-md-3 col-xs-6 b-r"> <strong>Jabatan</strong>
+                                        <div class="col-md-3 col-xs-6 b-r"> <strong>Agama</strong>
                                             <br>
-                                            <p class="text-muted"></p>
+                                            <p class="text-muted">{{ $namaagama }}</p>
                                         </div>
                                         <div class="col-md-3 col-xs-6"> <strong>No. Telp</strong>
                                             <br>
@@ -242,11 +253,16 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="settings">
-                                    <form class="form-horizontal form-material" method="POST" action="{{ route('personil.store') }}" enctype="multipart/form-data">
+                                    <div class="" style="float:right">
+                                        <button onclick="matikanForm('myForm',false);" class="btn btn-primary">Edit</button>
+                                        <button onclick="matikanForm('myForm',true);" class="btn btn-danger">Batal</button>
+                                    </div>
+                                    <form id="myForm" class="form-horizontal form-material" method="POST" action="{{ route('personil.store') }}" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     <?php
                                         $tmp3=DB::table('users')->select('name')->where('id_anggota', $cari)->value('name');
                                     ?>
+                                        <br>
                                         <div class="form-group">
                                             <label class="col-md-12">ID Personel</label>
                                             <div class="col-md-12">
@@ -260,91 +276,103 @@
                                                 <input class="form-control form-control-line" type="text" name="nama" value="{{ $tmp3 }}" placeholder="Nama" readonly required>
                                             </div>
                                         </div>
+                                        @foreach($data2 as $d2)
                                         <div class="form-group">
                                             <label for="example-email" class="col-md-12">Tempat Lahir</label>
                                             <div class="col-md-12">
-                                                <input class="form-control form-control-line" type="text" name="tempat_lahir" placeholder="Masukkan Tempat Lahir" required>
+                                                <input class="form-control form-control-line" value="{{ $d2->tempat_lahir }}" type="text" name="tempat_lahir" placeholder="Masukkan Tempat Lahir" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="example-email" class="col-md-12">Tgl. Lahir</label>
                                             <div class="col-md-12">
-                                                <input class="form-control form-control-line" type="date" name="tgl_lahir" required>
+                                                <input class="form-control form-control-line" value="{{ $d2->tgl_lahir }}" type="date" name="tgl_lahir" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="example-email" class="col-md-12">Jenis Kelamin</label>
-                                            <div class="col-md-10">
+                                            <label for="exampleInputEmail1">Jenis Kelamin</label>
                                             <div class="row">
-                                                <div class="col-md-4 offset-md-3">
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" id="customRadioInline1" name="jenis_kelamin" required value="L" class="custom-control-input">
-                                                    <label class="custom-control-label" for="customRadioInline1" >Laki-Laki</label>
-                                                    </div>
-                                                </div>
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" id="customRadioInline2" name="jenis_kelamin" required value="P" class="custom-control-input">
-                                                    <label class="custom-control-label" for="customRadioInline2">Perempuan</label>
-                                                    </div>
+                                            @if($d2->jenis_kelamin == 'L')
+                                            <div class="col-md-4 offset-md-3">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" id="customRadioInline1" name="jenis_kelamin" checked required value="L" class="custom-control-input">
+                                                <label class="custom-control-label" for="customRadioInline1" >Laki-Laki</label>
                                                 </div>
                                             </div>
+                                            <div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" id="customRadioInline2" name="jenis_kelamin" required value="P" class="custom-control-input">
+                                                <label class="custom-control-label" for="customRadioInline2">Perempuan</label>
+                                                </div>
+                                            </div>
+                                            @elseif($d2->jenis_kelamin == 'P')
+                                            <div class="col-md-4 offset-md-3">
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" id="customRadioInline1" name="jenis_kelamin" required value="L" class="custom-control-input">
+                                                <label class="custom-control-label" for="customRadioInline1" >Laki-Laki</label>
+                                                </div>
+                                            </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" id="customRadioInline2" name="jenis_kelamin" checked required value="P" class="custom-control-input">
+                                                <label class="custom-control-label" for="customRadioInline2">Perempuan</label>
+                                                </div>
+                                            </div>
+                                            @endif
                                         </div>
                                         <div class="form-group">
-                                            <label for="example-email" class="col-md-12">Agama</label>
-                                            <div class="col-md-12">
-                                                <select class="form-control form-control-line"  name="kode_agama" placeholder="Agama" required>
-                                                    <option>Pilih Agama</option>
-                                                    @foreach($agama as $ag)
-                                                        <option value="{{ $ag->id }}">{{ $ag->agama }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
+                                            <label for="agama">Agama</label>
+                                            <select class="form-control"  name="kode_agama" placeholder="Agama" required>
+                                            <option>Pilih Agama</option>
+                                            @foreach($agama as $ag)
+                                                <option <?php if($ag->id == $d2->kode_agama) echo 'selected' ; ?> value="{{ $ag->id }}">{{ $ag->agama }}</option>
+                                            @endforeach
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="example-email" class="col-md-12">Alamat Sekarang</label>
                                             <div class="col-md-12">
-                                                <textarea class="form-control form-control-line" type="text" name="alamat_sekarang" placeholder="Masukkan Alamat Sekarang" required></textarea>
+                                                <textarea class="form-control form-control-line" type="text" name="alamat_sekarang" placeholder="Masukkan Alamat Sekarang" required>{{ $d2->alamat_sekarang }}</textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="example-email" class="col-md-12">Telp. Rumah</label>
                                             <div class="col-md-12">
-                                            <input class="form-control form-control-line" type="text" name="telp_rumah" placeholder="Masukkan Telp. Rumah" required>
+                                            <input class="form-control form-control-line" value="{{ $d2->telp_rumah }}" type="text" name="telp_rumah" placeholder="Masukkan Telp. Rumah" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="example-email" class="col-md-12">No. Handphone</label>
                                             <div class="col-md-12">
-                                            <input class="form-control form-control-line" type="text" name="no_hp" placeholder="Masukkan No. HP" required>
+                                            <input class="form-control form-control-line" value="{{ $d2->no_hp }}" type="text" name="no_hp" placeholder="Masukkan No. HP" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="example-email" class="col-md-12">Tempat Kerja</label>
                                             <div class="col-md-12">
-                                                <input class="form-control form-control-line" type="text" name="tempat_kerja" placeholder="Masukkan Tempat Kerjas" required>
+                                                <input class="form-control form-control-line" value="{{ $d2->tempat_kerja }}" type="text" name="tempat_kerja" placeholder="Masukkan Tempat Kerjas" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="example-email" class="col-md-12">Alamat Kantor</label>
                                             <div class="col-md-12">
-                                                <textarea class="form-control form-control-line" type="text" name="alamat_kantor" placeholder="Masukkan Alamat Kantor" required></textarea>
+                                                <textarea class="form-control form-control-line" type="text" name="alamat_kantor" placeholder="Masukkan Alamat Kantor" required>{{ $d2->alamat_kantor }}</textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="example-email" class="col-md-12">Alamat Tempat Praktik</label>
                                             <div class="col-md-12">
-                                                <textarea class="form-control form-control-line" type="text" name="alamat_tempat_praktik" placeholder="Masukkan Alamat Tempat Praktik" required></textarea>
+                                                <textarea class="form-control form-control-line" type="text" name="alamat_tempat_praktik" placeholder="Masukkan Alamat Tempat Praktik" required>{{ $d2->alamat_tempat_praktik }}</textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="example-email" class="col-md-12">Telp. Kantor</label>
                                             <div class="col-md-12">
-                                            <input class="form-control form-control-line" type="text" name="telp_kantor" placeholder="Masukkan Telp. Kantor" required>
+                                            <input class="form-control form-control-line" type="text" value="{{ $d2->telp_kantor }}" name="telp_kantor" placeholder="Masukkan Telp. Kantor" required>
                                             </div>
                                         </div>
+                                        @endforeach
                                         <div class="form-group">
                                             <div class="col-sm-12">
-                                                <button class="btn btn-success">Simpan</button>
+                                                <button class="btn btn-success"  style="float:right">Simpan</button>
                                             </div>
                                         </div>
                                     </form>

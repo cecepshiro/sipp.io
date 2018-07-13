@@ -19,6 +19,7 @@
                         <ul class="dropdown-menu dropdown-user animated flipInY">                           
                             <form action="{{ action('PersonilController@profil') }}" method="get" enctype="multipart/form-data">
                                 {{ csrf_field() }}
+                                <input type="hidden" name="id" value="{{ Auth::user()->id }}"><a></a>
                                 <input type="hidden" name="profil_id" value="{{ Auth::user()->id_anggota }}"><a></a>
                                 <li><a><button type="submit" class="btnCustom btnCustom-default">Profil Diri</button></a>
                                 </li>
@@ -273,10 +274,4 @@
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
-                
-            <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2018 &copy; Informatika Universitas Jenderal Achmad Yani </footer>
-        </div>
-        <!-- /#page-wrapper -->
-    </div>
 @endsection

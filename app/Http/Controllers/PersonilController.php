@@ -124,14 +124,11 @@ class PersonilController extends Controller
     }
 
     public function profil(Request $request){
+        $id = $request->id;
         $cari = $request->get('profil_id');
         $data = User::where('id_anggota', $cari)->get();
+        $data2 = Personil::where('user_id', $id)->get();
         $agama =Agama::get();
-        return view('personil.profile.detail', compact('data'),compact('agama'))->with('cari', $cari);
-    }
-
-    public function foto(Request $request, $id){
-        Personil::find($id)->update(['foto'=>$request->fotoprofil]);
-        return redirect()->route('personil.index');
+        return view('personil.profile.detail', compact('data','agama','data2'))->with('cari', $cari);
     }
 }
