@@ -23,7 +23,7 @@ Route::group(['middleware' => ['web','auth']], function(){
       }elseif(Auth::user()->akses==1){
         return view('atasan.home');
       }elseif(Auth::user()->akses==2){
-        return view('anggota.home');
+        return view('personil.home');
       }
     });
 });
