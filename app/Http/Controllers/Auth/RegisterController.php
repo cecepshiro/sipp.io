@@ -70,4 +70,21 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    public function daftar()
+    {
+        $data['data']=User::get();
+        return view('admin.pengguna.list', $data);
+    }
+    public function hapus($id)
+    {
+        $temp=User::find($id)->value('id');
+        User::find($id)->delete();
+        return view('admin.pengguna.list')->with('message', 'Data berhasil di hapus');
+    }
+    public function edit($id)
+    {
+        $data['data']=User::find($id);
+        return view('admin.pengguna.formubah', $data);
+    }
 }
