@@ -5,7 +5,7 @@
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top m-b-0">
             <div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
-                <div class="top-left-part"><a class="logo" href="{{ route('personil.index') }}"><b><img src="{{ asset('asset/image/logo.png') }}" alt="home" /></b><span class="hidden-xs"><img src="{{ asset('asset/image/dispsiad.png') }}" alt="home" /></span></a></div>
+                <div class="top-left-part"><a class="logo" href="{{ url('/') }}"><b><img src="{{ asset('asset/image/logo.png') }}" alt="home" /></b><span class="hidden-xs"><img src="{{ asset('asset/image/dispsiad.png') }}" alt="home" /></span></a></div>
                 <ul class="nav navbar-top-links navbar-left pull-left hidden-xs">
                     <li>
                     </li>
@@ -143,7 +143,8 @@
                     </li>
                     <li class="nav-small-cap m-t-10">--- Data Personel</li>
                     <li> <a href="{{ route('personil.index') }}" class="waves-effect"><i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">List Personel</span></a>
-                    
+                    <li class="nav-small-cap m-t-10">--- Data Registrasi</li>
+                    <li> <a href="{{ route('register') }}" class="waves-effect"><i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Registrasi Pengguna</span></a>  
                 </ul>
             </div>
         </div>
@@ -187,41 +188,6 @@
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
-                                <?php $no = 0;?>
-                                @forelse($data as $d)
-                                <?php $no++ ;?>
-                                <?php
-                                    $agama=DB::table('data_agama')->select('agama')->where('id', $d->kode_agama)->value('agama');
-                                    $kode=DB::table('users')->select('id_anggota')->where('id', $d->user_id)->value('id_anggota');
-                                    $nama=DB::table('users')->select('name')->where('id', $d->user_id)->value('name');
-                                ?>
-                                <tbody>
-                                <tr>
-                                    <td>{{ $no }}</td>
-                                    <td>{{ $kode }}</td>
-                                    <td>{{ $nama }}</td>
-                                    <td>{{ $d->tempat_lahir }}</td>
-                                    <td>{{ $d->tgl_lahir }}</td>
-                                    <td>{{ $d->jenis_kelamin }}</td>
-                                    <td>{{ $agama }}</td>
-                                    <td>{{ $d->alamat_sekarang }}</td>
-                                    <td>{{ $d->telp_rumah }}</td>
-                                    <td>{{ $d->no_hp }}</td>
-                                    <td>
-                                    <form action="{{ route('personil.destroy', ['personil'=>$d->id]) }}" method="post">
-                                        <div class="form-group">
-                                            @if(Auth::user()->hak_akses==0)
-                                            <a href="{{ route('personil.edit', ['personil'=>$d->id]) }}" class="btn btn-outline-warning btn-sm">
-                                            Edit</a>
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <button type="submit" class="btn btn-outline-danger btn-sm">Hapus</button>
-                                            @endif
-                                        </div>
-                                    </form>
-                                    </td>
-                                </tr>
-                                </tbody>
                                 <tfoot>
                                     <tr>
                                         <th>No</th>
@@ -237,14 +203,49 @@
                                         <th>Aksi</th>
                                     </tr>
                                 </tfoot>
-                                @empty
-                                <tbody>
-                                <tr>
-                                    <td colspan="11">Data Kosong</td>
-                                </tr>
-                                </tbody>
-                                @endforelse
+                                    <tbody>
+                                        <?php $no = 0;?>
+										@forelse($data as $d)
+                                        <?php
+                                        $no++;
+                                        $agama=DB::table('data_agama')->select('agama')->where('id', $d->kode_agama)->value('agama');
+                                        $kode=DB::table('users')->select('id_anggota')->where('id', $d->user_id)->value('id_anggota');
+                                        $nama=DB::table('users')->select('name')->where('id', $d->user_id)->value('name');
+                                        ?>
+                                        <tr>
+                                        <td>{{ $no }}</td>
+                                        <td>{{ $kode }}</td>
+                                        <td>{{ $nama }}</td>
+                                        <td>{{ $d->tempat_lahir }}</td>
+                                        <td>{{ $d->tgl_lahir }}</td>
+                                        <td>{{ $d->jenis_kelamin }}</td>
+                                        <td>{{ $agama }}</td>
+                                        <td>{{ $d->alamat_sekarang }}</td>
+                                        <td>{{ $d->telp_rumah }}</td>
+                                        <td>{{ $d->no_hp }}</td>
+                                        <td>
+                                        <form action="{{ route('personil.destroy', ['personil'=>$d->id]) }}" method="post">
+                                            <div class="form-group">
+                                                @if(Auth::user()->hak_akses==0)
+                                                <a href="{{ route('personil.edit', ['personil'=>$d->id]) }}" class="btn btn-outline-warning btn-sm">
+                                                Edit</a>
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                <button type="submit" class="btn btn-outline-danger btn-sm">Hapus</button>
+                                                @endif
+                                            </div>
+                                        </form>
+                                        </td>
+                                        </tr>
+										@empty
+                                        <tr>
+                              			  <td colspan="11">Data Kosong</td>
+                              			</tr>
+                                        @endforelse
+                                        </tr>
+                                    </tbody>
                             </table>
+                            </div>
                             
                             </div>
                         </div>

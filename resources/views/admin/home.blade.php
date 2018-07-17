@@ -35,80 +35,7 @@
                     <!-- .Megamenu -->
                     <li class="mega-dropdown"> <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><span class="hidden-xs"></span> <i class="icon-options-vertical"></i></a>
                         <ul class="dropdown-menu mega-dropdown-menu animated bounceInDown">
-                            <li class="col-sm-3">
-                                <ul>
-                                    <li class="dropdown-header">Forms Elements</li>
-                                    <li><a href="form-basic.html">Basic Forms</a></li>
-                                    <li><a href="form-layout.html">Form Layout</a></li>
-                                    <li><a href="form-advanced.html">Form Addons</a></li>
-                                    <li><a href="form-material-elements.html">Form Material</a></li>
-                                    <li><a href="form-float-input.html">Form Float Input</a></li>
-                                    <li><a href="form-upload.html">File Upload</a></li>
-                                    <li><a href="form-mask.html">Form Mask</a></li>
-                                    <li><a href="form-img-cropper.html">Image Cropping</a></li>
-                                    <li><a href="form-validation.html">Form Validation</a></li>
-                                </ul>
-                            </li>
-                            <li class="col-sm-3">
-                                <ul>
-                                    <li class="dropdown-header">Advance Forms</li>
-                                    <li><a href="form-dropzone.html">File Dropzone</a></li>
-                                    <li><a href="form-pickers.html">Form-pickers</a></li>
-                                    <li><a href="form-wizard.html">Form-wizards</a></li>
-                                    <li><a href="form-typehead.html">Typehead</a></li>
-                                    <li><a href="form-xeditable.html">X-editable</a></li>
-                                    <li><a href="form-summernote.html">Summernote</a></li>
-                                    <li><a href="form-bootstrap-wysihtml5.html">Bootstrap wysihtml5</a></li>
-                                    <li><a href="form-tinymce-wysihtml5.html">Tinymce wysihtml5</a></li>
-                                </ul>
-                            </li>
-                            <li class="col-sm-3">
-                                <ul>
-                                    <li class="dropdown-header">Table Example</li>
-                                    <li><a href="basic-table.html">Basic Tables</a></li>
-                                    <li><a href="table-layouts.html">Table Layouts</a></li>
-                                    <li><a href="data-table.html">Data Table</a></li>
-                                    <li><a href="bootstrap-tables.html">Bootstrap Tables</a></li>
-                                    <li><a href="responsive-tables.html">Responsive Tables</a></li>
-                                    <li><a href="editable-tables.html">Editable Tables</a></li>
-                                    <li><a href="foo-tables.html">FooTables</a></li>
-                                    <li><a href="jsgrid.html">JsGrid Tables</a></li>
-                                </ul>
-                            </li>
-                            <li class="col-sm-3">
-                                <ul>
-                                    <li class="dropdown-header">Charts</li>
-                                    <li> <a href="flot.html">Flot Charts</a> </li>
-                                    <li><a href="morris-chart.html">Morris Chart</a></li>
-                                    <li><a href="chart-js.html">Chart-js</a></li>
-                                    <li><a href="peity-chart.html">Peity Charts</a></li>
-                                    <li><a href="knob-chart.html">Knob Charts</a></li>
-                                    <li><a href="sparkline-chart.html">Sparkline charts</a></li>
-                                    <li><a href="extra-charts.html">Extra Charts</a></li>
-                                </ul>
-                            </li>
-                            <li class="col-sm-12 m-t-40 demo-box">
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                        <div class="white-box text-center bg-purple"><a href="http://wrappixel.com/demos/admin-templates/pixeladmin/inverse/index.html" target="_blank" class="text-white"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i><br/>Demo 1</a></div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="white-box text-center bg-success"><a href="index.html" target="_blank" class="text-white"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i><br/>Demo 2</a></div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="white-box text-center bg-info"><a href="https://wrappixel.com/demos/admin-templates/pixeladmin/dark/index.html" target="_blank" class="text-white"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i><br/>Demo 3</a></div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="white-box text-center bg-inverse"><a href="https://wrappixel.com/demos/admin-templates/pixeladmin/horizontal-nav-fullwidth/index.html" target="_blank" class="text-white"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i><br/>Demo 4</a></div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="white-box text-center bg-warning"><a href="https://wrappixel.com/demos/admin-templates/pixeladmin/inverse-rtl/index.html" target="_blank" class="text-white"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i><br/>Demo 5</a></div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="white-box text-center bg-danger"><a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="text-white"><i class="linea-icon linea-ecommerce fa-fw" data-icon="d"></i><br/>Buy Now</a></div>
-                                    </div>
-                                </div>
-                            </li>
+                            
                         </ul>
                     </li>
                     <!-- /.Megamenu -->
@@ -175,7 +102,7 @@
                                 <div class="white-box">
                                     <div class="col-in row">
                                         <div class="col-md-6 col-sm-6 col-xs-6"> <i data-icon="E" class="linea-icon linea-basic"></i>
-                                            <h5 class="text-muted vb">MYNEW CLIENTS</h5> </div>
+                                            <h5 class="text-muted vb">BARU</h5> </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
                                             <h3 class="counter text-right m-t-15 text-danger">23</h3> </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -192,7 +119,7 @@
                                 <div class="white-box">
                                     <div class="col-in row">
                                         <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe01b;"></i>
-                                            <h5 class="text-muted vb">NEW PROJECTS</h5> </div>
+                                            <h5 class="text-muted vb">LAKI - LAKI</h5> </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
                                             <h3 class="counter text-right m-t-15 text-megna">169</h3> </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -209,7 +136,7 @@
                                 <div class="white-box">
                                     <div class="col-in row">
                                         <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe00b;"></i>
-                                            <h5 class="text-muted vb">NEW INVOICES</h5> </div>
+                                            <h5 class="text-muted vb">PEREMPUAN</h5> </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
                                             <h3 class="counter text-right m-t-15 text-primary">157</h3> </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -226,9 +153,9 @@
                                 <div class="white-box">
                                     <div class="col-in row">
                                         <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe016;"></i>
-                                            <h5 class="text-muted vb">All PROJECTS</h5> </div>
+                                            <h5 class="text-muted vb">TOTAL PERSONEL</h5> </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <h3 class="counter text-right m-t-15 text-success">431</h3> </div>
+                                            <h3 class="counter text-right m-t-15 text-success">550</h3> </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="progress">
                                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
@@ -242,14 +169,14 @@
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                         <div class="white-box">
-                            <h3 class="box-title">Yearly Sales</h3>
+                            <h3 class="box-title">Total Anggota</h3>
                             <ul class="list-inline text-right">
                                 <li>
-                                    <h5><i class="fa fa-circle m-r-5" style="color: #aec9cb;"></i>iPhone</h5> </li>
+                                    <h5><i class="fa fa-circle m-r-5" style="color: #aec9cb;"></i>Laki - laki</h5> </li>
                                 <li>
-                                    <h5><i class="fa fa-circle m-r-5" style="color: #cbb2ae;"></i>iPad</h5> </li>
+                                    <h5><i class="fa fa-circle m-r-5" style="color: #cbb2ae;"></i>Perempuan</h5> </li>
                                 <li>
-                                    <h5><i class="fa fa-circle m-r-5" style="color: #85b4d0;"></i>iPod</h5> </li>
+                                    <h5><i class="fa fa-circle m-r-5" style="color: #85b4d0;"></i>Total</h5> </li>
                             </ul>
                             <div id="morris-area-chart" style="height: 240px;"></div>
                         </div>
@@ -260,7 +187,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="white-box">
-                            <h3 class="box-title">Sales Difference</h3>
+                            <h3 class="box-title">???</h3>
                             <ul class="list-inline text-right">
                                 <li>
                                     <h5><i class="fa fa-circle m-r-5" style="color: #dadada;"></i>Site A View</h5> </li>

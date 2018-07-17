@@ -27,18 +27,21 @@
 </head>
 <body>
 <!-- Preloader -->
-<div class="preloader">
+<!-- <div class="preloader">
   <div class="cssload-speeding-wheel"></div>
-</div>
+</div> -->
 <section id="wrapper" class="login-register">
+    <div class="judul">
+        Sistem Informasi Personel Angkatan Darat
+    </div>
   <div class="login-box">
     <div class="white-box">
       <form method="POST" class="form-horizontal form-material" id="loginform" action="{{ route('login') }}" >
       @csrf
-        <h3 class="box-title m-b-20">Sign In</h3>
+        <h3 class="box-title m-b-20"></h3>
         <div class="form-group ">
           <div class="col-xs-12">
-            <input id="id_anggota" placeholder="ID Personil" type="text" class="form-control{{ $errors->has('id_anggota') ? ' is-invalid' : '' }}" name="id_anggota" value="{{ old('id_anggota') }}" required autofocus>
+            <input id="id_anggota" placeholder="NRP" type="text" class="form-control{{ $errors->has('id_anggota') ? ' is-invalid' : '' }}" name="id_anggota" value="{{ old('id_anggota') }}" required autofocus>
             @if ($errors->has('id_anggota'))
               <span class="invalid-feedback" role="alert">
                 <strong>{{ $errors->first('id_anggota') }}</strong>
@@ -60,20 +63,17 @@
           <div class="col-md-12">
             <div class="checkbox checkbox-primary pull-left p-t-0">
             <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
-              <label for="checkbox-signup"> Remember me </label>
+              <label for="checkbox-signup"> Ingat Saya </label>
             </div>
-            <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><i class="fa fa-lock m-r-5"></i> Forgot Password?</a> </div>
+            <!-- <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><i class="fa fa-lock m-r-5"></i> Forgot Password?</a>  -->
+            </div>
         </div>
         <div class="form-group text-center m-t-20">
           <div class="col-xs-12">
-            <button type="submit" class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light">Log In</button>
+            <button type="submit" class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light">Masuk</button>
           </div>
         </div>
-        <div class="form-group m-b-0">
-          <div class="col-sm-12 text-center">
-            <p>Don't have an account? <a href="{{ route('register') }}" class="text-primary m-l-5"><b>Sign Up</b></a></p>
-          </div>
-        </div>
+        
       </form>
       <form class="form-horizontal" id="recoverform" action="#">
         <div class="form-group ">

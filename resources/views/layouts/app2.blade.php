@@ -33,13 +33,16 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-    <script type="text/javascript">
+
+    <!-- on off form -->
+    <!-- <script type="text/javascript">
     function matikanForm(formId, yesNo) {
     var f = document.getElementById(formId), s, opacity;
     for(var i=0; i<f.length; i++) f[i].readOnly = yesNo;
     }
     window.onload=function(){matikanForm('myForm',true);}; // disabled by default
-    </script>
+    </script> -->
+    
 </head>
 <body>
     <!-- Preloader -->

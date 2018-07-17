@@ -942,6 +942,7 @@ pre {
   border: 0px;
 }
 .navbar-default {
+  position: fixed;
   border: 0px;
 }
 .navbar-top-links {
@@ -1138,7 +1139,7 @@ pre {
 }
 .btn-info,
 .btn-info.disabled {
-  background: #85b4d0;
+  background: #2A7FFF;
   border: 1px solid #85b4d0;
 }
 .btn-info:hover,
@@ -3848,11 +3849,27 @@ table.focus-on tbody tr.focused td {
   height: 100%;
   position: fixed;
 }
+.login-register::before{
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #b66fbc;
+  background: -webkit-linear-gradient(bottom, #ede8ed, #2BA2DF);
+  background: -o-linear-gradient(bottom, #ede8ed, #2BA2DF);
+  background: -moz-linear-gradient(bottom, #ede8ed, #2BA2DF);
+  background: linear-gradient(bottom, #ede8ed, #2BA2DF);
+  opacity: 0.6;
+}
 .login-box {
   background: #ffffff;
   width: 400px;
   margin: 0 auto;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 .login-box .footer {
   width: 100%;
@@ -15556,4 +15573,16 @@ fieldset[disabled] .btnCustom-default.active {
 .btnCustom-default .badge {
   color: #fff;
   background-color: #333;
+}
+
+.judul{
+  font-family: Montserrat-ExtraBold;
+  font-size: 35px;
+  margin-top: 85px;
+  line-height: 1.2;
+  text-align: center;
+  width: 100%;
+  display: block;
+  color: white;
+  text-shadow: 1px 1px 5px black, 0 0 25px black, 0 0 15px black;
 }
