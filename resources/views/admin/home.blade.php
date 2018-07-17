@@ -68,12 +68,10 @@
                                    document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> Keluar</a></li>
                         </ul>
                     </li>
-                    <li class="nav-small-cap m-t-10">--- Main Menu</li>
-                    <li><a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Dashboard</span></a></li>
-                    
-                    <li class="nav-small-cap">--- Support</li>
-                    <li><a href="documentation.html" class="waves-effect"><i class="fa fa-circle-o text-danger"></i> <span class="hide-menu">Documentation</span></a></li>
-                    <li><a href="faq.html" class="waves-effect"><i class="fa fa-circle-o text-success"></i> <span class="hide-menu">Faqs</span></a></li>
+                            <li class="nav-small-cap m-t-10">--- Data Personel</li>
+                            <li> <a href="{{ route('personil.index') }}" class="waves-effect"><i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">List Personel</span></a>
+                            <li class="nav-small-cap m-t-10">--- Data Registrasi</li>
+                            <li> <a href="{{ route('register') }}" class="waves-effect"><i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Registrasi Pengguna</span></a>
                 </ul>
             </div>
         </div>
