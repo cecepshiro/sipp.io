@@ -34,4 +34,5 @@ Route::get('profilpersonil','PersonilController@profil');
 Route::get('ubahprofil','ProfileController@ubahprofil');
 Route::post('simpanfoto','PersonilController@foto');
 Route::resource('profile','ProfileController');
-Route::get('personiljaja', 'Auth\RegisterController@daftar');
+Route::resource('registeruser', 'Auth\RegisterController');
+Route::get('/daftarpersonil', 'Auth\RegisterController@daftar');

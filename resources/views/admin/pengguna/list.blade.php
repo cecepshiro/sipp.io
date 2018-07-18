@@ -113,14 +113,18 @@
                                 <thead>
                                     <tr>
                                     <th>No</th>
-                                    <th>Agama</th>
+                                    <th>NRP</th>
+                                    <th>Nama Personel</th>
+                                    <th>Hak Akses</th>
                                     <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
                                     <th>No</th>
-                                    <th>Agama</th>
+                                    <th>NRP</th>
+                                    <th>Nama Personel</th>
+                                    <th>Hak Akses</th>
                                     <th>Aksi</th>
                                     </tr>
                                 </tfoot>
@@ -132,16 +136,24 @@
                                             <td>{{ $no }}</td>
                                             <td>{{ $d->id_anggota }}</td>
                                             <td>{{ $d->name }}</td>
-                                            <td>{{ $d->password }}</td>
                                             <td>
-                                            <form action="{{ action('RegisterController@hapus', ['RegisterController@hapus'=>$d->id]) }}" method="post">
+                                                @if($d->akses==0)
+                                                    Admin
+                                                @elseif($d->akses==1)
+                                                    Atasan
+                                                @elseif($d->akses==2)
+                                                    Anggota
+                                                @endif
+                                            </td>
+                                            <td>
+                                            <form action="{{ route('registeruser.destroy', ['registeruser'=>$d->id]) }}" method="post">
                                                 <div class="form-group">
                                                     @if(Auth::user()->hak_akses==0)
-                                                    <a href="{{ action('RegisterController@edit', ['RegisterController@hapus'=>$d->id]) }}" class="btn btn-outline-warning btn-sm">
-                                                    Edit</a>
+                                                    <a href="{{ route('registeruser.edit', ['registeruser'=>$d->id]) }}" class="btn btn-outline-warning btn-sm">
+                                                    Edit Password</a>
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    <button type="submit" class="btn btn-outline-danger btn-sm">Hapus</button>
+                                                    <button type="submit" class="btn btn-outline-danger btn-sm">Hapus Akun</button>
                                                     @endif
                                             
                                                 </div>

@@ -105,54 +105,22 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="white-box">
-                            <h3 class="box-title m-b-0">Registrasi Pengguna</h3>
+                            <h3 class="box-title m-b-0">Ubah Password Pengguna</h3>
                             <p class="text-muted m-b-30 font-13"></p>
-                            <form method="POST" class="form-horizontal" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
-                            @csrf
-                                <div class="form-group">
-                                    <label for="exampleInputuname" class="col-sm-3 control-label">Nama Lengkap*</label>
-                                    <div class="col-sm-9">
-                                        <div class="input-group">
-                                        <input id="name" type="text" placeholder="Masukkan Nama Lengkap" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-                                        <div class="input-group-addon"><i class="ti-user"></i></div>
-                                        @if ($errors->has('name'))
-                                            <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('name') }}</strong>
-                                            </span>
-                                        @endif
-                                        </div>
-                                    </div>
-                                </div>
+                            <form method="POST" class="form-horizontal" action="{{ route('registeruser.update', ['registeruser'=> $data->id]) }}"  enctype="multipart/form-data" aria-label="{{ __('Register') }}">
+                            <input type="hidden" name="_method" value="PATCH">
+                            {{ csrf_field() }}
                                 <div class="form-group">
                                     <label for="exampleInputname" class="col-sm-3 control-label">ID Anggota*</label>
                                     <div class="col-sm-9">
                                     <div class="input-group">
-                                        <input id="id_anggota" type="text"  placeholder="Masukkan ID Anggota" class="form-control{{ $errors->has('id_anggota') ? ' is-invalid' : '' }}" name="id_anggota" value="{{ old('id_anggota') }}" required>
-                                        <div class="input-group-addon"><i class="ti-user"></i></div>
-                                        @if ($errors->has('id_anggota'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('id_anggota') }}</strong>
-                                            </span>
-                                        @endif
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputname" class="col-sm-3 control-label">Hak Akses*</label>
-                                    <div class="col-sm-9">
-                                        <div class="input-group">
-                                            <select id="akses" class="form-control{{ $errors->has('akses') ? ' is-invalid' : '' }}" name="akses" required autofocus>
-                                                <option>Pilih Hak Akses</option>
-                                                <option value="0">Admin</option>
-                                                <option value="1">Atasan</option>
-                                                <option value="2">Anggota</option>
-                                            </select>
-                                            <div class="input-group-addon"><i class="ti-user"></i></div>
-                                            @if ($errors->has('akses'))
-                                                <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('akses') }}</strong>
-                                                </span>
-                                            @endif
+                                    <input id="id_anggota" type="text" class="form-control{{ $errors->has('id_anggota') ? ' is-invalid' : '' }}" name="id_anggota" value="{{ $data->id_anggota }}" required readonly>
+                                    <div class="input-group-addon"><i class="ti-user"></i></div>
+                                    @if ($errors->has('id_anggota'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('id_anggota') }}</strong>
+                                        </span>
+                                    @endif
                                         </div>
                                     </div>
                                 </div>
@@ -160,7 +128,7 @@
                                     <label for="inputPassword3" class="col-sm-3 control-label">Password*</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                        <input id="password" type="password"  placeholder="Masukkan Password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                        <input id="password" type="password"  placeholder="Masukkan Password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required autofocus>
                                         <div class="input-group-addon"><i class="ti-lock"></i></div>
                                         @if ($errors->has('password'))
                                             <span class="invalid-feedback" role="alert">

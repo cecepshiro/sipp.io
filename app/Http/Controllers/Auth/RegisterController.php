@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Auth;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -74,6 +75,28 @@ class RegisterController extends Controller
 
     public function daftar(){
         $data['data']=User::get();
-        return view('admin.pengguna.list');
+        return view('admin.pengguna.list', $data);
     }
+
+    public function edit($id){
+        $data['data']=User::find($id);
+        return view('admin.pengguna.formubah', $data);
+    }
+
+    public function update(Request $request, $id){
+        $temp =  Hash::make($request->password);
+        User::find($id)->update(['password'=>$temp]);
+        $data['data']=User::get();
+        return view('admin.pengguna.list', $data)->with('message', 'Password berhasil diubah');
+
+    }
+
+    public function destroy(){
+        $temp=User::find($id)->value('id');
+        User::find($id)->delete();
+        $data['data']=User::get();
+        return view('admin.pengguna.list', $data)->with('message', 'Data berhasil dihapus');
+    }
+
+
 }
