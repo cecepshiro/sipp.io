@@ -77,7 +77,7 @@
                             <li> <a href="{{ route('personil.index') }}" class="waves-effect"><i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Daftar Pengalaman</span></a>
                             <li class="nav-small-cap m-t-10">--- Data Registrasi</li>
                             <li> <a href="{{ route('register') }}" class="waves-effect"><i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Registrasi Pengguna</span></a>
-                            <li> <a href="{{ route('register') }}" class="waves-effect"><i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Daftar Pengguna</span></a>
+                            <li> <a href="{{ action('Auth\RegisterController@daftar') }}" class="waves-effect"><i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Daftar Pengguna</span></a>
                             <li class="nav-small-cap m-t-10">--- Data Master</li>
                             <li> <a href="{{ route('agama.index') }}" class="waves-effect"><i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Data Agama</span></a>
                             <li class="nav-small-cap m-t-10">--- Data Laporan</li>

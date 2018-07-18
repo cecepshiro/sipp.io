@@ -131,4 +131,6 @@ class PersonilController extends Controller
         $agama =Agama::get();
         return view('personil.profile.detail', compact('data','agama','data2'))->with('cari', $cari);
     }
+
+    
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -71,20 +72,8 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function daftar()
-    {
+    public function daftar(){
         $data['data']=User::get();
-        return view('admin.pengguna.list', $data);
-    }
-    public function hapus($id)
-    {
-        $temp=User::find($id)->value('id');
-        User::find($id)->delete();
-        return view('admin.pengguna.list')->with('message', 'Data berhasil di hapus');
-    }
-    public function edit($id)
-    {
-        $data['data']=User::find($id);
-        return view('admin.pengguna.formubah', $data);
+        return view('admin.pengguna.list');
     }
 }
