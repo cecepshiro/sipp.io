@@ -21,7 +21,7 @@
                                 {{ csrf_field() }}
                                 <input type="hidden" name="id" value="{{ Auth::user()->id }}"><a></a>
                                 <input type="hidden" name="profil_id" value="{{ Auth::user()->id_anggota }}"><a></a>
-                                <li><a><button type="submit" class="btnCustom btnCustom-default">Profil Diri</button></a>
+                                <li><a><button type="submit" class="btnCustom btnCustom-default">Bidang Profesi</button></a>
                                 </li>
                             </form>
                             
@@ -107,24 +107,23 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="white-box">
-                            <h3 class="box-title">Data Pengguna</h3>
+                            <h3 class="box-title">Daftar Bidang Pengguna</h3>
+                            <a href="{{ route('bidang.create') }}" class="btn btn-primary btn-xs">Tambah Data</a>
                             <div class="table-responsive">
-                            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                            <br><table id="example" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
                                     <th>No</th>
-                                    <th>NRP</th>
-                                    <th>Nama Personel</th>
-                                    <th>Hak Akses</th>
+                                    <th>Kode Bidang</th>
+                                    <th>Bidang Profesi</th>
                                     <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
-                                    <tr>
+                                <tr>
                                     <th>No</th>
-                                    <th>NRP</th>
-                                    <th>Nama Personel</th>
-                                    <th>Hak Akses</th>
+                                    <th>Kode Bidang</th>
+                                    <th>Bidang Profesi</th>
                                     <th>Aksi</th>
                                     </tr>
                                 </tfoot>
@@ -134,26 +133,17 @@
                                         <?php $no++ ;?>
                                         <tr>
                                             <td>{{ $no }}</td>
-                                            <td>{{ $d->id_anggota }}</td>
-                                            <td>{{ $d->name }}</td>
+                                            <td>{{ $d->kode_bidangprofesi }}</td>
+                                            <td>{{ $d->bidangprofesi }}</td>
                                             <td>
-                                                @if($d->akses==0)
-                                                    Admin
-                                                @elseif($d->akses==1)
-                                                    Atasan
-                                                @elseif($d->akses==2)
-                                                    Anggota
-                                                @endif
-                                            </td>
-                                            <td>
-                                            <form action="{{ route('registeruser.destroy', ['registeruser'=>$d->id]) }}" method="post">
+                                            <form action="{{ route('bidang.destroy', ['bidang'=>$d->kode_bidangprofesi]) }}" method="post">
                                                 <div class="form-group">
                                                     @if(Auth::user()->hak_akses==0)
-                                                    <a href="{{ route('registeruser.edit', ['registeruser'=>$d->id]) }}" class="btn btn-outline-warning btn-sm">
-                                                    Edit Password</a>
+                                                    <a href="{{ route('bidang.edit', ['bidang'=>$d->kode_bidangprofesi]) }}" class="btn btn-outline-warning btn-sm">
+                                                    Edit</a>
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    <button type="submit" class="btn btn-outline-danger btn-sm">Hapus Akun</button>
+                                                    <button type="submit" class="btn btn-outline-danger btn-sm">Hapus</button>
                                                     @endif
                                             
                                                 </div>
@@ -162,7 +152,7 @@
                                         </tr>
 										@empty
                                         <tr>
-                              			  <td colspan="5">Data Kosong</td>
+                              			  <td colspan="4">Data Kosong</td>
                               			</tr>
                                         @endforelse
                                         </tr>
