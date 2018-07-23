@@ -37,3 +37,5 @@ Route::resource('profile','ProfileController');
 Route::resource('registeruser', 'Auth\RegisterController');
 Route::get('/daftarpersonil', 'Auth\RegisterController@daftar');
 Route::resource('bidang','BidangProfesiController');
+Route::resource('jenjang','JenjangController');
+Route::resource('pendidikan','PendidikanController');

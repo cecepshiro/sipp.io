@@ -91,7 +91,7 @@ class RegisterController extends Controller
 
     }
 
-    public function destroy(){
+    public function destroy($id){
         $temp=User::find($id)->value('id');
         User::find($id)->delete();
         $data['data']=User::get();

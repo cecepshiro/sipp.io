@@ -11,7 +11,9 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-top-links navbar-right pull-right">
-                <!-- /.dropdown -->
+                   
+                   
+                    <!-- /.dropdown -->
                     <li class="dropdown">
                         <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="{{ asset('image/avatar.png') }}" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">{{ Auth::user()->name }}</b> </a>
                         <ul class="dropdown-menu dropdown-user animated flipInY">                           
@@ -103,10 +105,9 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="white-box">
-                            <h3 class="box-title m-b-0">Form Edit Master Bidang Profesi</h3>
+                            <h3 class="box-title m-b-0">Form Master Bidang Profesi</h3>
                             <p class="text-muted m-b-30 font-13"></p>
-                            <form method="POST" class="form-horizontal" action="{{ route('bidang.update', ['bidang'=> $data->kode_bidangprofesi]) }}"  enctype="multipart/form-data">
-                            <input type="hidden" name="_method" value="PATCH">
+                            <form method="POST" class="form-horizontal" action="{{ route('bidang.store') }}"  enctype="multipart/form-data">
                             {{ csrf_field() }}
                                 <div class="form-group">
                                 <label for="exampleInputname" class="col-sm-3 control-label"><br>Bidang Profesi*</label>
@@ -114,9 +115,9 @@
                                         <div class="form-group">
                                                 <table class="table" id="dynamic_field">  
                                                     <tr>  
-                                                        <td><input type="text" name="bidangprofesi" value="{{ $data->bidangprofesi }}" placeholder="Masukkan Nama Bidang" class="form-control" /></td>  
-                                                        <!-- <td><button type="button" name="add" id="add" class="btn btn-success">Tambah</button></td>   -->
-                                                    </tr>
+                                                        <td><input type="text" name="bidangprofesi[]" placeholder="Masukkan Nama Bidang" class="form-control" /></td>  
+                                                        <td><button type="button" name="add" id="add" class="btn btn-success">Tambah</button></td>  
+                                                    </tr>  
                                                 </table>  
                                         </div>
                                     </div>
