@@ -8,7 +8,7 @@ class Jenjang extends Model
 {
     protected $table='data_jenjang';
     protected $primaryKey='kode_jenjang';
-    public $incrementing =false;
+    public $incrementing =true;
     public $timestamps=true;
   
       protected $fillable = [

@@ -107,7 +107,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="white-box">
-                            <h3 class="box-title">Daftar Bidang Pendidikan</h3>
+                            <h3 class="box-title">Daftar Bidang Pendidikan Personel</h3>
                             <a href="{{ route('pendidikan.create') }}" class="btn btn-primary btn-xs">Tambah Data</a>
                             <div class="table-responsive">
                             <br><table id="example" class="table table-striped table-bordered" style="width:100%">

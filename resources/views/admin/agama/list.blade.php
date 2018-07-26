@@ -108,8 +108,9 @@
                     <div class="col-lg-12">
                         <div class="white-box">
                             <h3 class="box-title">Data Agama</h3>
+                            <a href="{{ route('agama.create') }}" class="btn btn-primary btn-xs">Tambah Data</a>
                             <div class="table-responsive">
-                            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                            <br><table id="example" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
                                     <th>No</th>

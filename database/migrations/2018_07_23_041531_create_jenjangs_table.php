@@ -14,7 +14,7 @@ class CreateJenjangsTable extends Migration
     public function up()
     {
         Schema::create('data_jenjang', function (Blueprint $table) {
-            $table->char('kode_jenjang',5)->primary();
+            $table->increments('kode_jenjang');
             $table->string('jenjang');
             $table->string('keterangan');
             $table->timestamps();

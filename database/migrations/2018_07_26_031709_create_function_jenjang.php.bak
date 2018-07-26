@@ -1,0 +1,39 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateFunctionJenjang extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        DB::unprepared('CREATE FUNCTION kd_autojenjang( nomer INT )
+        RETURNS CHAR(5)
+            BEGIN
+                DECLARE kd_jenjang CHAR(5);
+                DECLARE urut INT;
+                
+                SET urut = IF(nomer IS NULL, 1, nomer + 1);
+                SET kd_jenjang = CONCAT("JG", LPAD(urut, 3, 0));
+                
+                RETURN kd_jenjang;
+            END
+        ');
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        //
+    }
+}
