@@ -79,6 +79,12 @@
                 <!-- /.row -->
                 <div class="row">
                     <div class="col-md-6 col-lg-6 col-sm-6">
+                    <?php
+                        $new=DB::table('data_personil')->select(DB::raw('count(*) as baru'))->value('id_anggota');
+                        $man=DB::table('data_personil')->select(DB::raw('count(*) as laki'))->where('jenis_kelamin', 'L')->value('id_anggota');
+                        $woman=DB::table('data_personil')->select(DB::raw('count(*) as perempuan'))->where('jenis_kelamin', 'P')->value('id_anggota');
+                        $sum=DB::table('data_personil')->select(DB::raw('count(*) as total'))->value('id_anggota');
+                    ?>
                         <div class="row row-in">
                             <!-- /.col -->
                             <!--col -->
@@ -88,7 +94,7 @@
                                         <div class="col-md-6 col-sm-6 col-xs-6"> <i data-icon="E" class="linea-icon linea-basic"></i>
                                             <h5 class="text-muted vb">BARU</h5> </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <h3 class="counter text-right m-t-15 text-danger">23</h3> </div>
+                                            <h3 class="counter text-right m-t-15 text-danger">{{ $new }}</h3> </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="progress">
                                                 <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
@@ -105,7 +111,7 @@
                                         <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe01b;"></i>
                                             <h5 class="text-muted vb">LAKI - LAKI</h5> </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <h3 class="counter text-right m-t-15 text-megna">169</h3> </div>
+                                            <h3 class="counter text-right m-t-15 text-megna">{{ $man }}</h3> </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="progress">
                                                 <div class="progress-bar progress-bar-megna" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
@@ -122,7 +128,7 @@
                                         <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe00b;"></i>
                                             <h5 class="text-muted vb">PEREMPUAN</h5> </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <h3 class="counter text-right m-t-15 text-primary">157</h3> </div>
+                                            <h3 class="counter text-right m-t-15 text-primary">{{ $woman }}</h3> </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="progress">
                                                 <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
@@ -139,7 +145,7 @@
                                         <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe016;"></i>
                                             <h5 class="text-muted vb">TOTAL PERSONEL</h5> </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <h3 class="counter text-right m-t-15 text-success">550</h3> </div>
+                                            <h3 class="counter text-right m-t-15 text-success">{{ $sum }}</h3> </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="progress">
                                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
