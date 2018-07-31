@@ -134,8 +134,9 @@
                                    document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> Keluar</a></li>
                         </ul>
                     </li>
-                    <li class="nav-small-cap m-t-10">--- Data Personil</li>
-                    <li> <a href="{{ route('personil.index') }}" class="waves-effect"><i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">List personil</span></a>
+                     <!-- Tampilan Menu -->
+
+                    @include('layouts.menu')
                 </ul>
             </div>
         </div>

@@ -60,10 +60,9 @@
                                    document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> Keluar</a></li>
                         </ul>
                     </li>
-                    <li class="nav-small-cap m-t-10">--- Data Personel</li>
-                    <li> <a href="{{ route('personil.index') }}" class="waves-effect"><i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">List Personel</span></a>
-                    <li class="nav-small-cap m-t-10">--- Data Registrasi</li>
-                    <li> <a href="{{ route('register') }}" class="waves-effect"><i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Registrasi Pengguna</span></a>  
+                    <!-- Tampilan Menu -->
+
+                    @include('layouts.menu')
                 </ul>
             </div>
         </div>
