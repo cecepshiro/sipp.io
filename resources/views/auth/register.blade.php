@@ -53,24 +53,6 @@
             </span> </div>
                         <!-- /input-group -->
                     </li>
-                    <li class="user-pro">
-                        <a href="#" class="waves-effect"><img src="{{ asset('image/avatar.png') }}" alt="user-img" class="img-circle"> <span class="hide-menu"> {{ Auth::user()->name }}<span class="fa arrow"></span></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                            <li><form action="{{ action('PersonilController@profil') }}" method="get" enctype="multipart/form-data">
-                                    {{ csrf_field() }}
-                                    <input type="hidden" name="id" value="{{ Auth::user()->id }}"><a></a>
-                                    <input type="hidden" name="profil_id" value="{{ Auth::user()->id_anggota }}"><a></a>
-                                    <a><button type="submit" style="float: left" class="btnCustom btnCustom-default"><i class="ti-user"></i> Profil Diri</button></a>
-                                </form>
-                            </li>
-                            <li><form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <a><button type="submit" style="float: left" class="btnCustom btnCustom-default"><i class="fa fa-power-off"></i> Keluar</button></a>
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
                     <!-- Tampilan Menu -->
 
                     @include('layouts.menu')
@@ -116,7 +98,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputname" class="col-sm-3 control-label">ID Anggota*</label>
+                                    <label for="exampleInputname" class="col-sm-3 control-label">NRP*</label>
                                     <div class="col-sm-9">
                                     <div class="input-group">
                                         <input id="id_anggota" type="text"  placeholder="Masukkan ID Anggota" class="form-control{{ $errors->has('id_anggota') ? ' is-invalid' : '' }}" name="id_anggota" value="{{ old('id_anggota') }}" required>

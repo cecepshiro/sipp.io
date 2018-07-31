@@ -124,16 +124,6 @@
             </span> </div>
                         <!-- /input-group -->
                     </li>
-                    <li class="user-pro">
-                        <a href="#" class="waves-effect"><img src="{{ asset('asset/plugins/images/users/varun.jpg') }}" alt="user-img" class="img-circle"> <span class="hide-menu"> {{ Auth::user()->name }}<span class="fa arrow"></span></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                            <li><a href=""><i class="ti-user"></i>Profil Diri</a></li>
-                            <li><a href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                   document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> Keluar</a></li>
-                        </ul>
-                    </li>
                      <!-- Tampilan Menu -->
 
                     @include('layouts.menu')
