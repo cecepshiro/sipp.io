@@ -12,6 +12,10 @@ class JenjangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+        $this->middleware('cekstatusadmin');
+    }
     public function index()
     {
         $data['data']=Jenjang::get();

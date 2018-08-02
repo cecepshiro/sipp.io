@@ -17,6 +17,7 @@ Route::group(['middleware' => 'web'], function(){
 
 Route::group(['middleware' => ['web','auth']], function(){
     //redirect to login
+    Route::get('/home','HomeController@index');
     Route::get('/', function(){
       if(Auth::user()->akses==0){
         return view('admin.home');
