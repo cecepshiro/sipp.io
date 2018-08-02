@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Jenjang;
 use App\Pendidikan;
 use Illuminate\Http\Request;
+use Alert;
 
 class PendidikanController extends Controller
 {
@@ -39,14 +40,17 @@ class PendidikanController extends Controller
     public function store(Request $request)
     {
         Pendidikan::create([
-            'kode_pendidikan' => $request->user_id,
-            'kode_jenjang' => $request->tempat_lahir,
-            'nama_pt' => $request->tgl_lahir,
-            'kota' => $request->jenis_kelamin,
-            'bidang_ilmu' => $request->kode_agama,
-            'tahun_lulus' => $request->alamat_kantor,
+            // 'kode_pendidikan' => $request->kode_pendidikan,
+            'user_id' => $request->id_anggota,
+            'kode_jenjang' => $request->kode_jenjang,
+            'nama_pt' => $request->nama_pt,
+            'kota' => $request->kota,
+            'bidang_ilmu' => $request->bidang_ilmu,
+            'tahun_lulus' => $request->tahun_lulus,
                 ]);
-        return redirect()->route('pendidikan.index')->with('message', 'Data berhasil diinput');
+    
+        Alert::success('Berhasil', 'Data Tersimpan');
+        return redirect('pendidikan');
     }
 
     /**
@@ -101,6 +105,7 @@ class PendidikanController extends Controller
     {
         $temp=Pendidikan::find($id)->value('kode_pendidikan');
         Pendidikan::find($id)->delete();
-        return redirect()->route('pendidikan.index')->with('message', 'Data berhasil di hapus');
+        Alert::error('Berhasil', 'Data Terhapus');
+        return redirect('pendidikan');
     }
 }

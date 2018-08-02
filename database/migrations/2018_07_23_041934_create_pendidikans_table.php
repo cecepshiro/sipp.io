@@ -15,6 +15,7 @@ class CreatePendidikansTable extends Migration
     {
         Schema::create('data_pendidikan', function (Blueprint $table) {
             $table->increments('kode_pendidikan');
+            $table->integer('user_id');
             $table->char('kode_jenjang',5);
             $table->string('nama_pt');
             $table->string('kota');

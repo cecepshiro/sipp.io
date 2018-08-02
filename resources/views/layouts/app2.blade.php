@@ -27,6 +27,7 @@
     <link href="{{ asset('asset/css/style.css') }}" rel="stylesheet">
     <!-- color CSS -->
     <link href="{{ asset('asset/css/colors/blue.css') }}" id="theme" rel="stylesheet">
+    <link href="{{ asset('asset/sweetalert/sweetalert.css') }}" id="theme" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -45,6 +46,10 @@
     
 </head>
 <body>
+    <!-- Sweetalert -->
+    <script src="{{ asset('asset/sweetalert/sweetalert.min.js') }}"></script>
+    <!-- Include this after the sweet alert js file -->
+    @include('sweet::alert')
     <!-- Preloader -->
     <!-- <div class="preloader">
         <div class="cssload-speeding-wheel"></div>
@@ -91,6 +96,33 @@
             $(document).ready(function() {
                 $('#example').DataTable();
             } );
+        </script>
+        <script type="text/javascript">
+            function validateNumber(evt) {
+            var e = evt || window.event;
+            var key = e.keyCode || e.which;
+
+            if (!e.shiftKey && !e.altKey && !e.ctrlKey &&
+            // numbers   
+            key >= 48 && key <= 57 ||
+            // Numeric keypad
+            key >= 96 && key <= 105 ||
+            // Backspace and Tab and Enter
+            key == 8 || key == 9 || key == 13 ||
+            // Home and End
+            key == 35 || key == 36 ||
+            // left and right arrows
+            key == 37 || key == 39 ||
+            // Del and Ins
+            key == 46 || key == 45) {
+                // input is VALID
+            }
+            else {
+                // input is INVALID
+                e.returnValue = false;
+                if (e.preventDefault) e.preventDefault();
+            }
+        }
         </script>
 
     <!-- <script type="text/javascript">

@@ -46,7 +46,12 @@
                             <h3 class="box-title">Daftar Bidang Pendidikan Personel</h3>
                             <a href="{{ route('pendidikan.create') }}" class="btn btn-primary btn-xs">Tambah Data</a>
                             <div class="table-responsive">
-                            <br><table id="example" class="table table-striped table-bordered" style="width:100%">
+                            <br>
+                            <!-- <div class="alert alert-success alert-dismissible">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong>Success!</strong> Indicates a successful or positive action.
+                            </div> -->
+                            <table id="example" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
                                     <th>No</th>
@@ -78,10 +83,10 @@
                                             <td>{{ $d->bidang_ilmu }}</td>
                                             <td>{{ $d->tahun_lulus }}</td>
                                             <td>
-                                            <form action="{{ route('pendidikan.destroy', ['pendidikan'=>$d->kode_jenjang]) }}" method="post">
+                                            <form action="{{ route('pendidikan.destroy', ['pendidikan'=>$d->kode_pendidikan]) }}" method="post">
                                                 <div class="form-group">
                                                     @if(Auth::user()->hak_akses==0)
-                                                    <a href="{{ route('pendidikan.edit', ['pendidikan'=>$d->kode_jenjang]) }}" class="btn btn-outline-warning btn-sm">
+                                                    <a href="{{ route('pendidikan.edit', ['pendidikan'=>$d->kode_pendidikan]) }}" class="btn btn-outline-warning btn-sm">
                                                     Edit</a>
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
