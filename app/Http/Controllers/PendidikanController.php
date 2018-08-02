@@ -92,6 +92,7 @@ class PendidikanController extends Controller
         Pendidikan::find($id)->update(['kota'=>$request->kota]);
         Pendidikan::find($id)->update(['bidang_ilmu '=>$request->bidang_ilmu]);
         Pendidikan::find($id)->update(['tahun_lulus'=>$request->tahun_lulus]);
+        Alert::success('Berhasil', 'Data Diubah');
         return redirect()->route('pendidikan.index');
     }
 

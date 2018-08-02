@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\BidangProfesi;
 use Illuminate\Http\Request;
-
+use Alert;
 class BidangProfesiController extends Controller
 {
     /**
@@ -45,8 +45,8 @@ class BidangProfesiController extends Controller
                 'bidangprofesi'=>$value
                 ]);
         }
-
-        return redirect()->route('bidang.index')->with('message', 'Data berhasil diinput');
+        Alert::success('Berhasil', 'Data Tersimpan');
+        return redirect()->route('bidang.index');
 
     }
 
@@ -88,6 +88,7 @@ class BidangProfesiController extends Controller
         // Personil::find($id)->update(['id_pengalaman'=>$request->id_pengalaman]);
         // Personil::find($id)->update(['id_bidang_profesi'=>$request->id_bidang_profesi]);
         // Personil::find($id)->update(['id_profesional'=>$request->id_profesional]);
+        Alert::success('Berhasil', 'Data Diubah');
         return redirect()->route('bidang.index');
     }
 
@@ -101,6 +102,7 @@ class BidangProfesiController extends Controller
     {
         $temp=BidangProfesi::find($id)->value('kode_bidangprofesi');
         BidangProfesi::find($id)->delete();
+        Alert::error('Berhasil', 'Data Terhapus');
         return redirect()->route('bidang.index')->with('message', 'Data berhasil di hapus');
     }
 }

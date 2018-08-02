@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Auth;
 use Illuminate\Http\Request;
-
+use Alert;
 class RegisterController extends Controller
 {
     /*
@@ -72,6 +72,7 @@ class RegisterController extends Controller
             'akses' => $data['akses'],
             'password' => Hash::make($data['password']),
         ]);
+        Alert::success('Berhasil', 'Data Tersimpan');
     }
 
     public function daftar(){
@@ -88,7 +89,8 @@ class RegisterController extends Controller
         $temp =  Hash::make($request->password);
         User::find($id)->update(['password'=>$temp]);
         $data['data']=User::get();
-        return view('admin.pengguna.list', $data)->with('message', 'Password berhasil diubah');
+        Alert::success('Berhasil', 'Data Diubah');
+        return view('admin.pengguna.list', $data);
 
     }
 
@@ -96,7 +98,8 @@ class RegisterController extends Controller
         $temp=User::find($id)->value('id');
         User::find($id)->delete();
         $data['data']=User::get();
-        return view('admin.pengguna.list', $data)->with('message', 'Data berhasil dihapus');
+        Alert::error('Berhasil', 'Data Terhapus');
+        return view('admin.pengguna.list', $data);
     }
 
 

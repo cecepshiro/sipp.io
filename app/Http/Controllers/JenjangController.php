@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Jenjang;
 use Illuminate\Http\Request;
-
+use Alert;
 class JenjangController extends Controller
 {
     /**
@@ -46,7 +46,8 @@ class JenjangController extends Controller
                 'keterangan'=>$request->keterangan
                 ]);
         }
-        return redirect()->route('jenjang.index')->with('message', 'Data berhasil diinput');
+        Alert::success('Berhasil', 'Data Tersimpan');
+        return redirect()->route('jenjang.index');
     }
 
     /**
@@ -87,6 +88,7 @@ class JenjangController extends Controller
         // Personil::find($id)->update(['id_pengalaman'=>$request->id_pengalaman]);
         // Personil::find($id)->update(['id_bidang_profesi'=>$request->id_bidang_profesi]);
         // Personil::find($id)->update(['id_profesional'=>$request->id_profesional]);
+        Alert::success('Berhasil', 'Data Diubah');
         return redirect()->route('jenjang.index');
     }
 
@@ -100,6 +102,7 @@ class JenjangController extends Controller
     {
         $temp=Jenjang::find($id)->value('kode_jenjang');
         Jenjang::find($id)->delete();
+        Alert::error('Berhasil', 'Data Terhapus');
         return redirect()->route('jenjang.index')->with('message', 'Data berhasil di hapus');
     }
 }

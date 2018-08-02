@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Agama;
 use Illuminate\Http\Request;
-
+use Alert;
 class AgamaController extends Controller
 {
     /**
@@ -44,7 +44,8 @@ class AgamaController extends Controller
         Agama::create([
             'agama' => $request->agama,
                 ]);
-        return redirect()->route('agama.index')->with('message', 'Data berhasil diinput');
+        Alert::success('Berhasil', 'Data Tersimpan');
+        return redirect()->route('agama.index');
     }
 
     /**
@@ -80,6 +81,7 @@ class AgamaController extends Controller
     public function update(Request $request, $id)
     {
         Agama::find($id)->update(['agama'=>$request->agama]);
+        Alert::success('Berhasil', 'Data Diubah');
         return redirect()->route('agama.index');
     }
 
@@ -93,6 +95,7 @@ class AgamaController extends Controller
     {
         $temp=Agama::find($id)->value('id');
         Agama::find($id)->delete();
+        Alert::error('Berhasil', 'Data Terhapus');
         return redirect()->route('agama.index')->with('message', 'Data berhasil di hapus');
     }
 }

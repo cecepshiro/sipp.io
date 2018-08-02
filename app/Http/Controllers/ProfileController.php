@@ -7,7 +7,7 @@ use App\Personil;
 use App\User;
 use App\Agama;
 use Illuminate\Support\Facades\Input; 
-
+use Alert;
 class ProfileController extends Controller
 {
     /**
@@ -56,7 +56,8 @@ class ProfileController extends Controller
             // 'id_bidang_profesi' => $request->id_bidang_profesi,
             // 'id_profesional' => $request->id_profesional,
                 ]);
-        return redirect()->route('personil.index')->with('message', 'Data berhasil diinput');
+        Alert::success('Berhasil', 'Data Tersimpan');
+        return redirect()->route('personil.index');
     }
 
     /**
@@ -103,6 +104,7 @@ class ProfileController extends Controller
                     return redirect()->back()->with('message', 'File yang di upload harus berektensi .png , .jpg dan .jpeg');
                 }
         }
+        Alert::success('Berhasil', 'Data Diubah');
         return redirect()->route('personil.index');
     }
 

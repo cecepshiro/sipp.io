@@ -5,7 +5,7 @@ use App\Personil;
 use App\Agama;
 use App\USer;
 use Illuminate\Http\Request;
-
+use Alert;
 class PersonilController extends Controller
 {
     /**
@@ -56,7 +56,8 @@ class PersonilController extends Controller
             // 'id_bidang_profesi' => $request->id_bidang_profesi,
             // 'id_profesional' => $request->id_profesional,
                 ]);
-        return redirect()->route('personil.index')->with('message', 'Data berhasil diinput');
+        Alert::success('Berhasil', 'Data Tersimpan');
+        return redirect()->route('personil.index');
     }
 
     /**
@@ -107,6 +108,7 @@ class PersonilController extends Controller
         // Personil::find($id)->update(['id_pengalaman'=>$request->id_pengalaman]);
         // Personil::find($id)->update(['id_bidang_profesi'=>$request->id_bidang_profesi]);
         // Personil::find($id)->update(['id_profesional'=>$request->id_profesional]);
+        Alert::success('Berhasil', 'Data Diubah');
         return redirect()->route('personil.index');
     }
 
@@ -120,6 +122,7 @@ class PersonilController extends Controller
     {
         $temp=Personil::find($id)->value('user_id');
         Personil::find($id)->delete();
+        Alert::error('Berhasil', 'Data Terhapus');
         return redirect()->route('personil.index')->with('message', 'Data berhasil di hapus');
     }
 

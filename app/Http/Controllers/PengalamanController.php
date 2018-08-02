@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Alert;
 class PengalamanController extends Controller
 {
     /**
