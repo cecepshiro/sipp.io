@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Pengalaman;
-use App\User;
-use App\Jenjang;
+use App\Pekerjaan;
 use Alert;
-class PengalamanController extends Controller
+use Illuminate\Http\Request;
+
+class PekerjaanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,7 @@ class PengalamanController extends Controller
      */
     public function index()
     {
-        $data['data']=Pengalaman::get();
-        return view('personil.pengalaman.list', $data);
+        return view('personil.pengalaman.list');
     }
 
     /**
@@ -27,8 +25,7 @@ class PengalamanController extends Controller
      */
     public function create()
     {
-        $jenjang['jenjang']=Jenjang::orderBy('jenjang', 'asc')->get();
-        return view('personil.pengalaman.form', $jenjang);
+        //
     }
 
     /**
@@ -39,7 +36,19 @@ class PengalamanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        ini_set('memory_limit','125M');
+      
+        for($i=0;$i<count($request->nama_lembaga);$i++){
+            Pekerjaan::create([
+                    'nama_lembaga' => $request->nama_lembaga[$i],
+                    'alamat' => $request->alamat[$i],
+                    'no_telp' => $request->no_telp[$i],
+                    'pekerjaan' => $request->pekerjaan[$i],
+                    'dari' => $request->dari[$i],
+                    'sampai' => $request->sampai[$i],
+                ]);
+        }
+         Alert::success('Berhasil', 'Data Tersimpan');
     }
 
     /**
@@ -50,8 +59,7 @@ class PengalamanController extends Controller
      */
     public function show($id)
     {
-        $data['data']=User::where('id_anggota',$id)->get();
-        return view('personil.pengalaman.list', $data);
+        //
     }
 
     /**
@@ -87,4 +95,6 @@ class PengalamanController extends Controller
     {
         //
     }
+
+
 }

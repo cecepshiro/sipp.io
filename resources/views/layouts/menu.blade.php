@@ -40,7 +40,7 @@
 </li>
 <li class="nav-small-cap m-t-10">--- Data Pengalaman</li>
 <li>
-    <a href="{{ route('personil.index') }}" class="waves-effect">
+    <a href="{{ route('pengalaman.show', ['pengalaman'=>Auth::user()->id_anggota]) }}" class="waves-effect">
         <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
         <span class="hide-menu">Daftar Pengalaman</span>
     </a>
@@ -69,12 +69,6 @@
     <a href="{{ route('jenjang.index') }}" class="waves-effect">
         <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
         <span class="hide-menu">Data Jenjang Pendidikan</span>
-    </a>
-</li>
-<li>
-    <a href="{{ route('pendidikan.index') }}" class="waves-effect">
-        <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
-        <span class="hide-menu">Data Pendidikan</span>
     </a>
 </li>
 <li>

@@ -17,7 +17,7 @@ class PendidikanController extends Controller
     public function index()
     {
         $data['data']=Pendidikan::get();
-        return view('admin.pendidikan.list', $data);
+        return view('personil.pendidikan.list', $data);
     }
 
     /**
@@ -28,7 +28,7 @@ class PendidikanController extends Controller
     public function create()
     {
         $jenjang['jenjang']=Jenjang::orderBy('jenjang', 'asc')->get();
-        return view('admin.pendidikan.form', $jenjang);
+        return view('personil.pendidikan.form', $jenjang);
     }
 
     /**
@@ -62,7 +62,7 @@ class PendidikanController extends Controller
     public function show($id)
     {
         $data['data']=Pendidikan::find($id);
-        return view("admin.pendidikan.detail", $data);
+        return view("personil.pendidikan.detail", $data);
     }
 
     /**
@@ -75,7 +75,7 @@ class PendidikanController extends Controller
     {
         $data['data']=Pendidikan::find($id);
         $jenjang['jenjang']=Jenjang::get();
-        return view('admin.pendidikan.formubah', $data, $jenjang);
+        return view('personil.pendidikan.formubah', $data, $jenjang);
     }
 
     /**

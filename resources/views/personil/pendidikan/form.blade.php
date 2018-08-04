@@ -48,8 +48,6 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="white-box">
-                        <h3 class="box-title m-b-0">Form Bidang Pendidikan Personel</h3>
-                        <p class="text-muted m-b-30 font-13"></p>
                         <form method="POST" class="form-horizontal" action="{{ route('pendidikan.store') }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="form-group">

@@ -150,7 +150,7 @@
                                         <br>
                                         @if($cek==NULL)
                                             <div class="form-group">
-                                                <label class="col-md-12">ID Personel</label>
+                                                <label class="col-md-12">NRP</label>
                                                 <div class="col-md-12">
                                                     <input class="form-control form-control-line" type="hidden" name="user_id" value="{{ Auth::user()->id }}" placeholder="ID Anggota" readonly required>
                                                     <input class="form-control form-control-line" type="text" name="id_anggota" value="{{ $cari }}" placeholder="ID Anggota" readonly required>    
@@ -223,13 +223,13 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="example-email" class="col-md-12">Alamat Kantor</label>
+                                                <label for="example-email" class="col-md-12">Alamat Kerja / Kantor</label>
                                                 <div class="col-md-12">
                                                     <textarea class="form-control form-control-line" type="text" name="alamat_kantor" placeholder="Masukkan Alamat Kantor" required></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="example-email" class="col-md-12">Alamat Tempat Praktik</label>
+                                                <label for="example-email" class="col-md-12">Alamat Tempat Praktik Mandiri</label>
                                                 <div class="col-md-12">
                                                     <textarea class="form-control form-control-line" type="text" name="alamat_tempat_praktik" placeholder="Masukkan Alamat Tempat Praktik" required></textarea>
                                                 </div>
@@ -330,13 +330,13 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="example-email" class="col-md-12">Alamat Kantor</label>
+                                                <label for="example-email" class="col-md-12">Alamat Kerja / Kantor</label>
                                                 <div class="col-md-12">
                                                     <textarea class="form-control form-control-line" type="text" name="alamat_kantor" placeholder="Masukkan Alamat Kantor" required>{{ $d2->alamat_kantor }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="example-email" class="col-md-12">Alamat Tempat Praktik</label>
+                                                <label for="example-email" class="col-md-12">Alamat Tempat Praktik Mandiri</label>
                                                 <div class="col-md-12">
                                                     <textarea class="form-control form-control-line" type="text" name="alamat_tempat_praktik" placeholder="Masukkan Alamat Tempat Praktik" required>{{ $d2->alamat_tempat_praktik }}</textarea>
                                                 </div>

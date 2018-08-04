@@ -1,9 +1,9 @@
 @extends('layouts.app2')
 <script src="{{ asset('asset/plugins/bower_components/jquery/dist/jquery.min.js') }}"></script>
 @section('content')
-    <div id="wrapper"> 
-        <!-- Navigasi Menu -->
-        @include('layouts.navigasi')
+    <div id="wrapper">
+     <!-- Navigasi Menu -->
+     @include('layouts.navigasi')
         <!-- Left navbar-header -->
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse slimscrollsidebar">
@@ -42,9 +42,10 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="white-box">
-                            <h3 class="box-title m-b-0">Form Master Bidang Profesi</h3>
+                            <h3 class="box-title m-b-0">Form Edit Master Bidang Profesi</h3>
                             <p class="text-muted m-b-30 font-13"></p>
-                            <form method="POST" class="form-horizontal" action="{{ route('bidang.store') }}"  enctype="multipart/form-data">
+                            <form method="POST" class="form-horizontal" action="{{ route('bidang.update', ['bidang'=> $data->kode_bidangprofesi]) }}"  enctype="multipart/form-data">
+                            <input type="hidden" name="_method" value="PATCH">
                             {{ csrf_field() }}
                                 <div class="form-group">
                                 <label for="exampleInputname" class="col-sm-3 control-label"><br>Bidang Profesi*</label>
@@ -52,11 +53,12 @@
                                         <div class="form-group">
                                                 <table class="table" id="dynamic_field">  
                                                     <tr>  
-                                                        <td><input type="text" name="bidangprofesi[]" placeholder="Masukkan Nama Bidang" class="form-control" /></td>  
-                                                        <td><button type="button" name="add" id="add" class="btn btn-success">Tambah</button></td>  
-                                                    </tr>  
+                                                        <td><input type="text" name="bidangprofesi" value="{{ $data->bidangprofesi }}" placeholder="Masukkan Nama Bidang" class="form-control" /></td>  
+                                                        <!-- <td><button type="button" name="add" id="add" class="btn btn-success">Tambah</button></td>   -->
+                                                    </tr>
                                                 </table>  
                                         </div>
+                                    </div>
                                     </div>
                                 </div>
                                 <div class="form-group m-b-0">
