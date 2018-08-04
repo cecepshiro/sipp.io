@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Pekerjaan;
-use Alert;
+use App\PraktikPsi;
 use Illuminate\Http\Request;
 
-class PekerjaanController extends Controller
+class PraktikPsiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,8 @@ class PekerjaanController extends Controller
      */
     public function index()
     {
-        return view('personil.pengalaman.list');
+        $data['data']=PraktikPsi::get();
+        return view('personil.praktikprofesi.list', $data);
     }
 
     /**
@@ -25,7 +25,7 @@ class PekerjaanController extends Controller
      */
     public function create()
     {
-        //
+        // return view('personil.pengalaman.formpengalaman.formbidangprofesi');
     }
 
     /**
@@ -38,17 +38,13 @@ class PekerjaanController extends Controller
     {
         ini_set('memory_limit','125M');
       
-        for($i=0;$i<count($request->nama_lembaga);$i++){
-            Pekerjaan::create([
-                    'nama_lembaga' => $request->nama_lembaga[$i],
-                    'alamat' => $request->alamat[$i],
-                    'no_telp' => $request->no_telp[$i],
-                    'pekerjaan' => $request->pekerjaan[$i],
-                    'dari' => $request->dari[$i],
-                    'sampai' => $request->sampai[$i],
+        for($i=0;$i<count($request->pemeriksaan);$i++){
+            PraktikPsi::create([
+                    'pemeriksaan' => $request->pemeriksaan[$i],
+                    'tindakan' => $request->tindakan[$i],
+                    'tahunpelaksanaan' => $request->tahunpelaksanaan[$i],
                 ]);
         }
-        // Alert::success('Berhasil', 'Data Tersimpan');
     }
 
     /**
@@ -95,6 +91,4 @@ class PekerjaanController extends Controller
     {
         //
     }
-
-
 }

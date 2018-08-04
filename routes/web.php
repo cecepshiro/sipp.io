@@ -42,3 +42,4 @@ Route::resource('jenjang','JenjangController');
 Route::resource('pendidikan','PendidikanController');
 Route::resource('pengalaman','PengalamanController');
 Route::resource('/simpanpekerjaan','PekerjaanController');
+Route::resource('/simpanpraktikprofesi','PraktikPsiController');

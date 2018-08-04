@@ -100,7 +100,7 @@
                                     @include('personil.pengalaman.formpengalaman.formbidangprofesi')
                                 </div>
                                 <div class="tab-pane" id="praktik">
-                                    @include('personil.pengalaman.formpengalaman.formbidangprofesi')
+                                    @include('personil.pengalaman.formpengalaman.formpraktikprofesi')
                                 </div>
                                 <div class="tab-pane" id="profesional">
                                     @include('personil.pengalaman.formpengalaman.formpengalamanprofesional')
@@ -254,6 +254,8 @@
          });  
     </script>
 
+    <!-- Ajax Pekerjaan -->
+
     <script>
         $(document).ready(function(){
         
@@ -367,3 +369,85 @@
         
         });
 </script>
+
+
+<!-- Ajax Praktik Profesi -->
+
+<script>
+        $(document).ready(function(){
+        
+        $(document).on('click', '.tambah', function(){
+        var html = '';
+        html += '<tr>';
+        html += '<td><input type="text" name="pemeriksaan[]" class="form-control item_pemeriksaan" /></td>';
+        html += '<td><input type="text" name="tindakan[]" class="form-control item_tindakan" /></td>';
+        html += '<td><input type="date" name="tahunpelaksanaan[]" class="form-control item_pelaksanaan" /></td>';
+        html += '<td><button type="button" name="hapus" class="btn btn-danger btn-sm hapus"><span class="glyphicon glyphicon-minus"></span></button></td></tr>';
+        $('#tabel_praktik').append(html);
+        });
+        
+        $(document).on('click', '.hapus', function(){
+        $(this).closest('tr').remove();
+        });
+
+        $('#formpraktik').on('submit', function(event){
+        event.preventDefault();
+        var error = '';
+        $('.item_pemeriksaan').each(function(){
+        var count = 1;
+        if($(this).val() == '')
+        {
+            error += "<p>Masukan Pemeriksaan "+count+" Row</p>";
+            return false;
+        }
+        count = count + 1;
+        });
+        
+        $('.item_tindakan').each(function(){
+        var count = 1;
+        if($(this).val() == '')
+        {
+            error += "<p>Masukan Tindakan "+count+" Row</p>";
+            return false;
+        }
+        count = count + 1;
+        });
+
+        $('.item_pelaksanaan').each(function(){
+        var count = 1;
+        if($(this).val() == '')
+        {
+            error += "<p>Masukan Tahun Pelaksanaan "+count+" Row</p>";
+            return false;
+        }
+        count = count + 1;
+        });
+
+        var form_data = $(this).serialize();
+        if(error == '')
+        {
+        $.ajax({
+            url:"http://127.0.0.1:8000/simpanpraktikprofesi",
+            method:"POST",
+            data:form_data,
+            success:function(data)
+            {
+                console.log(data);
+            $('#tabel_praktik').find("tr:gt(0)").remove();
+            //$('#erroal').show();
+            $('#error').html('<div class="alert alert-success">Data Tersimpan</div>');
+            }
+        });
+        }
+        else
+        {
+        $('#error').html('<div class="alert alert-danger">'+error+'</div>');
+        }
+        });
+        
+        });
+</script>
+
+
+
+
