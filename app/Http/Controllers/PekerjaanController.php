@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pekerjaan;
+use Auth;
 use Alert;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class PekerjaanController extends Controller
      */
     public function index()
     {
-        return view('personil.pengalaman.list');
+        $data4['data4']=Pekerjaan::get();
+        return view('personil.pengalaman.viewpengalaman.listpekerjaan', $data4);
     }
 
     /**
@@ -37,9 +39,10 @@ class PekerjaanController extends Controller
     public function store(Request $request)
     {
         ini_set('memory_limit','125M');
-      
+        $user = Auth::user()->id;
         for($i=0;$i<count($request->nama_lembaga);$i++){
             Pekerjaan::create([
+                    'user_id' => $user,
                     'nama_lembaga' => $request->nama_lembaga[$i],
                     'alamat' => $request->alamat[$i],
                     'no_telp' => $request->no_telp[$i],

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\PraktikPsi;
+use App\PengembanganPro;
 use Auth;
 use Illuminate\Http\Request;
 
-class PraktikPsiController extends Controller
+class PengembanganProController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,9 @@ class PraktikPsiController extends Controller
      */
     public function index()
     {
-        $data3['data3']=PraktikPsi::get();
-        return view('personil.pengalaman.viewpengalaman.listpraktikpro', $data3);
+       
+        $data2['data2']=PengembanganPro::get();
+        return view('personil.pengalaman.viewpengalaman.listpengalamanpro', $data2);
     }
 
     /**
@@ -26,7 +27,7 @@ class PraktikPsiController extends Controller
      */
     public function create()
     {
-        // return view('personil.pengalaman.formpengalaman.formbidangprofesi');
+        //
     }
 
     /**
@@ -39,12 +40,12 @@ class PraktikPsiController extends Controller
     {
         ini_set('memory_limit','125M');
         $user = Auth::user()->id;
-        for($i=0;$i<count($request->pemeriksaan);$i++){
-            PraktikPsi::create([
+        for($i=0;$i<count($request->kegiatan);$i++){
+            PengembanganPro::create([
                     'user_id' => $user,
-                    'pemeriksaan' => $request->pemeriksaan[$i],
-                    'tindakan' => $request->tindakan[$i],
-                    'tahunpelaksanaan' => $request->tahunpelaksanaan[$i],
+                    'kegiatan' => $request->kegiatan[$i],
+                    'tempat' => $request->tempat[$i],
+                    'tahun' => $request->tahun[$i],
                 ]);
         }
     }

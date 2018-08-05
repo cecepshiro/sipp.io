@@ -12,6 +12,6 @@ class PraktikPsi extends Model
     public $timestamps=true;
   
       protected $fillable = [
-        'pemeriksaan','tindakan','tahunpelaksanaan','created_at','updated_at',
+        'user_id','pemeriksaan','tindakan','tahunpelaksanaan','created_at','updated_at',
       ];
 }

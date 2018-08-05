@@ -12,6 +12,6 @@ class Pekerjaan extends Model
     public $timestamps=true;
   
       protected $fillable = [
-        'nama_lembaga','alamat','no_telp','pekerjaan','dari','sampai','created_at','updated_at',
+        'user_id','nama_lembaga','alamat','no_telp','pekerjaan','dari','sampai','created_at','updated_at',
       ];
 }

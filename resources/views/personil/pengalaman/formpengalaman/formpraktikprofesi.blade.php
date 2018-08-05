@@ -1,9 +1,9 @@
-<h3 class="box-title m-b-0">Form Pengalaman Pekerjaan Personel</h3>
+<h3 class="box-title m-b-0">Form Pengalaman Praktik Profesi Personel</h3>
 <hr>
 <form method="post" id="formpraktik" enctype="multipart/form-data">
 {{ csrf_field() }}
     <div class="table-repsonsive">
-        <span id="error"></span>
+        <span id="error2"></span>
         <div style="overflow-x:auto;">
             <table class="table table-bordered" id="tabel_praktik">
                 <tr>

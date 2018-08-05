@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Pengalaman;
 use App\User;
 use App\Jenjang;
+use App\PengembanganPro;
 use Alert;
 class PengalamanController extends Controller
 {
@@ -16,6 +17,7 @@ class PengalamanController extends Controller
      */
     public function index()
     {
+      
         $data['data']=Pengalaman::get();
         return view('personil.pengalaman.list', $data);
     }
@@ -27,8 +29,9 @@ class PengalamanController extends Controller
      */
     public function create()
     {
+        $data2['data2']=PengembanganPro::get();
         $jenjang['jenjang']=Jenjang::orderBy('jenjang', 'asc')->get();
-        return view('personil.pengalaman.form', $jenjang);
+        return view('personil.pengalaman.form', $jenjang,$data2);
     }
 
     /**

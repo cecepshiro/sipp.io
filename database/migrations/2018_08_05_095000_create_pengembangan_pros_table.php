@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePraktikPsisTable extends Migration
+class CreatePengembanganProsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreatePraktikPsisTable extends Migration
      */
     public function up()
     {
-        Schema::create('data_praktik', function (Blueprint $table) {
-            $table->increments('kode_praktik');
+        Schema::create('data_pengembangan_pro', function (Blueprint $table) {
+            $table->increments('kode_pro');
             $table->integer('user_id');
-            $table->string('pemeriksaan');
-            $table->string('tindakan');
-            $table->string('tahunpelaksanaan');
+            $table->string('kegiatan');
+            $table->string('tempat');
+            $table->char('tahun',4);
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreatePraktikPsisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data_praktik');
+        Schema::dropIfExists('data_pengembangan_pro');
     }
 }

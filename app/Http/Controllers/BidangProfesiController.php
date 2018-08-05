@@ -19,7 +19,7 @@ class BidangProfesiController extends Controller
     public function index()
     {
         $data['data']=BidangProfesi::get();
-        return view('admin.bidangprofesi.list', $data);
+        return view('personil.bidangprofesi.list', $data);
     }
 
     /**
@@ -29,7 +29,7 @@ class BidangProfesiController extends Controller
      */
     public function create()
     {
-        return view('admin.bidangprofesi.form');
+        return view('personil.bidangprofesi.form');
     }
 
     /**
@@ -59,7 +59,7 @@ class BidangProfesiController extends Controller
     public function show($id)
     {
         $data['data']=BidangProfesi::find($id);
-        return view("admin.bidangprofesi.list", $data);
+        return view("personil.bidangprofesi.list", $data);
     }
 
     /**
@@ -71,7 +71,7 @@ class BidangProfesiController extends Controller
     public function edit($id)
     {
         $data['data']=BidangProfesi::find($id);
-        return view('admin.bidangprofesi.formubah', $data);
+        return view('personil.bidangprofesi.formubah', $data);
     }
 
     /**
