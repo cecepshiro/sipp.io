@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Jenjang;
 use App\Pendidikan;
 use Illuminate\Http\Request;
+use Auth;
 use Alert;
 
 class PendidikanController extends Controller
@@ -27,8 +28,7 @@ class PendidikanController extends Controller
      */
     public function create()
     {
-        $jenjang['jenjang']=Jenjang::orderBy('jenjang', 'asc')->get();
-        return view('personil.pendidikan.form', $jenjang);
+        //
     }
 
     /**
@@ -39,18 +39,18 @@ class PendidikanController extends Controller
      */
     public function store(Request $request)
     {
-        Pendidikan::create([
-            // 'kode_pendidikan' => $request->kode_pendidikan,
-            'user_id' => $request->id_anggota,
-            'kode_jenjang' => $request->kode_jenjang,
-            'nama_pt' => $request->nama_pt,
-            'kota' => $request->kota,
-            'bidang_ilmu' => $request->bidang_ilmu,
-            'tahun_lulus' => $request->tahun_lulus,
+        ini_set('memory_limit','125M');
+        $user = Auth::user()->id;
+        for($i=0;$i<count($request->kode_jenjang);$i++){
+            Pendidikan::create([
+                    'user_id' => $user,
+                    'kode_jenjang' => $request->kode_jenjang[$i],
+                    'nama_pt' => $request->nama_pt[$i],
+                    'kota' => $request->kota[$i],
+                    'bidang_ilmu' => $request->bidang_ilmu[$i],
+                    'tahun_lulus' => $request->tahun_lulus[$i],
                 ]);
-    
-        Alert::success('Berhasil', 'Data Tersimpan');
-        return redirect('pendidikan');
+        }
     }
 
     /**

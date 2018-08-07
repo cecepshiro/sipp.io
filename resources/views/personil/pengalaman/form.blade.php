@@ -200,3 +200,99 @@
         
 @endsection
 <script src="{{ asset('asset/js/dynamicform.js') }}"></script>
+<script>
+    $(document).ready(function(){      
+    //$('.datapendidikan').load("/getpendidikan");
+    $(document).on('click', '.tambah3', function(){
+    var html = '';
+    html += '<tr>';
+    html += '<td><select name="kode_jenjang[]" placeholder="Masukan Jenjang"  class="form-control item_jenjang"><option value="">Pilih Jenjang Unit</option>@foreach($jenjang as $j) <option>{{ $j->jenjang }}</option> @endforeach</select></td>';
+    html += '<td><input type="text" name="nama_pt[]" placeholder="Masukan Perguruan Tinggi" class="form-control item_perguruan" /></td>';
+    html += '<td><input type="text" name="kota[]" placeholder="Masukan Kota" class="form-control item_kota" /></td>';
+    html += '<td><input type="text" name="bidang_ilmu[]" placeholder="Masukan Bidang Ilmu" class="form-control item_bidang" /></td>';
+    html += '<td><input type="text" name="tahun_lulus[]" placeholder="Masukan Tahun Lulus" class="form-control item_lulus" /></td>';
+    html += '<td><button type="button" name="hapus3" class="btn btn-danger btn-sm hapus3"><span class="glyphicon glyphicon-minus"></span></button></td></tr>';
+    $('#tabelpendidikan').append(html);
+    });
+    
+    $(document).on('click', '.hapus3', function(){
+    $(this).closest('tr').remove();
+    });
+
+    $('#formpendidikan').on('submit', function(event){
+    event.preventDefault();
+    var error = '';
+    $('.item_jenjang').each(function(){
+    var count = 1;
+    if($(this).val() == '')
+    {
+        error += "<p>Masukan Jenjang Pendidikan "+count+" Row</p>";
+        return false;
+    }
+    count = count + 1;
+    });
+
+    $('.item_perguruan').each(function(){
+    var count = 1;
+    if($(this).val() == '')
+    {
+        error += "<p>Masukan Nama Perguruan "+count+" Row</p>";
+        return false;
+    }
+    count = count + 1;
+    });
+
+    $('.item_kota').each(function(){
+        var count = 1;
+        if($(this).val() == '')
+        {
+            error += "<p>Masukan Kota "+count+" Row</p>";
+            return false;
+        }
+    count = count + 1;
+    });
+
+    $('.item_lulus').each(function(){
+        var count = 1;
+        if($(this).val() == '')
+        {
+            error += "<p>Masukan Tahun Lulus "+count+" Row</p>";
+            return false;
+        }
+    count = count + 1;
+    });
+
+    $('.item_bidang').each(function(){
+        var count = 1;
+        if($(this).val() == '')
+        {
+            error += "<p>Masukan Bidang  Ilmu "+count+" Row</p>";
+            return false;
+        }
+    count = count + 1;
+    });
+
+    var form_data = $(this).serialize();
+    if(error == '')
+    {
+    $.ajax({
+        url:"/simpanpendidikan",
+        method:"POST",
+        data:form_data,
+        success:function(data)
+        {
+           // console.log(data);
+        $('#tabelpendidikan').find("tr:gt(0)").remove();
+        //$('.datapengembanganpro').load("/getpengembanganpro");
+        $('#error4').html('<div class="alert alert-success alert-dismissable">Data Tersimpan</div>');
+        }
+    });
+    }
+    else
+    {
+    $('#error4').html('<div class="alert alert-danger alert-dismissable">'+error+'</div>');
+    }
+    });
+    
+});
+</script>

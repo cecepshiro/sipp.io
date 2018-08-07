@@ -29,9 +29,9 @@ class PengalamanController extends Controller
      */
     public function create()
     {
+        $jenjang['jenjang']=Jenjang::orderBy('jenjang','asc')->get();
         $data2['data2']=PengembanganPro::get();
-        $jenjang['jenjang']=Jenjang::orderBy('jenjang', 'asc')->get();
-        return view('personil.pengalaman.form', $jenjang,$data2);
+        return view('personil.pengalaman.form' ,$data2, $jenjang);
     }
 
     /**
@@ -89,5 +89,8 @@ class PengalamanController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function datajenjang(){
     }
 }
