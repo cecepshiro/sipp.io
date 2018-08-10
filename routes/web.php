@@ -50,3 +50,4 @@ Route::get('/getpraktikpro','PraktikPsiController@index');
 Route::get('/getpekerjaan','PekerjaanController@index');
 Route::get('/getpendidikan','PendidikanController@index');
 Route::post('/simpanpendidikan','PendidikanController@store');
+Route::get('/agamaexport','AgamaController@export')->name('agama.export');

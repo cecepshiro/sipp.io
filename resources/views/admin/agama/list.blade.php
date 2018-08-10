@@ -46,6 +46,8 @@
                         <div class="white-box">
                             <h3 class="box-title">Data Agama</h3>
                             <a href="{{ route('agama.create') }}" class="btn btn-primary btn-xs">Tambah Data</a>
+                            <a href="{{ route('agama.export') }}" class="btn btn-primary btn-xs">Cetak Data</a>
+                           
                             <div class="table-responsive">
                             <br><table id="example" class="table table-striped table-bordered" style="width:100%">
                                 <thead>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Agama;
 use Illuminate\Http\Request;
+use App\Exports\UsersExport;
+use Excel;
 use Alert;
 class AgamaController extends Controller
 {
@@ -97,5 +99,37 @@ class AgamaController extends Controller
         Agama::find($id)->delete();
         Alert::error('Berhasil', 'Data Terhapus');
         return redirect()->route('agama.index')->with('message', 'Data berhasil di hapus');
+    }
+
+    public function export2() 
+    {
+        //return Excel::download(new UsersExport, 'users.xlsx');
+        // $data = DB::table('users')->get()->toArray();
+        // $data_array[] = array('#', 'Nama', 'ID Anggota', 'Akses', 'Password','Token','Dibuat','Diubah');
+        // foreach($data as $d)
+        // {
+        //     $data_array[] = array(
+        //         '#'  => $d->id,
+        //         'Nama'   => $d->name,
+        //         'ID Anggota'    => $d->id_anggota,
+        //         'Akses'  => $d->akses,
+        //         'Password'   => $d->password,
+        //         'Token'   => $d->remember_token,
+        //         'Dibuat'   => $d->created_at,
+        //         'Diubah'   => $d->updated_at
+        //     );
+        // }
+        //  Excel::download('User Data', function($excel) use ($data_array){
+        //      $excel->setTitle('User Data');
+        //      $excel->sheet('User Data', function($sheet) use($data_array){
+        //          $sheet->fromArray($data_array, null, 'A1', false, false);
+        //      });
+        //  })->download('xlsx');
+        // dd($sheet);
+    }
+
+    public function export()
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
     }
 }

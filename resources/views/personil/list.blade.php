@@ -46,7 +46,8 @@
                         <div class="white-box">
                             <h3 class="box-title">List Personel</h3>
                             <div class="table-responsive">
-                            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                            <!-- <table id="example" class="table table-striped table-bordered nowrap" style="width:100%"> -->
+                            <table id="example" class="display nowrap" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>No</th>
