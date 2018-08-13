@@ -3,7 +3,8 @@
 <hr>
 <div class="table-responsive">
 <br>
-<table id="example" class="table table-striped table-bordered" style="width:100%">
+<!-- <table id="example" class="table table-striped table-bordered nowrap" style="width:100%"> -->
+<table id="example2" class="display nowrap" style="width:100%">
     <thead>
         <tr>
             <th>No</th>

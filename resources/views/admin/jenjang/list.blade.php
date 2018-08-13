@@ -47,8 +47,10 @@
                             <h3 class="box-title">Daftar Jenjang Pendidikan</h3>
                             <a href="{{ route('jenjang.create') }}" class="btn btn-primary btn-xs">Tambah Data</a>
                             <div class="table-responsive">
-                            <br><table id="example" class="table table-striped table-bordered" style="width:100%">
-                                <thead>
+                            <br>
+                            <!-- <table id="example" class="table table-striped table-bordered" style="width:100%"> -->
+                            <table id="example" class="display nowrap" style="width:100%">
+                            <thead>
                                     <tr>
                                     <th>No</th>
                                     <th>Kode Jenjang</th>

@@ -14,4 +14,9 @@ class Jenjang extends Model
       protected $fillable = [
         'kode_jenjang','jenjang','keterangan','created_at','updated_at',
       ];
+
+      public function pendidikan()
+      {
+        return $this->hasMany('App\Pendidikan','kode_jenjang', 'kode_jenjang');
+      }
 }

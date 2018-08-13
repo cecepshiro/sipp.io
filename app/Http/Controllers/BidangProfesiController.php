@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\BidangProfesi;
+use App\BidangProfesiPersonil;
 use Illuminate\Http\Request;
 use Alert;
+use Auth;
 class BidangProfesiController extends Controller
 {
     /**
@@ -19,7 +21,7 @@ class BidangProfesiController extends Controller
     public function index()
     {
         $data['data']=BidangProfesi::get();
-        return view('personil.bidangprofesi.list', $data);
+        return view('admin.masterbidangprofesi.list', $data);
     }
 
     /**
@@ -50,6 +52,19 @@ class BidangProfesiController extends Controller
 
     }
 
+    public function simpan(Request $request)
+    {
+        ini_set('memory_limit','125M');
+        $user = Auth::user()->id;
+        for($i=0;$i<count($request->kode_bidangprofesi);$i++){
+            BidangProfesiPersonil::create([
+                    'user_id' => $user,
+                    'kode_bidangprofesi' => $request->kode_bidangprofesi[$i]
+                ]);
+        }
+
+    }
+
     /**
      * Display the specified resource.
      *
@@ -59,7 +74,7 @@ class BidangProfesiController extends Controller
     public function show($id)
     {
         $data['data']=BidangProfesi::find($id);
-        return view("personil.bidangprofesi.list", $data);
+        return view("admin.masterbidangprofesi.list", $data);
     }
 
     /**
@@ -71,7 +86,7 @@ class BidangProfesiController extends Controller
     public function edit($id)
     {
         $data['data']=BidangProfesi::find($id);
-        return view('personil.bidangprofesi.formubah', $data);
+        return view('admin.masterbidangprofesi.formubah', $data);
     }
 
     /**

@@ -1,29 +1,25 @@
 <h3 class="box-title m-b-0">Form Bidang Profesi Personel</h3>
 <hr> 
-<form method="POST" class="form-horizontal" action="{{ route('bidang.store') }}" enctype="multipart/form-data"> 
-{{ csrf_field()}}
-<div class="form-group">
-    <label for="exampleInputname" class="col-sm-3 control-label">
-        <br>Bidang Profesi*</label>
-    <div class="col-sm-9">
-        <div class="form-group">
-            <table class="table" id="dynamic_field">
+<form method="post" id="formbidangpendidikan" enctype="multipart/form-data">
+    {{ csrf_field() }}
+    <div class="table-repsonsive">
+        <span id="errorbidang"></span>
+        <div style="overflow-x:auto; padding-left:300px">
+            <center><table class="table" id="tabelbidangpendidikan"  style="table-layout: auto; width: 100%">
                 <tr>
-                    <td>
-                        <input type="text" name="bidangprofesi[]" placeholder="Masukkan Nama Bidang" class="form-control" />
-                    </td>
-                    <td>
-                        <button type="button" name="add" id="add" class="btn btn-success">Tambah</button>
-                    </td>
+                    <th width="50%">Bidang Profesi</th>
+                    <th width="50%">
+                        <button type="button" name="tambahbidang" class="btn btn-success btn-sm tambahbidang">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </th>
                 </tr>
             </table>
+</center>
+        </div>
+        <div align="center">
+            <input type="submit" name="submit" class="btn btn-info" value="Simpan" />
+
         </div>
     </div>
-</div>
-<div class="form-group m-b-0">
-    <div class="col-sm-offset-3 col-sm-9 text-right">
-        <a href="{{ route('bidang.index') }}" class="btn btn-info waves-effect waves-light m-t-10">Batal</a>
-        <button type="submit" class="btn btn-info waves-effect waves-light m-t-10">Simpan</button>
-    </div>
-</div>
 </form>

@@ -41,6 +41,7 @@ Route::resource('bidang','BidangProfesiController');
 Route::resource('jenjang','JenjangController');
 Route::resource('pendidikan','PendidikanController');
 Route::resource('pengalaman','PengalamanController');
+Route::post('/simpanbidangprofesi','BidangProfesiController@simpan');
 Route::post('/simpanpekerjaan','PekerjaanController@store');
 Route::post('/simpanpraktikprofesi','PraktikPsiController@store');
 Route::post('/pengembanganpro','PengembanganProController@store');
@@ -51,3 +52,9 @@ Route::get('/getpekerjaan','PekerjaanController@index');
 Route::get('/getpendidikan','PendidikanController@index');
 Route::post('/simpanpendidikan','PendidikanController@store');
 Route::get('/agamaexport','AgamaController@export')->name('agama.export');
+
+
+// Route::get('/tesaja', function()
+// {
+    
+// });

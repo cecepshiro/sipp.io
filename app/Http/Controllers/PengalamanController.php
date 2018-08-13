@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Pengalaman;
 use App\User;
+use App\BidangProfesi;
 use App\Jenjang;
 use App\PengembanganPro;
 use Alert;
@@ -29,9 +30,10 @@ class PengalamanController extends Controller
      */
     public function create()
     {
+        $masterbidang['masterbidang']=BidangProfesi::get();
         $jenjang['jenjang']=Jenjang::orderBy('jenjang','asc')->get();
         $data2['data2']=PengembanganPro::get();
-        return view('personil.pengalaman.form' ,$data2, $jenjang);
+        return view('personil.pengalaman.form' ,$data2, $jenjang)->with($masterbidang);
     }
 
     /**
@@ -89,8 +91,5 @@ class PengalamanController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function datajenjang(){
     }
 }

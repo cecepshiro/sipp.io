@@ -1,9 +1,9 @@
 @extends('layouts.app2')
 <script src="{{ asset('asset/plugins/bower_components/jquery/dist/jquery.min.js') }}"></script>
 @section('content')
-    <div id="wrapper"> 
-        <!-- Navigasi Menu -->
-        @include('layouts.navigasi')
+    <div id="wrapper">
+     <!-- Navigasi Menu -->
+     @include('layouts.navigasi')
         <!-- Left navbar-header -->
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse slimscrollsidebar">
@@ -42,26 +42,28 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="white-box">
-                            <h3 class="box-title m-b-0">Form Master Data Agama</h3>
+                            <h3 class="box-title m-b-0">Form Edit Master Bidang Profesi</h3>
                             <p class="text-muted m-b-30 font-13"></p>
-                            <form method="POST" class="form-horizontal" action="{{ route('agama.store') }}"  enctype="multipart/form-data">
+                            <form method="POST" class="form-horizontal" action="{{ route('bidang.update', ['bidang'=> $data->kode_bidangprofesi]) }}"  enctype="multipart/form-data">
+                            <input type="hidden" name="_method" value="PATCH">
                             {{ csrf_field() }}
                                 <div class="form-group">
-                                <label for="exampleInputname" class="col-sm-3 control-label"><br>Agama</label>
+                                <label for="exampleInputname" class="col-sm-3 control-label"><br>Bidang Profesi*</label>
                                     <div class="col-sm-9">
                                         <div class="form-group">
                                                 <table class="table" id="dynamic_field">  
                                                     <tr>  
-                                                        <td>
-                                                        <input class="form-control" type="text" name="agama" placeholder="Agama" required></td>  
-                                                    </tr>  
+                                                        <td><input type="text" name="bidangprofesi" value="{{ $data->bidangprofesi }}" placeholder="Masukkan Nama Bidang" class="form-control" /></td>  
+                                                        <!-- <td><button type="button" name="add" id="add" class="btn btn-success">Tambah</button></td>   -->
+                                                    </tr>
                                                 </table>  
                                         </div>
+                                    </div>
                                     </div>
                                 </div>
                                 <div class="form-group m-b-0">
                                     <div class="col-sm-offset-3 col-sm-9 text-right">
-                                        <a href="{{ route('agama.index') }}" class="btn btn-info waves-effect waves-light m-t-10">Batal</a>
+                                        <a href="{{ route('bidang.index') }}" class="btn btn-info waves-effect waves-light m-t-10">Batal</a>
                                         <button type="submit" class="btn btn-info waves-effect waves-light m-t-10">Simpan</button>
                                     </div>
                                 </div>
@@ -147,3 +149,69 @@
             </div>
         
 @endsection
+
+<!-- Multiple Input -->
+<script type="text/javascript">
+        $(document).ready(function(){      
+        var postURL = "<?php echo url('addmore'); ?>";
+        var i=1;  
+
+        $('#add').click(function(){  
+            i++;  
+            $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><input type="text" name="bidangprofesi[]" placeholder="Masukkan Nama Bidang" class="form-control" /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
+        });  
+
+
+        $(document).on('click', '.btn_remove', function(){  
+            var button_id = $(this).attr("id");   
+            $('#row'+button_id+'').remove();  
+        });  
+
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+
+        $('#submit').click(function(){            
+            $.ajax({  
+                    url:postURL,  
+                    method:"POST",  
+                    data:$('#add_detail').serialize(),
+                    type:'json',
+                    success:function(data)  
+                    {
+                        if(data.error){
+                            printErrorMsg(data.error);
+                        }else{
+                            i=1;
+                            $('.dynamic-added').remove();
+                            $('#add_detail')[0].reset();
+                            $(".print-success-msg").find("ul").html('');
+                            $(".print-success-msg").css('display','block');
+                            $(".print-error-msg").css('display','none');
+                            $(".print-success-msg").find("ul").append('<li>Record Inserted Successfully.</li>');
+                        }
+                    }  
+            });  
+        });
+        function printErrorMsg (msg) {
+
+            $(".print-error-msg").find("ul").html('');
+
+            $(".print-error-msg").css('display','block');
+
+            $(".print-success-msg").css('display','none');
+
+            $.each( msg, function( key, value ) {
+
+            $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+
+            });
+
+            }
+
+         });  
+    </script>

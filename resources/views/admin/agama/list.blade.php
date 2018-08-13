@@ -49,8 +49,10 @@
                             <a href="{{ route('agama.export') }}" class="btn btn-primary btn-xs">Cetak Data</a>
                            
                             <div class="table-responsive">
-                            <br><table id="example" class="table table-striped table-bordered" style="width:100%">
-                                <thead>
+                            <br>
+                            <!-- <table id="example" class="table table-striped table-bordered" style="width:100%"> -->
+                            <table id="example" class="display nowrap" style="width:100%">
+                            <thead>
                                     <tr>
                                     <th>No</th>
                                     <th>Agama</th>

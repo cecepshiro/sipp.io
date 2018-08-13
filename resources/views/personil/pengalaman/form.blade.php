@@ -92,6 +92,10 @@
                                 </div>
                                 <div class="tab-pane" id="pendidikan">
                                     @include('personil.pengalaman.formpengalaman.formpendidikan')
+                                    <hr>
+                                    <hr>
+                                    <div class="datapendidikan">
+                                    </div>
                                 </div>
                                 <div class="tab-pane" id="pekerjaan">
                                     @include('personil.pengalaman.formpengalaman.formpekerjaan')
@@ -199,10 +203,81 @@
             </div>
         
 @endsection
+
+
+
+<script type="text/javascript">
+
+        //dynamic form input bidang profesi
+        $(document).ready(function(){      
+        var postURL = "<?php echo url('addmore'); ?>";
+        var i=1;  
+
+        $('#add').click(function(){  
+            i++;  
+            //$('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><select name="bidangprofesi[]" placeholder="Masukkan Nama Bidang" class="form-control" /><option>Pilih Bidang Profesi</option><option value="1">Tes</option></select></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
+        });  
+
+
+        $(document).on('click', '.btn_remove', function(){  
+            var button_id = $(this).attr("id");   
+            $('#row'+button_id+'').remove();  
+        });  
+
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+
+        $('#submit').click(function(){            
+            $.ajax({  
+                    url:postURL,  
+                    method:"POST",  
+                    data:$('#add_detail').serialize(),
+                    type:'json',
+                    success:function(data)  
+                    {
+                        if(data.error){
+                            printErrorMsg(data.error);
+                        }else{
+                            i=1;
+                            $('.dynamic-added').remove();
+                            $('#add_detail')[0].reset();
+                            $(".print-success-msg").find("ul").html('');
+                            $(".print-success-msg").css('display','block');
+                            $(".print-error-msg").css('display','none');
+                            $(".print-success-msg").find("ul").append('<li>Data Tersimpan</li>');
+                        }
+                    }  
+            });  
+        });
+        function printErrorMsg (msg) {
+
+            $(".print-error-msg").find("ul").html('');
+
+            $(".print-error-msg").css('display','block');
+
+            $(".print-success-msg").css('display','none');
+
+            $.each( msg, function( key, value ) {
+
+            $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+
+            });
+
+        }
+
+    });  
+
+</script>
+
 <script src="{{ asset('asset/js/dynamicform.js') }}"></script>
 <script>
     $(document).ready(function(){      
-    //$('.datapendidikan').load("/getpendidikan");
+    $('.datapendidikan').load("/getpendidikan");
     $(document).on('click', '.tambah3', function(){
     var html = '';
     html += '<tr>';
@@ -283,8 +358,63 @@
         {
            // console.log(data);
         $('#tabelpendidikan').find("tr:gt(0)").remove();
-        //$('.datapengembanganpro').load("/getpengembanganpro");
+        $('.datapendidikan').load("/getpendidikan");
         $('#error4').html('<div class="alert alert-success alert-dismissable">Data Tersimpan</div>');
+        }
+    });
+    }
+    else
+    {
+    $('#error4').html('<div class="alert alert-danger alert-dismissable">'+error+'</div>');
+    }
+    });
+    
+});
+</script>
+
+<!-- Form bidang profesi -->
+
+<script>
+    $(document).ready(function(){      
+    //$('.datapendidikan').load("/getpendidikan");
+    $(document).on('click', '.tambahbidang', function(){
+    var html = '';
+    html += '<tr>';
+    html += '<td><select name="kode_bidangprofesi[]" placeholder="Masukan Bidang"  class="form-control item_bidang"><option value="">Pilih Bidang Profesi</option>@foreach($masterbidang as $mbidang) <option value="{{ $mbidang->kode_bidangprofesi }}">{{ $mbidang->bidangprofesi }}</option> @endforeach</select></td>';
+    html += '<td><button type="button" name="hapusbidang" class="btn btn-danger btn-sm hapusbidang"><span class="glyphicon glyphicon-minus"></span></button></td></tr>';
+    $('#tabelbidangpendidikan').append(html);
+    });
+    
+    $(document).on('click', '.hapusbidang', function(){
+    $(this).closest('tr').remove();
+    });
+
+    $('#formbidangpendidikan').on('submit', function(event){
+    event.preventDefault();
+    var error = '';
+    $('.item_bidang').each(function(){
+    var count = 1;
+    if($(this).val() == '')
+    {
+        error += "<p>Masukan Bidang Pendidikan "+count+" Row</p>";
+        return false;
+    }
+    count = count + 1;
+    });
+
+    var form_data = $(this).serialize();
+    if(error == '')
+    {
+    $.ajax({
+        url:"/simpanbidangprofesi",
+        method:"POST",
+        data:form_data,
+        success:function(data)
+        {
+           // console.log(data);
+        $('#tabelbidangprofesi').find("tr:gt(0)").remove();
+        //$('.datapendidikan').load("/getpendidikan");
+        $('#errorbidang').html('<div class="alert alert-success alert-dismissable">Data Tersimpan</div>');
         }
     });
     }

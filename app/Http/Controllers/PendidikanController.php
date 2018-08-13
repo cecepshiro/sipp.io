@@ -17,8 +17,15 @@ class PendidikanController extends Controller
      */
     public function index()
     {
-        $data['data']=Pendidikan::get();
-        return view('personil.pendidikan.list', $data);
+        $data5 = Pendidikan::all();
+        // foreach ($data5 as $dat) {
+        //     $temp=Jenjang::where('kode_jenjang', $dat->kode_jenjang)->value('jenjang');
+      
+        // }
+             
+        return view('personil.pengalaman.viewpengalaman.listpendidikan', compact('data5'));
+
+
     }
 
     /**
