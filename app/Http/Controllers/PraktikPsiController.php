@@ -15,7 +15,7 @@ class PraktikPsiController extends Controller
      */
     public function index()
     {
-        $data3['data3']=PraktikPsi::get();
+        $data3['data3']=PraktikPsi::where('user_id', Auth::user()->id)->get();
         return view('personil.pengalaman.viewpengalaman.listpraktikpro', $data3);
     }
 

@@ -16,7 +16,7 @@ class PengembanganProController extends Controller
     public function index()
     {
        
-        $data2['data2']=PengembanganPro::get();
+        $data2['data2']=PengembanganPro::where('user_id', Auth::user()->id)->get();
         return view('personil.pengalaman.viewpengalaman.listpengalamanpro', $data2);
     }
 

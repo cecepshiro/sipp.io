@@ -20,7 +20,7 @@ class BidangProfesiController extends Controller
     }
     public function index()
     {
-        $data5['data5']=BidangProfesiPersonil::get();
+        $data5['data5']=BidangProfesiPersonil::where('user_id', Auth::user()->id)->get();
         return view('personil.pengalaman.viewpengalaman.listbidangpropers', $data5);
     }
 

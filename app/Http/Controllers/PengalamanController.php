@@ -20,8 +20,17 @@ class PengalamanController extends Controller
     public function index()
     {
       
-        $data['data']=Pengalaman::get();
-        return view('personil.pengalaman.list', $data);
+        // $data['data']=Pengalaman::get();
+        // return view('personil.pengalaman.list', $data);
+
+        return redirect('pengalaman.create');
+    }
+
+    public function formpengalamanpers(){
+        $masterbidang['masterbidang']=BidangProfesi::get();
+        $jenjang['jenjang']=Jenjang::orderBy('jenjang','asc')->get();
+        $data2['data2']=PengembanganPro::get();
+        return view('personil.pengalaman.form' ,$data2, $jenjang)->with($masterbidang);
     }
 
     /**
@@ -31,10 +40,7 @@ class PengalamanController extends Controller
      */
     public function create()
     {
-        $masterbidang['masterbidang']=BidangProfesi::get();
-        $jenjang['jenjang']=Jenjang::orderBy('jenjang','asc')->get();
-        $data2['data2']=PengembanganPro::get();
-        return view('personil.pengalaman.form' ,$data2, $jenjang)->with($masterbidang);
+        //
     }
 
     /**

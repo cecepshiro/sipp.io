@@ -40,7 +40,7 @@
 </li>
 <li class="nav-small-cap m-t-10">--- Data Pengalaman</li>
 <li>
-    <a href="{{ route('pengalaman.show', ['pengalaman'=>Auth::user()->id_anggota]) }}" class="waves-effect">
+    <a href="{{ route('pengalaman.formpengalamanpers') }}" class="waves-effect">
         <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
         <span class="hide-menu">Daftar Pengalaman</span>
     </a>

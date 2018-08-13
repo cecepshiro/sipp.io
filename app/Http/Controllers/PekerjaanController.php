@@ -16,7 +16,7 @@ class PekerjaanController extends Controller
      */
     public function index()
     {
-        $data4['data4']=Pekerjaan::get();
+        $data4['data4']=Pekerjaan::where('user_id', Auth::user()->id)->get();
         return view('personil.pengalaman.viewpengalaman.listpekerjaan', $data4);
     }
 
