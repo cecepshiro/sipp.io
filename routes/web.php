@@ -47,6 +47,7 @@ Route::post('/simpanpraktikprofesi','PraktikPsiController@store');
 Route::post('/pengembanganpro','PengembanganProController@store');
 Route::resource('pengembanganprofesional','PengembanganProController');
 Route::get('/getpengembanganpro','PengembanganProController@index');
+Route::get('/getbidangpropers','BidangProfesiController@index');
 Route::get('/getpraktikpro','PraktikPsiController@index');
 Route::get('/getpekerjaan','PekerjaanController@index');
 Route::get('/getpendidikan','PendidikanController@index');

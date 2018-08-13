@@ -106,6 +106,10 @@
                                 </div>
                                 <div class="tab-pane" id="bidang">
                                     @include('personil.pengalaman.formpengalaman.formbidangprofesi')
+                                    <hr>
+                                    <hr>
+                                    <div class="databidangpropers">
+                                    </div>
                                 </div>
                                 <div class="tab-pane" id="praktik">
                                     @include('personil.pengalaman.formpengalaman.formpraktikprofesi')
@@ -376,7 +380,7 @@
 
 <script>
     $(document).ready(function(){      
-    //$('.datapendidikan').load("/getpendidikan");
+    $('.databidangpropers').load("/getbidangpropers");
     $(document).on('click', '.tambahbidang', function(){
     var html = '';
     html += '<tr>';
@@ -413,7 +417,7 @@
         {
            // console.log(data);
         $('#tabelbidangprofesi').find("tr:gt(0)").remove();
-        //$('.datapendidikan').load("/getpendidikan");
+        $('.databidangpropers').load("/getbidangpropers");
         $('#errorbidang').html('<div class="alert alert-success alert-dismissable">Data Tersimpan</div>');
         }
     });

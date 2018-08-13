@@ -20,8 +20,8 @@ class BidangProfesiController extends Controller
     }
     public function index()
     {
-        $data['data']=BidangProfesi::get();
-        return view('admin.masterbidangprofesi.list', $data);
+        $data5['data5']=BidangProfesiPersonil::get();
+        return view('personil.pengalaman.viewpengalaman.listbidangpropers', $data5);
     }
 
     /**

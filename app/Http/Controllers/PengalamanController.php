@@ -8,6 +8,7 @@ use App\User;
 use App\BidangProfesi;
 use App\Jenjang;
 use App\PengembanganPro;
+use App\BidangProfesiPersonil;
 use Alert;
 class PengalamanController extends Controller
 {

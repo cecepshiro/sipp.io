@@ -125,6 +125,9 @@
             $(document).ready(function() {
                 $('#example4').DataTable();
             } );
+            $(document).ready(function() {
+                $('#example5').DataTable();
+            } );
         </script>
         <script type="text/javascript">
             function validateNumber(evt) {
