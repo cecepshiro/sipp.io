@@ -52,8 +52,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'id_anggota' => 'required|string|max:15|unique:users',
+            'name' => 'required|string|max:50',
+            'id_anggota' => 'required|string|max:20|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -69,14 +69,14 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'id_anggota' => $data['id_anggota'],
-            'akses' => $data['akses'],
             'password' => Hash::make($data['password']),
         ]);
         Alert::success('Berhasil', 'Data Tersimpan');
+        
     }
 
     public function daftar(){
-        $data['data']=User::get();
+        $data['data']=User::all()->except(Auth::id());
         return view('admin.pengguna.list', $data);
     }
 
@@ -84,7 +84,6 @@ class RegisterController extends Controller
         $data['data']=User::find($id);
         return view('admin.pengguna.formubah', $data);
     }
-
     public function update(Request $request, $id){
         $temp =  Hash::make($request->password);
         User::find($id)->update(['password'=>$temp]);
@@ -94,12 +93,25 @@ class RegisterController extends Controller
 
     }
 
+    public function halamanubahAkses($id){
+         $data['data']=User::find($id);
+         return view('admin.pengguna.formubahakses', $data);
+    }
+
+    public function ubahAkses(Request $request){
+         $tmp=$request->id;
+         User::find($tmp)->update(['akses'=>$request->akses]);
+         Alert::success('Berhasil', 'Hak Akses Telah Ditambahkan');
+         return redirect()->route('registeruser.daftar');
+    }
+
     public function destroy($id){
-        $temp=User::find($id)->value('id');
+        //$temp=User::find($id)->value('id');
         User::find($id)->delete();
         $data['data']=User::get();
-        Alert::error('Berhasil', 'Data Terhapus');
-        return view('admin.pengguna.list', $data);
+        //Alert::error('Berhasil', 'Data Terhapus');
+        //return view('admin.pengguna.list', $data);
+
     }
 
 

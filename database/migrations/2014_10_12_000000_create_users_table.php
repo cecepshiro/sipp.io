@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->char('id_anggota',15)->unique();
-            $table->integer('akses')->default(2);
+            $table->integer('akses')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

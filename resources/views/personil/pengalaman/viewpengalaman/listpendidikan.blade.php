@@ -43,6 +43,13 @@
             <td>{{ $d5->bidang_ilmu }}</td>
             <td>{{ $d5->tahun_lulus }}</td>
             <td>
+                <form action="" method="post">
+                        <!-- <a href="{{ route('pendidikan.edit', ['pendidikan'=>$d->kode_pendidikan]) }}" class="btn btn-outline-warning btn-sm">
+                        Edit</a>
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <button type="submit" class="btn btn-outline-danger btn-sm">Hapus</button>                    -->
+                </form>
             </td>
         </tr>
         @empty

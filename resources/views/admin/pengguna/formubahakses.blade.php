@@ -1,9 +1,9 @@
 @extends('layouts.app2')
 
 @section('content')
-    <div id="wrapper">
-     <!-- Navigasi Menu -->
-     @include('layouts.navigasi')
+    <div id="wrapper"> 
+        <!-- Navigasi Menu -->
+        @include('layouts.navigasi')
         <!-- Left navbar-header -->
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse slimscrollsidebar">
@@ -29,7 +29,7 @@
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                         <h4 class="page-title">Data Registrasi</h4> </div>
-                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="#" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
                             <li class="active">List Personel</li>
@@ -42,45 +42,26 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="white-box">
-                            <h3 class="box-title m-b-0">Registrasi Pengguna</h3>
+                            <h3 class="box-title m-b-0">Ubah Hak Akses Pengguna</h3>
                             <p class="text-muted m-b-30 font-13"></p>
-                            <form method="POST" class="form-horizontal" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
+                            <form method="POST" class="form-horizontal" action="{{ route('registeruser.ubahAkses') }}"  enctype="multipart/form-data">
                             @csrf
-                                <div class="form-group">
-                                    <label for="exampleInputuname" class="col-sm-3 control-label">Nama Lengkap*</label>
-                                    <div class="col-sm-9">
-                                        <div class="input-group">
-                                            <input id="txtNumeric" type="text" maxlenght="50"  placeholder="Masukkan Nama Lengkap" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-                                            <div class="input-group-addon"><i class="ti-user"></i></div>
-                                        </div>
-                                        <div class="input group">
-                                            @if ($errors->has('name'))
-                                                    <br>
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('name') }}</strong>
-                                                    </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="form-group">
                                     <label for="exampleInputname" class="col-sm-3 control-label">NRP*</label>
                                     <div class="col-sm-9">
-                                        <div class="input-group">
-                                            <input id="id_anggota" type="text" maxlength="20" onkeypress="return isNumberKey(event)" placeholder="Masukkan NRP" class="form-control{{ $errors->has('id_anggota') ? ' is-invalid' : '' }}" name="id_anggota" value="{{ old('id_anggota') }}" required>
-                                            <div class="input-group-addon"><i class="ti-user"></i></div>
-                                        </div>
-                                        <div class="input group">
-                                            @if ($errors->has('id_anggota'))
-                                                    <br>
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('id_anggota') }}</strong>
-                                                    </span>
-                                            @endif
+                                    <div class="input-group">
+                                    <input type="hidden" value="{{ $data->id }}" name="id">
+                                    <input id="id_anggota" type="text" class="form-control{{ $errors->has('id_anggota') ? ' is-invalid' : '' }}" name="id_anggota" value="{{ $data->id_anggota }}" required readonly>
+                                    <div class="input-group-addon"><i class="ti-user"></i></div>
+                                    @if ($errors->has('id_anggota'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('id_anggota') }}</strong>
+                                        </span>
+                                    @endif
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="form-group">
+                                <div class="form-group">
                                     <label for="exampleInputname" class="col-sm-3 control-label">Hak Akses*</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
@@ -99,32 +80,6 @@
                                                         <strong>{{ $errors->first('akses') }}</strong>
                                                     </span>
                                             @endif
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <div class="form-group">
-                                    <label for="inputPassword3" class="col-sm-3 control-label">Password*</label>
-                                    <div class="col-sm-9">
-                                        <div class="input-group">
-                                            <input id="password" type="password"  placeholder="Masukkan Password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-                                            <div class="input-group-addon"><i class="ti-lock"></i></div>
-                                        </div>
-                                        <div class="input group">
-                                            @if ($errors->has('password'))
-                                                    <br>
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $errors->first('password') }}</strong>
-                                                    </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword4" class="col-sm-3 control-label">Konfirmasi Password*</label>
-                                    <div class="col-sm-9">
-                                        <div class="input-group">
-                                            <input id="password-confirm" type="password"  placeholder="Konfirmasi Password" class="form-control" name="password_confirmation" required>
-                                            <div class="input-group-addon"><i class="ti-lock"></i></div>
                                         </div>
                                     </div>
                                 </div>
@@ -214,5 +169,4 @@
                 </div>
                 <!-- /.right-sidebar -->
             </div>
-            
 @endsection

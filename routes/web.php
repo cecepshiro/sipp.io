@@ -36,7 +36,9 @@ Route::get('ubahprofil','ProfileController@ubahprofil');
 Route::post('simpanfoto','PersonilController@foto');
 Route::resource('profile','ProfileController');
 Route::resource('registeruser', 'Auth\RegisterController');
-Route::get('/daftarpersonil', 'Auth\RegisterController@daftar');
+Route::get('/daftarpersonil', 'Auth\RegisterController@daftar')->name('registeruser.daftar');
+Route::post('/ubahAkses', 'Auth\RegisterController@ubahAkses')->name('registeruser.ubahAkses');
+Route::get('/halakses/{id}', 'Auth\RegisterController@halamanubahAkses')->name('registeruser.halakses');
 Route::resource('bidang','BidangProfesiController');
 Route::resource('jenjang','JenjangController');
 Route::resource('pendidikan','PendidikanController');
@@ -54,9 +56,5 @@ Route::get('/getpendidikan','PendidikanController@index');
 Route::post('/simpanpendidikan','PendidikanController@store');
 Route::get('/agamaexport','AgamaController@export')->name('agama.export');
 Route::get('/pengalamanpers','PengalamanController@formpengalamanpers')->name('pengalaman.formpengalamanpers');
-
-
-// Route::get('/tesaja', function()
-// {
-    
-// });
+Route::get('/posts/{id}', 'Auth\RegisterController@destroy')->name('posts-get');
+Route::delete('/posts/{id}', 'Auth\RegisterController@destroy')->name('post-delete');

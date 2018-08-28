@@ -51,7 +51,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>ID Anggota</th>
+                                        <th>NRP</th>
                                         <th>Nama</th>
                                         <th>Tempat Lahir</th>
                                         <th>Tgl. Lahir</th>
@@ -66,7 +66,7 @@
                                 <tfoot>
                                     <tr>
                                         <th>No</th>
-                                        <th>ID Anggota</th>
+                                        <th>NRP</th>
                                         <th>Nama</th>
                                         <th>Tempat Lahir</th>
                                         <th>Tgl. Lahir</th>

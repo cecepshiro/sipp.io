@@ -48,7 +48,7 @@
                             <input type="hidden" name="_method" value="PATCH">
                             {{ csrf_field() }}
                                 <div class="form-group">
-                                    <label for="exampleInputname" class="col-sm-3 control-label">ID Anggota*</label>
+                                    <label for="exampleInputname" class="col-sm-3 control-label">NRP*</label>
                                     <div class="col-sm-9">
                                     <div class="input-group">
                                     <input id="id_anggota" type="text" class="form-control{{ $errors->has('id_anggota') ? ' is-invalid' : '' }}" name="id_anggota" value="{{ $data->id_anggota }}" required readonly>
@@ -79,7 +79,7 @@
                                     <label for="inputPassword4" class="col-sm-3 control-label">Konfirmasi Password*</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                            <input id="password-confirm" type="password"  placeholder="Konfirmasi Password" class="form-control" name="password_confirmation" required>
+                                            <input id="confirm_password" type="password"  placeholder="Konfirmasi Password" class="form-control" name="password_confirmation" required>
                                             <div class="input-group-addon"><i class="ti-lock"></i></div>
                                         </div>
                                     </div>

@@ -65,7 +65,6 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="pengalaman">
-                                 
                                     @include('personil.pengalaman.viewpengalaman.timelinepengalaman')
                                  
                                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Pekerjaan;
 use Auth;
 use Alert;
+use App\User;
 use Illuminate\Http\Request;
 
 class PekerjaanController extends Controller
@@ -85,7 +86,7 @@ class PekerjaanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       //
     }
 
     /**
