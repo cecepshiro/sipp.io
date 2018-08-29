@@ -3,7 +3,7 @@
         function hapusData(id) {
             if (confirm("Apakah anda akan menghapus ini ?!")) {
                 $.ajax({
-                    url: 'http://127.0.0.1:8000/posts/'+ id,
+                    url: '/posts/'+ id,
                     type: 'DELETE',
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     success: function (data) {
@@ -109,7 +109,7 @@
                                             <td>
                                             <a href="{{ route('registeruser.halakses', ['registeruser.halakses'=>$value->id]) }}" class="btn btn-outline-success btn-sm">Hak Akses</a>
                                             <a href="{{ route('registeruser.edit', ['registeruser'=>$value->id]) }}" class="btn btn-outline-primary btn-sm">Edit Password</a>
-                                            <a class="btn btn-outline-danger waves-effect waves-light remove-record" onclick="hapusData({{$value->id}})">Hapus</a>   
+                                            <a class="btn btn-outline-danger btn-sm waves-effect waves-light remove-record" onclick="hapusData({{$value->id}})">Hapus</a>   
                                         </td>
                                         </tr>
 										@empty
@@ -126,26 +126,3 @@
                     </div>
                 </div>            
 @endsection
-@section('script')
-    <script>
-        $(document).ready(function(){
-        // For A Delete Record Popup
-        $('.remove-record').click(function() {
-            var id = $(this).attr('data-id');
-            var url = $(this).attr('data-url');
-            var token = CSRF_TOKEN;
-            $(".remove-record-model").attr("action",url);
-            $('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
-            $('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
-            $('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
-        });
-
-        $('.remove-data-from-delete-form').click(function() {
-            $('body').find('.remove-record-model').find( "input" ).remove();
-        });
-        $('.modal').click(function() {
-            // $('body').find('.remove-record-model').find( "input" ).remove();
-        });
-    });
-    </script>
-@endsection	

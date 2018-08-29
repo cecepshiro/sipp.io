@@ -47,7 +47,7 @@
                             <form method="POST" class="form-horizontal" action="{{ route('registeruser.ubahAkses') }}"  enctype="multipart/form-data">
                             @csrf
                                 <div class="form-group">
-                                    <label for="exampleInputname" class="col-sm-3 control-label">NRP*</label>
+                                    <label for="exampleInputname" class="col-sm-3 control-label">NRP</label>
                                     <div class="col-sm-9">
                                     <div class="input-group">
                                     <input type="hidden" value="{{ $data->id }}" name="id">
@@ -58,6 +58,15 @@
                                             <strong>{{ $errors->first('id_anggota') }}</strong>
                                         </span>
                                     @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputname" class="col-sm-3 control-label">Nama Lengkap</label>
+                                    <div class="col-sm-9">
+                                    <div class="input-group">
+                                    <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $data->name }}" required readonly>
+                                    <div class="input-group-addon"><i class="ti-user"></i></div>
                                         </div>
                                     </div>
                                 </div>

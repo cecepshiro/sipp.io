@@ -100,9 +100,9 @@ class JenjangController extends Controller
      */
     public function destroy($id)
     {
-        $temp=Jenjang::find($id)->value('kode_jenjang');
+        // $temp=Jenjang::find($id)->value('kode_jenjang');
         Jenjang::find($id)->delete();
-        Alert::error('Berhasil', 'Data Terhapus');
-        return redirect()->route('jenjang.index')->with('message', 'Data berhasil di hapus');
+        // Alert::error('Berhasil', 'Data Terhapus');
+        // return redirect()->route('jenjang.index')->with('message', 'Data berhasil di hapus');
     }
 }

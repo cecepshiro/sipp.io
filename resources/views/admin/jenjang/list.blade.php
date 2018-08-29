@@ -1,5 +1,28 @@
 @extends('layouts.app2')
-
+    <script>
+            function hapusData(id) {
+                if (confirm("Apakah anda akan menghapus ini ?!")) {
+                    $.ajax({
+                        url: '/deletejenjang/'+ id,
+                        type: 'DELETE',
+                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        success: function (data) {
+                            if (data['success']) {
+                                $("#" + data['tr']).slideUp("slow");
+                                alert(data['success']);                       
+                            } else if (data['error']) {
+                                alert(data['error']);
+                            }
+                            window.location.reload();
+                        },
+                        error: function (data) {
+                            alert(data.responseText);
+                        }
+                    });
+                }else{           
+                }
+            }
+    </script>
 @section('content')
     <div id="wrapper">
      <!-- Navigasi Menu -->
@@ -32,7 +55,7 @@
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="#" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Daftar Registrasi</li>
+                            <li class="active">Jenjang Pendidikan</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -45,11 +68,13 @@
                     <div class="col-lg-12">
                         <div class="white-box">
                             <h3 class="box-title">Daftar Jenjang Pendidikan</h3>
-                            <a href="{{ route('jenjang.create') }}" class="btn btn-primary btn-xs">Tambah Data</a>
+                            @if(Auth::user()->akse==0)
+                            <a href="{{ route('jenjang.create') }}" class="btn btn-success btn-sm">Tambah Data</a>
+                            @endif
                             <div class="table-responsive">
                             <br>
                             <!-- <table id="example" class="table table-striped table-bordered" style="width:100%"> -->
-                            <table id="example" class="display nowrap" style="width:100%">
+                            <table id="example" class="cell-border compact nowrap" style="width:100%">
                             <thead>
                                     <tr>
                                     <th>No</th>
@@ -78,15 +103,9 @@
                                             <td>{{ $d->jenjang }}</td>
                                             <td>{{ $d->keterangan }}</td>
                                             <td>
-                                            <form action="{{ route('jenjang.destroy', ['bidang'=>$d->kode_jenjang]) }}" method="post">
-                                                <div class="form-group">
-                                                    <a href="{{ route('jenjang.edit', ['bidang'=>$d->kode_jenjang]) }}" class="btn btn-outline-warning btn-sm">
-                                                    Edit</a>
-                                                    <input type="hidden" name="_method" value="DELETE">
-                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    <button type="submit" class="btn btn-outline-danger btn-sm">Hapus</button>
-                                                </div>
-                                            </form>
+                                                <a href="{{ route('jenjang.edit', ['bidang'=>$d->kode_jenjang]) }}" class="btn btn-outline-primary btn-sm">
+                                                Edit</a>
+                                                <a class="btn btn-outline-danger btn-sm waves-effect waves-light remove-record" onclick="hapusData({{$d->kode_jenjang}})">Hapus</a>   
                                             </td>
                                             </tr>
                                             @empty

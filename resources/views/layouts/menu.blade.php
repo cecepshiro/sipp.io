@@ -71,12 +71,6 @@
         <span class="hide-menu">Data Jenjang Pendidikan</span>
     </a>
 </li>
-<li>
-    <a href="{{ route('bidang.index') }}" class="waves-effect">
-        <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
-        <span class="hide-menu">Data Bidang Profesi</span>
-    </a>
-</li>
 <li class="nav-small-cap m-t-10">--- Data Laporan</li>
 <li>
     <a href="{{ route('agama.index') }}" class="waves-effect">

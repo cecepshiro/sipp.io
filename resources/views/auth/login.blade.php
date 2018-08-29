@@ -44,15 +44,17 @@
         <h3 class="box-title m-b-20"></h3>
         <div class="form-group ">
           <div class="col-xs-12">
-          <div class="input-group">
-            <input id="id_anggota" placeholder="NRP" type="text" maxlenght="20" onkeypress="return isNumberKey(event)" class="form-control{{ $errors->has('id_anggota') ? ' is-invalid' : '' }}" name="id_anggota" value="{{ old('id_anggota') }}" required autofocus>
-            <div class="input-group-addon"><i class="ti-user"></i></div>
-            @if ($errors->has('id_anggota'))
-              <span class="invalid-feedback" role="alert">
-                <strong>{{ $errors->first('id_anggota') }}</strong>
-              </span>
-            @endif
-          </div>
+            <div class="input-group">
+              <input id="id_anggota" placeholder="NRP" type="text" maxlenght="20" onkeypress="return isNumberKey(event)" class="form-control{{ $errors->has('id_anggota') ? ' is-invalid' : '' }}" name="id_anggota" value="{{ old('id_anggota') }}" required autofocus>
+              <div class="input-group-addon"><i class="ti-user"></i></div>
+            </div>
+            <div class="input-grup">
+              @if ($errors->has('id_anggota'))
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $errors->first('id_anggota') }}</strong>
+                </span>
+              @endif
+            </div>
           </div>
         </div>
         <div class="form-group">
@@ -60,11 +62,13 @@
           <div class="input-group">
             <input id="password" placeholder="Password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
             <div class="input-group-addon"><i class="ti-lock"></i></div>
-            @if ($errors->has('password'))
-              <span class="invalid-feedback" role="alert">
-                <strong>{{ $errors->first('password') }}</strong>
-              </span>
-            @endif
+            </div>
+            <div class="input-grup">
+              @if ($errors->has('password'))
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $errors->first('password') }}</strong>
+                </span>
+              @endif
             </div>
           </div>
         </div>

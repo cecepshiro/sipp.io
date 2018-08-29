@@ -107,8 +107,8 @@ class RegisterController extends Controller
 
     public function destroy($id){
         //$temp=User::find($id)->value('id');
-        User::find($id)->delete();
-        $data['data']=User::get();
+         User::find($id)->delete();
+        // $data['data']=User::get();
         //Alert::error('Berhasil', 'Data Terhapus');
         //return view('admin.pengguna.list', $data);
 

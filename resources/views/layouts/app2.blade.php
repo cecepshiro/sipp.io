@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Mirrored from wrappixel.com/demos/admin-templates/pixeladmin/main/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 06 Jul 2018 07:05:05 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -90,8 +89,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
-
-
 
     <!-- Sparkline chart JavaScript -->
     <script src="{{ asset('asset/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
