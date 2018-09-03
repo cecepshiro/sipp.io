@@ -92,6 +92,6 @@ class PengembanganProController extends Controller
      */
     public function destroy($id)
     {
-        //
+        PengembanganPro::find($id)->delete();
     }
 }

@@ -115,9 +115,9 @@ class BidangProfesiController extends Controller
      */
     public function destroy($id)
     {
-        $temp=BidangProfesi::find($id)->value('kode_bidangprofesi');
-        BidangProfesi::find($id)->delete();
-        Alert::error('Berhasil', 'Data Terhapus');
-        return redirect()->route('bidang.index')->with('message', 'Data berhasil di hapus');
+        // $temp=BidangProfesi::find($id)->value('kode_bidangprofesi');
+        BidangProfesiPersonil::find($id)->delete();
+        // Alert::error('Berhasil', 'Data Terhapus');
+        // return redirect()->route('bidang.index')->with('message', 'Data berhasil di hapus');
     }
 }

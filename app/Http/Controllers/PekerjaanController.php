@@ -97,7 +97,7 @@ class PekerjaanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Pekerjaan::find($id)->delete();
     }
 
 

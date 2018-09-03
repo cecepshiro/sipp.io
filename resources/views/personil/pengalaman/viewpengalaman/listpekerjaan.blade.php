@@ -1,4 +1,29 @@
 @extends('layouts.app2')
+<script>
+        function hapusData2(id) {
+            if (confirm("Apakah anda akan menghapus ini ?!")) {
+                $.ajax({
+                    url: '/deletepekerjaan/'+ id,
+                    type: 'DELETE',
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    success: function (data) {
+                        if (data['success']) {
+                            $("#" + data['tr']).slideUp("slow");
+                            alert(data['success']);                       
+                        } else if (data['error']) {
+                            alert(data['error']);
+                        }
+                        window.location.reload();
+                    },
+                    error: function (data) {
+                        alert(data.responseText);
+                    }
+                });
+            }else{           
+            }
+        }
+    </script>
+
 <h3 class="box-title m-b-0">List Pengembangan Profesional Personel</h3>
 <hr>
 <div class="table-responsive">
@@ -42,7 +67,8 @@
             <td>{{ $d4->dari }}</td>
             <td>{{ $d4->sampai }}</td>
             <td>
-             
+            <button class="btn btn-outline-primary btn-sm">Edit</button>
+                <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusData2({{$d4->kode_pekerjaan}})">Hapus</a>   
             </td>
         </tr>
         @empty

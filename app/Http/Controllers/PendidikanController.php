@@ -106,9 +106,9 @@ class PendidikanController extends Controller
      */
     public function destroy($id)
     {
-        $temp=Pendidikan::find($id)->value('kode_pendidikan');
+        // $temp=Pendidikan::find($id)->value('kode_pendidikan');
         Pendidikan::find($id)->delete();
-        Alert::error('Berhasil', 'Data Terhapus');
-        return redirect('pendidikan');
+        // Alert::error('Berhasil', 'Data Terhapus');
+        // return redirect('pendidikan');
     }
 }

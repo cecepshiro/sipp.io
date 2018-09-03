@@ -91,6 +91,6 @@ class PraktikPsiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        PraktikPsi::find($id)->delete();
     }
 }
