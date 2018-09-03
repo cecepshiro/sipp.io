@@ -5,7 +5,7 @@
     <div class="table-repsonsive">
         <span id="error4"></span>
         <div style="overflow-x:auto;">
-            <table class="table table-bordered" id="tabelpendidikan"  style="table-layout: auto; width: 100%">
+            <table class="table table-bordered" id="tabelpendidikan">
                 <tr>
                     <th>Kode Jenjang</th>
                     <th>Nama Perguruan</th>
@@ -13,9 +13,9 @@
                     <th>Bidang Ilmu</th>
                     <th>Tahun Lulus</th>
                     <th>
-                        <button type="button" name="tambah3" class="btn btn-success btn-sm tambah3">
+                        <center><button type="button" name="tambah3" class="btn btn-success btn-sm tambah3">
                             <span class="glyphicon glyphicon-plus"></span>
-                        </button>
+                        </button></center>
                     </th>
                 </tr>
             </table>

@@ -11,9 +11,9 @@
                     <th>Tempat</th>
                     <th>Tahun</th>
                     <th>
-                        <button type="button" name="tambah2" class="btn btn-success btn-sm tambah2">
+                        <center><button type="button" name="tambah2" class="btn btn-success btn-sm tambah2">
                             <span class="glyphicon glyphicon-plus"></span>
-                        </button>
+                        </button></center>
                     </th>
                 </tr>
             </table>

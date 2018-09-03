@@ -14,9 +14,9 @@
                     <th>Dari</th>
                     <th>Sampai</th>
                     <th>
-                        <button type="button" name="add" class="btn btn-success btn-sm add">
+                        <center><button type="button" name="add" class="btn btn-success btn-sm add">
                             <span class="glyphicon glyphicon-plus"></span>
-                        </button>
+                        </button></center>
                     </th>
                 </tr>
             </table>

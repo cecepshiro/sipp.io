@@ -11,9 +11,9 @@
                     <th>Tindakan Yang Dilakukan</th>
                     <th>Tahun Pelaksanaan</th>
                     <th>
-                        <button type="button" name="tambah" class="btn btn-success btn-sm tambah">
+                        <center><button type="button" name="tambah" class="btn btn-success btn-sm tambah">
                             <span class="glyphicon glyphicon-plus"></span>
-                        </button>
+                        </button></center>
                     </th>
                 </tr>
             </table>

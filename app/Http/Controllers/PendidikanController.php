@@ -17,13 +17,8 @@ class PendidikanController extends Controller
      */
     public function index()
     {
-        $data5 = Pendidikan::where('user_id', Auth::user()->id)->get();
-        // foreach ($data5 as $dat) {
-        //     $temp=Jenjang::where('kode_jenjang', $dat->kode_jenjang)->value('jenjang');
-      
-        // }
-             
-        return view('personil.pengalaman.viewpengalaman.listpendidikan', compact('data5'));
+        $data5['data5']=Pendidikan::where('user_id', Auth::user()->id)->get();
+        return view('personil.pengalaman.viewpengalaman.listpendidikan', $data5);
 
 
     }

@@ -59,3 +59,4 @@ Route::get('/agamaexport','AgamaController@export')->name('agama.export');
 Route::get('/pengalamanpers','PengalamanController@formpengalamanpers')->name('pengalaman.formpengalamanpers');
 // Route::get('/posts/{id}', 'Auth\RegisterController@destroy')->name('posts-get');
 Route::delete('/posts/{id}', 'Auth\RegisterController@destroy')->name('post-delete');
+// Route::get('/kode','JenjangController@buat_kode');

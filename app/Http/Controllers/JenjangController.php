@@ -105,4 +105,22 @@ class JenjangController extends Controller
         // Alert::error('Berhasil', 'Data Terhapus');
         // return redirect()->route('jenjang.index')->with('message', 'Data berhasil di hapus');
     }
+
+    public function buat_kode(){
+        $query = Jenjang::select('RIGHT(data_jenjang.kode_jenjang,3) as kode', FALSE)->orderBy('kode_jenjang','DESC')->limit(1)->count();
+        if($query <> 0){      
+         //jika kode ternyata sudah ada.      
+         $data = $query;      
+         $kode = intval($data) + 1;  
+        //  dd($kode);  
+        }
+        else {      
+         //jika kode belum ada      
+          $kode = 1;    
+        }
+         $kodemax = str_pad($kode, 3, "0", STR_PAD_LEFT); // angka 4 menunjukkan jumlah digit angka 0
+         $kodejadi = "123".$kodemax;    // hasilnya ODJ-9921-0001 dst.
+         $kodeotomatis['kodeotomatis']=$kodejadi;
+         dd($kodeotomatis);
+    }
 }

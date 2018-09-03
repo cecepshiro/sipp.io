@@ -4,7 +4,7 @@
 <div class="table-responsive">
 <br>
 <!-- <table id="example" class="table table-striped table-bordered" style="width:100%"> -->
-<table id="example4" class="display nowrap" style="width:100%">
+<table id="example4" class="cell-border compact nowrap" style="width:100%">
     <thead>
         <tr>
             <th>No</th>

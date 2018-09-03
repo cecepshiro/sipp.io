@@ -258,17 +258,18 @@
 
 <script src="{{ asset('asset/js/dynamicform.js') }}"></script>
 <script>
+
     $(document).ready(function(){      
     $('.datapendidikan').load("/getpendidikan");
     $(document).on('click', '.tambah3', function(){
     var html = '';
     html += '<tr>';
-    html += '<td><select name="kode_jenjang[]" placeholder="Masukan Jenjang"  class="form-control item_jenjang"><option value="">Pilih Jenjang Unit</option>@foreach($jenjang as $j) <option>{{ $j->jenjang }}</option> @endforeach</select></td>';
-    html += '<td><input type="text" name="nama_pt[]" placeholder="Masukan Perguruan Tinggi" class="form-control item_perguruan" /></td>';
-    html += '<td><input type="text" name="kota[]" placeholder="Masukan Kota" class="form-control item_kota" /></td>';
-    html += '<td><input type="text" name="bidang_ilmu[]" placeholder="Masukan Bidang Ilmu" class="form-control item_bidang" /></td>';
-    html += '<td><input type="text" name="tahun_lulus[]" placeholder="Masukan Tahun Lulus" class="form-control item_lulus" /></td>';
-    html += '<td><button type="button" name="hapus3" class="btn btn-danger btn-sm hapus3"><span class="glyphicon glyphicon-minus"></span></button></td></tr>';
+    html += '<td><select name="kode_jenjang[]" placeholder="Masukan Jenjang" class="form-control item_jenjang" required><option value="">Pilih Jenjang Unit</option>@foreach($jenjang as $j)<option value="{{ $j->kode_jenjang }}">{{ $j->jenjang }}</option>@endforeach</select></td>';
+    html += '<td><input type="text" name="nama_pt[]" placeholder="Masukan Perguruan Tinggi" class="form-control item_perguruan" required/></td>';
+    html += '<td><input type="text" name="kota[]" maxlength="50" placeholder="Masukan Kota" class="form-control item_kota" required/></td>';
+    html += '<td><input type="text" name="bidang_ilmu[]" maxlength="100" placeholder="Masukan Bidang Ilmu" class="form-control item_bidang" required/></td>';
+    html += '<td><input type="date" name="tahun_lulus[]" placeholder="Masukan Tahun Lulus" class="form-control item_lulus" required/></td>';
+    html += '<td><center><button type="button" name="hapus3" class="btn btn-danger btn-sm hapus3"><span class="glyphicon glyphicon-minus"></span></button></center></td></tr>';
     $('#tabelpendidikan').append(html);
     });
     
@@ -309,16 +310,6 @@
     count = count + 1;
     });
 
-    $('.item_lulus').each(function(){
-        var count = 1;
-        if($(this).val() == '')
-        {
-            error += "<p>Masukan Tahun Lulus "+count+" Row</p>";
-            return false;
-        }
-    count = count + 1;
-    });
-
     $('.item_bidang').each(function(){
         var count = 1;
         if($(this).val() == '')
@@ -328,6 +319,17 @@
         }
     count = count + 1;
     });
+
+     $('.item_lulus').each(function(){
+        var count = 1;
+        if($(this).val() == '')
+        {
+            error += "<p>Masukan Tahun Lulus "+count+" Row</p>";
+            return false;
+        }
+    count = count + 1;
+    });
+
 
     var form_data = $(this).serialize();
     if(error == '')
@@ -362,7 +364,7 @@
     $(document).on('click', '.tambahbidang', function(){
     var html = '';
     html += '<tr>';
-    html += '<td><select name="kode_bidangprofesi[]" placeholder="Masukan Bidang"  class="form-control item_bidang"><option value="">Pilih Bidang Profesi</option>@foreach($masterbidang as $mbidang) <option value="{{ $mbidang->kode_bidangprofesi }}">{{ $mbidang->bidangprofesi }}</option> @endforeach</select></td>';
+    html += '<td><select name="kode_bidangprofesi[]" placeholder="Masukan Bidang" class="form-control item_bidang" required><option value="">Pilih Bidang Profesi</option>@foreach($masterbidang as $mbidang) <option value="{{ $mbidang->kode_bidangprofesi }}">{{ $mbidang->bidangprofesi }}</option> @endforeach</select></td>';
     html += '<td><button type="button" name="hapusbidang" class="btn btn-danger btn-sm hapusbidang"><span class="glyphicon glyphicon-minus"></span></button></td></tr>';
     $('#tabelbidangpendidikan').append(html);
     });
