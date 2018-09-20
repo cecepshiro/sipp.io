@@ -43,7 +43,9 @@ class PersonilController extends Controller
             'tempat_lahir' => $request->tempat_lahir,
             'tgl_lahir' => $request->tgl_lahir,
             'jenis_kelamin' => $request->jenis_kelamin,
-            'kode_agama' => $request->kode_agama,
+            'agama' => $request->agama,
+            'suku_bangsa' => $request->suku_bangsa,
+            'gol_darah' => $request->gol_darah,
             'alamat_sekarang' => $request->alamat_kantor,
             'telp_rumah' => $request->telp_rumah,
             'no_hp' => $request->no_hp,
@@ -51,10 +53,6 @@ class PersonilController extends Controller
             'alamat_kantor' => $request->alamat_kantor,
             'alamat_tempat_praktik' => $request->alamat_tempat_praktik,
             'telp_kantor' => $request->telp_kantor,
-            // 'id_pendidikan' => $request->id_pendidikan,
-            // 'id_pengalaman' => $request->id_pengalaman,
-            // 'id_bidang_profesi' => $request->id_bidang_profesi,
-            // 'id_profesional' => $request->id_profesional,
                 ]);
         Alert::success('Berhasil', 'Data Tersimpan');
         return redirect()->route('personil.index');
@@ -97,17 +95,15 @@ class PersonilController extends Controller
         Personil::find($id)->update(['tempat_lahir'=>$request->tempat_lahir]);
         Personil::find($id)->update(['tgl_lahir'=>$request->tgl_lahir]);
         Personil::find($id)->update(['jenis_kelamin'=>$request->jenis_kelamin]);
-        Personil::find($id)->update(['kode_agama'=>$request->kode_agama]);
+        Personil::find($id)->update(['agama'=>$request->agama]);
+        Personil::find($id)->update(['suku_bangsa'=>$request->suku_bangsa]);
+        Personil::find($id)->update(['gol_darah'=>$request->gol_darah]);
         Personil::find($id)->update(['alamat_sekarang'=>$request->alamat_sekarang]);
         Personil::find($id)->update(['telp_rumah'=>$request->telp_rumah]);
         Personil::find($id)->update(['no_hp'=>$request->no_hp]);
         Personil::find($id)->update(['tempat_kerja'=>$request->tempat_kerja]);
         Personil::find($id)->update(['alamat_kantor'=>$request->alamat_kantor]);
         Personil::find($id)->update(['alamat_tempat_praktik'=>$request->alamat_tempat_praktik]);
-        // Personil::find($id)->update(['id_pendidikan'=>$request->id_pendidikan]);
-        // Personil::find($id)->update(['id_pengalaman'=>$request->id_pengalaman]);
-        // Personil::find($id)->update(['id_bidang_profesi'=>$request->id_bidang_profesi]);
-        // Personil::find($id)->update(['id_profesional'=>$request->id_profesional]);
         Alert::success('Berhasil', 'Data Diubah');
         return redirect()->route('personil.index');
     }

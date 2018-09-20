@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Personil;
 use App\User;
+use Illuminate\Support\Facades\Redirect;
 use App\Agama;
 use Illuminate\Support\Facades\Input; 
 use Alert;
@@ -43,7 +44,9 @@ class ProfileController extends Controller
             'tempat_lahir' => $request->tempat_lahir,
             'tgl_lahir' => $request->tgl_lahir,
             'jenis_kelamin' => $request->jenis_kelamin,
-            'kode_agama' => $request->kode_agama,
+            'agama' => $request->agama,
+            'suku_bangsa' => $request->suku_bangsa,
+            'gol_darah' => $request->gol_darah,
             'alamat_sekarang' => $request->alamat_kantor,
             'telp_rumah' => $request->telp_rumah,
             'no_hp' => $request->no_hp,
@@ -51,13 +54,15 @@ class ProfileController extends Controller
             'alamat_kantor' => $request->alamat_kantor,
             'alamat_tempat_praktik' => $request->alamat_tempat_praktik,
             'telp_kantor' => $request->telp_kantor,
-            // 'id_pendidikan' => $request->id_pendidikan,
-            // 'id_pengalaman' => $request->id_pengalaman,
-            // 'id_bidang_profesi' => $request->id_bidang_profesi,
-            // 'id_profesional' => $request->id_profesional,
                 ]);
         Alert::success('Berhasil', 'Data Tersimpan');
-        return redirect()->route('personil.index');
+        // return redirect()->route('personil.index');
+        $id = $request->user_id;
+        $cari = $request->get('id_anggota');
+        $data = User::where('id_anggota', $cari)->get();
+        $data2 = Personil::where('user_id', $id)->get();
+        $agama =Agama::get();
+        return view('personil.profile.detail', compact('data','agama','data2'))->with('cari', $cari);
     }
 
     /**
@@ -105,7 +110,8 @@ class ProfileController extends Controller
                 }
         }
         Alert::success('Berhasil', 'Data Diubah');
-        return redirect()->route('personil.index');
+        // return redirect()->route('personil.index');
+        return Redirect::to('/');
     }
 
     /**

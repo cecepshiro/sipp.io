@@ -19,7 +19,9 @@ class CreatePersonilsTable extends Migration
             $table->string('tempat_lahir');
             $table->date('tgl_lahir');
             $table->enum('jenis_kelamin',['L','P']);
-            $table->char('kode_agama',2);
+            $table->string('agama',20);
+            $table->string('suku_bangsa');
+            $table->char('gol_darah',2);
             $table->string('alamat_sekarang');
             $table->char('telp_rumah',13);
             $table->char('no_hp',13);
@@ -27,7 +29,7 @@ class CreatePersonilsTable extends Migration
             $table->string('alamat_kantor');
             $table->string('alamat_tempat_praktik');
             $table->char('telp_kantor',13);
-            $table->string('foto')->default('avatar.jpg');
+            $table->string('foto')->default('avatar.png');
             $table->timestamps();
         });
     }

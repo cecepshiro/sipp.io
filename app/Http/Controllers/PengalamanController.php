@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pengalaman;
+use App\Pendidikan;
 use App\User;
 use App\BidangProfesi;
 use App\Jenjang;
@@ -31,11 +32,11 @@ class PengalamanController extends Controller
         $masterbidang['masterbidang']=BidangProfesi::get();
         $jenjang['jenjang']=Jenjang::orderBy('jenjang','asc')->get();
         $data2['data2']=PengembanganPro::get();
+        $timeline['timeline']=Pendidikan::get();
         // $new = DB::table('data_pendidikan')
         //     ->join('data_pekerjaan', 'data_pendidikan.id', '=', 'data_pekerjaan.user_id')
         //     ->select('data_pendidikan.*', 'data_pendidikan.*')
         //     ->get();
-        $timeline['timeline']=Pengalaman::get();
         //dd($new);
         return view('personil.pengalaman.form' ,$data2, $jenjang)->with($masterbidang)->with($timeline);
     }

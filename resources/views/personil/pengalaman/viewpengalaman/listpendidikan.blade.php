@@ -10,11 +10,13 @@
                     success: function (data) {
                         if (data['success']) {
                             $("#" + data['tr']).slideUp("slow");
-                            alert(data['success']);                       
+                            alert(data['success']);             
+                           
                         } else if (data['error']) {
                             alert(data['error']);
                         }
                         window.location.reload();
+                        
                     },
                     error: function (data) {
                         alert(data.responseText);

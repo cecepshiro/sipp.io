@@ -58,8 +58,7 @@
                                             $temp3=DB::table('data_personil')->select('id')->where('user_id', $temp)->value('id');
                                             $tmpt=DB::table('data_personil')->select('tempat_lahir')->where('id', $temp3)->value('tempat_lahir');
                                             $tgl=DB::table('data_personil')->select('tgl_lahir')->where('id', $temp3)->value('tgl_lahir');
-                                            $kodeagama=DB::table('data_personil')->select('kode_agama')->where('id', $temp3)->value('kode_agama');
-                                            $namaagama=DB::table('data_agama')->select('agama')->where('id', $kodeagama)->value('agama');
+                                            $namaagama=DB::table('data_personil')->select('agama')->where('id', $temp3)->value('agama');
                                         ?>
                                         <h4 class="text-white">{{ $nama }}</h4>
                                         <h5 class="text-white">{{ $cari }}</h5></div>
@@ -191,12 +190,26 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="agama">Agama</label>
-                                                <select class="form-control"  name="kode_agama" placeholder="Agama" required>
+                                                <select class="form-control"  name="agama" placeholder="Agama" required>
                                                 <option>Pilih Agama</option>
-                                                @foreach($agama as $ag)
-                                                    <option value="{{ $ag->id }}">{{ $ag->agama }}</option>
-                                                @endforeach
+                                                <option value="Islam">Islam</option>
+                                                <option value="Kristen">Kristen</option>
+                                                <option value="Protestan">Protestan</option>
+                                                <option value="Hindu">Hindu</option>
+                                                <option value="Budha">Budha</option>
                                                 </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-12">Suku Bangsa</label>
+                                                <div class="col-md-12">
+                                                    <input class="form-control form-control-line" type="text" name="suku_bangsa"  placeholder="Suku Bangsa" maxlength="20"  required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-12">Gol Darah</label>
+                                                <div class="col-md-12">
+                                                    <input class="form-control form-control-line" type="text" name="gol_darah"  placeholder="Gol Darah" maxlength="2" required>
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="example-email" class="col-md-12">Alamat Sekarang</label>
@@ -207,13 +220,13 @@
                                             <div class="form-group">
                                                 <label for="example-email" class="col-md-12">Telp. Rumah</label>
                                                 <div class="col-md-12">
-                                                <input class="form-control form-control-line" type="text" name="telp_rumah" placeholder="Masukkan Telp. Rumah" required>
+                                                <input class="form-control form-control-line" maxlength="13" onkeypress="return isNumberKey(event)" type="text" name="telp_rumah" placeholder="Masukkan Telp. Rumah" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="example-email" class="col-md-12">No. Handphone</label>
                                                 <div class="col-md-12">
-                                                <input class="form-control form-control-line" type="text" name="no_hp" placeholder="Masukkan No. HP" required>
+                                                <input class="form-control form-control-line" maxlength="13" onkeypress="return isNumberKey(event)" type="text" name="no_hp" placeholder="Masukkan No. HP" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -237,7 +250,7 @@
                                             <div class="form-group">
                                                 <label for="example-email" class="col-md-12">Telp. Kantor</label>
                                                 <div class="col-md-12">
-                                                <input class="form-control form-control-line" type="text"  name="telp_kantor" placeholder="Masukkan Telp. Kantor" required>
+                                                <input class="form-control form-control-line" maxlength="13" onkeypress="return isNumberKey(event)" type="text"  name="telp_kantor" placeholder="Masukkan Telp. Kantor" required>
                                                 </div>
                                             </div>
                                         @else
@@ -298,12 +311,26 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="agama">Agama</label>
-                                                <select class="form-control"  name="kode_agama" placeholder="Agama" required>
+                                                <select class="form-control"  name="agama" placeholder="Agama" required>
                                                 <option>Pilih Agama</option>
-                                                @foreach($agama as $ag)
-                                                    <option <?php if($ag->id == $d2->kode_agama) echo 'selected' ; ?> value="{{ $ag->id }}">{{ $ag->agama }}</option>
-                                                @endforeach
+                                                <option <?php if($d2->agama == "Islam") echo 'selected' ; ?> value="Islam">Islam</option>
+                                                <option <?php if($d2->agama == "Kristen") echo 'selected' ; ?> value="Kristen">Kristen</option>
+                                                <option <?php if($d2->agama == "Protestan") echo 'selected' ; ?> value="Protestan">Protestan</option>
+                                                <option <?php if($d2->agama == "Hindu") echo 'selected' ; ?> value="Hindu">Hindu</option>
+                                                <option <?php if($d2->agama == "Budha") echo 'selected' ; ?> value="Budha">Budha</option>
                                                 </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-12">Suku Bangsa</label>
+                                                <div class="col-md-12">
+                                                    <input class="form-control form-control-line" type="text" name="suku_bangsa"  value="{{ $d2->suku_bangsa }}" placeholder="Suku Bangsa" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-12">Gol Darah</label>
+                                                <div class="col-md-12">
+                                                    <input class="form-control form-control-line" type="text" name="gol_darah" value="{{ $d2->gol_darah }}" placeholder="Gol Darah" maxlegth="2" required>
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="example-email" class="col-md-12">Alamat Sekarang</label>
@@ -314,13 +341,13 @@
                                             <div class="form-group">
                                                 <label for="example-email" class="col-md-12">Telp. Rumah</label>
                                                 <div class="col-md-12">
-                                                <input class="form-control form-control-line" value="{{ $d2->telp_rumah }}" type="text" name="telp_rumah" placeholder="Masukkan Telp. Rumah" required>
+                                                <input class="form-control form-control-line" maxlength="13" onkeypress="return isNumberKey(event)" value="{{ $d2->telp_rumah }}" type="text" name="telp_rumah" placeholder="Masukkan Telp. Rumah" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="example-email" class="col-md-12">No. Handphone</label>
                                                 <div class="col-md-12">
-                                                <input class="form-control form-control-line" value="{{ $d2->no_hp }}" type="text" name="no_hp" placeholder="Masukkan No. HP" required>
+                                                <input class="form-control form-control-line" maxlength="13" onkeypress="return isNumberKey(event)" value="{{ $d2->no_hp }}" type="text" name="no_hp" placeholder="Masukkan No. HP" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -344,14 +371,14 @@
                                             <div class="form-group">
                                                 <label for="example-email" class="col-md-12">Telp. Kantor</label>
                                                 <div class="col-md-12">
-                                                <input class="form-control form-control-line" type="text" value="{{ $d2->telp_kantor }}" name="telp_kantor" placeholder="Masukkan Telp. Kantor" required>
+                                                <input class="form-control form-control-line" maxlength="13" onkeypress="return isNumberKey(event)" type="text" value="{{ $d2->telp_kantor }}" name="telp_kantor" placeholder="Masukkan Telp. Kantor" required>
                                                 </div>
                                             </div>
                                             @endforeach
                                         @endif
                                         <div class="form-group">
                                             <div class="col-sm-12">
-                                                <input type="submit"class="btn btn-success"  style="float:right">Simpan</button>
+                                                <button type="submit"class="btn btn-success"  style="float:right">Simpan</button>
                                             </div>
                                         </div>
                                     </form>
