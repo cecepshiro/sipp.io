@@ -60,12 +60,6 @@
 </li>
 <li class="nav-small-cap m-t-10">--- Data Master</li>
 <li>
-    <a href="{{ route('agama.index') }}" class="waves-effect">
-        <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
-        <span class="hide-menu">Data Agama</span>
-    </a>
-</li>
-<li>
     <a href="{{ route('jenjang.index') }}" class="waves-effect">
         <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
         <span class="hide-menu">Data Jenjang Pendidikan</span>
@@ -73,7 +67,7 @@
 </li>
 <li class="nav-small-cap m-t-10">--- Data Laporan</li>
 <li>
-    <a href="{{ route('agama.index') }}" class="waves-effect">
+    <a href="#" class="waves-effect">
         <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
         <span class="hide-menu">Laporan</span>
     </a>

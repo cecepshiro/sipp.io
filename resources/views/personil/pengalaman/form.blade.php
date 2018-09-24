@@ -268,7 +268,7 @@
     html += '<td><input type="text" name="nama_pt[]" placeholder="Masukan Perguruan Tinggi" class="form-control item_perguruan" required/></td>';
     html += '<td><input type="text" name="kota[]" maxlength="50" placeholder="Masukan Kota" class="form-control item_kota" required/></td>';
     html += '<td><input type="text" name="bidang_ilmu[]" maxlength="100" placeholder="Masukan Bidang Ilmu" class="form-control item_bidang" required/></td>';
-    html += '<td><input type="date" name="tahun_lulus[]" placeholder="Masukan Tahun Lulus" class="form-control item_lulus" required/></td>';
+    html += '<td><input type="text" maxlength="4" name="tahun_lulus[]" placeholder="Masukan Tahun Lulus" class="form-control item_lulus" required/></td>';
     html += '<td><center><button type="button" name="hapus3" class="btn btn-danger btn-sm hapus3"><span class="glyphicon glyphicon-minus"></span></button></center></td></tr>';
     $('#tabelpendidikan').append(html);
     });

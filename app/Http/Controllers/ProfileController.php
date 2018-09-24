@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Personil;
 use App\User;
 use Illuminate\Support\Facades\Redirect;
-use App\Agama;
 use Illuminate\Support\Facades\Input; 
 use Alert;
 class ProfileController extends Controller
@@ -61,8 +60,7 @@ class ProfileController extends Controller
         $cari = $request->get('id_anggota');
         $data = User::where('id_anggota', $cari)->get();
         $data2 = Personil::where('user_id', $id)->get();
-        $agama =Agama::get();
-        return view('personil.profile.detail', compact('data','agama','data2'))->with('cari', $cari);
+        return view('personil.profile.detail', compact('data','data2'))->with('cari', $cari);
     }
 
     /**
@@ -86,8 +84,7 @@ class ProfileController extends Controller
     public function edit($id)
     {
         $data['data']=Personil::find($id);
-        $agama['agama']=Agama::get();
-        return view('personil.profile.formubah', $data, $agama);
+        return view('personil.profile.formubah', $data);
     }
 
     /**
@@ -130,7 +127,6 @@ class ProfileController extends Controller
         $cari = $request->get('profil_id');
         $data = User::where('id_anggota', $cari)->get();
         $data2 = Personil::where('user_id', $id)->get();
-        $agama =Agama::get();
-        return view('personil.profile.formubah', compact('data','agama','data2'))->with('cari', $cari);
+        return view('personil.profile.formubah', compact('data','data2'))->with('cari', $cari);
     }
 }

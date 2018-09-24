@@ -29,7 +29,7 @@ Route::group(['middleware' => ['web','auth']], function(){
     });
 });
 
-Route::resource('agama','AgamaController');
+// Route::resource('agama','AgamaController');
 Route::resource('personil','PersonilController');
 Route::get('profilpersonil','PersonilController@profil');
 Route::get('ubahprofil','ProfileController@ubahprofil');
@@ -55,7 +55,7 @@ Route::get('/getpraktikpro','PraktikPsiController@index');
 Route::get('/getpekerjaan','PekerjaanController@index');
 Route::get('/getpendidikan','PendidikanController@index');
 Route::post('/simpanpendidikan','PendidikanController@store');
-Route::get('/agamaexport','AgamaController@export')->name('agama.export');
+// Route::get('/agamaexport','AgamaController@export')->name('agama.export');
 Route::get('/pengalamanpers','PengalamanController@formpengalamanpers')->name('pengalaman.formpengalamanpers');
 // Route::get('/posts/{id}', 'Auth\RegisterController@destroy')->name('posts-get');
 Route::delete('/posts/{id}', 'Auth\RegisterController@destroy')->name('post-delete');

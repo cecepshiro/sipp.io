@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Personil;
-use App\Agama;
 use App\USer;
 use Illuminate\Http\Request;
 use Alert;
@@ -26,8 +25,7 @@ class PersonilController extends Controller
      */
     public function create()
     {
-        $agama['agama']=Agama::get();
-        return view('personil.form', $agama);
+        return view('personil.form');
     }
 
     /**
@@ -127,8 +125,7 @@ class PersonilController extends Controller
         $cari = $request->get('profil_id');
         $data = User::where('id_anggota', $cari)->get();
         $data2 = Personil::where('user_id', $id)->get();
-        $agama =Agama::get();
-        return view('personil.profile.detail', compact('data','agama','data2'))->with('cari', $cari);
+        return view('personil.profile.detail', compact('data','data2'))->with('cari', $cari);
     }
 
     

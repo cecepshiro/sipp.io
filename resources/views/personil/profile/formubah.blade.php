@@ -55,10 +55,10 @@
                                             $nama=DB::table('users')->select('name')->where('id_anggota', $cari)->value('name');
                                             $temp=DB::table('users')->select('id')->where('id_anggota', $cari)->value('id');
                                             $temp2=DB::table('data_personil')->select('no_hp')->where('user_id', $temp)->value('no_hp');
-                                            $temp3=DB::table('data_personil')->select('id')->where('user_id', $temp)->value('id');
-                                            $tmpt=DB::table('data_personil')->select('tempat_lahir')->where('id', $temp3)->value('tempat_lahir');
-                                            $tgl=DB::table('data_personil')->select('tgl_lahir')->where('id', $temp3)->value('tgl_lahir');
-                                            $namaagama=DB::table('data_personil')->select('agama')->where('id', $temp3)->value('agama');
+                                            $temp3=DB::table('data_personil')->select('kode_personil')->where('user_id', $temp)->value('id');
+                                            $tmpt=DB::table('data_personil')->select('tempat_lahir')->where('kode_personil', $temp3)->value('tempat_lahir');
+                                            $tgl=DB::table('data_personil')->select('tgl_lahir')->where('kode_personil', $temp3)->value('tgl_lahir');
+                                            $namaagama=DB::table('data_personil')->select('agama')->where('kode_personil', $temp3)->value('agama');
                                         ?>
                                         <h4 class="text-white">{{ $nama }}</h4>
                                         <h5 class="text-white">{{ $cari }}</h5></div>
@@ -67,7 +67,7 @@
                             <div class="user-btm-box">
                                 <div class="col-md-4 col-sm-4 text-center">
                                 <?php
-                                    $kodepersonil=Db::table('data_personil')->select('id')->where('user_id', $temp)->value('id');
+                                    $kodepersonil=Db::table('data_personil')->select('kode_personil')->where('user_id', $temp)->value('id');
                                 ?>
                                 <form method="post"  action="{{ route('profile.update', ['profile'=> $kodepersonil]) }}" enctype="multipart/form-data"><input type="hidden" name="_method" value="PATCH">
                                         {{ csrf_field() }}
@@ -143,7 +143,7 @@
                                     {{ csrf_field() }}
                                     <?php
                                         $tmp3=DB::table('users')->select('name')->where('id_anggota', $cari)->value('name');
-                                        $cek=DB::table('data_personil')->select('id')->where('user_id', Auth::user()->id)->value('id');
+                                        $cek=DB::table('data_personil')->select('kode_personil')->where('user_id', Auth::user()->id)->value('id');
                                     ?>
 
                                         <br>
