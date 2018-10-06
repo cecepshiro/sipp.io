@@ -67,7 +67,7 @@
 </li>
 <li class="nav-small-cap m-t-10">--- Data Laporan</li>
 <li>
-    <a href="#" class="waves-effect">
+    <a href="{{ route('report.personil') }}" class="waves-effect">
         <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
         <span class="hide-menu">Laporan</span>
     </a>

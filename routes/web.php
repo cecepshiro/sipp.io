@@ -65,3 +65,7 @@ Route::delete('/deletebidangpro/{id}', 'BidangProfesiController@destroy')->name(
 Route::delete('/deletepraktikpro/{id}', 'PraktikPsiController@destroy')->name('praktikpro-delete');
 Route::delete('/deletepengembanganpro/{id}', 'PengembanganProController@destroy')->name('pengembanganpro-delete');
 // Route::get('/kode','JenjangController@buat_kode');
+
+
+//report
+Route::get('/reportpers','ReportController@report_pers')->name('report.personil');
