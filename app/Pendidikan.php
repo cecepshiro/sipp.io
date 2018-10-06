@@ -14,7 +14,5 @@ class Pendidikan extends Model
       protected $fillable = [
         'user_id','kode_jenjang','nama_pt','kota','bidang_ilmu','tahun_lulus','created_at','updated_at',
       ];
-    //   public function jenjang() {
-    //     return $this->belongsTo('App\Jenjang');
-    // }
+
 }

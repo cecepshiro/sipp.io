@@ -68,4 +68,4 @@ Route::delete('/deletepengembanganpro/{id}', 'PengembanganProController@destroy'
 
 
 //report
-Route::get('/reportpers','ReportController@report_pers')->name('report.personil');
+Route::get('/reportpers/{id}','ReportController@report_pers')->name('report.personil');

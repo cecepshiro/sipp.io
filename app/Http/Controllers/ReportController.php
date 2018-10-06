@@ -12,18 +12,50 @@ use App\Jenjang;
 use App\BidangProfesiPersonil;
 use App\Personil;
 use Auth;
+use DB;
 
 class ReportController extends Controller
 {
-    public function report_pers()
+    public function report_pers($id)
     {
-        // $getkodepers['getkodepers']=User::select('id_')where('id_anggota','3411151021')->get();
-        $id=Auth::user()->id;
-        $datadiri1['datadiri1']=User::find($id);
-        foreach($datadiri1 as $row){
-            $nama=$row->name;
-        }
-        return view('report.report_pers')->with($nama);
+        $datadiri['datadiri'] = DB::table('users')
+        ->join('data_personil', 'users.id', '=', 'data_personil.user_id')
+        ->select('users.*', 'data_personil.*')
+        ->where('id', $id)
+        ->first();
+
+        $pendidikan['pendidikan']=DB::table('data_pendidikan')
+        ->select('data_pendidikan.*')
+        ->where('user_id', $id)
+        ->get();
+
+        $bidangpropers['bidangpropers']=DB::table('data_bidangpropers')
+        ->select('data_bidangpropers.*')
+        ->where('user_id', $id)
+        ->get();
+
+        $pengembanganpro['pengembanganpro']=DB::table('data_pengembangan_pro')
+        ->select('data_pengembangan_pro.*')
+        ->where('user_id', $id)
+        ->get();
+
+        $praktik['praktik']=DB::table('data_praktik')
+        ->select('data_praktik.*')
+        ->where('user_id', $id)
+        ->get();
+
+        $pekerjaan['pekerjaan']=DB::table('data_pekerjaan')
+        ->select('data_pekerjaan.*')
+        ->where('user_id', $id)
+        ->get();
+
+        return view('report.report_pers')
+        ->with($datadiri)
+        ->with($pendidikan)
+        ->with($bidangpropers)
+        ->with($pengembanganpro)
+        ->with($praktik)
+        ->with($pekerjaan);
     }
 }
 
