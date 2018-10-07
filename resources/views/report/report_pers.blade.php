@@ -1,5 +1,13 @@
 <html>
+<header>
 <link href="{{ asset('asset/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+<style type="text/css" media="print">
+@page {
+    size: auto;   /* auto is the initial value */
+    margin: 0;  /* this affects the margin in the printer settings */
+}
+</style>
+</header>
 <table class="table table-bordered-custom" style="width:100%">
     <tr>
         <td colspan="15">Markas Besar Angkatan Darat Dinas Psikologi</td>
@@ -12,7 +20,7 @@
         <td colspan="15">I. DATA POKOK</td>
     </tr>
     <tr>
-        <td rowspan="4" width="25%" colspan="2"><center><img src="/image/{{ $datadiri->foto }}" align="middle" class="thumb-lg img-square"></center></td>
+        <td rowspan="4" width="25%" colspan="2"><center><img src="{{ asset('image/'.$datadiri->foto) }}" align="middle" class="thumb-lg img-square"></center></td>
         <td  width="15%" >Nama</td>
         <td colspan="4"  width="40%" >{{ $datadiri->name }}</td>
         <td colspan="2"  width="15%" >Agama</td>
@@ -164,4 +172,6 @@
     @endforeach
     
 </table>
+</body>
+<script src="{{ asset('asset/plugins/bower_components/jquery/dist/jquery.min.js') }}"></script>
 </html>
