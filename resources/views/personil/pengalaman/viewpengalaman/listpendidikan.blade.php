@@ -70,7 +70,7 @@
             <td>{{ $d5->bidang_ilmu }}</td>
             <td>{{ $d5->tahun_lulus }}</td>
             <td>
-                <button class="btn btn-outline-primary btn-sm">Edit</button>
+                <a href="{{ route('pendidikan.edit', $d5->kode_pendidikan) }}" class="btn btn-outline-primary btn-sm">Edit</a>
                 <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusData3({{$d5->kode_pendidikan}})">Hapus</a>   
             </td>
         </tr>

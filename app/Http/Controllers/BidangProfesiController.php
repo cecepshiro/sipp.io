@@ -24,6 +24,12 @@ class BidangProfesiController extends Controller
         return view('personil.pengalaman.viewpengalaman.listbidangpropers', $data5);
     }
 
+    public function listbidang()
+    {
+        $bidangprofesi['bidangprofesi']=BidangProfesi::get();
+        return view('admin.bidangprofesi.list', $bidangprofesi);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -31,7 +37,7 @@ class BidangProfesiController extends Controller
      */
     public function create()
     {
-        return view('personil.bidangprofesi.form');
+        return view('admin.bidangprofesi.form');
     }
 
     /**
@@ -48,7 +54,7 @@ class BidangProfesiController extends Controller
                 ]);
         }
         Alert::success('Berhasil', 'Data Tersimpan');
-        return redirect()->route('bidang.index');
+        return redirect('masterbidang');
 
     }
 
@@ -73,8 +79,8 @@ class BidangProfesiController extends Controller
      */
     public function show($id)
     {
-        $data['data']=BidangProfesi::find($id);
-        return view("admin.masterbidangprofesi.list", $data);
+        $data=BidangProfesi::find($id);
+        return view('admin.bidangprofesi.list', $data);
     }
 
     /**
@@ -86,7 +92,7 @@ class BidangProfesiController extends Controller
     public function edit($id)
     {
         $data['data']=BidangProfesi::find($id);
-        return view('admin.masterbidangprofesi.formubah', $data);
+        return view('admin.bidangprofesi.formubah', $data);
     }
 
     /**
@@ -99,12 +105,8 @@ class BidangProfesiController extends Controller
     public function update(Request $request, $id)
     {
         BidangProfesi::find($id)->update(['bidangprofesi'=>$request->bidangprofesi]);
-        // Personil::find($id)->update(['id_pendidikan'=>$request->id_pendidikan]);
-        // Personil::find($id)->update(['id_pengalaman'=>$request->id_pengalaman]);
-        // Personil::find($id)->update(['id_bidang_profesi'=>$request->id_bidang_profesi]);
-        // Personil::find($id)->update(['id_profesional'=>$request->id_profesional]);
         Alert::success('Berhasil', 'Data Diubah');
-        return redirect()->route('bidang.index');
+        return redirect('masterbidang');
     }
 
     /**
@@ -119,5 +121,10 @@ class BidangProfesiController extends Controller
         BidangProfesiPersonil::find($id)->delete();
         // Alert::error('Berhasil', 'Data Terhapus');
         // return redirect()->route('bidang.index')->with('message', 'Data berhasil di hapus');
+    }
+
+    public function hapusmasterbidang($id)
+    {
+        BidangProfesi::find($id)->delete();
     }
 }

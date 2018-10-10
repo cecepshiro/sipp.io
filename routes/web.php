@@ -40,6 +40,7 @@ Route::get('/daftarpersonil', 'Auth\RegisterController@daftar')->name('registeru
 Route::post('/ubahAkses', 'Auth\RegisterController@ubahAkses')->name('registeruser.ubahAkses');
 Route::get('/halakses/{id}', 'Auth\RegisterController@halamanubahAkses')->name('registeruser.halakses');
 Route::resource('bidang','BidangProfesiController');
+Route::get('masterbidang','BidangProfesiController@listbidang')->name('bidang.listbidang');
 Route::resource('jenjang','JenjangController');
 Route::delete('/deletejenjang/{id}','JenjangController@destroy');
 Route::resource('pendidikan','PendidikanController');
@@ -64,6 +65,7 @@ Route::delete('/deletepekerjaan/{id}', 'PekerjaanController@destroy')->name('pek
 Route::delete('/deletebidangpro/{id}', 'BidangProfesiController@destroy')->name('bidangpro-delete');
 Route::delete('/deletepraktikpro/{id}', 'PraktikPsiController@destroy')->name('praktikpro-delete');
 Route::delete('/deletedatapersonil/{id}', 'PersonilController@destroy')->name('listpersonel-delete');
+Route::delete('/deletemasterbidang/{id}', 'BidangProfesiController@hapusmasterbidang')->name('listmasterbidang-delete');
 Route::delete('/deletepengembanganpro/{id}', 'PengembanganProController@destroy')->name('pengembanganpro-delete');
 // Route::get('/kode','JenjangController@buat_kode');
 Route::post('/updateprofilexist', 'ProfileController@updateyangudahdaftar')->name('profile.yangudah');

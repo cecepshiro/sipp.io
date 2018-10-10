@@ -62,7 +62,11 @@
 <li>
     <a href="{{ route('jenjang.index') }}" class="waves-effect">
         <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
-        <span class="hide-menu">Data Jenjang Pendidikan</span>
+        <span class="hide-menu">Jenjang Pendidikan</span>
+    </a>
+    <a href="{{ route('bidang.listbidang') }}" class="waves-effect">
+        <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
+        <span class="hide-menu">Bidang Profesi</span>
     </a>
 </li>
 <li class="nav-small-cap m-t-10">--- Data Laporan</li>

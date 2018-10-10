@@ -1,9 +1,9 @@
 @extends('layouts.app2')
     <script>
-            function hapusData(id) {
+            function hapusDataMasterBidang(id) {
                 if (confirm("Apakah anda akan menghapus ini ?!")) {
                     $.ajax({
-                        url: '/deletejenjang/'+ id,
+                        url: '/deletemasterbidang/'+ id,
                         type: 'DELETE',
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                         success: function (data) {
@@ -55,7 +55,7 @@
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="#" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Jenjang Pendidikan</li>
+                            <li class="active">Bidang Profesi</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -67,9 +67,9 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="white-box">
-                            <h3 class="box-title">Daftar Jenjang Pendidikan</h3>
+                            <h3 class="box-title">Daftar Bidang Profesi</h3>
                             @if(Auth::user()->akse==0)
-                            <a href="{{ route('jenjang.create') }}" class="btn btn-outline-success btn-sm">Tambah Data</a>
+                            <a href="{{ route('bidang.create') }}" class="btn btn-outline-success btn-sm">Tambah Data</a>
                             @endif
                             <div class="table-responsive">
                             <br>
@@ -78,39 +78,36 @@
                             <thead>
                                     <tr>
                                     <th>No</th>
-                                    <th>Kode Jenjang</th>
-                                    <th>Jenjang</th>
-                                    <th>Keterangan</th>
+                                    <th>Kode Bidang</th>
+                                    <th>Nama Bidang</th>
                                     <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
                                     <th>No</th>
-                                    <th>Kode Jenjang</th>
-                                    <th>Jenjang</th>
-                                    <th>Keterangan</th>
+                                    <th>Kode Bidang</th>
+                                    <th>Nama Bidang</th>
                                     <th>Aksi</th>
                                     </tr>
                                 </tfoot>
                                     <tbody>
                                         <?php $no = 0;?>
-										@forelse($data as $d)
+										@forelse($bidangprofesi as $b)
                                         <?php $no++ ;?>
                                         <tr>
                                             <td>{{ $no }}</td>
-                                            <td>{{ $d->kode_jenjang }}</td>
-                                            <td>{{ $d->jenjang }}</td>
-                                            <td>{{ $d->keterangan }}</td>
+                                            <td>{{ $b->kode_bidangprofesi }}</td>
+                                            <td>{{ $b->bidangprofesi }}</td>
                                             <td>
-                                                <a href="{{ route('jenjang.edit', ['bidang'=>$d->kode_jenjang]) }}" class="btn btn-outline-primary btn-sm">
+                                                <a href="{{ route('bidang.edit', ['bidang'=>$b->kode_bidangprofesi]) }}" class="btn btn-outline-primary btn-sm">
                                                 Edit</a>
-                                                <a class="btn btn-outline-danger btn-sm waves-effect waves-light remove-record" onclick="hapusData({{$d->kode_jenjang}})">Hapus</a>   
+                                                <a class="btn btn-outline-danger btn-sm waves-effect waves-light remove-record" onclick="hapusDataMasterBidang({{$b->kode_bidangprofesi}})">Hapus</a>   
                                             </td>
                                             </tr>
                                             @empty
                                             <tr>
-                                            <td colspan="5">Data Kosong</td>
+                                            <td colspan="4">Data Kosong</td>
                                             </tr>
                                             @endforelse
                                             </tr>
