@@ -33,11 +33,6 @@ class PengalamanController extends Controller
         $jenjang['jenjang']=Jenjang::orderBy('jenjang','asc')->get();
         $data2['data2']=PengembanganPro::get();
         $timeline['timeline']=Pendidikan::get();
-        // $new = DB::table('data_pendidikan')
-        //     ->join('data_pekerjaan', 'data_pendidikan.id', '=', 'data_pekerjaan.user_id')
-        //     ->select('data_pendidikan.*', 'data_pendidikan.*')
-        //     ->get();
-        //dd($new);
         return view('personil.pengalaman.form' ,$data2, $jenjang)->with($masterbidang)->with($timeline);
     }
 

@@ -63,6 +63,7 @@ Route::delete('/deletependidikan/{id}', 'PendidikanController@destroy')->name('p
 Route::delete('/deletepekerjaan/{id}', 'PekerjaanController@destroy')->name('pekerjaan-delete');
 Route::delete('/deletebidangpro/{id}', 'BidangProfesiController@destroy')->name('bidangpro-delete');
 Route::delete('/deletepraktikpro/{id}', 'PraktikPsiController@destroy')->name('praktikpro-delete');
+Route::delete('/deletedatapersonil/{id}', 'PersonilController@destroy')->name('listpersonel-delete');
 Route::delete('/deletepengembanganpro/{id}', 'PengembanganProController@destroy')->name('pengembanganpro-delete');
 // Route::get('/kode','JenjangController@buat_kode');
 

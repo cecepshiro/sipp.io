@@ -77,8 +77,7 @@ class PersonilController extends Controller
     public function edit($id)
     {
         $data['data']=Personil::find($id);
-        $agama['agama']=Agama::get();
-        return view('personil.formubah', $data, $agama);
+        return view('personil.formubah', $data);
     }
 
     /**
@@ -116,8 +115,7 @@ class PersonilController extends Controller
     {
         $temp=Personil::find($id)->value('user_id');
         Personil::find($id)->delete();
-        Alert::error('Berhasil', 'Data Terhapus');
-        return redirect()->route('personil.index')->with('message', 'Data berhasil di hapus');
+        //return redirect()->route('personil.index')->with('message', 'Data berhasil di hapus');
     }
 
     public function profil(Request $request){

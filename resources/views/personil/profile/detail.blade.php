@@ -73,7 +73,7 @@
                                         {{ csrf_field() }}
                                         <input type="hidden" class="form-control" name="id" value="{{ $temp }}"  required>
                                         <input type="file" class="form-control form-control-line" name="foto"  required>
-                                        <button type="submit" class="btn btn-success">Ganti Foto</button>
+                                        <button type="submit" class="btn btn-outline-success">Ganti Foto</button>
 
                                 </form>
 
@@ -146,7 +146,7 @@
                                         @if($cek==NULL)
                                         <a><button type="submit" class="btn btn-primary">Isi Profil</button></a>
                                         @else
-                                        <a><button type="submit" class="btn btn-primary">Edit Profil</button></a>
+                                        <a><button type="submit" class="btn btn-outline-success">Edit Profil</button></a>
                                         @endif
                                     </form>
                                         <!-- <button onclick="matikanForm('myForm',false);" class="btn   btn-primary">Edit</button>

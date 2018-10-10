@@ -71,9 +71,9 @@
                                 ?>
                                 <form method="post"  action="{{ route('profile.update', ['profile'=> $kodepersonil]) }}" enctype="multipart/form-data"><input type="hidden" name="_method" value="PATCH">
                                         {{ csrf_field() }}
-                                        <input type="hidden" class="form-control" name="id" value="{{ $temp }}"  required>
-                                        <input type="file" class="form-control form-control-line" name="foto"  required>
-                                        <button type="submit" class="btn btn-success">Ganti Foto</button>
+                                        <input type="hidden" class="form-control" name="id" value="{{ $temp }}" required>
+                                        <input type="file" value="Pilih File" class="form-control form-control-line" name="foto" required>
+                                        <input type="submit" class="btn btn-outline-success" value="Ganti Foto">
 
                                 </form>
 
@@ -208,7 +208,13 @@
                                             <div class="form-group">
                                                 <label class="col-md-12">Gol Darah</label>
                                                 <div class="col-md-12">
-                                                    <input class="form-control form-control-line" type="text" name="gol_darah"  placeholder="Gol Darah" maxlength="2" required>
+                                                    <select class="form-control form-control-line"  name="gol_darah" placeholder="Gol. Darah" required>
+                                                        <option>Pilih Gol. Darah</option>
+                                                        <option value="A">A</option>
+                                                        <option value="B">B</option>
+                                                        <option value="AB">AB</option>
+                                                        <option value="O">O</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -283,35 +289,35 @@
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Jenis Kelamin</label>
                                                 <div class="row">
-                                                @if($d2->jenis_kelamin == 'L')
-                                                <div class="col-md-4 offset-md-3">
+                                                    @if($d2->jenis_kelamin == 'L')
+                                                    <div class="col-md-4 offset-md-3">
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" id="customRadioInline1" name="jenis_kelamin" checked required value="L" class="custom-control-input">
+                                                        <label class="custom-control-label" for="customRadioInline1" >Laki-Laki</label>
+                                                        </div>
+                                                    </div>
                                                     <div class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" id="customRadioInline1" name="jenis_kelamin" checked required value="L" class="custom-control-input">
-                                                    <label class="custom-control-label" for="customRadioInline1" >Laki-Laki</label>
+                                                        <input type="radio" id="customRadioInline2" name="jenis_kelamin" required value="P" class="custom-control-input">
+                                                        <label class="custom-control-label" for="customRadioInline2">Perempuan</label>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" id="customRadioInline2" name="jenis_kelamin" required value="P" class="custom-control-input">
-                                                    <label class="custom-control-label" for="customRadioInline2">Perempuan</label>
+                                                    @elseif($d2->jenis_kelamin == 'P')
+                                                    <div class="col-md-4 offset-md-3">
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" id="customRadioInline1" name="jenis_kelamin" required value="L" class="custom-control-input">
+                                                        <label class="custom-control-label" for="customRadioInline1" >Laki-Laki</label>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                @elseif($d2->jenis_kelamin == 'P')
-                                                <div class="col-md-4 offset-md-3">
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" id="customRadioInline1" name="jenis_kelamin" required value="L" class="custom-control-input">
-                                                    <label class="custom-control-label" for="customRadioInline1" >Laki-Laki</label>
+                                                        <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" id="customRadioInline2" name="jenis_kelamin" checked required value="P" class="custom-control-input">
+                                                        <label class="custom-control-label" for="customRadioInline2">Perempuan</label>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" id="customRadioInline2" name="jenis_kelamin" checked required value="P" class="custom-control-input">
-                                                    <label class="custom-control-label" for="customRadioInline2">Perempuan</label>
-                                                    </div>
-                                                </div>
-                                                @endif
+                                                    @endif
                                             </div>
                                             <div class="form-group">
-                                                <label for="agama">Agama</label>
-                                                <select class="form-control"  name="agama" placeholder="Agama" required>
+                                            <label class="col-md-12">Agama</label>
+                                            <select class="form-control"  name="agama" placeholder="Agama" required>
                                                 <option>Pilih Agama</option>
                                                 <option <?php if($d2->agama == "Islam") echo 'selected' ; ?> value="Islam">Islam</option>
                                                 <option <?php if($d2->agama == "Kristen") echo 'selected' ; ?> value="Kristen">Kristen</option>
@@ -329,7 +335,13 @@
                                             <div class="form-group">
                                                 <label class="col-md-12">Gol Darah</label>
                                                 <div class="col-md-12">
-                                                    <input class="form-control form-control-line" type="text" name="gol_darah" value="{{ $d2->gol_darah }}" placeholder="Gol Darah" maxlegth="2" required>
+                                                <select class="form-control form-control-line"  name="gol_darah" placeholder="Gol Darah" required>
+                                                    <option>Pilih Gol. Darah</option>
+                                                    <option <?php if($d2->gol_darah == "A ") echo 'selected' ; ?> value="A">A</option>
+                                                    <option <?php if($d2->gol_darah == "B ") echo 'selected' ; ?> value="B">B</option>
+                                                    <option <?php if($d2->gol_darah == "AB") echo 'selected' ; ?> value="AB">AB</option>
+                                                    <option <?php if($d2->gol_darah == "O ") echo 'selected' ; ?> value="O">O</option>
+                                                </select>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -378,7 +390,7 @@
                                         @endif
                                         <div class="form-group">
                                             <div class="col-sm-12">
-                                                <button type="submit"class="btn btn-success"  style="float:right">Simpan</button>
+                                                <button type="submit"class="btn btn-outline-success"  style="float:right">Simpan</button>
                                             </div>
                                         </div>
                                     </form>
