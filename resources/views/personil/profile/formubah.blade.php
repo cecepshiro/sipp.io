@@ -41,16 +41,18 @@
                 <div class="row">
                     <div class="col-md-4 col-xs-12">
                         <div class="white-box">
-                            <div class="user-bg"> <img width="100%" alt="user" src="{{ asset('asset/image/images/large/img1.jpg') }}">
+                            <div class="user-bg"> <img width="100%" alt="user" src="{{ asset('asset/plugins/images/large/img3.jpg') }}">
                                 <div class="overlay-box">
                                     <div class="user-content">
-                                        @foreach($data2 as $dt)
-                                            @if($dt->foto != null)
-                                                <a href="javascript:void(0)"><img src="/image/{{ $dt->foto }}" class="thumb-lg img-circle" alt="img"></a>
+                                             <!-- GANTI FOTO -->
+                                        <?php
+                                            $cek2=DB::table('data_personil')->select('user_id')->where('user_id', Auth::user()->id)->value('user_id');
+                                        ?>
+                                            @if($cek2!=null)
+                                                <a href="javascript:void(0)"><img src="/image/{{ $data2['foto'] }}" class="thumb-lg img-circle" alt="img"></a>
                                             @else
-                                                <a href="javascript:void(0)"><img src="{{ asset('image/avatar.png') }}" class="thumb-lg img-circle" alt="img"></a>
+                                            <a href="javascript:void(0)"><img src="{{ asset('image/avatar.png') }}" class="thumb-lg img-circle" alt="img"></a>
                                             @endif
-                                        @endforeach
                                         <?php
                                             $nama=DB::table('users')->select('name')->where('id_anggota', $cari)->value('name');
                                             $temp=DB::table('users')->select('id')->where('id_anggota', $cari)->value('id');
@@ -112,10 +114,7 @@
                                         </div>
                                     </div>
                                     <hr>
-                                    <p class="m-t-30">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries </p>
-                                    <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                    <h4 class="font-bold m-t-30">Skill Set</h4>
+                                    <h4 class="font-bold m-t-30">Pengalaman</h4>
                                     <hr>
                                     <h5>Wordpress <span class="pull-right">80%</span></h5>
                                     <div class="progress">
@@ -139,15 +138,14 @@
                                         <!-- <button onclick="matikanForm('myForm',false);" class="btn btn-primary">Edit</button>
                                         <button onclick="matikanForm('myForm',true);" class="btn btn-danger">Batal</button> -->
                                     </div>
-                                    <form id="myForm2" class="form-horizontal form-material" method="POST" action="{{ route('profile.store') }}" enctype="multipart/form-data">
-                                    {{ csrf_field() }}
-                                    <?php
-                                        $tmp3=DB::table('users')->select('name')->where('id_anggota', $cari)->value('name');
-                                        $cek=DB::table('data_personil')->select('kode_personil')->where('user_id', Auth::user()->id)->value('id');
-                                    ?>
-
-                                        <br>
+                                        <?php
+                                            $namalengkap=DB::table('users')->select('name')->where('id_anggota', $cari)->value('name');
+                                            $cek=DB::table('data_personil')->select('kode_personil')->where('user_id', Auth::user()->id)->value('id');
+                                        ?>
                                         @if($cek==NULL)
+                                        <form id="myForm2" class="form-horizontal form-material" method="POST" action="{{ route('profile.store') }}" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
+                                            <br>
                                             <div class="form-group">
                                                 <label class="col-md-12">NRP</label>
                                                 <div class="col-md-12">
@@ -158,7 +156,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-12">Nama Lengkap</label>
                                                 <div class="col-md-12">
-                                                    <input class="form-control form-control-line" type="text" name="nama" value="{{ $tmp3 }}" placeholder="Nama" readonly required>
+                                                    <input class="form-control form-control-line" type="text" name="nama" value="{{ $namalengkap }}" placeholder="Nama" readonly required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -259,12 +257,26 @@
                                                 <input class="form-control form-control-line" maxlength="13" onkeypress="return isNumberKey(event)" type="text"  name="telp_kantor" placeholder="Masukkan Telp. Kantor" required>
                                                 </div>
                                             </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <button type="submit"class="btn btn-outline-success"  style="float:right">Simpan</button>
+                                            </div>
+                                        </div>
+                                        </form>
                                         @else
+                                        <?php
+                                            $tmp3=DB::table('users')->select('name')->where('id_anggota', $cari)->value('name');
+                                            $cek=DB::table('data_personil')->select('kode_personil')->where('user_id', Auth::user()->id)->value('id');
+                                        ?>
+                                        <form method="POST" id="myForm2" class="form-horizontal form-material" action="{{ route('profile.yangudah') }}" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
+                                        <br>
                                             <div class="form-group">
                                                 <label class="col-md-12">ID Personel</label>
                                                 <div class="col-md-12">
                                                     <input class="form-control form-control-line" type="hidden" name="user_id" value="{{ Auth::user()->id }}" placeholder="ID Anggota" readonly required>
                                                     <input class="form-control form-control-line" type="text" name="id_anggota" value="{{ $cari }}" placeholder="ID Anggota" readonly required>    
+                                                    <input class="form-control form-control-line" type="hidden" name="validasi_kode_personil" value="{{ $cek }}" placeholder="ID Anggota" readonly required>    
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -273,23 +285,23 @@
                                                     <input class="form-control form-control-line" type="text" name="nama" value="{{ $tmp3 }}" placeholder="Nama" readonly required>
                                                 </div>
                                             </div>
-                                            @foreach($data2 as $d2)
+                                            <!-- TAMPILKAN DATA -->
                                             <div class="form-group">
                                                 <label for="example-email" class="col-md-12">Tempat Lahir</label>
                                                 <div class="col-md-12">
-                                                    <input class="form-control form-control-line" value="{{ $d2->tempat_lahir }}" type="text" name="tempat_lahir" placeholder="Masukkan Tempat Lahir" required>
+                                                    <input class="form-control form-control-line" value="{{ $data2['tempat_lahir'] }}" type="text" name="tempat_lahir" placeholder="Masukkan Tempat Lahir" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="example-email" class="col-md-12">Tgl. Lahir</label>
                                                 <div class="col-md-12">
-                                                    <input class="form-control form-control-line" value="{{ $d2->tgl_lahir }}" type="date" name="tgl_lahir" required>
+                                                    <input class="form-control form-control-line" value="{{ $data2['tgl_lahir'] }}" type="date" name="tgl_lahir" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Jenis Kelamin</label>
                                                 <div class="row">
-                                                    @if($d2->jenis_kelamin == 'L')
+                                                    @if($data2['jenis_kelamin'] == 'L')
                                                     <div class="col-md-4 offset-md-3">
                                                         <div class="custom-control custom-radio custom-control-inline">
                                                         <input type="radio" id="customRadioInline1" name="jenis_kelamin" checked required value="L" class="custom-control-input">
@@ -301,7 +313,7 @@
                                                         <label class="custom-control-label" for="customRadioInline2">Perempuan</label>
                                                         </div>
                                                     </div>
-                                                    @elseif($d2->jenis_kelamin == 'P')
+                                                    @elseif($data2['jenis_kelamin'] == 'P')
                                                     <div class="col-md-4 offset-md-3">
                                                         <div class="custom-control custom-radio custom-control-inline">
                                                         <input type="radio" id="customRadioInline1" name="jenis_kelamin" required value="L" class="custom-control-input">
@@ -319,17 +331,17 @@
                                             <label class="col-md-12">Agama</label>
                                             <select class="form-control"  name="agama" placeholder="Agama" required>
                                                 <option>Pilih Agama</option>
-                                                <option <?php if($d2->agama == "Islam") echo 'selected' ; ?> value="Islam">Islam</option>
-                                                <option <?php if($d2->agama == "Kristen") echo 'selected' ; ?> value="Kristen">Kristen</option>
-                                                <option <?php if($d2->agama == "Protestan") echo 'selected' ; ?> value="Protestan">Protestan</option>
-                                                <option <?php if($d2->agama == "Hindu") echo 'selected' ; ?> value="Hindu">Hindu</option>
-                                                <option <?php if($d2->agama == "Budha") echo 'selected' ; ?> value="Budha">Budha</option>
+                                                <option <?php if($data2['agama'] == "Islam") echo 'selected' ; ?> value="Islam">Islam</option>
+                                                <option <?php if($data2['agama'] == "Kristen") echo 'selected' ; ?> value="Kristen">Kristen</option>
+                                                <option <?php if($data2['agama'] == "Protestan") echo 'selected' ; ?> value="Protestan">Protestan</option>
+                                                <option <?php if($data2['agama'] == "Hindu") echo 'selected' ; ?> value="Hindu">Hindu</option>
+                                                <option <?php if($data2['agama'] == "Budha") echo 'selected' ; ?> value="Budha">Budha</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-md-12">Suku Bangsa</label>
                                                 <div class="col-md-12">
-                                                    <input class="form-control form-control-line" type="text" name="suku_bangsa"  value="{{ $d2->suku_bangsa }}" placeholder="Suku Bangsa" required>
+                                                    <input class="form-control form-control-line" type="text" name="suku_bangsa"  value="{{ $data2['suku_bangsa'] }}" placeholder="Suku Bangsa" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -337,63 +349,62 @@
                                                 <div class="col-md-12">
                                                 <select class="form-control form-control-line"  name="gol_darah" placeholder="Gol Darah" required>
                                                     <option>Pilih Gol. Darah</option>
-                                                    <option <?php if($d2->gol_darah == "A ") echo 'selected' ; ?> value="A">A</option>
-                                                    <option <?php if($d2->gol_darah == "B ") echo 'selected' ; ?> value="B">B</option>
-                                                    <option <?php if($d2->gol_darah == "AB") echo 'selected' ; ?> value="AB">AB</option>
-                                                    <option <?php if($d2->gol_darah == "O ") echo 'selected' ; ?> value="O">O</option>
+                                                    <option <?php if($data2['gol_darah'] == "A ") echo 'selected' ; ?> value="A">A</option>
+                                                    <option <?php if($data2['gol_darah'] == "B ") echo 'selected' ; ?> value="B">B</option>
+                                                    <option <?php if($data2['gol_darah'] == "AB") echo 'selected' ; ?> value="AB">AB</option>
+                                                    <option <?php if($data2['gol_darah'] == "O ") echo 'selected' ; ?> value="O">O</option>
                                                 </select>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="example-email" class="col-md-12">Alamat Sekarang</label>
                                                 <div class="col-md-12">
-                                                    <textarea class="form-control form-control-line" type="text" name="alamat_sekarang" placeholder="Masukkan Alamat Sekarang" required>{{ $d2->alamat_sekarang }}</textarea>
+                                                    <textarea class="form-control form-control-line" type="text" name="alamat_sekarang" placeholder="Masukkan Alamat Sekarang" required>{{ $data2['alamat_sekarang'] }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="example-email" class="col-md-12">Telp. Rumah</label>
                                                 <div class="col-md-12">
-                                                <input class="form-control form-control-line" maxlength="13" onkeypress="return isNumberKey(event)" value="{{ $d2->telp_rumah }}" type="text" name="telp_rumah" placeholder="Masukkan Telp. Rumah" required>
+                                                <input class="form-control form-control-line" maxlength="13" onkeypress="return isNumberKey(event)" value="{{ $data2['telp_rumah'] }}" type="text" name="telp_rumah" placeholder="Masukkan Telp. Rumah" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="example-email" class="col-md-12">No. Handphone</label>
                                                 <div class="col-md-12">
-                                                <input class="form-control form-control-line" maxlength="13" onkeypress="return isNumberKey(event)" value="{{ $d2->no_hp }}" type="text" name="no_hp" placeholder="Masukkan No. HP" required>
+                                                <input class="form-control form-control-line" maxlength="13" onkeypress="return isNumberKey(event)" value="{{ $data2['no_hp'] }}" type="text" name="no_hp" placeholder="Masukkan No. HP" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="example-email" class="col-md-12">Tempat Kerja</label>
                                                 <div class="col-md-12">
-                                                    <input class="form-control form-control-line" value="{{ $d2->tempat_kerja }}" type="text" name="tempat_kerja" placeholder="Masukkan Tempat Kerjas" required>
+                                                    <input class="form-control form-control-line" value="{{ $data2['tempat_kerja'] }}" type="text" name="tempat_kerja" placeholder="Masukkan Tempat Kerjas" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="example-email" class="col-md-12">Alamat Kerja / Kantor</label>
                                                 <div class="col-md-12">
-                                                    <textarea class="form-control form-control-line" type="text" name="alamat_kantor" placeholder="Masukkan Alamat Kantor" required>{{ $d2->alamat_kantor }}</textarea>
+                                                    <textarea class="form-control form-control-line" type="text" name="alamat_kantor" placeholder="Masukkan Alamat Kantor" required>{{ $data2['alamat_kantor'] }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="example-email" class="col-md-12">Alamat Tempat Praktik Mandiri</label>
                                                 <div class="col-md-12">
-                                                    <textarea class="form-control form-control-line" type="text" name="alamat_tempat_praktik" placeholder="Masukkan Alamat Tempat Praktik" required>{{ $d2->alamat_tempat_praktik }}</textarea>
+                                                    <textarea class="form-control form-control-line" type="text" name="alamat_tempat_praktik" placeholder="Masukkan Alamat Tempat Praktik" required>{{ $data2['alamat_tempat_praktik'] }}</textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="example-email" class="col-md-12">Telp. Kantor</label>
                                                 <div class="col-md-12">
-                                                <input class="form-control form-control-line" maxlength="13" onkeypress="return isNumberKey(event)" type="text" value="{{ $d2->telp_kantor }}" name="telp_kantor" placeholder="Masukkan Telp. Kantor" required>
+                                                <input class="form-control form-control-line" maxlength="13" onkeypress="return isNumberKey(event)" type="text" value="{{ $data2['telp_kantor'] }}" name="telp_kantor" placeholder="Masukkan Telp. Kantor" required>
                                                 </div>
                                             </div>
-                                            @endforeach
-                                        @endif
                                         <div class="form-group">
                                             <div class="col-sm-12">
-                                                <button type="submit"class="btn btn-outline-success"  style="float:right">Simpan</button>
+                                                <button type="submit"class="btn btn-outline-success"  style="float:right">Ubah Data</button>
                                             </div>
                                         </div>
-                                    </form>
+                                        </form>
+                                        @endif
                                 </div>
                             </div>
                         </div>

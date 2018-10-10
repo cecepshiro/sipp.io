@@ -6,7 +6,6 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Form Ubah Agama</div>
-
                 <div class="card-body">
                 <a href="{{ route('agama.index') }}" class="btn btn-outline-danger btn-sm">Kembali</a>
                 <br>

@@ -137,7 +137,7 @@
                                     <label for="inputPassword4" class="col-sm-3 control-label">Suku Bangsa</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                        <input class="form-control" type="text" name="suku_bangsa" value="{{ $data->suku_bangsa }}" maxlength="13" onkeypress="return isNumberKey(event)" placeholder="Masukkan Telp. Rumah" required>
+                                        <input class="form-control" type="text" name="suku_bangsa" value="{{ $data->suku_bangsa }}" maxlength="13" placeholder="Masukkan Telp. Rumah" required>
                                             <div class="input-group-addon"><i class="ti-pencil"></i></div>
                                         </div>
                                     </div>

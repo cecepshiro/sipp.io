@@ -181,7 +181,7 @@
         html += '<tr>';
         html += '<td><input type="text" name="pemeriksaan[]" maxlength="100" placeholder="Masukan Tujuan" class="form-control item_pemeriksaan" required/></td>';
         html += '<td><input type="text" name="tindakan[]" maxlength="100" placeholder="Masukan Tindakan" class="form-control item_tindakan" required/></td>';
-        html += '<td><input type="text" maxlength="4" name="tahunpelaksanaan[]" placeholder="Masukan Tahun" class="form-control item_pelaksanaan" required/></td>';
+        html += '<td><input type="text" maxlength="4" name="tahunpelaksanaan[]" onkeypress="return isNumberKey(event)" placeholder="Masukan Tahun" class="form-control item_pelaksanaan" required/></td>';
         html += '<td><center><button type="button" name="hapus" class="btn btn-danger btn-sm hapus"><span class="glyphicon glyphicon-minus"></span></button></center></td></tr>';
         $('#tabel_praktik').append(html);
         });
@@ -259,7 +259,7 @@
         html += '<tr>';
         html += '<td><input type="text" name="kegiatan[]" maxlength="100" placeholder="Masukan Kegiatan" class="form-control item_kegiatan" required/></td>';
         html += '<td><input type="text" name="tempat[]" maxlength="50" placeholder="Masukan Tempat" class="form-control item_tempat" required/></td>';
-        html += '<td><input type="text" maxlength="4" name="tahun[]" placeholder="Masukan Tahun" class="form-control item_tahun" required/></td>';
+        html += '<td><input type="text" maxlength="4" onkeypress="return isNumberKey(event)" name="tahun[]" placeholder="Masukan Tahun" class="form-control item_tahun" required/></td>';
         html += '<td><center><button type="button" name="hapus2" class="btn btn-danger btn-sm hapus2"><span class="glyphicon glyphicon-minus"></span></button></center></td></tr>';
         $('#tabelpengembanganpro').append(html);
         });

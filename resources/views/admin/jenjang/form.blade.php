@@ -75,8 +75,8 @@
                                 </div>
                                 <div class="form-group m-b-0">
                                                 <div class="col-sm-offset-3 col-sm-8 text-right">
-                                                    <a href="{{ route('jenjang.index') }}" class="btn btn-danger waves-effect waves-light m-t-10">Batal</a>
-                                                    <button type="submit" class="btn btn-success waves-effect waves-light m-t-10">Simpan</button>
+                                                    <a href="{{ route('jenjang.index') }}" class="btn btn-outline-danger waves-effect waves-light m-t-10">Batal</a>
+                                                    <button type="submit" class="btn btn-outline-success waves-effect waves-light m-t-10">Simpan</button>
                                                 </div>
                                 </div>
                             </div>

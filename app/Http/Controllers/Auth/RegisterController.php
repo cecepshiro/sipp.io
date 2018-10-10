@@ -81,8 +81,8 @@ class RegisterController extends Controller
     }
 
     public function edit($id){
-        $data['data']=User::find($id);
-        return view('admin.pengguna.formubah', $data);
+        $data=User::find($id);
+        return view('admin.pengguna.formubah', compact($data));
     }
     public function update(Request $request, $id){
         $temp =  Hash::make($request->password);

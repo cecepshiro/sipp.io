@@ -66,7 +66,7 @@ Route::delete('/deletepraktikpro/{id}', 'PraktikPsiController@destroy')->name('p
 Route::delete('/deletedatapersonil/{id}', 'PersonilController@destroy')->name('listpersonel-delete');
 Route::delete('/deletepengembanganpro/{id}', 'PengembanganProController@destroy')->name('pengembanganpro-delete');
 // Route::get('/kode','JenjangController@buat_kode');
-
+Route::post('/updateprofilexist', 'ProfileController@updateyangudahdaftar')->name('profile.yangudah');
 
 //report
 Route::get('/reportpers/{id}','ReportController@report_pers')->name('report.personil');

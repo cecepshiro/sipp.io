@@ -24,7 +24,7 @@
         }
     </script>
 
-<h3 class="box-title m-b-0">List Pengembangan Profesional Personel</h3>
+<h3 class="box-title m-b-0">List Pengalaman Pekerjaan Personel</h3>
 <hr>
 <div class="table-responsive">
 <br>

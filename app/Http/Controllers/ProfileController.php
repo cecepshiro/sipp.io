@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Personil;
 use App\User;
+use DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input; 
 use Alert;
@@ -55,12 +56,15 @@ class ProfileController extends Controller
             'telp_kantor' => $request->telp_kantor,
                 ]);
         Alert::success('Berhasil', 'Data Tersimpan');
-        // return redirect()->route('personil.index');
-        $id = $request->user_id;
-        $cari = $request->get('id_anggota');
-        $data = User::where('id_anggota', $cari)->get();
-        $data2 = Personil::where('user_id', $id)->get();
-        return view('personil.profile.detail', compact('data','data2'))->with('cari', $cari);
+        return redirect('/');
+
+
+        // $id = $request->id;
+        // $tmp=DB::table('data_personil')->select('kode_personil')->where('user_id', $id)->value('kode_personil');
+        // $cari = $request->get('id_anggota');
+        // $data = User::find($cari);
+        // $data2 = Personil::find($tmp);
+        // return view('personil.profile.detail', compact('data','data2'))->with('cari', $cari);
     }
 
     /**
@@ -107,7 +111,27 @@ class ProfileController extends Controller
                 }
         }
         Alert::success('Berhasil', 'Data Diubah');
-        // return redirect()->route('personil.index');
+        return Redirect::to('/');
+    }
+
+    public function updateyangudahdaftar(Request $request)
+    {
+        $id=$request->validasi_kode_personil;
+        Personil::find($id)->update(['tempat_lahir'=>$request->tempat_lahir]);
+        Personil::find($id)->update(['tgl_lahir'=>$request->tgl_lahir]);
+        Personil::find($id)->update(['jenis_kelamin'=>$request->jenis_kelamin]);
+        Personil::find($id)->update(['agama'=>$request->agama]);
+        Personil::find($id)->update(['suku_bangsa'=>$request->suku_bangsa]);
+        Personil::find($id)->update(['gol_darah'=>$request->gol_darah]);
+        Personil::find($id)->update(['alamat_sekarang'=>$request->alamat_sekarang]);
+        Personil::find($id)->update(['telp_rumah'=>$request->telp_rumah]);
+        Personil::find($id)->update(['no_hp'=>$request->no_hp]);
+        Personil::find($id)->update(['tempat_kerja'=>$request->tempat_kerja]);
+        Personil::find($id)->update(['alamat_kantor'=>$request->alamat_kantor]);
+        Personil::find($id)->update(['alamat_tempat_praktik'=>$request->alamat_tempat_praktik]);
+        Personil::find($id)->update(['telp_kantor'=>$request->telp_kantor]);
+
+        Alert::success('Berhasil', 'Data Diubah');
         return Redirect::to('/');
     }
 
@@ -124,9 +148,10 @@ class ProfileController extends Controller
 
     public function ubahprofil(Request $request){
         $id = $request->id;
+        $tmp=DB::table('data_personil')->select('kode_personil')->where('user_id', $id)->value('kode_personil');
         $cari = $request->get('profil_id');
-        $data = User::where('id_anggota', $cari)->get();
-        $data2 = Personil::where('user_id', $id)->get();
+        $data = User::find($cari);
+        $data2 = Personil::find($tmp);
         return view('personil.profile.formubah', compact('data','data2'))->with('cari', $cari);
     }
 }

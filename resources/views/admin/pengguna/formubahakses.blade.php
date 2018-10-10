@@ -76,9 +76,9 @@
                                         <div class="input-group">
                                             <select id="akses" class="form-control{{ $errors->has('akses') ? ' is-invalid' : '' }}" name="akses" required>
                                                 <option value="">Pilih Hak Akses</option>
-                                                <option value="0">Admin</option>
-                                                <option value="1">Atasan</option>
-                                                <option value="2">Anggota</option>
+                                                <option <?php if($data['akses'] == 0) echo 'selected' ; ?> value="1">Admin</option>
+                                                <option <?php if($data['akses'] == 1) echo 'selected' ; ?> value="2">Atasan</option>
+                                                <option <?php if($data['akses'] == 2) echo 'selected' ; ?> value="3">Anggota</option>
                                             </select>
                                             <div class="input-group-addon"><i class="ti-user"></i></div>
                                         </div>
@@ -94,8 +94,8 @@
                                 </div>
                                 <div class="form-group m-b-0">
                                     <div class="col-sm-offset-3 col-sm-9 text-right">
-                                        <a href="{{ action('Auth\RegisterController@daftar') }}" class="btn btn-info waves-effect waves-light m-t-10">Batal</a>
-                                        <button type="submit" class="btn btn-info waves-effect waves-light m-t-10">Simpan</button>
+                                        <a href="{{ action('Auth\RegisterController@daftar') }}" class="btn btn-outline-danger waves-effect waves-light m-t-10">Batal</a>
+                                        <button type="submit" class="btn btn-outline-success waves-effect waves-light m-t-10">Simpan</button>
                                     </div>
                                 </div>
                             </form>

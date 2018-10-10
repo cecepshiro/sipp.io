@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Personil;
-use App\USer;
+use App\User;
 use Illuminate\Http\Request;
 use Alert;
+use DB;
 class PersonilController extends Controller
 {
     /**
@@ -120,9 +121,10 @@ class PersonilController extends Controller
 
     public function profil(Request $request){
         $id = $request->id;
+        $tmp=DB::table('data_personil')->select('kode_personil')->where('user_id', $id)->value('kode_personil');
         $cari = $request->get('profil_id');
-        $data = User::where('id_anggota', $cari)->get();
-        $data2 = Personil::where('user_id', $id)->get();
+        $data = User::find($cari);
+        $data2 = Personil::find($tmp);
         return view('personil.profile.detail', compact('data','data2'))->with('cari', $cari);
     }
 

@@ -18,7 +18,7 @@
 </center>
         </div>
         <div align="center">
-            <input type="submit" name="submit" class="btn btn-info" value="Simpan" />
+            <input type="submit" name="submit" class="btn btn-outline-success" value="Simpan" />
 
         </div>
     </div>
