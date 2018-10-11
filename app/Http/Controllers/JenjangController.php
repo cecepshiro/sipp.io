@@ -86,6 +86,7 @@ class JenjangController extends Controller
     public function update(Request $request, $id)
     {
         Jenjang::find($id)->update(['jenjang'=>$request->jenjang]);
+        Jenjang::find($id)->update(['keterangan'=>$request->keterangan]);
         Alert::success('Berhasil', 'Data Diubah');
         return redirect()->route('jenjang.index');
     }

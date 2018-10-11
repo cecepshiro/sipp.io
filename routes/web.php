@@ -42,7 +42,7 @@ Route::get('/halakses/{id}', 'Auth\RegisterController@halamanubahAkses')->name('
 Route::resource('bidang','BidangProfesiController');
 Route::get('masterbidang','BidangProfesiController@listbidang')->name('bidang.listbidang');
 Route::resource('jenjang','JenjangController');
-Route::delete('/deletejenjang/{id}','JenjangController@destroy');
+Route::delete('/deletejenjang/{id}','JenjangController@destroy')->name('jenjang.hapus');
 Route::resource('pendidikan','PendidikanController');
 Route::resource('pekerjaan','PekerjaanController');
 Route::resource('pengalaman','PengalamanController');

@@ -1,5 +1,5 @@
 @extends('layouts.app2')
-<script src="{{ asset('asset/plugins/bower_components/jquery/dist/jquery.min.js') }}"></script>
+
 @section('content')
     <div id="wrapper">
      <!-- Navigasi Menu -->
@@ -28,11 +28,11 @@
                 <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Data Master</h4> </div>
+                        <h4 class="page-title">Daftar Master</h4> </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Bidang Profesi</li>
+                            <li class="active">Form Master</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -42,29 +42,33 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="white-box">
-                            <h3 class="box-title m-b-0">Form Edit Master Bidang Profesi</h3>
+                            <h3 class="box-title m-b-0">Form Ubah Master Bidang Profesi</h3>
                             <p class="text-muted m-b-30 font-13"></p>
                             <form method="POST" class="form-horizontal" action="{{ route('bidang.update', ['bidang'=> $data->kode_bidangprofesi]) }}"  enctype="multipart/form-data">
                             <input type="hidden" name="_method" value="PATCH">
                             {{ csrf_field() }}
                                 <div class="form-group">
-                                <label for="exampleInputname" class="col-sm-3 control-label"><br>Bidang Profesi*</label>
+                                    <label for="exampleInputuname" class="col-sm-3 control-label">Kode Bidang Profesi</label>
                                     <div class="col-sm-9">
-                                        <div class="form-group">
-                                                <table class="table" id="dynamic_field">  
-                                                    <tr>  
-                                                        <td><input type="text" name="bidangprofesi" value="{{ $data->bidangprofesi }}" placeholder="Masukkan Nama Bidang" class="form-control" /></td>  
-                                                        <!-- <td><button type="button" name="add" id="add" class="btn btn-success">Tambah</button></td>   -->
-                                                    </tr>
-                                                </table>  
+                                        <div class="input-group">
+                                            <input type="text" placeholder="Masukkan Kode Pendidikan" readonly class="form-control" name="kode_bidangprofesi" value="{{ $data['kode_bidangprofesi'] }}" required autofocus>
+                                            <div class="input-group-addon"><i class="ti-user"></i></div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputname" class="col-sm-3 control-label">Bidang Profesi</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input type="text" placeholder="Masukkan Kota" class="form-control" name="bidangprofesi" value="{{ $data['bidangprofesi'] }}" required>
+                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group m-b-0">
                                     <div class="col-sm-offset-3 col-sm-9 text-right">
-                                        <a href="{{ route('bidang.index') }}" class="btn btn-outline-danger waves-effect waves-light m-t-10">Batal</a>
-                                        <button type="submit" class="btn btn-outline-success waves-effect waves-light m-t-10">Simpan</button>
+                                        <a href="{{ route('bidang.index') }}" class="btn btn-outline-danger m-t-10">Batal</a>
+                                        <button type="submit" class="btn btn-outline-success m-t-10">Ubah Data</button>
                                     </div>
                                 </div>
                             </form>
@@ -72,72 +76,6 @@
                     </div>
                 </div>
                 <!-- /.row -->
-             </div>
-        
+            </div>
+            
 @endsection
-
-<!-- Multiple Input -->
-<script type="text/javascript">
-        $(document).ready(function(){      
-        var postURL = "<?php echo url('addmore'); ?>";
-        var i=1;  
-
-        $('#add').click(function(){  
-            i++;  
-            $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><input type="text" name="bidangprofesi[]" placeholder="Masukkan Nama Bidang" class="form-control" /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
-        });  
-
-
-        $(document).on('click', '.btn_remove', function(){  
-            var button_id = $(this).attr("id");   
-            $('#row'+button_id+'').remove();  
-        });  
-
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-
-        $('#submit').click(function(){            
-            $.ajax({  
-                    url:postURL,  
-                    method:"POST",  
-                    data:$('#add_detail').serialize(),
-                    type:'json',
-                    success:function(data)  
-                    {
-                        if(data.error){
-                            printErrorMsg(data.error);
-                        }else{
-                            i=1;
-                            $('.dynamic-added').remove();
-                            $('#add_detail')[0].reset();
-                            $(".print-success-msg").find("ul").html('');
-                            $(".print-success-msg").css('display','block');
-                            $(".print-error-msg").css('display','none');
-                            $(".print-success-msg").find("ul").append('<li>Record Inserted Successfully.</li>');
-                        }
-                    }  
-            });  
-        });
-        function printErrorMsg (msg) {
-
-            $(".print-error-msg").find("ul").html('');
-
-            $(".print-error-msg").css('display','block');
-
-            $(".print-success-msg").css('display','none');
-
-            $.each( msg, function( key, value ) {
-
-            $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
-
-            });
-
-            }
-
-         });  
-    </script>
