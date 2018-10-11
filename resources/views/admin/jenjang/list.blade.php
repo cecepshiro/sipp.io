@@ -1,6 +1,6 @@
 @extends('layouts.app2')
     <script>
-            function hapusData(id) {
+            function hapusDataJenjang(id) {
                 if (confirm("Apakah anda akan menghapus ini ?!")) {
                     $.ajax({
                         url: '/deletejenjang/'+ id,
@@ -105,7 +105,7 @@
                                             <td>
                                                 <a href="{{ route('jenjang.edit', ['bidang'=>$d->kode_jenjang]) }}" class="btn btn-outline-primary btn-sm">
                                                 Edit</a>
-                                                <a class="btn btn-outline-danger btn-sm waves-effect waves-light remove-record" onclick="hapusData({{$d->kode_jenjang}})">Hapus</a>   
+                                                <a class="btn btn-outline-danger btn-sm waves-effect waves-light remove-record" onclick="hapusDataJenjang('{{$d->kode_jenjang}}')">Hapus</a>   
                                             </td>
                                             </tr>
                                             @empty

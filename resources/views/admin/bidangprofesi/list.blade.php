@@ -102,7 +102,7 @@
                                             <td>
                                                 <a href="{{ route('bidang.edit', ['bidang'=>$b->kode_bidangprofesi]) }}" class="btn btn-outline-primary btn-sm">
                                                 Edit</a>
-                                                <a class="btn btn-outline-danger btn-sm waves-effect waves-light remove-record" onclick="hapusDataMasterBidang({{$b->kode_bidangprofesi}})">Hapus</a>   
+                                                <a class="btn btn-outline-danger btn-sm waves-effect waves-light remove-record" onclick="hapusDataMasterBidang('{{$b->kode_bidangprofesi}}')">Hapus</a>   
                                             </td>
                                             </tr>
                                             @empty
