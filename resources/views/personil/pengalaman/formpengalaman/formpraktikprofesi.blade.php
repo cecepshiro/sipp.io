@@ -7,6 +7,7 @@
         <div style="overflow-x:auto;">
             <table class="table table-bordered" id="tabel_praktik">
                 <tr>
+                    <th>Kode Praktik</th>
                     <th>Tujuan Pemeriksaan</th>
                     <th>Tindakan Yang Dilakukan</th>
                     <th>Tahun Pelaksanaan</th>

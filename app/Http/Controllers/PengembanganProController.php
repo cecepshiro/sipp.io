@@ -42,6 +42,7 @@ class PengembanganProController extends Controller
         $user = Auth::user()->id;
         for($i=0;$i<count($request->kegiatan);$i++){
             PengembanganPro::create([
+                    'kode_pro' => $request->kode_pro[$i],
                     'user_id' => $user,
                     'kegiatan' => $request->kegiatan[$i],
                     'tempat' => $request->tempat[$i],

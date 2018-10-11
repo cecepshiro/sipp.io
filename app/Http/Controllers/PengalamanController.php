@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Pengalaman;
 use App\Pendidikan;
+use App\Pekerjaan;
 use App\User;
 use App\BidangProfesi;
+use App\PraktikPsi;
 use App\Jenjang;
 use App\PengembanganPro;
 use App\BidangProfesiPersonil;
@@ -29,11 +31,14 @@ class PengalamanController extends Controller
     }
 
     public function formpengalamanpers(){
-        $masterbidang['masterbidang']=BidangProfesi::get();
+        $bidang['bidang']=BidangProfesi::get();
         $jenjang['jenjang']=Jenjang::orderBy('jenjang','asc')->get();
         $data2['data2']=PengembanganPro::get();
         $timeline['timeline']=Pendidikan::get();
-        return view('personil.pengalaman.form' ,$data2, $jenjang)->with($masterbidang)->with($timeline);
+        return view('personil.pengalaman.form' ,$data2, $jenjang)
+        ->with($bidang)
+        ->with($timeline);
+
     }
 
     /**
@@ -102,4 +107,104 @@ class PengalamanController extends Controller
     {
         //
     }
+
+    public static function kode_pendidikan($tambahan){
+        $query = Pendidikan::select('RIGHT(data_pendidikan.kode_pendidikan,3) as kode', FALSE)->orderBy('kode_pendidikan','DESC')->limit(1)->count();
+        if($query <> 0){      
+         //jika kode ternyata sudah ada.      
+         $data = $query;      
+         $kode = intval($data) + $tambahan + 1;  
+        //  dd($kode);  
+        }
+        else {      
+         //jika kode belum ada      
+          $kode = 1+ $tambahan;    
+        }
+         $kodemax = str_pad($kode, 3, "0", STR_PAD_LEFT); // angka 4 menunjukkan jumlah digit angka 0
+         $kodejadi = "PD".$kodemax;    // hasilnya ODJ-9921-0001 dst.
+         $kodeotomatis['kodeotomatis']=$kodejadi;
+        //  print_r($kodeotomatis);
+        return ($kodejadi);
+    }
+
+    public static function kode_pekerjaan($tambahan){
+        $query = Pekerjaan::select('RIGHT(data_pekerjaan.kode_pekerjaan,3) as kode', FALSE)->orderBy('kode_pekerjaan','DESC')->limit(1)->count();
+        
+        if($query <> 0){      
+         //jika kode ternyata sudah ada.      
+         $data = $query;      
+         $kode = intval($data) + $tambahan + 1;  
+        //  dd($kode);  
+        }
+        else {      
+         //jika kode belum ada      
+         $kode = 1+ $tambahan;    
+        }
+         $kodemax = str_pad($kode, 3, "0", STR_PAD_LEFT); // angka 4 menunjukkan jumlah digit angka 0
+         $kodejadi = "PJ".$kodemax;    // hasilnya ODJ-9921-0001 dst.
+         $kodeotomatis['kodeotomatis']=$kodejadi;
+        //  print_r($kodeotomatis);
+        return ($kodejadi);
+    }
+
+    public static function kode_bidangprofesi_pers($tambahan){
+        $query = BidangProfesiPersonil::select('RIGHT(data_bidangpropers.kode_bidangpropers,3) as kode', FALSE)->orderBy('kode_bidangpropers','DESC')->limit(1)->count();
+        
+        if($query <> 0){      
+         //jika kode ternyata sudah ada.      
+         $data = $query;      
+         $kode = intval($data) + $tambahan + 1;  
+        //  dd($kode);  
+        }
+        else {      
+         //jika kode belum ada      
+         $kode = 1+ $tambahan;    
+        }
+         $kodemax = str_pad($kode, 3, "0", STR_PAD_LEFT); // angka 4 menunjukkan jumlah digit angka 0
+         $kodejadi = "BP".$kodemax;    // hasilnya ODJ-9921-0001 dst.
+         $kodeotomatis['kodeotomatis']=$kodejadi;
+        //  print_r($kodeotomatis);
+        return ($kodejadi);
+    }
+
+    public static function kode_praktik($tambahan){
+        $query = PraktikPsi::select('RIGHT(data_praktik.kode_praktik,3) as kode', FALSE)->orderBy('kode_praktik','DESC')->limit(1)->count();
+        
+        if($query <> 0){      
+         //jika kode ternyata sudah ada.      
+         $data = $query;      
+         $kode = intval($data) + $tambahan + 1;  
+        //  dd($kode);  
+        }
+        else {      
+         //jika kode belum ada      
+         $kode = 1+ $tambahan;    
+        }
+         $kodemax = str_pad($kode, 3, "0", STR_PAD_LEFT); // angka 4 menunjukkan jumlah digit angka 0
+         $kodejadi = "PK".$kodemax;    // hasilnya ODJ-9921-0001 dst.
+         $kodeotomatis['kodeotomatis']=$kodejadi;
+        //  print_r($kodeotomatis);
+        return ($kodejadi);
+    }
+
+    public static function kode_pengembanganpro($tambahan){
+        $query = PengembanganPro::select('RIGHT(data_pengembangan_pro.kode_pro,3) as kode', FALSE)->orderBy('kode_pro','DESC')->limit(1)->count();
+        
+        if($query <> 0){      
+         //jika kode ternyata sudah ada.      
+         $data = $query;      
+         $kode = intval($data) + $tambahan + 1;  
+        //  dd($kode);  
+        }
+        else {      
+         //jika kode belum ada      
+         $kode = 1+ $tambahan;    
+        }
+         $kodemax = str_pad($kode, 3, "0", STR_PAD_LEFT); // angka 4 menunjukkan jumlah digit angka 0
+         $kodejadi = "PP".$kodemax;    // hasilnya ODJ-9921-0001 dst.
+         $kodeotomatis['kodeotomatis']=$kodejadi;
+        //  print_r($kodeotomatis);
+        return ($kodejadi);
+    }
+
 }

@@ -8,10 +8,10 @@ class BidangProfesi extends Model
 {
     protected $table='data_bidangprofesi';
     protected $primaryKey='kode_bidangprofesi';
-    public $incrementing =true;
+    public $incrementing =false;
     public $timestamps=true;
   
       protected $fillable = [
-        'bidangprofesi','created_at','updated_at',
+        'kode_bidangprofesi','bidangprofesi','created_at','updated_at',
       ];
 }

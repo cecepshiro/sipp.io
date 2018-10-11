@@ -41,6 +41,7 @@ class PraktikPsiController extends Controller
         $user = Auth::user()->id;
         for($i=0;$i<count($request->pemeriksaan);$i++){
             PraktikPsi::create([
+                    'kode_praktik' => $request->kode_praktik[$i],
                     'user_id' => $user,
                     'pemeriksaan' => $request->pemeriksaan[$i],
                     'tindakan' => $request->tindakan[$i],

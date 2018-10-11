@@ -32,7 +32,7 @@
     <thead>
         <tr>
             <th>No</th>
-            <th>Kode Bidang Profesi</th>
+            <th>Kode Bidang Profesi Pers</th>
             <th>Bidang Profesi</th>
             <th>Aksi</th>
         </tr>
@@ -49,14 +49,15 @@
         <?php $no = 0;?> 
         @forelse($data5 as $d5)
         <?php $no++ ;
-            $temp=DB::table('data_bidangprofesi')->select('bidangprofesi')->where('kode_bidangprofesi', $d5->kode_bidangprofesi )->value('bidangprofesi');
+            $temp=DB::table('data_bidangpropers')->select('kode_bidangprofesi')->where('kode_bidangpropers', $d5->kode_bidangpropers )->value('kode_bidangprofesi');
+            $namabidang=DB::table('data_bidangprofesi')->select('bidangprofesi')->where('kode_bidangprofesi', $temp )->value('bidangprofesi');
         ?>
         <?php
         ?>
         <tr>
             <td>{{ $no }}</td>
             <td>{{ $d5->kode_bidangpropers }}</td>
-            <td>{{ $temp }}</td>
+            <td>{{ $namabidang }}</td>
             <td>
                 <button class="btn btn-outline-primary btn-sm">Edit</button>
                 <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusData1({{$d5->kode_bidangpropers}})">Hapus</a>   

@@ -64,6 +64,7 @@ class BidangProfesiController extends Controller
         $user = Auth::user()->id;
         for($i=0;$i<count($request->kode_bidangprofesi);$i++){
             BidangProfesiPersonil::create([
+                    'kode_bidangpropers' => $request->kode_bidangpropers[$i],
                     'user_id' => $user,
                     'kode_bidangprofesi' => $request->kode_bidangprofesi[$i]
                 ]);

@@ -7,6 +7,7 @@
         <div style="overflow-x:auto;">
             <table class="table table-bordered" id="tabelpengembanganpro">
                 <tr>
+                    <th>Kode Pengalaman Pro</th>
                     <th>Kegiatan</th>
                     <th>Tempat</th>
                     <th>Tahun</th>

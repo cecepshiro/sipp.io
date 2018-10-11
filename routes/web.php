@@ -72,3 +72,14 @@ Route::post('/updateprofilexist', 'ProfileController@updateyangudahdaftar')->nam
 
 //report
 Route::get('/reportpers/{id}','ReportController@report_pers')->name('report.personil');
+
+//kode otomatis pendidikan
+Route::get('/buatkode/{id}','PengalamanController@kode_pendidikan')->name('kode.pendidikan');
+//kode otomatis pekerjaan
+Route::get('/buatkodepekerjaan/{id}','PengalamanController@kode_pekerjaan')->name('kode.pekerjaan');
+//kode otomatis bidang profesi pers
+Route::get('/buatkodebidangpropers/{id}','PengalamanController@kode_bidangprofesi_pers')->name('kode.bidangprofesipers');
+//kode otomatis praktik profesi
+Route::get('/buatkodepraktik/{id}','PengalamanController@kode_praktik')->name('kode.praktik');
+//kode otomatis pengembangan profesional
+Route::get('/buatkodepengembanganpro/{id}','PengalamanController@kode_pengembanganpro')->name('kode.pengembanganpro');

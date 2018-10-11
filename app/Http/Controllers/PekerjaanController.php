@@ -43,6 +43,7 @@ class PekerjaanController extends Controller
         $user = Auth::user()->id;
         for($i=0;$i<count($request->nama_lembaga);$i++){
             Pekerjaan::create([
+                    'kode_pekerjaan' => $request->kode_pekerjaan[$i],
                     'user_id' => $user,
                     'nama_lembaga' => $request->nama_lembaga[$i],
                     'alamat' => $request->alamat[$i],

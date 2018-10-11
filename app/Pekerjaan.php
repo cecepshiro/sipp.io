@@ -8,10 +8,10 @@ class Pekerjaan extends Model
 {
     protected $table='data_pekerjaan';
     protected $primaryKey='kode_pekerjaan';
-    public $incrementing =true;
+    public $incrementing =false;
     public $timestamps=true;
   
       protected $fillable = [
-        'user_id','nama_lembaga','alamat','no_telp','pekerjaan','dari','sampai','created_at','updated_at',
+        'kode_pekerjaan','user_id','nama_lembaga','alamat','no_telp','pekerjaan','dari','sampai','created_at','updated_at',
       ];
 }

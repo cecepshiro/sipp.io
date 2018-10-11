@@ -5,8 +5,9 @@
     <div class="table-repsonsive">
         <span id="error"></span>
         <div style="overflow-x:auto;">
-            <table class="table table-bordered" id="item_table">
+            <table class="table table-bordered nowrap" style="width:100%;" id="item_table">
                 <tr>
+                    <th>Kode Pekerjaan</th>
                     <th>Nama Lembaga</th>
                     <th>Alamat</th>
                     <th>No. Telp</th>

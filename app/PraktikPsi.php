@@ -8,10 +8,10 @@ class PraktikPsi extends Model
 {
     protected $table='data_praktik';
     protected $primaryKey='kode_praktik';
-    public $incrementing =true;
+    public $incrementing =false;
     public $timestamps=true;
   
       protected $fillable = [
-        'user_id','pemeriksaan','tindakan','tahunpelaksanaan','created_at','updated_at',
+        'kode_praktik','user_id','pemeriksaan','tindakan','tahunpelaksanaan','created_at','updated_at',
       ];
 }
