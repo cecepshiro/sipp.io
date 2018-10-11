@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\PraktikPsi;
 use Auth;
 use Illuminate\Http\Request;
+use Alert;
 
 class PraktikPsiController extends Controller
 {
@@ -69,7 +70,8 @@ class PraktikPsiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['data']=PraktikPsi::find($id);
+        return view('personil.praktikprofesi.formubah', $data);
     }
 
     /**
@@ -79,9 +81,14 @@ class PraktikPsiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $id=$request->kode_praktik;
+        PraktikPsi::find($id)->update(['pemeriksaan'=>$request->pemeriksaan]);
+        PraktikPsi::find($id)->update(['tindakan'=>$request->tindakan]);
+        PraktikPsi::find($id)->update(['tahunpelaksanaan'=>$request->tahunpelaksanaan]);
+        Alert::success('Berhasil', 'Data Diubah');
+        return redirect('/pengalamanpers');
     }
 
     /**

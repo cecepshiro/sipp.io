@@ -40,25 +40,12 @@ class JenjangController extends Controller
      */
     public function store(Request $request)
     {
-        // $query = Jenjang::select('RIGHT(data_jenjang.kode_jenjang,3) as kode', FALSE)->orderBy('kode_jenjang','DESC')->limit(1)->count();
-        // if($query <> 0){      
-        //  //jika kode ternyata sudah ada.      
-        //  $data = $query;      
-        //  $kode = intval($data) + 1;  
-        // //  dd($kode);  
-        // }
-        // else {      
-        //  //jika kode belum ada      
-        //   $kode = 1;    
-        // }
-        //  $kodemax = str_pad($kode, 3, "0", STR_PAD_LEFT); // angka 4 menunjukkan jumlah digit angka 0
-        //  $kodejadi = "JN".$kodemax;    // hasilnya ODJ-9921-0001 dst.
-        //  $kodeotomatis['kodeotomatis']=$kodejadi;
-        //  dd($kodeotomatis);
-        foreach($request->input('jenjang') as $key => $value) {
+        ini_set('memory_limit','125M');
+        for($i=0;$i<count($request->jenjang);$i++){
             Jenjang::create([
-                'jenjang'=>$value,
-                'keterangan'=>$request->keterangan
+                    'kode_jenjang' => $request->kode_jenjang[$i],
+                    'jenjang' => $request->jenjang[$i],
+                    'keterangan' => $request->keterangan[$i],
                 ]);
         }
         Alert::success('Berhasil', 'Data Tersimpan');
@@ -99,10 +86,6 @@ class JenjangController extends Controller
     public function update(Request $request, $id)
     {
         Jenjang::find($id)->update(['jenjang'=>$request->jenjang]);
-        // Personil::find($id)->update(['id_pendidikan'=>$request->id_pendidikan]);
-        // Personil::find($id)->update(['id_pengalaman'=>$request->id_pengalaman]);
-        // Personil::find($id)->update(['id_bidang_profesi'=>$request->id_bidang_profesi]);
-        // Personil::find($id)->update(['id_profesional'=>$request->id_profesional]);
         Alert::success('Berhasil', 'Data Diubah');
         return redirect()->route('jenjang.index');
     }
@@ -115,10 +98,8 @@ class JenjangController extends Controller
      */
     public function destroy($id)
     {
-        // $temp=Jenjang::find($id)->value('kode_jenjang');
+
         Jenjang::find($id)->delete();
-        // Alert::error('Berhasil', 'Data Terhapus');
-        // return redirect()->route('jenjang.index')->with('message', 'Data berhasil di hapus');
     }
 
     public function buat_kode(){

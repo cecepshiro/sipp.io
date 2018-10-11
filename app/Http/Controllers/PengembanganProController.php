@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\PengembanganPro;
 use Auth;
+use Alert;
 use Illuminate\Http\Request;
 
 class PengembanganProController extends Controller
@@ -70,7 +71,8 @@ class PengembanganProController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['data']=PengembanganPro::find($id);
+        return view('personil.pengembanganpro.formubah', $data);
     }
 
     /**
@@ -80,9 +82,14 @@ class PengembanganProController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $id=$request->kode_pro;
+        PengembanganPro::find($id)->update(['kegiatan'=>$request->kegiatan]);
+        PengembanganPro::find($id)->update(['tempat'=>$request->tempat]);
+        PengembanganPro::find($id)->update(['tahun'=>$request->tahun]);
+        Alert::success('Berhasil', 'Data Diubah');
+        return redirect('/pengalamanpers');
     }
 
     /**

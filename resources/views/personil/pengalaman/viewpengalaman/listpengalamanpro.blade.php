@@ -56,7 +56,7 @@
             <td>{{ $d2->tempat }}</td>
             <td>{{ $d2->tahun }}</td>
             <td>
-                <button class="btn btn-outline-primary btn-sm">Edit</button>
+            <a href="{{ route('pengembanganprofesional.edit', $d2->kode_pro) }}" class="btn btn-outline-primary btn-sm">Edit</a>
                 <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusData4('{{$d2->kode_pro}}')">Hapus</a>   
             </td>
         </tr>

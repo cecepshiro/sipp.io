@@ -42,29 +42,42 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="white-box">
-                            <h3 class="box-title m-b-0">Form Ubah Bidang Profesi Personil</h3>
+                            <h3 class="box-title m-b-0">Form Ubah Pengembangan Profesional Personil</h3>
                             <p class="text-muted m-b-30 font-13"></p>
-                            <form method="POST" class="form-horizontal" action="{{ route('bidangpropers.updatepers') }}" enctype="multipart/form-data">
+                            <form method="POST" class="form-horizontal" action="{{ route('pempro.update') }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
                                 <div class="form-group">
-                                    <label for="exampleInputuname" class="col-sm-3 control-label">Kode Bidang Profesi Personil</label>
+                                    <label for="exampleInputuname" class="col-sm-3 control-label">Kode Pengembangan Profesional</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                            <input type="text" maxlenght="5"  placeholder="Masukkan Kode Bidang ProPers" readonly class="form-control" name="kode_bidangpropers" value="{{ $data['kode_bidangpropers'] }}" required autofocus>
+                                            <input type="text" maxlenght="5"  placeholder="Masukkan Kode Pengembangan Profesional" readonly class="form-control" name="kode_pro" value="{{ $data['kode_pro'] }}" required autofocus>
                                             <div class="input-group-addon"><i class="ti-user"></i></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputuname" class="col-sm-3 control-label">Bidang Profesi</label>
+                                    <label for="exampleInputuname" class="col-sm-3 control-label">Kegiatan</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                            <select class="form-control" name="kode_bidangprofesi" required autofocus>
-                                                <option value="">Pilih Bidang Profesi</option>
-                                                @foreach($bidang as $b)
-                                                <option <?php if($data['kode_bidangprofesi'] == $b->kode_bidangprofesi) echo 'selected' ; ?> value="{{ $b->kode_bidangprofesi }}">{{ $b->bidangprofesi }}</option>
-                                                @endforeach
-                                            </select>
+                                            <input type="text" placeholder="Masukkan Pemeriksaan"  class="form-control" name="kegiatan" value="{{ $data['kegiatan'] }}" required autofocus>
+                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputuname" class="col-sm-3 control-label">Tempat</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input type="text"  placeholder="Masukkan Tindakan"  class="form-control" name="tempat" value="{{ $data['tempat'] }}" required autofocus>
+                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputuname" class="col-sm-3 control-label">Tahun</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input type="text" maxlenght="5"  placeholder="Masukkan Tahun" onkeypress="return isNumberKey(event)"  class="form-control" name="tahun" value="{{ $data['tahun'] }}" required autofocus>
                                             <div class="input-group-addon"><i class="ti-user"></i></div>
                                         </div>
                                     </div>

@@ -32,7 +32,7 @@
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Bidang Profesi</li>
+                            <li class="active">Data Master</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -44,25 +44,26 @@
                         <div class="white-box">
                             <h3 class="box-title m-b-0">Form Master Bidang Profesi</h3>
                             <p class="text-muted m-b-30 font-13"></p>
-                            <form method="POST" class="form-horizontal" action="{{ route('bidang.store') }}"  enctype="multipart/form-data">
+                            <form method="post" id="insert_masterbidang" enctype="multipart/form-data">
                             {{ csrf_field() }}
-                                <div class="form-group">
-                                <label for="exampleInputname" class="col-sm-3 control-label"><br>Bidang Profesi*</label>
-                                    <div class="col-sm-9">
-                                        <div class="form-group">
-                                                <table class="table" id="dynamic_field">  
-                                                    <tr>  
-                                                        <td><input type="text" name="bidangprofesi[]" placeholder="Masukkan Nama Bidang" class="form-control"  required/></td>  
-                                                        <td><button type="button" name="add" id="add" class="btn btn-outline-info">Tambah</button></td>  
-                                                    </tr>  
-                                                </table>  
-                                        </div>
+                                <div class="table-repsonsive">
+                                    <span id="errormasterbidang"></span>
+                                    <div style="overflow-x:auto;">
+                                        <table class="table table-bordered nowrap" style="width:100%;" id="item_masterbidang">
+                                            <tr>
+                                                <th>Kode Bidang Profesi</th>
+                                                <th>Bidang Profesi</th>
+                                                <th>
+                                                    <center><button type="button" name="addmaster" class="btn btn-success btn-sm addmaster">
+                                                        <span class="glyphicon glyphicon-plus"></span>
+                                                    </button></center>
+                                                </th>
+                                            </tr>
+                                        </table>
                                     </div>
-                                </div>
-                                <div class="form-group m-b-0">
-                                    <div class="col-sm-offset-3 col-sm-9 text-right">
-                                        <a href="{{ route('bidang.index') }}" class="btn btn-outline-danger waves-effect waves-light m-t-10">Batal</a>
-                                        <button type="submit" class="btn btn-outline-success waves-effect waves-light m-t-10">Simpan</button>
+                                    <div align="center">
+                                    <input type="submit" name="submit" class="btn btn-outline-success" value="Simpan" />
+
                                     </div>
                                 </div>
                             </form>
@@ -74,68 +75,70 @@
         
 @endsection
 
-<!-- Multiple Input -->
-<script type="text/javascript">
-        $(document).ready(function(){      
-        var postURL = "<?php echo url('addmore'); ?>";
-        var i=1;  
 
-        $('#add').click(function(){  
-            i++;  
-            $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><input type="text" name="bidangprofesi[]" placeholder="Masukkan Nama Bidang" class="form-control" /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-outline-danger btn_remove">Hapus</button></td></tr>');  
-        });  
+<script>
+//dynamic form input data master bidang
 
+    $(document).ready(function(){
+        $(document).on('click', '.addmaster', function(){
 
-        $(document).on('click', '.btn_remove', function(){  
-            var button_id = $(this).attr("id");   
-            $('#row'+button_id+'').remove();  
-        });  
-
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
+        var adaw= $.get("/kode_bidangprofesi/"+ $('#hasilmasterbidang > option').length,function(data, status){
+        var html = '';
+        html += '<tr>';
+        html += '<td><select id="hasilmasterbidang" readonly name="kode_bidangprofesi[]" placeholder="Masukan Kode Bidang Profesi" class="form-control item_kode" required><option value="'+ data +'">'+ data +'</option></select></td>';
+        html += '<td><input type="text" name="bidangprofesi[]" placeholder="Masukan Bidang Profesi" class="form-control item_bidang" required/></td>';
+        html += '<td><center><button type="button" name="removemaster" class="btn btn-danger btn-sm removemaster"><span class="glyphicon glyphicon-minus" required></span></button></center></td></tr>';
+        $('#item_masterbidang').append(html);
+        });
+         console.log($('#hasilpekerjaan > option').length);
+        });
+        $(document).on('click', '.removemaster', function(){
+        $(this).closest('tr').remove();
         });
 
-
-        $('#submit').click(function(){            
-            $.ajax({  
-                    url:postURL,  
-                    method:"POST",  
-                    data:$('#add_detail').serialize(),
-                    type:'json',
-                    success:function(data)  
-                    {
-                        if(data.error){
-                            printErrorMsg(data.error);
-                        }else{
-                            i=1;
-                            $('.dynamic-added').remove();
-                            $('#add_detail')[0].reset();
-                            $(".print-success-msg").find("ul").html('');
-                            $(".print-success-msg").css('display','block');
-                            $(".print-error-msg").css('display','none');
-                            $(".print-success-msg").find("ul").append('<li>Record Inserted Successfully.</li>');
-                        }
-                    }  
-            });  
+        $('#insert_masterbidang').on('submit', function(event){
+        event.preventDefault();
+        var error = '';
+        $('.item_kode').each(function(){
+        var count = 1;
+        if($(this).val() == '')
+        {
+            error += "<p>Masukan Kode Bidang Profesi "+count+" Row</p>";
+            return false;
+        }
+        count = count + 1;
         });
-        function printErrorMsg (msg) {
+        
+        $('.item_bidang').each(function(){
+        var count = 1;
+        if($(this).val() == '')
+        {
+            error += "<p>Masukan Bidang Profesi "+count+" Row</p>";
+            return false;
+        }
+        count = count + 1;
+        });
 
-            $(".print-error-msg").find("ul").html('');
-
-            $(".print-error-msg").css('display','block');
-
-            $(".print-success-msg").css('display','none');
-
-            $.each( msg, function( key, value ) {
-
-            $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
-
-            });
-
+        var form_data = $(this).serialize();
+        if(error == '')
+        {
+        $.ajax({
+            url:"/simpanbidangprofesi",
+            method:"POST",
+            data:form_data,
+            success:function(data)
+            {
+                //console.log(data);
+            $('#item_masterbidang').find("tr:gt(0)").remove();
+            $('#errormasterbidang').html('<div class="alert alert-success alert-dismissable">Data Tersimpan</div>');
             }
-
-         });  
-    </script>
+        });
+        }
+        else
+        {
+        $('#errormasterbidang').html('<div class="alert alert-danger alert-dismissable">'+error+'</div>');
+        }
+        });
+        
+    });
+</script>

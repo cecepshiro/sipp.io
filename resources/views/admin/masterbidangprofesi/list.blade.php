@@ -1,5 +1,28 @@
 @extends('layouts.app2')
-
+<script>
+        function hapusDataBidang(id) {
+            if (confirm("Apakah anda akan menghapus ini ?!")) {
+                $.ajax({
+                    url: '/deletemasterbidang/'+ id,
+                    type: 'DELETE',
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    success: function (data) {
+                        if (data['success']) {
+                            $("#" + data['tr']).slideUp("slow");
+                            alert(data['success']);                       
+                        } else if (data['error']) {
+                            alert(data['error']);
+                        }
+                        window.location.reload();
+                    },
+                    error: function (data) {
+                        alert(data.responseText);
+                    }
+                });
+            }else{           
+            }
+        }
+    </script>
 @section('content')
     <div id="wrapper">
      <!-- Navigasi Menu -->
@@ -75,18 +98,8 @@
                                             <td>{{ $d->kode_bidangprofesi }}</td>
                                             <td>{{ $d->bidangprofesi }}</td>
                                             <td>
-                                            <form action="{{ route('bidang.destroy', ['bidang'=>$d->kode_bidangprofesi]) }}" method="post">
-                                                <div class="form-group">
-                                                    @if(Auth::user()->hak_akses==0)
-                                                    <a href="{{ route('bidang.edit', ['bidang'=>$d->kode_bidangprofesi]) }}" class="btn btn-outline-warning btn-sm">
-                                                    Edit</a>
-                                                    <input type="hidden" name="_method" value="DELETE">
-                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    <button type="submit" class="btn btn-outline-danger btn-sm">Hapus</button>
-                                                    @endif
-                                            
-                                                </div>
-                                            </form>
+                                                <a href="{{ route('bidang.edit', $d->kode_bidangprofesi) }}" class="btn btn-outline-primary btn-sm">Edit</a>
+                                                <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusDataBidang('{{$d->kode_bidangprofesi}}')">Hapus</a>   
                                             </td>
                                         </tr>
 										@empty

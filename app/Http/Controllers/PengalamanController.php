@@ -207,4 +207,43 @@ class PengalamanController extends Controller
         return ($kodejadi);
     }
 
+    public static function kode_bidangprofesi($tambahan){
+        $query = BidangProfesi::select('RIGHT(data_bidangprofesi.kode_bidangprofesi,3) as kode', FALSE)->orderBy('kode_bidangprofesi','DESC')->limit(1)->count();
+        
+        if($query <> 0){      
+         //jika kode ternyata sudah ada.      
+         $data = $query;      
+         $kode = intval($data) + $tambahan + 1;  
+        //  dd($kode);  
+        }
+        else {      
+         //jika kode belum ada      
+         $kode = 1+ $tambahan;    
+        }
+         $kodemax = str_pad($kode, 3, "0", STR_PAD_LEFT); // angka 4 menunjukkan jumlah digit angka 0
+         $kodejadi = "BF".$kodemax;    // hasilnya ODJ-9921-0001 dst.
+         $kodeotomatis['kodeotomatis']=$kodejadi;
+        //  print_r($kodeotomatis);
+        return ($kodejadi);
+    }
+
+    public static function kode_jenjang($tambahan){
+        $query = Jenjang::select('RIGHT(data_jenjang.kode_jenjang,3) as kode', FALSE)->orderBy('kode_jenjang','DESC')->limit(1)->count();
+        
+        if($query <> 0){      
+         //jika kode ternyata sudah ada.      
+         $data = $query;      
+         $kode = intval($data) + $tambahan + 1;  
+        //  dd($kode);  
+        }
+        else {      
+         //jika kode belum ada      
+         $kode = 1+ $tambahan;    
+        }
+         $kodemax = str_pad($kode, 3, "0", STR_PAD_LEFT); // angka 4 menunjukkan jumlah digit angka 0
+         $kodejadi = "JN".$kodemax;    // hasilnya ODJ-9921-0001 dst.
+         $kodeotomatis['kodeotomatis']=$kodejadi;
+        //  print_r($kodeotomatis);
+        return ($kodejadi);
+    }
 }

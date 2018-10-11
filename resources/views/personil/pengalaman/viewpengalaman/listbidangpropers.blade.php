@@ -59,7 +59,7 @@
             <td>{{ $d5->kode_bidangpropers }}</td>
             <td>{{ $namabidang }}</td>
             <td>
-                <button class="btn btn-outline-primary btn-sm">Edit</button>
+            <a href="{{ route('bidangpropers.editpers', $d5->kode_bidangpropers) }}" class="btn btn-outline-primary btn-sm">Edit</a>
                 <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusData1('{{$d5->kode_bidangpropers}}')">Hapus</a>   
             </td>
         </tr>

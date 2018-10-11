@@ -42,69 +42,70 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="white-box">
-                            <h3 class="box-title m-b-0">Form Ubah Riwayat Pendidikan</h3>
+                            <h3 class="box-title m-b-0">Form Ubah Riwayat Pekerjaan</h3>
                             <p class="text-muted m-b-30 font-13"></p>
-                            <form method="POST" class="form-horizontal" action="{{ route('pendidikan.update', ['pendidikan'=> $data['kode_pendidikan']]) }}" enctype="multipart/form-data">
+                            <form method="POST" class="form-horizontal" action="{{ route('pekerjaan.update', ['pekerjaan'=> $data['kode_pekerjaan']]) }}" enctype="multipart/form-data">
                             <input type="hidden" name="_method" value="PATCH">
                             {{ csrf_field() }}
                                 <div class="form-group">
-                                    <label for="exampleInputuname" class="col-sm-3 control-label">Kode Pendidikan</label>
+                                    <label for="exampleInputuname" class="col-sm-3 control-label">Kode Pekerjaan</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                            <input type="text" maxlenght="50"  placeholder="Masukkan Kode Pendidikan" readonly class="form-control" name="kode_pendidikan" value="{{ $data['kode_pendidikan'] }}" required autofocus>
+                                            <input type="text" maxlenght="5"  placeholder="Masukkan Kode Pendidikan" readonly class="form-control" name="kode_pekerjaan" value="{{ $data['kode_pekerjaan'] }}" required autofocus>
                                             <div class="input-group-addon"><i class="ti-user"></i></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputuname" class="col-sm-3 control-label">Jenjang</label>
+                                    <label for="exampleInputuname" class="col-sm-3 control-label">Nama Lembaga</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                            <select class="form-control" name="kode_jenjang" required autofocus>
-                                                <option value="">Pilih Jenjang Pendidikan</option>
-                                                @foreach($jenjang as $j)
-                                                <?php
-                                                    $nama_jenjang=DB::table('data_jenjang')->select('jenjang')->where('kode_jenjang', $data['kode_jenjang'])->value('jenjang');
-                                                ?>
-                                                <option <?php if($data['kode_jenjang'] == $j->kode_jenjang) echo 'selected' ; ?> value="{{ $j->kode_jenjang }}">{{ $nama_jenjang }}</option>
-                                                @endforeach
-                                            </select>
+                                            <input type="text" placeholder="Masukkan Nama Lembaga" class="form-control" name="nama_lembaga" value="{{ $data['nama_lembaga'] }}" required>
                                             <div class="input-group-addon"><i class="ti-user"></i></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputname" class="col-sm-3 control-label">Nama Perguruan Tinggi</label>
+                                    <label for="exampleInputname" class="col-sm-3 control-label">Alamat</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                            <input id="id_anggota" type="text" placeholder="Masukkan Nama Perguruan Tinggi" class="form-control" name="nama_pt" value="{{ $data['nama_pt'] }}" required>
+                                            <input type="text" placeholder="Masukkan Alamat" class="form-control" name="alamat" value="{{ $data['alamat'] }}" required>
                                             <div class="input-group-addon"><i class="ti-user"></i></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputname" class="col-sm-3 control-label">Kota</label>
+                                    <label for="exampleInputname" class="col-sm-3 control-label">No. Telepon</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                            <input type="text" placeholder="Masukkan Kota" class="form-control" name="kota" value="{{ $data['kota'] }}" required>
+                                            <input type="text" placeholder="Masukkan No. Telp" maxlength="13" onkeypress="return isNumberKey(event)" class="form-control" name="no_telp" value="{{ $data['no_telp'] }}" required>
                                             <div class="input-group-addon"><i class="ti-user"></i></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputname" class="col-sm-3 control-label">Bidang Ilmu</label>
+                                    <label for="exampleInputname" class="col-sm-3 control-label">Nama Pekerjaan</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                            <input type="text" placeholder="Masukkan Bidang Ilmu" class="form-control" name="id_anggota" value="{{ $data['bidang_ilmu'] }}" required>
+                                            <input type="text" placeholder="Masukkan Nama Pekerjaan" class="form-control" name="pekerjaan" value="{{ $data['pekerjaan'] }}" required>
                                             <div class="input-group-addon"><i class="ti-user"></i></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputname" class="col-sm-3 control-label">Tahun Lulus</label>
+                                    <label for="exampleInputname" class="col-sm-3 control-label">Mulai</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                            <input type="text" maxlength="4" onkeypress="return isNumberKey(event)" placeholder="Masukkan Tahun Lulus" class="form-control" name="tahun_lulus" value="{{ $data['tahun_lulus'] }}" required>
+                                            <input type="text" maxlength="4" onkeypress="return isNumberKey(event)" placeholder="Masukkan Tahun Mulai" class="form-control" name="dari" value="{{ $data['dari'] }}" required>
+                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputname" class="col-sm-3 control-label">Sampai</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input type="text" maxlength="4" onkeypress="return isNumberKey(event)" placeholder="Masukkan Tahun Selesai" class="form-control" name="sampai" value="{{ $data['sampai'] }}" required>
                                             <div class="input-group-addon"><i class="ti-user"></i></div>
                                         </div>
                                     </div>

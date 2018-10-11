@@ -75,7 +75,8 @@ class PekerjaanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['data']=Pekerjaan::find($id);
+        return view('personil.pekerjaan.formubah', $data);
     }
 
     /**
@@ -87,7 +88,13 @@ class PekerjaanController extends Controller
      */
     public function update(Request $request, $id)
     {
-       //
+        Pekerjaan::find($id)->update(['nama_lembaga'=>$request->nama_lembaga]);
+        Pekerjaan::find($id)->update(['alamat'=>$request->alamat]);
+        Pekerjaan::find($id)->update(['no_telp'=>$request->no_telp]);
+        Pekerjaan::find($id)->update(['dari '=>$request->dari]);
+        Pekerjaan::find($id)->update(['sampai'=>$request->sampai]);
+        Alert::success('Berhasil', 'Data Diubah');
+        return redirect('/pengalamanpers');
     }
 
     /**

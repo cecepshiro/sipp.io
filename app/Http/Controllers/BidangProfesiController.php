@@ -48,13 +48,15 @@ class BidangProfesiController extends Controller
      */
     public function store(Request $request)
     {
-        foreach($request->input('bidangprofesi') as $key => $value) {
+        ini_set('memory_limit','125M');
+        for($i=0;$i<count($request->bidangprofesi);$i++){
             BidangProfesi::create([
-                'bidangprofesi'=>$value
+                    'kode_bidangprofesi' => $request->kode_bidangprofesi[$i],
+                    'bidangprofesi' => $request->bidangprofesi[$i],
                 ]);
         }
-        Alert::success('Berhasil', 'Data Tersimpan');
-        return redirect('masterbidang');
+        // Alert::success('Berhasil', 'Data Tersimpan');
+        // return redirect('masterbidang');
 
     }
 
@@ -110,6 +112,22 @@ class BidangProfesiController extends Controller
         return redirect('masterbidang');
     }
 
+    public function editpers($id)
+    {
+        $data['data']=BidangProfesiPersonil::find($id);
+        $bidang['bidang']=BidangProfesi::get();
+        return view('personil.bidangprofesi.formubah', $data, $bidang);
+    }
+
+    public function updatepers(Request $request)
+    {
+        $id=$request->kode_bidangpropers;
+        BidangProfesiPersonil::find($id)->update(['kode_bidangprofesi'=>$request->kode_bidangprofesi]);
+        Alert::success('Berhasil', 'Data Diubah');
+        return redirect('/pengalamanpers');
+    }
+
+
     /**
      * Remove the specified resource from storage.
      *
@@ -118,10 +136,7 @@ class BidangProfesiController extends Controller
      */
     public function destroy($id)
     {
-        // $temp=BidangProfesi::find($id)->value('kode_bidangprofesi');
         BidangProfesiPersonil::find($id)->delete();
-        // Alert::error('Berhasil', 'Data Terhapus');
-        // return redirect()->route('bidang.index')->with('message', 'Data berhasil di hapus');
     }
 
     public function hapusmasterbidang($id)

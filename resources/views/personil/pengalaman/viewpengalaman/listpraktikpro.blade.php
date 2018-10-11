@@ -56,7 +56,7 @@
             <td>{{ $d3->tindakan }}</td>
             <td>{{ $d3->tahunpelaksanaan }}</td>
             <td>
-                <button class="btn btn-outline-primary btn-sm">Edit</button>
+            <a href="{{ route('praktik.edit', $d3->kode_praktik) }}" class="btn btn-outline-primary btn-sm">Edit</a>
                 <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusData5('{{$d3->kode_praktik}}')">Hapus</a>   
             </td>
         </tr>

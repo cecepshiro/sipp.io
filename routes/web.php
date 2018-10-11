@@ -44,18 +44,23 @@ Route::get('masterbidang','BidangProfesiController@listbidang')->name('bidang.li
 Route::resource('jenjang','JenjangController');
 Route::delete('/deletejenjang/{id}','JenjangController@destroy');
 Route::resource('pendidikan','PendidikanController');
+Route::resource('pekerjaan','PekerjaanController');
 Route::resource('pengalaman','PengalamanController');
 Route::post('/simpanbidangprofesi','BidangProfesiController@simpan');
+
 Route::post('/simpanpekerjaan','PekerjaanController@store');
+Route::post('/simpanjenjang','JenjangController@store');
 Route::post('/simpanpraktikprofesi','PraktikPsiController@store');
 Route::post('/pengembanganpro','PengembanganProController@store');
 Route::resource('pengembanganprofesional','PengembanganProController');
+Route::post('/ubahpengembanganprofesional','PengembanganProController@update')->name('pempro.update');
 Route::get('/getpengembanganpro','PengembanganProController@index');
 Route::get('/getbidangpropers','BidangProfesiController@index');
 Route::get('/getpraktikpro','PraktikPsiController@index');
 Route::get('/getpekerjaan','PekerjaanController@index');
 Route::get('/getpendidikan','PendidikanController@index');
 Route::post('/simpanpendidikan','PendidikanController@store');
+Route::post('/simpanbidangprofesi','BidangProfesiController@store');
 // Route::get('/agamaexport','AgamaController@export')->name('agama.export');
 Route::get('/pengalamanpers','PengalamanController@formpengalamanpers')->name('pengalaman.formpengalamanpers');
 // Route::get('/posts/{id}', 'Auth\RegisterController@destroy')->name('posts-get');
@@ -69,6 +74,12 @@ Route::delete('/deletemasterbidang/{id}', 'BidangProfesiController@hapusmasterbi
 Route::delete('/deletepengembanganpro/{id}', 'PengembanganProController@destroy')->name('pengembanganpro-delete');
 // Route::get('/kode','JenjangController@buat_kode');
 Route::post('/updateprofilexist', 'ProfileController@updateyangudahdaftar')->name('profile.yangudah');
+Route::post('/ubahbidangpropers','BidangProfesiController@updatepers')->name('bidangpropers.updatepers');
+Route::get('/editpers/{id}','BidangProfesiController@editpers')->name('bidangpropers.editpers');
+
+//praktikpsi
+Route::post('/ubahpraktikpsi','PraktikPsiController@update')->name('praktik.update');
+Route::get('/editpraktikpsi/{id}','PraktikPsiController@edit')->name('praktik.edit');
 
 //report
 Route::get('/reportpers/{id}','ReportController@report_pers')->name('report.personil');
@@ -81,5 +92,9 @@ Route::get('/buatkodepekerjaan/{id}','PengalamanController@kode_pekerjaan')->nam
 Route::get('/buatkodebidangpropers/{id}','PengalamanController@kode_bidangprofesi_pers')->name('kode.bidangprofesipers');
 //kode otomatis praktik profesi
 Route::get('/buatkodepraktik/{id}','PengalamanController@kode_praktik')->name('kode.praktik');
+//kode master bidang
+Route::get('/kode_bidangprofesi/{id}','PengalamanController@kode_bidangprofesi')->name('kode.masterbidang');
+//kode master jenjang
+Route::get('/kode_jenjang/{id}','PengalamanController@kode_jenjang')->name('kode.masterjenjang');
 //kode otomatis pengembangan profesional
 Route::get('/buatkodepengembanganpro/{id}','PengalamanController@kode_pengembanganpro')->name('kode.pengembanganpro');
