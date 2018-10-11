@@ -71,7 +71,7 @@
             <td>{{ $d5->tahun_lulus }}</td>
             <td>
                 <a href="{{ route('pendidikan.edit', $d5->kode_pendidikan) }}" class="btn btn-outline-primary btn-sm">Edit</a>
-                <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusData3({{$d5->kode_pendidikan}})">Hapus</a>   
+                <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusData3('{{$d5->kode_pendidikan}}')">Hapus</a>   
             </td>
         </tr>
         @empty

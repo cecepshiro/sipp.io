@@ -24,7 +24,15 @@
             <!-- /.dropdown -->
             <li class="dropdown">
                 <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#">
-                    <img src="{{ asset('image/avatar.png') }}" alt="user-img" width="36" class="img-circle">
+                    <?php
+                        $cek2=DB::table('data_personil')->select('user_id')->where('user_id', Auth::user()->id)->value('user_id');
+                        $foto=DB::table('data_personil')->select('foto')->where('user_id', Auth::user()->id)->value('foto');
+                    ?>
+                    @if($cek2!=null)
+                        <img src="/image/{{ $foto }}" alt="user-img" width="36" class="img-circle">
+                    @else
+                        <img src="{{ asset('image/avatar.png') }}" alt="user-img" width="36" class="img-circle">
+                    @endif
                     <b class="hidden-xs">{{ Auth::user()->name }}</b>
                 </a>
                 <ul class="dropdown-menu dropdown-user animated flipInY">

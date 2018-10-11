@@ -57,7 +57,7 @@
             <td>{{ $d3->tahunpelaksanaan }}</td>
             <td>
                 <button class="btn btn-outline-primary btn-sm">Edit</button>
-                <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusData5({{$d3->kode_praktik}})">Hapus</a>   
+                <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusData5('{{$d3->kode_praktik}}')">Hapus</a>   
             </td>
         </tr>
         @empty

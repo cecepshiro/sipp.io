@@ -60,7 +60,7 @@
             <td>{{ $namabidang }}</td>
             <td>
                 <button class="btn btn-outline-primary btn-sm">Edit</button>
-                <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusData1({{$d5->kode_bidangpropers}})">Hapus</a>   
+                <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusData1('{{$d5->kode_bidangpropers}}')">Hapus</a>   
             </td>
         </tr>
         @empty

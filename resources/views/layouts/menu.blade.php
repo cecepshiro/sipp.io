@@ -1,6 +1,14 @@
 <li class="user-pro">
     <a href="#" class="waves-effect">
-        <img src="{{ asset('image/avatar.png') }}" alt="user-img" class="img-circle">
+    <?php
+        $cek2=DB::table('data_personil')->select('user_id')->where('user_id', Auth::user()->id)->value('user_id');
+        $foto=DB::table('data_personil')->select('foto')->where('user_id', Auth::user()->id)->value('foto');
+    ?>
+        @if($cek2!=null)
+            <img src="/image/{{ $foto }}" alt="user-img" class="img-circle">
+        @else
+            <img src="{{ asset('image/avatar.png') }}" alt="user-img" class="img-circle">
+        @endif
         <span class="hide-menu"> {{ Auth::user()->name }}
             <span class="fa arrow"></span>
         </span>
