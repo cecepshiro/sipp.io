@@ -153,16 +153,43 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="white-box">
-                            <h3 class="box-title">???</h3>
-                            <ul class="list-inline text-right">
-                                <li>
-                                    <h5><i class="fa fa-circle m-r-5" style="color: #dadada;"></i>Site A View</h5> </li>
-                                <li>
-                                    <h5><i class="fa fa-circle m-r-5" style="color: #aec9cb;"></i>Site B View</h5> </li>
-                            </ul>
-                            <div id="morris-area-chart2" style="height: 370px;"></div>
+                            <h3 class="box-title">Statistik Personel</h3>
+                            <canvas id="speedChart" width="600" height="400"></canvas>
                         </div>
                     </div>
                 </div>
+                </div>
                 
 @endsection
+
+<script>
+var speedCanvas = document.getElementById("speedChart");
+
+Chart.defaults.global.defaultFontFamily = "Lato";
+Chart.defaults.global.defaultFontSize = 18;
+
+var speedData = {
+  labels: ["0s", "10s", "20s", "30s", "40s", "50s", "60s"],
+  datasets: [{
+    label: "Car Speed (mph)",
+    data: [0, 59, 75, 20, 20, 55, 40],
+  }]
+};
+
+var chartOptions = {
+  legend: {
+    display: true,
+    position: 'top',
+    labels: {
+      boxWidth: 80,
+      fontColor: 'black'
+    }
+  }
+};
+
+var lineChart = new Chart(speedCanvas, {
+  type: 'line',
+  data: speedData,
+  options: chartOptions
+});
+</script>

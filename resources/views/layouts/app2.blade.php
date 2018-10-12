@@ -80,6 +80,13 @@
     <script src="{{ asset('asset/js/jsgrid-init.js') }}"></script>
     <script src="{{ asset('asset/js/dataTables.bootstrap.min.js') }}"></script>
     <script src="{{ asset('asset/js/jquery.dataTables.min.js') }}"></script>
+    <!-- chartjs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    
     <!-- Datatable -->
     <!-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> -->
     <script src="{{ asset('asset/js/dataTables.buttons.min.js') }}"></script>
