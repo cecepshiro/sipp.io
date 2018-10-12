@@ -295,40 +295,44 @@
 
 <script>
     $(document).ready(function(){      
+    // var length = $('#test2 > option').length;
     $('.databidangpropers').load("/getbidangpropers");
-    $(document).on('click', '.tambahbidang', function(){
-    var adaw= $.get("buatkodebidangpropers/"+  $('#hasilbidangprofesi > option').length ,function(data, status){
+
+    $(document).on('click', '.tambahbidangpers', function(){
+    var adaw= $.get("buatkodebidangpropers/"+  $('#hasilbidangpropers > option').length ,function(data, status){
     var html = '';
     html += '<tr>';
-    html += '<td><select id="hasilbidangprofesi" readonly name="kode_bidangpropers[]" placeholder="Masukan Kode Bidang Profesi" class="form-control item_kode_bidangpropers" required><option value="'+ data +'">'+ data +'</option></select></td>';
+    html += '<td><select id="hasilbidangpropers"  readonly name="kode_bidangpropers[]" placeholder="Masukan Kode Bidang ProPers" class="form-control item_kode_pers" required><option value="'+ data +'">'+ data +'</option></select></td>';
     html += '<td><select name="kode_bidangprofesi[]" placeholder="Masukan Bidang" class="form-control item_bidang" required><option value="">Pilih Bidang Profesi</option>@foreach($bidang as $mbidang) <option value="{{ $mbidang->kode_bidangprofesi }}">{{ $mbidang->bidangprofesi }}</option> @endforeach</select></td>';
-    html += '<td><button type="button" name="hapusbidang" class="btn btn-danger btn-sm hapusbidang"><span class="glyphicon glyphicon-minus"></span></button></td></tr>';
-    $('#tabelbidangpendidikan').append(html);
+    html += '<td><center><button type="button" name="hapusbidangpers" class="btn btn-danger btn-sm hapus3"><span class="glyphicon glyphicon-minus"></span></button></center></td></tr>';
+    $('#tabelbidangprofesi').append(html);
     });
+        // console.log($('#hasiljenjang > option').length);
     });
-    
-    $(document).on('click', '.hapusbidang', function(){
+
+
+    $(document).on('click', '.hapusbidangpers', function(){
     $(this).closest('tr').remove();
     });
 
-    $('#formbidangpendidikan').on('submit', function(event){
+    $('#formbidangbidangprofesipers').on('submit', function(event){
     event.preventDefault();
     var error = '';
-    $('.item_bidang').each(function(){
+    $('.item_kode_pers').each(function(){
     var count = 1;
     if($(this).val() == '')
     {
-        error += "<p>Masukan Bidang Profesi "+count+" Row</p>";
+        error += "<p>Masukan Kode Bidang Personil "+count+" Row</p>";
         return false;
     }
     count = count + 1;
     });
 
-    $('.item_kode_bidangpropers').each(function(){
+    $('.item_bidang').each(function(){
     var count = 1;
     if($(this).val() == '')
     {
-        error += "<p>Masukan Bindang Profesi Pers "+count+" Row</p>";
+        error += "<p>Masukan Bidang "+count+" Row</p>";
         return false;
     }
     count = count + 1;
@@ -338,12 +342,12 @@
     if(error == '')
     {
     $.ajax({
-        url:"/simpanbidangprofesi",
+        url:"/simpanbidangprofesipers",
         method:"POST",
         data:form_data,
         success:function(data)
         {
-           // console.log(data);
+        // console.log(data);
         $('#tabelbidangprofesi').find("tr:gt(0)").remove();
         $('.databidangpropers').load("/getbidangpropers");
         $('#errorbidang').html('<div class="alert alert-success alert-dismissable">Data Tersimpan</div>');
@@ -352,9 +356,9 @@
     }
     else
     {
-    $('#error4').html('<div class="alert alert-danger alert-dismissable">'+error+'</div>');
+    $('#errorbidang').html('<div class="alert alert-danger alert-dismissable">'+error+'</div>');
     }
     });
-    
-});
+
+    });
 </script>

@@ -16,7 +16,7 @@ class BidangProfesiController extends Controller
      */
     function __construct()
     {
-        $this->middleware('cekstatusadmin');
+       
     }
     public function index()
     {

@@ -14,7 +14,7 @@ class JenjangController extends Controller
      */
     function __construct()
     {
-        $this->middleware('cekstatusadmin');
+        $this->middleware('cekstatusinfolahta');
     }
     public function index()
     {

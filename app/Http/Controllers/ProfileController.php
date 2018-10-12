@@ -154,4 +154,13 @@ class ProfileController extends Controller
         $data2 = Personil::find($tmp);
         return view('personil.profile.formubah', compact('data','data2'))->with('cari', $cari);
     }
+
+    public function profil(Request $request){
+        $id = $request->id;
+        $tmp=DB::table('data_personil')->select('kode_personil')->where('user_id', $id)->value('kode_personil');
+        $cari = $request->get('profil_id');
+        $data = User::find($cari);
+        $data2 = Personil::find($tmp);
+        return view('personil.profile.detail', compact('data','data2'))->with('cari', $cari);
+    }
 }

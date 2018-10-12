@@ -13,6 +13,7 @@ use App\Jenjang;
 use App\PengembanganPro;
 use App\BidangProfesiPersonil;
 use Alert;
+use Auth;
 use DB;
 class PengalamanController extends Controller
 {
@@ -70,8 +71,17 @@ class PengalamanController extends Controller
      */
     public function show($id)
     {
-        $data['data']=User::where('id_anggota',$id)->get();
-        return view('personil.pengalaman.list', $data);
+        $pengembangan['pengembangan']=PengembanganPro::where('user_id', $id)->get();
+        $praktik['praktik']=PraktikPsi::where('user_id',$id)->get();
+        $pekerjaan['pekerjaan']=Pekerjaan::where('user_id', $id)->get();
+        $pendidikan['pendidikan']=Pendidikan::where('user_id', $id)->get();
+        $bidang['bidang']=BidangProfesiPersonil::where('user_id', $id)->get();
+        return view('personil.pengalaman.detailpengalaman')
+        ->with($pengembangan)
+        ->with($praktik)
+        ->with($pekerjaan)
+        ->with($pendidikan)
+        ->with($bidang);
     }
 
     /**
@@ -246,4 +256,6 @@ class PengalamanController extends Controller
         //  print_r($kodeotomatis);
         return ($kodejadi);
     }
+
+
 }

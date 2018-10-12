@@ -124,20 +124,13 @@
                                         <td>{{ $d->alamat_sekarang }}</td>
                                         <td>{{ $d->telp_rumah }}</td>
                                         <td>{{ $d->no_hp }}</td>
-                                        <!-- <td>
-                                        <form action="{{ route('personil.destroy', ['personil'=>$d->kode_personil]) }}" method="post">
-                                            <div class="form-group">
-                                                <a href="{{ route('personil.edit', ['personil'=>$d->kode_personil]) }}" class="btn btn-outline-success btn-sm">
-                                                Edit</a>
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                <button type="submit" class="btn btn-outline-danger btn-sm">Hapus</button>
-                                            </div>
-                                        </form>
-                                        </td> -->
                                         <td>
+                                            <?php
+                                                $kode=DB::table('users')->select('id')->where('id', $d->user_id)->value('id');
+                                            ?>
+                                            <a href="{{ route('pengalaman.show', ['pengalaman'=>$kode]) }}" class="btn btn-outline-primary btn-sm">Lihat Pengalaman</a>
                                             <a href="{{ route('personil.edit', ['personil'=>$d->kode_personil]) }}" class="btn btn-outline-success btn-sm">Edit</a>
-                                            <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusDataPersonil({{$d->kode_personil}})">Hapus</a>   
+                                            <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusDataPersonil('{{$d->kode_personil}}')">Hapus</a>   
                                         </td>
                                         </tr>
 										@empty

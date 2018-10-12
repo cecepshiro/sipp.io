@@ -62,5 +62,8 @@ class Kernel extends HttpKernel
         'cekstatusadmin' => \App\Http\Middleware\LimitAccess::class,
         'cekstatuspersonel' => \App\Http\Middleware\LimitAccessPersonel::class,
         'cekstatusatasan' => \App\Http\Middleware\LimitAccessAtasan::class,
+        'cekstatusinfolahta' => \App\Http\Middleware\LimitAccessInfolahta::class,
+        'cekstatusadmininfolahta' => \App\Http\Middleware\LimitAccessAdminInfolahta::class,
+        'cekstatusanggotainfolahta' => \App\Http\Middleware\LimitAccessAnggotaInfolahta::class,
     ];
 }

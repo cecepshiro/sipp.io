@@ -21,6 +21,7 @@ class PengembanganProController extends Controller
         return view('personil.pengalaman.viewpengalaman.listpengalamanpro', $data2);
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -91,6 +92,8 @@ class PengembanganProController extends Controller
         Alert::success('Berhasil', 'Data Diubah');
         return redirect('/pengalamanpers');
     }
+
+   
 
     /**
      * Remove the specified resource from storage.

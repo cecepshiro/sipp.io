@@ -21,6 +21,7 @@ class PendidikanController extends Controller
         return view('personil.pengalaman.viewpengalaman.listpendidikan', $data5);
 
     }
+   
 
     /**
      * Show the form for creating a new resource.

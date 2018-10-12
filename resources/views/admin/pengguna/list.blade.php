@@ -98,16 +98,20 @@
                                             <td>{{ $value->id_anggota }}</td>
                                             <td>{{ $value->name }}</td>
                                             <td>
-                                                @if($value->akses==0)
+                                                @if($value->akses=='0')
                                                     Admin
-                                                @elseif($value->akses==1)
+                                                @elseif($value->akses=='1')
                                                     Atasan
-                                                @elseif($value->akses==2)
+                                                @elseif($value->akses=='2')
                                                     Anggota
+                                                @elseif($value->akses=='3')
+                                                    Staff Infolahta
+                                                @else($value->akses==null)
+                                                    Tentukan Hak Akses
                                                 @endif
                                             </td>
                                             <td>
-                                            <a href="{{ route('registeruser.halakses', ['registeruser.halakses'=>$value->id]) }}" class="btn btn-outline-success btn-sm">Hak Akses</a>
+                                            <a href="{{ route('registeruser.halakses', ['registeruser.halakses'=>$value->id]) }}" class="btn btn-outline-success btn-sm">Ubah Hak Akses</a>
                                             <a href="{{ route('registeruser.edit', ['registeruser'=>$value->id]) }}" class="btn btn-outline-primary btn-sm">Edit Password</a>
                                             <a class="btn btn-outline-danger btn-sm waves-effect waves-light remove-record" onclick="hapusData({{$value->id}})">Hapus</a>   
                                         </td>

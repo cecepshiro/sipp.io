@@ -19,19 +19,25 @@ Route::group(['middleware' => ['web','auth']], function(){
     //redirect to login
     Route::get('/home','HomeController@index');
     Route::get('/', function(){
+      //akses admin
       if(Auth::user()->akses==0){
         return view('admin.home');
+        //akses kepala dinas
       }elseif(Auth::user()->akses==1){
         return view('atasan.home');
+        //akses anggota
       }elseif(Auth::user()->akses==2){
         return view('personil.home');
+        //akses infolahta
+      }elseif(Auth::user()->akses==3){
+        return view('infolahta.home');
       }
     });
 });
 
 // Route::resource('agama','AgamaController');
 Route::resource('personil','PersonilController');
-Route::get('profilpersonil','PersonilController@profil');
+Route::get('profilpersonil','ProfileController@profil')->name('profile.form');
 Route::get('ubahprofil','ProfileController@ubahprofil');
 Route::post('simpanfoto','PersonilController@foto');
 Route::resource('profile','ProfileController');
@@ -46,8 +52,7 @@ Route::delete('/deletejenjang/{id}','JenjangController@destroy')->name('jenjang.
 Route::resource('pendidikan','PendidikanController');
 Route::resource('pekerjaan','PekerjaanController');
 Route::resource('pengalaman','PengalamanController');
-Route::post('/simpanbidangprofesi','BidangProfesiController@simpan');
-
+Route::post('/simpanbidangprofesipers','BidangProfesiController@simpan');
 Route::post('/simpanpekerjaan','PekerjaanController@store');
 Route::post('/simpanjenjang','JenjangController@store');
 Route::post('/simpanpraktikprofesi','PraktikPsiController@store');
@@ -98,3 +103,11 @@ Route::get('/kode_bidangprofesi/{id}','PengalamanController@kode_bidangprofesi')
 Route::get('/kode_jenjang/{id}','PengalamanController@kode_jenjang')->name('kode.masterjenjang');
 //kode otomatis pengembangan profesional
 Route::get('/buatkodepengembanganpro/{id}','PengalamanController@kode_pengembanganpro')->name('kode.pengembanganpro');
+
+//show detail pengalaman
+
+Route::get('/getdetailpengembanganpro','PengembanganProController@lihat');
+Route::get('/getdetailbidangpropers','BidangProfesiController@lihat');
+Route::get('/getdetailpraktikpro','PraktikPsiController@lihat');
+Route::get('/getdetailpekerjaan','PekerjaanController@lihat');
+Route::get('/getdetailpendidikan','PendidikanController@lihat');

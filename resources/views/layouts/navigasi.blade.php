@@ -36,7 +36,7 @@
                     <b class="hidden-xs">{{ Auth::user()->name }}</b>
                 </a>
                 <ul class="dropdown-menu dropdown-user animated flipInY">
-                    <form action="{{ action('PersonilController@profil') }}" method="get" enctype="multipart/form-data">
+                    <form action="{{ route('profile.form') }}" method="get" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <input type="hidden" name="id" value="{{ Auth::user()->id }}">
                         <a></a>

@@ -15,7 +15,7 @@
     </a>
     <ul class="nav nav-second-level">
         <li>
-            <form action="{{ action('PersonilController@profil') }}" method="get" enctype="multipart/form-data">
+            <form action="{{ route('profile.form') }}" method="get" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <input type="hidden" name="id" value="{{ Auth::user()->id }}">
                 <a></a>
@@ -38,6 +38,7 @@
         </li>
     </ul>
 </li>
+@if(Auth::user()->akses==0)
 <li class="nav-small-cap m-t-10">
     --- Data Personel</li>
 <li>
@@ -66,6 +67,59 @@
         <span class="hide-menu">Daftar Pengguna</span>
     </a>
 </li>
+@elseif(Auth::user()->akses==1)
+<li class="nav-small-cap m-t-10">--- Data Personel</li>
+<li>
+    <a href="{{ route('personil.index') }}" class="waves-effect">
+        <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
+        <span class="hide-menu">Daftar Personel</span>
+    </a>
+</li>
+<li class="nav-small-cap m-t-10">--- Data Pengalaman</li>
+<li>
+    <a href="{{ route('pengalaman.formpengalamanpers') }}" class="waves-effect">
+        <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
+        <span class="hide-menu">Daftar Pengalaman</span>
+    </a>
+</li>
+<li class="nav-small-cap m-t-10">--- Data Laporan</li>
+<li>
+     <a href="#" onclick="window.open('/reportpers/{{Auth::user()->id}}','Cetak Data Pengalaman ','width=650,height=800').print()" class="waves-effect">
+        <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
+        <span class="hide-menu">Laporan</span>
+    </a>
+</li>
+@elseif(Auth::user()->akses==2)
+<li class="nav-small-cap m-t-10">--- Data Pengalaman</li>
+<li>
+    <a href="{{ route('pengalaman.formpengalamanpers') }}" class="waves-effect">
+        <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
+        <span class="hide-menu">Daftar Pengalaman</span>
+    </a>
+</li>
+<li class="nav-small-cap m-t-10">--- Data Laporan</li>
+<li>
+     <a href="#" onclick="window.open('/reportpers/{{Auth::user()->id}}','Cetak Data Pengalaman ','width=650,height=800').print()" class="waves-effect">
+        <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
+        <span class="hide-menu">Laporan</span>
+    </a>
+</li>
+@elseif(Auth::user()->akses==3)
+<li class="nav-small-cap m-t-10">
+    --- Data Personel</li>
+<li>
+    <a href="{{ route('personil.index') }}" class="waves-effect">
+        <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
+        <span class="hide-menu">Daftar Personel</span>
+    </a>
+</li>
+<li class="nav-small-cap m-t-10">--- Data Pengalaman</li>
+<li>
+    <a href="{{ route('pengalaman.formpengalamanpers') }}" class="waves-effect">
+        <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
+        <span class="hide-menu">Daftar Pengalaman</span>
+    </a>
+</li>
 <li class="nav-small-cap m-t-10">--- Data Master</li>
 <li>
     <a href="{{ route('jenjang.index') }}" class="waves-effect">
@@ -77,10 +131,4 @@
         <span class="hide-menu">Bidang Profesi</span>
     </a>
 </li>
-<li class="nav-small-cap m-t-10">--- Data Laporan</li>
-<li>
-     <a href="#" onclick="window.open('/reportpers/{{Auth::user()->id}}','Cetak Data Pengalaman ','width=650,height=800').print()" class="waves-effect">
-        <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
-        <span class="hide-menu">Laporan</span>
-    </a>
-</li>
+@endif

@@ -13,6 +13,10 @@ class PersonilController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        // $this->middleware('cekstatusadmin');
+    }
     public function index()
     {
         $data['data']=Personil::get();

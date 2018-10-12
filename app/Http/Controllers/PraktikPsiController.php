@@ -20,6 +20,8 @@ class PraktikPsiController extends Controller
         return view('personil.pengalaman.viewpengalaman.listpraktikpro', $data3);
     }
 
+
+
     /**
      * Show the form for creating a new resource.
      *
