@@ -40,7 +40,7 @@ class RegisterController extends Controller
     
     public function __construct()
     {
-        $this->middleware('cekstatusadmin');
+        $this->middleware('cekstatusadmininfolahta');
     }
 
     /**
@@ -81,8 +81,9 @@ class RegisterController extends Controller
     }
 
     public function edit($id){
-        $data=User::find($id);
-        return view('admin.pengguna.formubah', compact($data));
+        $data['data']=User::find($id);
+        return view('admin.pengguna.formubah', $data);
+
     }
     public function update(Request $request, $id){
         $temp =  Hash::make($request->password);

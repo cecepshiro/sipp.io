@@ -55,7 +55,7 @@
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="#" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Daftar Registrasi</li>
+                            <li class="active">Daftar Pengguna</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -67,7 +67,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="white-box">
-                            <h3 class="box-title">Data Pengguna</h3>
+                            <h3 class="box-title">Daftar Pengguna</h3>
                             <div class="table-responsive">
                             <!-- <table id="example" class="table table-striped table-bordered" style="width:100%"> -->
                             <table id="example" class="cell-border compact nowrap" style="width:100%">
@@ -111,9 +111,14 @@
                                                 @endif
                                             </td>
                                             <td>
+                                            @if(Auth::user()->akses==1 || Auth::user()->akses==2 || Auth::user()->akses==3)
+                                            <a href="{{ route('registeruser.edit', ['registeruser'=>$value->id]) }}" class="btn btn-outline-primary btn-sm">Edit Password</a>
+                                            <a class="btn btn-outline-danger btn-sm waves-effect waves-light remove-record" onclick="hapusData({{$value->id}})">Hapus</a>
+                                            @elseif(Auth::user()->akses==0)
                                             <a href="{{ route('registeruser.halakses', ['registeruser.halakses'=>$value->id]) }}" class="btn btn-outline-success btn-sm">Ubah Hak Akses</a>
                                             <a href="{{ route('registeruser.edit', ['registeruser'=>$value->id]) }}" class="btn btn-outline-primary btn-sm">Edit Password</a>
-                                            <a class="btn btn-outline-danger btn-sm waves-effect waves-light remove-record" onclick="hapusData({{$value->id}})">Hapus</a>   
+                                            <a class="btn btn-outline-danger btn-sm waves-effect waves-light remove-record" onclick="hapusData({{$value->id}})">Hapus</a>
+                                            @endif   
                                         </td>
                                         </tr>
 										@empty

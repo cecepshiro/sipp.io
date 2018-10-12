@@ -59,7 +59,7 @@
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="#" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">List Personel</li>
+                            <li class="active">Daftar Personel</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -71,9 +71,10 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="white-box">
-                            <h3 class="box-title">List Personel</h3>
+                            <h3 class="box-title">Daftar Personel</h3>
                             <div class="table-responsive">
-                            <!-- <table id="example" class="table table-striped table-bordered nowrap" style="width:100%"> -->
+                            <!-- <table id="example" class="table table-striped compact table-bordered nowrap" style="width:100%"> -->
+                            @if(Auth::user()->akses==1 || Auth::user()->akses==2)
                             <table id="example" class="cell-border compact nowrap" style="width:100%">
                                 <thead>
                                     <tr>
@@ -82,7 +83,7 @@
                                         <th>Nama</th>
                                         <th>Tempat Lahir</th>
                                         <th>Tgl. Lahir</th>
-                                        <th>Jk</th>
+                                        <th>Jenis Kelamin</th>
                                         <th>Agama</th>
                                         <th>Alamat Sekarang</th>
                                         <th>Telp. Rumah</th>
@@ -97,7 +98,7 @@
                                         <th>Nama</th>
                                         <th>Tempat Lahir</th>
                                         <th>Tgl. Lahir</th>
-                                        <th>Jk</th>
+                                        <th>Jenis Kelamin</th>
                                         <th>Agama</th>
                                         <th>Alamat Sekarang</th>
                                         <th>Telp. Rumah</th>
@@ -119,7 +120,12 @@
                                         <td>{{ $nama }}</td>
                                         <td>{{ $d->tempat_lahir }}</td>
                                         <td>{{ $d->tgl_lahir }}</td>
-                                        <td>{{ $d->jenis_kelamin }}</td>
+                                        <td>@if($d->jenis_kelamin=='L')
+                                            Laki-Laki
+                                            @elseif($d->jenis_kelamin=='P')
+                                            Perempuan
+                                            @endif
+                                        </td>
                                         <td>{{ $d->agama }}</td>
                                         <td>{{ $d->alamat_sekarang }}</td>
                                         <td>{{ $d->telp_rumah }}</td>
@@ -128,9 +134,12 @@
                                             <?php
                                                 $kode=DB::table('users')->select('id')->where('id', $d->user_id)->value('id');
                                             ?>
+                                            @if(Auth::user()->akses==2)
+
+                                            @elseif(Auth::user()->akses==1)
                                             <a href="{{ route('pengalaman.show', ['pengalaman'=>$kode]) }}" class="btn btn-outline-primary btn-sm">Lihat Pengalaman</a>
-                                            <a href="{{ route('personil.edit', ['personil'=>$d->kode_personil]) }}" class="btn btn-outline-success btn-sm">Edit</a>
-                                            <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusDataPersonil('{{$d->kode_personil}}')">Hapus</a>   
+                                            <a onclick="window.open('/reportpers/{{$kode}}','Cetak Data Pengalaman ','width=650,height=800').print()" href="#" class="btn btn-outline-success btn-sm">Cetak Pengalaman</a>
+                                            @endif
                                         </td>
                                         </tr>
 										@empty
@@ -141,6 +150,84 @@
                                         </tr>
                                     </tbody>
                             </table>
+                            @elseif(Auth::user()->akses==0 || Auth::user()->akses==3)
+                            <table id="example" class="cell-border compact nowrap" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>NRP</th>
+                                        <th>Nama</th>
+                                        <th>Tempat Lahir</th>
+                                        <th>Tgl. Lahir</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Agama</th>
+                                        <th>Alamat Sekarang</th>
+                                        <th>Telp. Rumah</th>
+                                        <th>No. HP</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>NRP</th>
+                                        <th>Nama</th>
+                                        <th>Tempat Lahir</th>
+                                        <th>Tgl. Lahir</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Agama</th>
+                                        <th>Alamat Sekarang</th>
+                                        <th>Telp. Rumah</th>
+                                        <th>No. HP</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </tfoot>
+                                    <tbody>
+                                        <?php $no = 0;?>
+										@forelse($data as $d)
+                                        <?php
+                                        $no++;
+                                        $kode=DB::table('users')->select('id_anggota')->where('id', $d->user_id)->value('id_anggota');
+                                        $nama=DB::table('users')->select('name')->where('id', $d->user_id)->value('name');
+                                        ?>
+                                        <tr>
+                                        <td>{{ $no }}</td>
+                                        <td>{{ $kode }}</td>
+                                        <td>{{ $nama }}</td>
+                                        <td>{{ $d->tempat_lahir }}</td>
+                                        <td>{{ $d->tgl_lahir }}</td>
+                                        <td>@if($d->jenis_kelamin=='L')
+                                            Laki-Laki
+                                            @elseif($d->jenis_kelamin=='P')
+                                            Perempuan
+                                            @endif
+                                        </td>
+                                        <td>{{ $d->agama }}</td>
+                                        <td>{{ $d->alamat_sekarang }}</td>
+                                        <td>{{ $d->telp_rumah }}</td>
+                                        <td>{{ $d->no_hp }}</td>
+                                        <td>
+                                            <?php
+                                                $kode=DB::table('users')->select('id')->where('id', $d->user_id)->value('id');
+                                            ?>
+                                            @if(Auth::user()->akses==1 || Auth::user()->akses==2)
+
+                                            @elseif(Auth::user()->akses==0 || Auth::user()->akses==3)
+                                            <a href="{{ route('pengalaman.show', ['pengalaman'=>$kode]) }}" class="btn btn-outline-primary btn-sm">Lihat Pengalaman</a>
+                                            <a href="{{ route('personil.edit', ['personil'=>$d->kode_personil]) }}" class="btn btn-outline-success btn-sm">Edit</a>
+                                            <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusDataPersonil('{{$d->kode_personil}}')">Hapus</a>   
+                                            @endif
+                                        </td>
+                                        </tr>
+										@empty
+                                        <tr>
+                              			  <td colspan="11">Data Kosong</td>
+                              			</tr>
+                                        @endforelse
+                                        </tr>
+                                    </tbody>
+                            </table>
+                            @endif
                             </div>
                             
                             </div>

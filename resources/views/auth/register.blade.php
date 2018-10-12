@@ -80,7 +80,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="form-group">
+                                @if(Auth::user()->akses!=0)
+                                <div class="form-group">
                                     <label for="exampleInputname" class="col-sm-3 control-label">Hak Akses*</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
@@ -101,7 +102,10 @@
                                             @endif
                                         </div>
                                     </div>
-                                </div> -->
+                                </div>
+                                @elseif(Auth::user()->akses==0)
+                                    
+                                @endif
                                 <div class="form-group">
                                     <label for="inputPassword3" class="col-sm-3 control-label">Password*</label>
                                     <div class="col-sm-9">

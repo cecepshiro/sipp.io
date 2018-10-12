@@ -39,19 +39,11 @@
     </ul>
 </li>
 @if(Auth::user()->akses==0)
-<li class="nav-small-cap m-t-10">
-    --- Data Personel</li>
+<li class="nav-small-cap m-t-10">--- Data Personel</li>
 <li>
     <a href="{{ route('personil.index') }}" class="waves-effect">
         <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
         <span class="hide-menu">Daftar Personel</span>
-    </a>
-</li>
-<li class="nav-small-cap m-t-10">--- Data Pengalaman</li>
-<li>
-    <a href="{{ route('pengalaman.formpengalamanpers') }}" class="waves-effect">
-        <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
-        <span class="hide-menu">Daftar Pengalaman</span>
     </a>
 </li>
 <li class="nav-small-cap m-t-10">--- Data Registrasi</li>
@@ -75,13 +67,6 @@
         <span class="hide-menu">Daftar Personel</span>
     </a>
 </li>
-<li class="nav-small-cap m-t-10">--- Data Pengalaman</li>
-<li>
-    <a href="{{ route('pengalaman.formpengalamanpers') }}" class="waves-effect">
-        <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
-        <span class="hide-menu">Daftar Pengalaman</span>
-    </a>
-</li>
 <li class="nav-small-cap m-t-10">--- Data Laporan</li>
 <li>
      <a href="#" onclick="window.open('/reportpers/{{Auth::user()->id}}','Cetak Data Pengalaman ','width=650,height=800').print()" class="waves-effect">
@@ -101,7 +86,7 @@
 <li>
      <a href="#" onclick="window.open('/reportpers/{{Auth::user()->id}}','Cetak Data Pengalaman ','width=650,height=800').print()" class="waves-effect">
         <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
-        <span class="hide-menu">Laporan</span>
+        <span class="hide-menu">Cetak Laporan</span>
     </a>
 </li>
 @elseif(Auth::user()->akses==3)
@@ -113,11 +98,17 @@
         <span class="hide-menu">Daftar Personel</span>
     </a>
 </li>
-<li class="nav-small-cap m-t-10">--- Data Pengalaman</li>
+<li class="nav-small-cap m-t-10">--- Data Registrasi</li>
 <li>
-    <a href="{{ route('pengalaman.formpengalamanpers') }}" class="waves-effect">
+    <a href="{{ route('register') }}" class="waves-effect">
         <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
-        <span class="hide-menu">Daftar Pengalaman</span>
+        <span class="hide-menu">Registrasi Pengguna</span>
+    </a>
+</li>
+<li>
+    <a href="{{ action('Auth\RegisterController@daftar') }}" class="waves-effect">
+        <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
+        <span class="hide-menu">Daftar Pengguna</span>
     </a>
 </li>
 <li class="nav-small-cap m-t-10">--- Data Master</li>
