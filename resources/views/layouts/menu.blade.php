@@ -69,9 +69,9 @@
 </li>
 <li class="nav-small-cap m-t-10">--- Data Laporan</li>
 <li>
-     <a href="#" onclick="window.open('/reportpers/{{Auth::user()->id}}','Cetak Data Pengalaman ','width=650,height=800').print()" class="waves-effect">
+     <a href="#" onclick="window.open('/reportanggota','Cetak Data Anggota ','width=650,height=800').print()" class="waves-effect">
         <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
-        <span class="hide-menu">Laporan</span>
+        <span class="hide-menu">Cetak Laporan</span>
     </a>
 </li>
 @elseif(Auth::user()->akses==2)
@@ -120,6 +120,13 @@
     <a href="{{ route('bidang.listbidang') }}" class="waves-effect">
         <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
         <span class="hide-menu">Bidang Profesi</span>
+    </a>
+</li>
+<li class="nav-small-cap m-t-10">--- Data Laporan</li>
+<li>
+     <a href="#" onclick="window.open('/reportanggota','Cetak Data Anggota ','width=650,height=800','size: landscape').print()" class="waves-effect">
+        <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
+        <span class="hide-menu">Cetak Laporan</span>
     </a>
 </li>
 @endif

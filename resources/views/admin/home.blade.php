@@ -54,7 +54,7 @@
                 </div>
                 <!-- /.row -->
                 <div class="row">
-                    <div class="col-md-6 col-lg-6 col-sm-6">
+                    <div class="col-md-12 col-lg-12 col-sm-12">
                     <?php
                         $new=DB::table('data_personil')->select(DB::raw('count(*) as baru'))->value('id_anggota');
                         $man=DB::table('data_personil')->select(DB::raw('count(*) as laki'))->where('jenis_kelamin', 'L')->value('id_anggota');
@@ -64,7 +64,7 @@
                         <div class="row row-in">
                             <!-- /.col -->
                             <!--col -->
-                            <div class="col-lg-6 col-sm-12">
+                            <div class="col-lg-3 col-sm-12">
                                 <div class="white-box">
                                     <div class="col-in row">
                                         <div class="col-md-6 col-sm-6 col-xs-6"> <i data-icon="E" class="linea-icon linea-basic"></i>
@@ -81,7 +81,7 @@
                             </div>
                             <!-- /.col -->
                             <!--col -->
-                            <div class="col-lg-6 col-sm-12">
+                            <div class="col-lg-3 col-sm-12">
                                 <div class="white-box">
                                     <div class="col-in row">
                                         <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe01b;"></i>
@@ -98,7 +98,7 @@
                             </div>
                             <!-- /.col -->
                             <!--col -->
-                            <div class="col-lg-6 col-sm-12">
+                            <div class="col-lg-3 col-sm-12">
                                 <div class="white-box">
                                     <div class="col-in row">
                                         <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe00b;"></i>
@@ -115,7 +115,7 @@
                             </div>
                             <!-- /.col -->
                             <!--col -->
-                            <div class="col-lg-6 col-sm-12">
+                            <div class="col-lg-3 col-sm-12">
                                 <div class="white-box">
                                     <div class="col-in row">
                                         <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe016;"></i>
@@ -133,7 +133,7 @@
                             <!-- /.col -->
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                    <!-- <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                         <div class="white-box">
                             <h3 class="box-title">Statistik Personel</h3>
                             <ul class="list-inline text-right">
@@ -145,12 +145,12 @@
                                     <h5><i class="fa fa-circle m-r-5" style="color: #85b4d0;"></i>Total</h5> </li>
                             </ul>
                             <div id="morris-area-chart" style="height: 240px;"></div>
-                        </div>
+                        </div>  -->
                     </div>
                 </div>
                 <!--row -->                
                 <!--row -->
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-12">
                         <div class="white-box">
                             <h3 class="box-title">Statistik Personel</h3>
@@ -158,7 +158,7 @@
                         </div>
                     </div>
                 </div>
-                </div>
+                </div> -->
                 
 @endsection
 

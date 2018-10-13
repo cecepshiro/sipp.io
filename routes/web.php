@@ -88,6 +88,7 @@ Route::get('/editpraktikpsi/{id}','PraktikPsiController@edit')->name('praktik.ed
 
 //report
 Route::get('/reportpers/{id}','ReportController@report_pers')->name('report.personil');
+Route::get('/reportanggota','ReportController@report_anggota')->name('report.anggota');
 
 //kode otomatis pendidikan
 Route::get('/buatkode/{id}','PengalamanController@kode_pendidikan')->name('kode.pendidikan');

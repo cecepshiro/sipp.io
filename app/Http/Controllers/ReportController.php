@@ -57,5 +57,12 @@ class ReportController extends Controller
         ->with($praktik)
         ->with($pekerjaan);
     }
+
+    public function report_anggota()
+    {
+        $data['data']=Personil::get();
+        return view('report.report_anggota')->with($data);
+
+    }
 }
 
