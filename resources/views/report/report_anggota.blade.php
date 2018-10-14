@@ -66,7 +66,7 @@
         <td width="5%">{{ $i }}</td>
         <td colspan="1" width="10%">{{ $nrp }}</td>
         <td colspan="2" width="30%">{{ $nama }}</td>
-        <td colspan="2" width="10%">Isi</td>
+        <td colspan="2" width="10%">{{ $d->pangkat }}</td>
         <td colspan="3" width="10%">{{ $d->tempat_lahir }}</td>
         <td colspan="1" width="10%">{{ $d->tgl_lahir }}</td>
         <td colspan="1" width="5%">{{ $d->jenis_kelamin }}</td>

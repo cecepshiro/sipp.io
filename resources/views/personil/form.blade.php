@@ -26,6 +26,10 @@
                         <input class="form-control" type="text" name="nama" value="{{ $tmp2 }}" placeholder="Nama" readonly required>
                     </div>
                     <div class="form-group">
+                        <label for="nama">Pangkat</label>
+                        <input class="form-control" type="text" name="pangkat" placeholder="Masukkan Pangkat" required>
+                    </div>
+                    <div class="form-group">
                         <label for="nama">Tempat Lahir</label>
                         <input class="form-control" type="text" name="tempat_lahir" placeholder="Masukkan Tempat Lahir" required>
                     </div>

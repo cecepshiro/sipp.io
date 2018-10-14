@@ -76,9 +76,9 @@
                                         <div class="input-group">
                                             <select id="akses" class="form-control{{ $errors->has('akses') ? ' is-invalid' : '' }}" name="akses" required>
                                                 <option value="">Pilih Hak Akses</option>
-                                                <option <?php if($data['akses'] == 0) echo 'selected' ; ?> value="1">Admin</option>
-                                                <option <?php if($data['akses'] == 1) echo 'selected' ; ?> value="2">Atasan</option>
-                                                <option <?php if($data['akses'] == 2) echo 'selected' ; ?> value="3">Anggota</option>
+                                                <option <?php if($data['akses'] == 3) echo 'selected' ; ?> value="3">Staff Infolahta</option>
+                                                <option <?php if($data['akses'] == 1) echo 'selected' ; ?> value="1">Kepala Dinas</option>
+                                                <option <?php if($data['akses'] == 2) echo 'selected' ; ?> value="2">Anggota</option>
                                             </select>
                                             <div class="input-group-addon"><i class="ti-user"></i></div>
                                         </div>

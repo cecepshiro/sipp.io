@@ -28,7 +28,7 @@
     </tr>
     <tr>
         <td width="15%">Pangkat</td>
-        <td colspan="4" width="40%">Isi</td>
+        <td colspan="4" width="40%">{{ $datadiri->pangkat }}</td>
         <td colspan="2" width="15%">Gol. Darah</td>
         <td colspan="6" width="5%">{{ $datadiri->gol_darah }}</td>
     </tr>

@@ -43,6 +43,7 @@ class PersonilController extends Controller
     {
         Personil::create([
             'user_id' => $request->user_id,
+            'pangkat' => $request->pangkat,
             'tempat_lahir' => $request->tempat_lahir,
             'tgl_lahir' => $request->tgl_lahir,
             'jenis_kelamin' => $request->jenis_kelamin,
@@ -94,6 +95,7 @@ class PersonilController extends Controller
      */
     public function update(Request $request, $id)
     {
+        Personil::find($id)->update(['pangkat'=>$request->pangkat]);
         Personil::find($id)->update(['tempat_lahir'=>$request->tempat_lahir]);
         Personil::find($id)->update(['tgl_lahir'=>$request->tgl_lahir]);
         Personil::find($id)->update(['jenis_kelamin'=>$request->jenis_kelamin]);

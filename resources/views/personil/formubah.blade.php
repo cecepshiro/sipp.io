@@ -71,6 +71,15 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-3 control-label">Pangkat</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input class="form-control" type="text" name="pangkat" value="{{$data->pangkat}}" placeholder="Masukkan Pangkat" required>
+                                            <div class="input-group-addon"><i class="ti-pencil"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label for="inputPassword3" class="col-sm-3 control-label">Tmpt. Lahir</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">

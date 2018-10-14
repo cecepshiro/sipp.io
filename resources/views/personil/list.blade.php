@@ -81,6 +81,7 @@
                                         <th>No</th>
                                         <th>NRP</th>
                                         <th>Nama</th>
+                                        <th>Pangkat</th>
                                         <th>Tempat Lahir</th>
                                         <th>Tgl. Lahir</th>
                                         <th>Jenis Kelamin</th>
@@ -96,6 +97,7 @@
                                         <th>No</th>
                                         <th>NRP</th>
                                         <th>Nama</th>
+                                        <th>Pangkat</th>
                                         <th>Tempat Lahir</th>
                                         <th>Tgl. Lahir</th>
                                         <th>Jenis Kelamin</th>
@@ -118,6 +120,7 @@
                                         <td>{{ $no }}</td>
                                         <td>{{ $kode }}</td>
                                         <td>{{ $nama }}</td>
+                                        <td>{{ $d->pangkat }}</td>
                                         <td>{{ $d->tempat_lahir }}</td>
                                         <td>{{ $d->tgl_lahir }}</td>
                                         <td>@if($d->jenis_kelamin=='L')
@@ -157,6 +160,7 @@
                                         <th>No</th>
                                         <th>NRP</th>
                                         <th>Nama</th>
+                                        <th>Pangkat</th>
                                         <th>Tempat Lahir</th>
                                         <th>Tgl. Lahir</th>
                                         <th>Jenis Kelamin</th>
@@ -172,6 +176,7 @@
                                         <th>No</th>
                                         <th>NRP</th>
                                         <th>Nama</th>
+                                        <th>Pangkat</th>
                                         <th>Tempat Lahir</th>
                                         <th>Tgl. Lahir</th>
                                         <th>Jenis Kelamin</th>
@@ -194,6 +199,7 @@
                                         <td>{{ $no }}</td>
                                         <td>{{ $kode }}</td>
                                         <td>{{ $nama }}</td>
+                                        <td>{{ $d->pangkat }}</td>
                                         <td>{{ $d->tempat_lahir }}</td>
                                         <td>{{ $d->tgl_lahir }}</td>
                                         <td>@if($d->jenis_kelamin=='L')

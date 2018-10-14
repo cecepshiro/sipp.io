@@ -160,6 +160,12 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
+                                                <label class="col-md-12">Pangkat</label>
+                                                <div class="col-md-12">
+                                                    <input class="form-control form-control-line" type="text" name="pangkat" placeholder="Masukkan Pangkat" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="example-email" class="col-md-12">Tempat Lahir</label>
                                                 <div class="col-md-12">
                                                     <input class="form-control form-control-line" type="text" name="tempat_lahir" placeholder="Masukkan Tempat Lahir" required>
@@ -283,6 +289,12 @@
                                                 <label class="col-md-12">Nama Lengkap</label>
                                                 <div class="col-md-12">
                                                     <input class="form-control form-control-line" type="text" name="nama" value="{{ $tmp3 }}" placeholder="Nama" readonly required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="example-email" class="col-md-12">Pangkat</label>
+                                                <div class="col-md-12">
+                                                    <input class="form-control form-control-line" value="{{ $data2['pangkat'] }}" type="text" name="pangkat" placeholder="Masukkan Pangkat" required>
                                                 </div>
                                             </div>
                                             <!-- TAMPILKAN DATA -->

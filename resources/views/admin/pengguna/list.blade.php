@@ -111,10 +111,10 @@
                                                 @endif
                                             </td>
                                             <td>
-                                            @if(Auth::user()->akses==1 || Auth::user()->akses==2 || Auth::user()->akses==3)
+                                            @if(Auth::user()->akses==1 || Auth::user()->akses==2 || Auth::user()->akses==0)
                                             <a href="{{ route('registeruser.edit', ['registeruser'=>$value->id]) }}" class="btn btn-outline-primary btn-sm">Edit Password</a>
                                             <a class="btn btn-outline-danger btn-sm waves-effect waves-light remove-record" onclick="hapusData({{$value->id}})">Hapus</a>
-                                            @elseif(Auth::user()->akses==0)
+                                            @elseif(Auth::user()->akses==3)
                                             <a href="{{ route('registeruser.halakses', ['registeruser.halakses'=>$value->id]) }}" class="btn btn-outline-success btn-sm">Ubah Hak Akses</a>
                                             <a href="{{ route('registeruser.edit', ['registeruser'=>$value->id]) }}" class="btn btn-outline-primary btn-sm">Edit Password</a>
                                             <a class="btn btn-outline-danger btn-sm waves-effect waves-light remove-record" onclick="hapusData({{$value->id}})">Hapus</a>

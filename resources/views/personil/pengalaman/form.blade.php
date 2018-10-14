@@ -44,10 +44,10 @@
                     <div class="col-lg-12">
                         <div class="white-box">
                             <ul class="nav nav-tabs tabs CUSTOMTAB2">
-                                <li class="tab active">
+                                <!-- <li class="tab active">
                                     <a href="#pengalaman" data-toggle="tab"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Pengalaman Personel</span> </a>
-                                </li>
-                                <li class="tab" id="">
+                                </li> -->
+                                <li class="tab active" id="">
                                     <a href="#pendidikan" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Riwayat Pendidikan</span> </a>
                                 </li>
                                 <li class="tab" id="">
@@ -64,11 +64,7 @@
                                 </li>
                             </ul>
                             <div class="tab-content">
-                                <div class="tab-pane active" id="pengalaman">
-                                    @include('personil.pengalaman.viewpengalaman.timelinepengalaman')
-                                 
-                                </div>
-                                <div class="tab-pane" id="pendidikan">
+                                <div class="tab-pane active" id="pendidikan">
                                     @include('personil.pengalaman.formpengalaman.formpendidikan')
                                     <hr>
                                     <hr>

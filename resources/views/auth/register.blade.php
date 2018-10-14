@@ -87,8 +87,9 @@
                                         <div class="input-group">
                                             <select id="akses" class="form-control{{ $errors->has('akses') ? ' is-invalid' : '' }}" name="akses" required>
                                                 <option value="">Pilih Hak Akses</option>
-                                                <option value="0">Admin</option>
-                                                <option value="1">Atasan</option>
+                                                <!-- <option value="0">Admin</option> -->
+                                                <option value="1">Kepala Dinas</option>
+                                                <option value="3">Staff Infolahta</option>
                                                 <option value="2">Anggota</option>
                                             </select>
                                             <div class="input-group-addon"><i class="ti-user"></i></div>
@@ -110,7 +111,7 @@
                                     <label for="inputPassword3" class="col-sm-3 control-label">Password*</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                            <input id="password" type="password"  placeholder="Masukkan Password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                            <input id="password" type="password" readonly value="dispsiadpers" placeholder="Masukkan Password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
                                             <div class="input-group-addon"><i class="ti-lock"></i></div>
                                         </div>
                                         <div class="input group">
@@ -127,7 +128,7 @@
                                     <label for="inputPassword4" class="col-sm-3 control-label">Konfirmasi Password*</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                            <input id="password-confirm" type="password"  placeholder="Konfirmasi Password" class="form-control" name="password_confirmation" required>
+                                            <input id="password-confirm" readonly type="password" value="dispsiadpers" placeholder="Konfirmasi Password" class="form-control" name="password_confirmation" required>
                                             <div class="input-group-addon"><i class="ti-lock"></i></div>
                                         </div>
                                     </div>

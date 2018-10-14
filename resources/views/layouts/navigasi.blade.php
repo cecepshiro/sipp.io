@@ -36,24 +36,33 @@
                     <b class="hidden-xs">{{ Auth::user()->name }}</b>
                 </a>
                 <ul class="dropdown-menu dropdown-user animated flipInY">
+                    @if(Auth::user()->akses==0)
+                    <li role="separator" class="divider"></li>
+                    <li>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">Keluar</a>
+                    </li>
+                    @else
+                    <li>
                     <form action="{{ route('profile.form') }}" method="get" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <input type="hidden" name="id" value="{{ Auth::user()->id }}">
                         <a></a>
                         <input type="hidden" name="profil_id" value="{{ Auth::user()->id_anggota }}">
                         <a></a>
-                        <li>
                             <a>
                                 <button type="submit" class="btnCustom btnCustom-default">Profil Diri</button>
                             </a>
-                        </li>
                     </form>
+                    </li>
 
                     <li role="separator" class="divider"></li>
                     <li>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">Keluar</a>
                     </li>
+                    @endif
+                   
                 </ul>
                 <!-- /.dropdown-user -->
             </li>

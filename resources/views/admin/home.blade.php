@@ -41,15 +41,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="white-box">
-                        <?php
-                            $cek=DB::table('data_personil')->select('user_id')->where('user_id', Auth::user()->id)->value('user_id');
-                        ?>
-                        @if($cek!=null)
                             <h3 class="page-title">Selamat Datang {{ Auth::user()->name }}.</h3>
-                        @else
-                            <h3 class="page-title">Selamat Datang {{ Auth::user()->name }}.</h3>
-                            <h3 class="box-title">Silahkan Isi Telebih Dahulu Data Diri Anda Di Menu Profil.</h3> </div>
-                        @endif
                     </div>
                 </div>
                 <!-- /.row -->

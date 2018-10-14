@@ -41,6 +41,7 @@ class ProfileController extends Controller
     {
         Personil::create([
             'user_id' => $request->user_id,
+            'pangkat' => $request->pangkat,
             'tempat_lahir' => $request->tempat_lahir,
             'tgl_lahir' => $request->tgl_lahir,
             'jenis_kelamin' => $request->jenis_kelamin,
@@ -117,6 +118,7 @@ class ProfileController extends Controller
     public function updateyangudahdaftar(Request $request)
     {
         $id=$request->validasi_kode_personil;
+        Personil::find($id)->update(['pangkat'=>$request->pangkat]);
         Personil::find($id)->update(['tempat_lahir'=>$request->tempat_lahir]);
         Personil::find($id)->update(['tgl_lahir'=>$request->tgl_lahir]);
         Personil::find($id)->update(['jenis_kelamin'=>$request->jenis_kelamin]);
@@ -161,6 +163,17 @@ class ProfileController extends Controller
         $cari = $request->get('profil_id');
         $data = User::find($cari);
         $data2 = Personil::find($tmp);
-        return view('personil.profile.detail', compact('data','data2'))->with('cari', $cari);
+        $pendidikan=DB::table('data_pendidikan')->select('*')->where('user_id', $id)->get();
+        $pekerjaan=DB::table('data_pekerjaan')->select('*')->where('user_id', $id)->get();
+        $bidang=DB::table('data_bidangpropers')->select('*')->where('user_id', $id)->get();
+        $praktik=DB::table('data_praktik')->select('*')->where('user_id', $id)->get();
+        $pengembangan=DB::table('data_pengembangan_pro')->select('*')->where('user_id', $id)->get();
+        return view('personil.profile.detail', compact('data','data2'))
+        ->with('cari', $cari)
+        ->with('pendidikan', $pendidikan)
+        ->with('pekerjaan', $pekerjaan)
+        ->with('bidang', $bidang)
+        ->with('praktik', $praktik)
+        ->with('pengembangan', $pengembangan);
     }
 }

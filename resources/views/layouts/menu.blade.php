@@ -14,6 +14,17 @@
         </span>
     </a>
     <ul class="nav nav-second-level">
+        @if(Auth::user()->akses==0)
+        <li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                @csrf
+                <a>
+                    <button type="submit" style="float: left" class="btnCustom btnCustom-default">
+                        <i class="fa fa-power-off"></i> Keluar</button>
+                </a>
+            </form>
+        </li>
+        @else
         <li>
             <form action="{{ route('profile.form') }}" method="get" enctype="multipart/form-data">
                 {{ csrf_field() }}
@@ -36,6 +47,7 @@
                 </a>
             </form>
         </li>
+        @endif
     </ul>
 </li>
 @if(Auth::user()->akses==0)
