@@ -1,6 +1,7 @@
 @extends('layouts.app2')
 
 @section('content')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
     <div id="wrapper">
         @include('layouts.navigasi')
         <!-- Left navbar-header -->
@@ -164,5 +165,126 @@
                         </div>
                     </div>
                 </div> -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="white-box">
+                            <h4 class="page-title">Statistik Jenjang Pendidikan Personel<h4>
+                            <canvas id="grafikBatang"></canvas>
+                    </div>
+                </div>
+                <?php 
+                    $rentang = DB::table('data_pengembangan_pro')->select('*')->get();
+                    foreach($rentang as $row => $value){
+                        //echo $kode =  $value->user_id;
+                       
+                    }
+                    //$rentang2 = DB::table('data_pengembangan_pro')->where('user_id', $kode)->count();
+
+                    //print_r($rentang);
+                ?>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="white-box">
+                            <h4 class="page-title">Statistik Jabatan/Pangkat Personel<h4>
+                            <canvas id="grafikBatang2"></canvas>
+                    </div>
+                </div>
+
+<script>
+var ctx = document.getElementById("grafikBatang").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Sarjana S1", "Sarjana S2", "Sarjana S3"],
+        datasets: [{
+            label: '# Jumlah Data',
+            data: [
+                <?php 
+				  echo $s1 = DB::table('data_pendidikan')->join('data_jenjang','data_pendidikan.kode_jenjang','=','data_jenjang.kode_jenjang')->select('jenjang')->where('jenjang','LIKE','Sarjana S1')->count();
+                ?>,
+                <?php 
+				  echo $s2 = DB::table('data_pendidikan')->join('data_jenjang','data_pendidikan.kode_jenjang','=','data_jenjang.kode_jenjang')->select('jenjang')->where('jenjang','LIKE','Sarjana S2')->count();
+                ?>,
+                <?php 
+				  echo $s3 = DB::table('data_pendidikan')->join('data_jenjang','data_pendidikan.kode_jenjang','=','data_jenjang.kode_jenjang')->select('jenjang')->where('jenjang','LIKE','Sarjana S3')->count();
+                ?>,
+                <?php 
+				  echo $s1 = DB::table('data_pendidikan')->join('data_jenjang','data_pendidikan.kode_jenjang','=','data_jenjang.kode_jenjang')->select('jenjang')->where('jenjang','LIKE','Sarjana S1')->count();
+                ?>,
+                <?php 
+				  echo $s1 = DB::table('data_pendidikan')->join('data_jenjang','data_pendidikan.kode_jenjang','=','data_jenjang.kode_jenjang')->select('jenjang')->where('jenjang','LIKE','Sarjana S1')->count();
+                ?>,
+            ],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>     
+
+<script>
+var ctx = document.getElementById("grafikBatang2").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Pengalaman Pers < = 3", "Pengalaman Pers < = 6", "Pengalaman Pers < = 9", "Pengalaman Pers > 9"],
+        datasets: [{
+            label: '# Jumlah Survei',
+            data: [
                 
+            ],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>     
 @endsection
