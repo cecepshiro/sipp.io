@@ -120,8 +120,9 @@ class PersonilController extends Controller
      */
     public function destroy($id)
     {
-        $temp=Personil::find($id)->value('user_id');
+        $temp=Personil::select('user_id')->where('kode_personil', $id)->value('user_id');
         Personil::find($id)->delete();
+        // User::find($temp)->delete();
         //return redirect()->route('personil.index')->with('message', 'Data berhasil di hapus');
     }
 

@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Auth;
 use Illuminate\Http\Request;
 use Alert;
+use Illuminate\Support\Facades\Redirect;
 class RegisterController extends Controller
 {
     /*
@@ -76,7 +77,7 @@ class RegisterController extends Controller
     }
 
     public function daftar(){
-        $data['data']=User::all()->except(Auth::id());
+        $data['data']=User::orderBy('name', 'asc')->get()->except(Auth::id());
         return view('admin.pengguna.list', $data);
     }
 
@@ -90,7 +91,8 @@ class RegisterController extends Controller
         User::find($id)->update(['password'=>$temp]);
         $data['data']=User::get();
         Alert::success('Berhasil', 'Data Diubah');
-        return view('admin.pengguna.list', $data);
+        return Redirect::to('/daftarpersonil');
+        //return view('admin.pengguna.list', $data);
 
     }
 
@@ -102,7 +104,7 @@ class RegisterController extends Controller
     public function ubahAkses(Request $request){
          $tmp=$request->id;
          User::find($tmp)->update(['akses'=>$request->akses]);
-         Alert::success('Berhasil', 'Hak Akses Telah Ditambahkan');
+         Alert::success('Berhasil', 'Hak Akses Telah Diubah');
          return redirect()->route('registeruser.daftar');
     }
 

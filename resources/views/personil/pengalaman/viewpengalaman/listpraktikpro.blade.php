@@ -14,6 +14,7 @@
                             alert(data['error']);
                         }
                         window.location.reload();
+                        $('#pesanFlash').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Data Terhapus</div>');
                     },
                     error: function (data) {
                         alert(data.responseText);
@@ -23,12 +24,18 @@
             }
         }
     </script>
+     <script>
+             $(document).ready(function() {
+                $('#tabelpraktik').DataTable();
+            } );
+    </script>
 <h3 class="box-title m-b-0">List Pengalaman Praktik Profesi Personel</h3>
 <hr>
 <div class="table-responsive">
 <br>
+<span id="pesanFlash"></span>
 <!-- <table id="example" class="table table-striped table-bordered" style="width:100%"> -->
-<table id="example4" class="cell-border compact nowrap" style="width:100%">
+<table id="tabelpraktik" class="cell-border compact nowrap" style="width:100%">
     <thead>
         <tr>
             <th>No</th>

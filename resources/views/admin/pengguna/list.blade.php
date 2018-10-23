@@ -14,6 +14,7 @@
                             alert(data['error']);
                         }
                         window.location.reload();
+                        $('#pesanFlash').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Data Terhapus</div>');
                     },
                     error: function (data) {
                         alert(data.responseText);
@@ -69,6 +70,8 @@
                         <div class="white-box">
                             <h3 class="box-title">Daftar Pengguna</h3>
                             <div class="table-responsive">
+                            <br>
+                            <span id="pesanFlash"></span>
                             <!-- <table id="example" class="table table-striped table-bordered" style="width:100%"> -->
                             <table id="example" class="cell-border compact nowrap" style="width:100%">
                             <thead>
@@ -112,11 +115,11 @@
                                             </td>
                                             <td>
                                             @if(Auth::user()->akses==1 || Auth::user()->akses==2 || Auth::user()->akses==0)
-                                            <a href="{{ route('registeruser.edit', ['registeruser'=>$value->id]) }}" class="btn btn-outline-primary btn-sm">Edit Password</a>
+                                            <a href="{{ route('registeruser.edit', ['registeruser'=>$value->id]) }}" class="btn btn-outline-primary btn-sm">Reset Password</a>
                                             <a class="btn btn-outline-danger btn-sm waves-effect waves-light remove-record" onclick="hapusData({{$value->id}})">Hapus</a>
                                             @elseif(Auth::user()->akses==3)
                                             <a href="{{ route('registeruser.halakses', ['registeruser.halakses'=>$value->id]) }}" class="btn btn-outline-success btn-sm">Ubah Hak Akses</a>
-                                            <a href="{{ route('registeruser.edit', ['registeruser'=>$value->id]) }}" class="btn btn-outline-primary btn-sm">Edit Password</a>
+                                            <a href="{{ route('registeruser.edit', ['registeruser'=>$value->id]) }}" class="btn btn-outline-primary btn-sm">Reset Password</a>
                                             <a class="btn btn-outline-danger btn-sm waves-effect waves-light remove-record" onclick="hapusData({{$value->id}})">Hapus</a>
                                             @endif   
                                         </td>

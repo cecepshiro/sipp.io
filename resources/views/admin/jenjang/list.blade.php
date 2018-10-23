@@ -14,6 +14,8 @@
                                 alert(data['error']);
                             }
                             window.location.reload();
+                            $('#pesanFlash').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Data Terhapus</div>');
+                            //$('#example').DataTable().ajax.reload();.
                         },
                         error: function (data) {
                             alert(data.responseText);
@@ -73,6 +75,7 @@
                             @endif
                             <div class="table-responsive">
                             <br>
+                            <span id="pesanFlash"></span>
                             <!-- <table id="example" class="table table-striped table-bordered" style="width:100%"> -->
                             <table id="example" class="cell-border compact nowrap" style="width:100%">
                             <thead>

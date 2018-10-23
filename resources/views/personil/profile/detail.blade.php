@@ -90,7 +90,7 @@
                     <div class="col-md-8 col-xs-12">
                         <div class="white-box">
                             <ul class="nav nav-tabs tabs customtab">
-                                <li class="tab">
+                                <li class="tab active">
                                     <a href="#profile" data-toggle="tab"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Profil</span> </a>
                                 </li>
                                 <li class="tab" id="tes">
@@ -106,7 +106,7 @@
                                     @if($cek1==NULL)
                                         <div class="col-md-3 col-xs-6 b-r"> <strong>Nama Lengkap</strong>
                                             <br>
-                                            <p class="text-muted">Kosong</p>
+                                            <p class="text-muted">{{ $nama }}</p>
                                         </div>
                                         <div class="col-md-3 col-xs-6 b-r"> <strong>Tmpt/Tgl. Lahir</strong>
                                             <br>
@@ -198,7 +198,7 @@
                                         @if($cek==NULL)
                                         <a><button type="submit" class="btn btn-outline-primary">Isi Profil</button></a>
                                         @else
-                                        <a><button type="submit" class="btn btn-outline-success">Edit Profil</button></a>
+                                        <a><button type="submit" class="btn btn-outline-primary">Edit Profil</button></a>
                                         @endif
                                     </form>
                                         <!-- <button onclick="matikanForm('myForm',false);" class="btn   btn-primary">Edit</button>

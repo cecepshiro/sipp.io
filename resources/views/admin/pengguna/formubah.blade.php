@@ -42,7 +42,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="white-box">
-                            <h3 class="box-title m-b-0">Ubah Password Pengguna</h3>
+                            <h3 class="box-title m-b-0">Reset Password Pengguna</h3>
                             <p class="text-muted m-b-30 font-13"></p>
                             <form method="POST" class="form-horizontal" action="{{ route('registeruser.update', ['registeruser'=> $data->id]) }}"  enctype="multipart/form-data" aria-label="{{ __('Register') }}">
                             <input type="hidden" name="_method" value="PATCH">
@@ -65,7 +65,7 @@
                                     <label for="inputPassword3" class="col-sm-3 control-label">Password*</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                        <input id="password" type="password"  placeholder="Masukkan Password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required autofocus>
+                                        <input id="password" type="password" value="perspers" readonly placeholder="Masukkan Password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required autofocus>
                                         <div class="input-group-addon"><i class="ti-lock"></i></div>
                                         @if ($errors->has('password'))
                                             <span class="invalid-feedback" role="alert">
@@ -79,7 +79,7 @@
                                     <label for="inputPassword4" class="col-sm-3 control-label">Konfirmasi Password*</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                            <input id="confirm_password" type="password"  placeholder="Konfirmasi Password" class="form-control" name="password_confirmation" required>
+                                            <input id="confirm_password" type="password" value="perspers" readonly placeholder="Konfirmasi Password" class="form-control" name="password_confirmation" required>
                                             <div class="input-group-addon"><i class="ti-lock"></i></div>
                                         </div>
                                     </div>

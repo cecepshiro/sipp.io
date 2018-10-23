@@ -1,6 +1,6 @@
 @extends('layouts.app2')
 <script>
-        function hapusData2(id) {
+        function hapusPekerjaan(id) {
             if (confirm("Apakah anda akan menghapus ini ?!")) {
                 $.ajax({
                     url: '/deletepekerjaan/'+ id,
@@ -14,6 +14,7 @@
                             alert(data['error']);
                         }
                         window.location.reload();
+                        $('#pesanFlash').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Data Terhapus</div>');
                     },
                     error: function (data) {
                         alert(data.responseText);
@@ -23,13 +24,18 @@
             }
         }
     </script>
+    <script>
+            $(document).ready(function() {
+                $('#tabelpengalaman').DataTable();
+            } );
+            </script>
 
 <h3 class="box-title m-b-0">List Pengalaman Pekerjaan Personel</h3>
 <hr>
 <div class="table-responsive">
 <br>
-<!-- <table id="example" class="table table-striped table-bordered nowrap" style="width:100%"> -->
-<table id="example2" class="cell-border compact nowrap" style="width:100%">
+<span id="pesanFlash"></span>
+<table id="tabelpengalaman" class="cell-border compact nowrap" style="width:100%">
     <thead>
         <tr>
             <th>No</th>
@@ -68,7 +74,7 @@
             <td>{{ $d4->sampai }}</td>
             <td>
                 <a href="{{ route('pekerjaan.edit', $d4->kode_pekerjaan) }}" class="btn btn-outline-primary btn-sm">Edit</a>
-                <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusData3('{{$d4->kode_pekerjaan}}')">Hapus</a>   
+                <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusPekerjaan('{{$d4->kode_pekerjaan}}')">Hapus</a>   
             </td>
         </tr>
         @empty

@@ -274,7 +274,7 @@
            // console.log(data);
         $('#tabelpendidikan').find("tr:gt(0)").remove();
         $('.datapendidikan').load("/getpendidikan");
-        $('#error4').html('<div class="alert alert-success alert-dismissable">Data Tersimpan</div>');
+        $('#error4').html('<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Data Tersimpan</div>');
         }
     });
     }
@@ -346,7 +346,7 @@
         // console.log(data);
         $('#tabelbidangprofesi').find("tr:gt(0)").remove();
         $('.databidangpropers').load("/getbidangpropers");
-        $('#errorbidang').html('<div class="alert alert-success alert-dismissable">Data Tersimpan</div>');
+        $('#errorbidang').html('<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Data Tersimpan</div>');
         }
     });
     }

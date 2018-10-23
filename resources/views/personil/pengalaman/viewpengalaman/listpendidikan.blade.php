@@ -16,6 +16,7 @@
                             alert(data['error']);
                         }
                         window.location.reload();
+                        $('#pesanFlash').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Data Terhapus</div>');
                         
                     },
                     error: function (data) {
@@ -26,12 +27,17 @@
             }
         }
     </script>
+    <script>
+             $(document).ready(function() {
+                $('#tablependidikan').DataTable();
+            } );
+            </script>
 <h3 class="box-title m-b-0">List Pendidikan Profesional Personel</h3>
 <hr>
 <div class="table-responsive">
 <br>
-<!-- <table id="example" class="table table-striped table-bordered" style="width:100%"> -->
-<table id="example" class="cell-border compact nowrap" style="width:100%">
+<span id="pesanFlash"></span>
+<table id="tablependidikan" class="cell-border compact nowrap" style="width:100%">
     <thead>
         <tr>
             <th>No</th>

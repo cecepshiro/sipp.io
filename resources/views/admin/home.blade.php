@@ -55,8 +55,8 @@
                     ?>
                         <div class="row row-in">
                             <!-- /.col -->
-                            <!--col -->
-                            <div class="col-lg-3 col-sm-12">
+                            <!-- col -->
+                            <!-- <div class="col-lg-3 col-sm-12">
                                 <div class="white-box">
                                     <div class="col-in row">
                                         <div class="col-md-6 col-sm-6 col-xs-6"> <i data-icon="E" class="linea-icon linea-basic"></i>
@@ -70,14 +70,14 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- /.col -->
                             <!--col -->
                             <div class="col-lg-3 col-sm-12">
                                 <div class="white-box">
                                     <div class="col-in row">
-                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe01b;"></i>
-                                            <h5 class="text-muted vb">LAKI - LAKI</h5> </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe00b;"></i>
+                                            <h5 class="text-muted vb">PERSONEL LAKI - LAKI</h5> </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
                                             <h3 class="counter text-right m-t-15 text-megna">{{ $man }}</h3> </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -94,7 +94,7 @@
                                 <div class="white-box">
                                     <div class="col-in row">
                                         <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe00b;"></i>
-                                            <h5 class="text-muted vb">PEREMPUAN</h5> </div>
+                                            <h5 class="text-muted vb">PERSONEL PEREMPUAN</h5> </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
                                             <h3 class="counter text-right m-t-15 text-primary">{{ $woman }}</h3> </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -110,7 +110,7 @@
                             <div class="col-lg-3 col-sm-12">
                                 <div class="white-box">
                                     <div class="col-in row">
-                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe016;"></i>
+                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe00b;"></i>
                                             <h5 class="text-muted vb">TOTAL PERSONEL</h5> </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
                                             <h3 class="counter text-right m-t-15 text-success">{{ $sum }}</h3> </div>

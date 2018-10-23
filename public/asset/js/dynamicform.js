@@ -165,7 +165,7 @@
             $('#item_table').find("tr:gt(0)").remove();
             //$('#erroal').show();
             $('.datapekerjaan').load("/getpekerjaan");
-            $('#error').html('<div class="alert alert-success alert-dismissable">Data Tersimpan</div>');
+            $('#error').html('<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Data Tersimpan</div>');
             }
         });
         }
@@ -243,7 +243,7 @@
             $('#tabel_praktik').find("tr:gt(0)").remove();
             //$('#erroal').show();
             $('.datapraktikpro').load("/getpraktikpro");
-            $('#error2').html('<div class="alert alert-success alert-dismissable">Data Tersimpan</div>');
+            $('#error2').html('<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Data Tersimpan</div>');
             }
         });
         }
@@ -323,7 +323,7 @@
             $('#tabelpengembanganpro').find("tr:gt(0)").remove();
             $('.datapengembanganpro').load("/getpengembanganpro");
             //$('#erroal').show();
-            $('#error3').html('<div class="alert alert-success alert-dismissable">Data Tersimpan</div>');
+            $('#error3').html('<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Data Tersimpan</div>');
             }
         });
         }

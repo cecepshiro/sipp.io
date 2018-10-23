@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="form-group m-b-0">
                                     <div class="col-sm-offset-3 col-sm-9 text-right">
-                                        <a href="{{ route('bidang.index') }}" class="btn btn-outline-danger m-t-10">Batal</a>
+                                        <a href="{{ url('/masterbidang') }}" class="btn btn-outline-danger m-t-10">Batal</a>
                                         <button type="submit" class="btn btn-outline-success m-t-10">Ubah Data</button>
                                     </div>
                                 </div>

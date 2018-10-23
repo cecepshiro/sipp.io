@@ -50,7 +50,7 @@
                                         ?>
                                             @if($cek2!=null)
                                                 <a href="javascript:void(0)"><img src="/image/{{ $data2['foto'] }}" class="thumb-lg img-circle" alt="img"></a>
-                                            @else
+                                            @elseif($cek2==null)
                                             <a href="javascript:void(0)"><img src="{{ asset('image/avatar.png') }}" class="thumb-lg img-circle" alt="img"></a>
                                             @endif
                                         <?php
@@ -71,16 +71,18 @@
                                 <?php
                                     $kodepersonil=Db::table('data_personil')->select('kode_personil')->where('user_id', $temp)->value('id');
                                 ?>
+                                @if($cek2!=null)
                                 <form method="post"  action="{{ route('profile.update', ['profile'=> $kodepersonil]) }}" enctype="multipart/form-data"><input type="hidden" name="_method" value="PATCH">
                                         {{ csrf_field() }}
                                         <input type="hidden" class="form-control" name="id" value="{{ $temp }}" required>
                                         <input type="file" value="Pilih File" class="form-control form-control-line" name="foto" required>
                                         <input type="submit" class="btn btn-outline-success" value="Ganti Foto">
-
                                 </form>
-
+                                @else
+                                @endif
                                 </div>
                             </div>
+                            <font size="0.1px">*Maksimal ukuran foto 100kb</font>
                         </div>
                     </div>
                     <div class="col-md-8 col-xs-12">
@@ -89,13 +91,37 @@
                                 <li class="tab">
                                     <a href="#profile" data-toggle="tab"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Profil</span> </a>
                                 </li>
-                                <li class="tab" id="tes">
+                                <li class="tab active" id="tes">
                                     <a href="#settings" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Detail Profil</span> </a>
                                 </li>
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane" id="profile">
                                     <div class="row">
+                                    <?php
+                                            $cek1=DB::table('data_personil')->select('kode_personil')->where('user_id', Auth::user()->id)->value('id');
+                                    ?>
+                                    @if($cek1==NULL)
+                                        <div class="col-md-3 col-xs-6 b-r"> <strong>Nama Lengkap</strong>
+                                            <br>
+                                            <p class="text-muted">{{ $nama }}</p>
+                                        </div>
+                                        <div class="col-md-3 col-xs-6 b-r"> <strong>Tmpt/Tgl. Lahir</strong>
+                                            <br>
+                                            <p class="text-muted">Kosong</p>
+                                        </div>
+                                        <div class="col-md-3 col-xs-6 b-r"> <strong>Agama</strong>
+                                            <br>
+                                            <p class="text-muted">Kosong</p>
+                                        </div>
+                                        <div class="col-md-3 col-xs-6"> <strong>No. Telp</strong>
+                                            <br>
+                                            <p class="text-muted">Kosong</p>
+                                        </div>
+                                        </div>
+                                        <hr>
+                                        <h4 class="font-bold m-t-30">Silahkan isi terlebih dahulu data diri pribadi anda.</h4>
+                                    @else
                                         <div class="col-md-3 col-xs-6 b-r"> <strong>Nama Lengkap</strong>
                                             <br>
                                             <p class="text-muted">{{ $nama }}</p>
@@ -112,26 +138,51 @@
                                             <br>
                                             <p class="text-muted">{{ $temp2 }}</p>
                                         </div>
-                                    </div>
-                                    <hr>
-                                    <h4 class="font-bold m-t-30">Pengalaman</h4>
-                                    <hr>
-                                    <h5>Wordpress <span class="pull-right">80%</span></h5>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%;"> <span class="sr-only">50% Complete</span> </div>
-                                    </div>
-                                    <h5>HTML 5 <span class="pull-right">90%</span></h5>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width:90%;"> <span class="sr-only">50% Complete</span> </div>
-                                    </div>
-                                    <h5>jQuery <span class="pull-right">50%</span></h5>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%;"> <span class="sr-only">50% Complete</span> </div>
-                                    </div>
-                                    <h5>Photoshop <span class="pull-right">70%</span></h5>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%;"> <span class="sr-only">50% Complete</span> </div>
-                                    </div>
+                                        </div>
+                                        <hr>
+                                        <h4 class="font-bold m-t-30">Pengalaman</h4>
+                                        <hr>
+                                        <ul><li><h5>Riwayat Pendidikan <span class="pull-right"></span></h5></li>
+                                        @foreach($pendidikan as $row)
+                                            <ul style="list-style-type: circle;">
+                                            <li>{{{ $row->nama_pt }}}
+                                            {{{ $row->bidang_ilmu }}}
+                                            {{{ $row->tahun_lulus }}}</li>
+                                            </ul>
+                                        @endforeach
+                                        <li><h5>Riwayat Pekerjaan <span class="pull-right"></span></h5></li>
+                                        @foreach($pekerjaan as $row)
+                                            <ul style="list-style-type: circle;">
+                                            <li>{{{ $row->nama_lembaga }}}
+                                            {{{ $row->pekerjaan }}}</li>
+                                            </ul>
+                                        @endforeach
+                                        <li><h5>Bidang Profesi <span class="pull-right"></span></h5></li>
+                                        @foreach($bidang as $row)
+                                            <?php  
+                                                $nmbidang=DB::table('data_bidangprofesi')->select('bidangprofesi')
+                                                ->where('kode_bidangprofesi', $row->kode_bidangprofesi)->value('bidangprofesi');
+                                            ?>
+                                            <ul style="list-style-type: circle;">
+                                            <li>{{{ $nmbidang }}}</li>
+                                            </ul>
+                                        @endforeach
+                                        <h5><li>Praktik Profesi <span class="pull-right"></span></h5></li>
+                                        @foreach($praktik as $row)
+                                            <ul style="list-style-type: circle;">
+                                            <li>{{{ $row->pemeriksaan }}}
+                                            {{{ $row->tahunpelaksanaan }}}
+                                            </li>
+                                            </ul>
+                                        @endforeach
+                                        <h5><li>Pengalaman Pengembangan Profesional <span class="pull-right"></span></h5></li>
+                                        @foreach($pengembangan as $row)
+                                            <ul style="list-style-type: circle;">
+                                            <li>{{{ $row->kegiatan }}}
+                                            {{{ $row->tahun }}}</li>
+                                            </ul>
+                                        @endforeach</ol>
+                                    @endif
                                 </div>
                                 <div class="tab-pane active" id="settings">
                                     <div class="" style="float:right">
@@ -162,7 +213,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-12">Pangkat</label>
                                                 <div class="col-md-12">
-                                                    <input class="form-control form-control-line" type="text" name="pangkat" placeholder="Masukkan Pangkat" required>
+                                                    <input class="form-control form-control-line" type="text" name="pangkat" placeholder="Masukkan Pangkat" autofocus required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -264,8 +315,9 @@
                                                 </div>
                                             </div>
                                         <div class="form-group">
-                                            <div class="col-sm-12">
-                                                <button type="submit"class="btn btn-outline-success"  style="float:right">Simpan</button>
+                                            <div class="col-sm-offset-3 col-sm-9 text-right">
+                                                <a href="{{ url('/') }}" class="btn btn-outline-danger waves-effect waves-light m-t-10">Batal</a>
+                                                <button type="submit" class="btn btn-outline-success waves-effect waves-light m-t-10">Simpan</button>
                                             </div>
                                         </div>
                                         </form>
@@ -411,8 +463,9 @@
                                                 </div>
                                             </div>
                                         <div class="form-group">
-                                            <div class="col-sm-12">
-                                                <button type="submit"class="btn btn-outline-success"  style="float:right">Ubah Data</button>
+                                            <div class="col-sm-offset-3 col-sm-9 text-right">
+                                                <a href="{{ url('/') }}" class="btn btn-outline-danger waves-effect waves-light m-t-10">Batal</a>
+                                                <button type="submit" class="btn btn-outline-success waves-effect waves-light m-t-10">Ubah Data</button>
                                             </div>
                                         </div>
                                         </form>

@@ -111,7 +111,7 @@
                                     <label for="inputPassword3" class="col-sm-3 control-label">Password*</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                            <input id="password" type="password" readonly value="dispsiadpers" placeholder="Masukkan Password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                            <input id="password" type="password" readonly value="perspers" placeholder="Masukkan Password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
                                             <div class="input-group-addon"><i class="ti-lock"></i></div>
                                         </div>
                                         <div class="input group">
@@ -128,7 +128,7 @@
                                     <label for="inputPassword4" class="col-sm-3 control-label">Konfirmasi Password*</label>
                                     <div class="col-sm-9">
                                         <div class="input-group">
-                                            <input id="password-confirm" readonly type="password" value="dispsiadpers" placeholder="Konfirmasi Password" class="form-control" name="password_confirmation" required>
+                                            <input id="password-confirm" readonly type="password" value="perspers" placeholder="Konfirmasi Password" class="form-control" name="password_confirmation" required>
                                             <div class="input-group-addon"><i class="ti-lock"></i></div>
                                         </div>
                                     </div>

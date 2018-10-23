@@ -62,6 +62,7 @@
                                         </table>
                                     </div>
                                     <div align="center">
+                                    <a href="{{ url('/masterbidang') }}" class="btn btn-outline-danger">Batal</a>
                                     <input type="submit" name="submit" class="btn btn-outline-success" value="Simpan" />
 
                                     </div>
@@ -130,7 +131,7 @@
             {
                 //console.log(data);
             $('#item_masterbidang').find("tr:gt(0)").remove();
-            $('#errormasterbidang').html('<div class="alert alert-success alert-dismissable">Data Tersimpan</div>');
+            $('#errormasterbidang').html('<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Data Tersimpan</div>');
             }
         });
         }

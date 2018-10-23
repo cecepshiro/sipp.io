@@ -95,12 +95,24 @@
     </a>
 </li>
 <li class="nav-small-cap m-t-10">--- Data Laporan</li>
+<?php
+     $ceklaporan=DB::table('data_personil')->select('kode_personil')->where('user_id', Auth::user()->id)->value('id');
+?>
+@if($ceklaporan==NULL)
 <li>
-     <a href="#" onclick="window.open('/reportpers/{{Auth::user()->id}}','Cetak Data Pengalaman ','width=650,height=800').print()" class="waves-effect">
+     <a href="#" onclick="pesanLaporan()" class="waves-effect">
         <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
         <span class="hide-menu">Cetak Laporan</span>
     </a>
 </li>
+@elseif($ceklaporan!=NULL)
+<li>
+     <a href="" onclick="window.open('/reportpers/{{Auth::user()->id}}','Cetak Data Pengalaman ','width=650,height=800').print()" class="waves-effect">
+        <i data-icon="&#xe00b;" class="linea-icon linea-basic fa-fw"></i>
+        <span class="hide-menu">Cetak Laporan</span>
+    </a>
+</li>
+@endif
 @elseif(Auth::user()->akses==3)
 <li class="nav-small-cap m-t-10">
     --- Data Personel</li>
@@ -142,3 +154,9 @@
     </a>
 </li>
 @endif
+
+<script>
+function pesanLaporan() {
+    alert("Silahkan isi dahulu data diri anda sebelum mencetak laporan.");
+}
+</script>

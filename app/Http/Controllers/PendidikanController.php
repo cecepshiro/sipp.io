@@ -99,6 +99,7 @@ class PendidikanController extends Controller
         return redirect('/pengalamanpers');
     }
 
+
     /**
      * Remove the specified resource from storage.
      *

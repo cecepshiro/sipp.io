@@ -2,7 +2,7 @@
 
     <script>
         function hapusDataPersonil(id) {
-            if (confirm("Apakah anda akan menghapus ini ?!")) {
+            if (confirm("Apakah anda akan menghapus ini ?! Penghapusan data juga mempengaruhi akun personel")) {
                 $.ajax({
                     url: '/deletedatapersonil/'+ id,
                     type: 'DELETE',
@@ -138,7 +138,6 @@
                                                 $kode=DB::table('users')->select('id')->where('id', $d->user_id)->value('id');
                                             ?>
                                             @if(Auth::user()->akses==2)
-
                                             @elseif(Auth::user()->akses==1)
                                             <a href="{{ route('pengalaman.show', ['pengalaman'=>$kode]) }}" class="btn btn-outline-primary btn-sm">Lihat Pengalaman</a>
                                             <a onclick="window.open('/reportpers/{{$kode}}','Cetak Data Pengalaman ','width=650,height=800').print()" href="#" class="btn btn-outline-success btn-sm">Cetak Pengalaman</a>
@@ -168,7 +167,10 @@
                                         <th>Alamat Sekarang</th>
                                         <th>Telp. Rumah</th>
                                         <th>No. HP</th>
+                                        @if(Auth::user()->akses==0 || Auth::user()->akses==2)
+                                        @elseif(Auth::user()->akses==1 || Auth::user()->akses==3)
                                         <th>Aksi</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -184,7 +186,10 @@
                                         <th>Alamat Sekarang</th>
                                         <th>Telp. Rumah</th>
                                         <th>No. HP</th>
+                                        @if(Auth::user()->akses==0 || Auth::user()->akses==2)
+                                        @elseif(Auth::user()->akses==1 || Auth::user()->akses==3)
                                         <th>Aksi</th>
+                                        @endif
                                     </tr>
                                 </tfoot>
                                     <tbody>
@@ -216,9 +221,8 @@
                                             <?php
                                                 $kode=DB::table('users')->select('id')->where('id', $d->user_id)->value('id');
                                             ?>
-                                            @if(Auth::user()->akses==1 || Auth::user()->akses==2)
-
-                                            @elseif(Auth::user()->akses==0 || Auth::user()->akses==3)
+                                            @if(Auth::user()->akses==0 || Auth::user()->akses==2)
+                                            @elseif(Auth::user()->akses==1 || Auth::user()->akses==3)
                                             <a href="{{ route('pengalaman.show', ['pengalaman'=>$kode]) }}" class="btn btn-outline-primary btn-sm">Lihat Pengalaman</a>
                                             <a href="{{ route('personil.edit', ['personil'=>$d->kode_personil]) }}" class="btn btn-outline-success btn-sm">Edit</a>
                                             <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusDataPersonil('{{$d->kode_personil}}')">Hapus</a>   

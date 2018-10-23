@@ -1,6 +1,145 @@
-@extends('layouts.app2')
+<link href="{{ asset('asset/css/jquery.dataTables.min.css') }}" rel="stylesheet">
 <script src="{{ asset('asset/plugins/bower_components/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ asset('asset/js/dataTables.bootstrap.min.js') }}"></script>
+<link href="{{ asset('asset/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+@extends('layouts.app2')
 @section('content')
+    <script>
+        function hapusDataPendidikan(id) {
+            if (confirm("Apakah anda akan menghapus ini ?!")) {
+                $.ajax({
+                    url: '/deletependidikan/'+ id,
+                    type: 'DELETE',
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    success: function (data) {
+                        if (data['success']) {
+                            $("#" + data['tr']).slideUp("slow");
+                            alert(data['success']);             
+                           
+                        } else if (data['error']) {
+                            alert(data['error']);
+                        }
+                        window.location.reload();
+                        $('#pesanFlash').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Data Terhapus</div>');
+                        
+                    },
+                    error: function (data) {
+                        alert(data.responseText);
+                    }
+                });
+            }else{           
+            }
+        }
+    </script>
+    <script>
+        function hapusPekerjaan(id) {
+            if (confirm("Apakah anda akan menghapus ini ?!")) {
+                $.ajax({
+                    url: '/deletepekerjaan/'+ id,
+                    type: 'DELETE',
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    success: function (data) {
+                        if (data['success']) {
+                            $("#" + data['tr']).slideUp("slow");
+                            alert(data['success']);                       
+                        } else if (data['error']) {
+                            alert(data['error']);
+                        }
+                        window.location.reload();
+                        $('#pesanFlash').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Data Terhapus</div>');
+                    },
+                    error: function (data) {
+                        alert(data.responseText);
+                    }
+                });
+            }else{           
+            }
+        }
+    </script>
+    <script>
+        function hapusBidang(id) {
+            if (confirm("Apakah anda akan menghapus ini ?!")) {
+                $.ajax({
+                    url: '/deletebidangpro/'+ id,
+                    type: 'DELETE',
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    success: function (data) {
+                        if (data['success']) {
+                            $("#" + data['tr']).slideUp("slow");
+                            alert(data['success']);                       
+                        } else if (data['error']) {
+                            alert(data['error']);
+                        }
+                        window.location.reload();
+                        $('#pesanFlash').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Data Terhapus</div>');
+                    },
+                    error: function (data) {
+                        alert(data.responseText);
+                    }
+                });
+            }else{           
+            }
+        }
+    </script>
+        <script>
+        function hapusPraktik(id) {
+            if (confirm("Apakah anda akan menghapus ini ?!")) {
+                $.ajax({
+                    url: '/deletepraktikpro/'+ id,
+                    type: 'DELETE',
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    success: function (data) {
+                        if (data['success']) {
+                            $("#" + data['tr']).slideUp("slow");
+                            alert(data['success']);                       
+                        } else if (data['error']) {
+                            alert(data['error']);
+                        }
+                        window.location.reload();
+                        $('#pesanFlash').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Data Terhapus</div>');
+                    },
+                    error: function (data) {
+                        alert(data.responseText);
+                    }
+                });
+            }else{           
+            }
+        }
+    </script>
+    <script>
+        function hapusPro(id) {
+            if (confirm("Apakah anda akan menghapus ini ?!")) {
+                $.ajax({
+                    url: '/deletepengembanganpro/'+ id,
+                    type: 'DELETE',
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    success: function (data) {
+                        if (data['success']) {
+                            $("#" + data['tr']).slideUp("slow");
+                            alert(data['success']);                       
+                        } else if (data['error']) {
+                            alert(data['error']);
+                        }
+                        window.location.reload();
+                        $('#pesanFlash').html('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Data Terhapus</div>');
+                    },
+                    error: function (data) {
+                        alert(data.responseText);
+                    }
+                });
+            }else{           
+            }
+        }
+    </script>
+            <script>
+             $(document).ready(function() {
+                $('#lihatpendidikan').DataTable();
+                $('#lihatpekerjaan').DataTable();
+                $('#lihatbidang').DataTable();
+                $('#lihatpraktik').DataTable();
+                $('#lihatpro').DataTable();
+            } );
+            </script>
     <div id="wrapper"> 
         <!-- Navigasi Menu -->
         @include('layouts.navigasi')
@@ -29,7 +168,7 @@
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                         <h4 class="page-title">Data Pengalaman</h4> </div>
-                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <ol class="breadcrumb">
                             <li><a href="{{ url('/') }}">Dashboard</a></li>
                             <li class="active">Data Pengalaman</li>
@@ -44,6 +183,9 @@
                     <div class="col-lg-12">
                         <div class="white-box">
                             <ul class="nav nav-tabs tabs CUSTOMTAB2">
+                                <!-- <li class="tab active">
+                                    <a href="#pengalaman" data-toggle="tab"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Pengalaman Personel</span> </a>
+                                </li> -->
                                 <li class="tab active" id="">
                                     <a href="#pendidikan" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Riwayat Pendidikan</span> </a>
                                 </li>
@@ -62,8 +204,11 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="pendidikan">
-                                        @if(Auth::user()->akses==1)
-                                        <table id="example" class="cell-border compact nowrap" style="width:100%">
+                                <h3 class="box-title m-b-0">List Pendidikan Profesional Personel</h3>
+                                    <hr>
+                                    <div class="table-responsive">
+                                    <br>
+                                    <table id="lihatpendidikan" class="table table-condensed nowrap" style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
@@ -72,6 +217,10 @@
                                                 <th>Kota</th>
                                                 <th>Bidang Ilmu</th>
                                                 <th>Tahun Lulus</th>
+                                                @if(Auth::user()->akses==3)
+                                                <th>Aksi</th>
+                                                @elseif(Auth::user()->akses==1)
+                                                @endif
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -83,15 +232,16 @@
                                                 <th>Kota</th>
                                                 <th>Bidang Ilmu</th>
                                                 <th>Tahun Lulus</th>
+                                                @if(Auth::user()->akses==3)
+                                                <th>Aksi</th>
+                                                @elseif(Auth::user()->akses==1)
+                                                @endif
                                             </tr>
                                         </tfoot>
                                         <tbody>
                                             <?php $no = 0;?> 
                                             @forelse($pendidikan as $d5)
                                             <?php $no++ ;?>
-                                            <?php
-                                                //$tmp=DB::table('data_jenjang')->where('kode_jenjang', $d5->kode_jenjang)->value('jenjang');
-                                            ?>
                                             <tr>
                                                 <td>{{ $no }}</td>
                                                 <td>{{ $d5->kode_jenjang }}</td>
@@ -99,58 +249,13 @@
                                                 <td>{{ $d5->kota }}</td>
                                                 <td>{{ $d5->bidang_ilmu }}</td>
                                                 <td>{{ $d5->tahun_lulus }}</td>
-                                            </tr>
-                                            @empty
-                                            <tr>
-                                                <td colspan="6">Data Kosong</td>
-                                            </tr>
-                                            @endforelse
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    @elseif(Auth::user()->akses==0)
-                                    <table id="example" class="cell-border compact nowrap" style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Kode Jenjang</th>
-                                                <th>Nama PT</th>
-                                                <th>Kota</th>
-                                                <th>Bidang Ilmu</th>
-                                                <th>Tahun Lulus</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                        <tr>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Kode Jenjang</th>
-                                                <th>Nama PT</th>
-                                                <th>Kota</th>
-                                                <th>Bidang Ilmu</th>
-                                                <th>Tahun Lulus</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-                                            <?php $no = 0;?> 
-                                            @forelse($pendidikan as $d5)
-                                            <?php $no++ ;?>
-                                            <?php
-                                                //$tmp=DB::table('data_jenjang')->where('kode_jenjang', $d5->kode_jenjang)->value('jenjang');
-                                            ?>
-                                            <tr>
-                                                <td>{{ $no }}</td>
-                                                <td>{{ $d5->kode_jenjang }}</td>
-                                                <td>{{ $d5->nama_pt }}</td>
-                                                <td>{{ $d5->kota }}</td>
-                                                <td>{{ $d5->bidang_ilmu }}</td>
-                                                <td>{{ $d5->tahun_lulus }}</td>
+                                                @if(Auth::user()->akses==3)
                                                 <td>
-                                                    <a href="{{ route('pendidikan.edit', $d5->kode_pendidikan) }}" class="btn btn-outline-primary btn-sm">Edit</a>
-                                                    <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusData3('{{$d5->kode_pendidikan}}')">Hapus</a>   
+                                                    <!-- <a href="{{ route('pendidikan.edit', $d5->kode_pendidikan) }}" class="btn btn-outline-primary btn-sm">Edit</a> -->
+                                                    <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusDataPendidikan('{{$d5->kode_pendidikan}}')">Hapus</a>   
                                                 </td>
+                                                @elseif(Auth::user()->akses==1)
+                                                @endif
                                             </tr>
                                             @empty
                                             <tr>
@@ -160,368 +265,252 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    @endif
-                                    <hr>
-                                    <hr>
-                                    <div class="datapendidikan">
                                     </div>
+                                    </section>
                                 </div>
                                 <div class="tab-pane" id="pekerjaan">
-                                @if(Auth::user()->akses==1)
-                                <table id="example2" class="cell-border compact nowrap" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Lembaga</th>
-                                            <th>Alamat</th>
-                                            <th>No. Telp</th>
-                                            <th>Jabatan</th>
-                                            <th>Mulai</th>
-                                            <th>Sampai</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Lembaga</th>
-                                            <th>Alamat</th>
-                                            <th>No. Telp</th>
-                                            <th>Jabatan</th>
-                                            <th>Mulai</th>
-                                            <th>Sampai</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php $no = 0;?> 
-                                        @forelse($pekerjaan as $d4)
-                                        <?php $no++ ;?>
-                                        <tr>
-                                            <td>{{ $no }}</td>
-                                            <td>{{ $d4->nama_lembaga }}</td>
-                                            <td>{{ $d4->alamat }}</td>
-                                            <td>{{ $d4->no_telp }}</td>
-                                            <td>{{ $d4->pekerjaan }}</td>
-                                            <td>{{ $d4->dari }}</td>
-                                            <td>{{ $d4->sampai }}</td>
-                                        </tr>
-                                        @empty
-                                        <tr>
-                                            <td colspan="4">Data Kosong</td>
-                                        </tr>
-                                        @endforelse
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                @elseif(Auth::user()->akses==0)
-                                <table id="example2" class="cell-border compact nowrap" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Lembaga</th>
-                                            <th>Alamat</th>
-                                            <th>No. Telp</th>
-                                            <th>Jabatan</th>
-                                            <th>Mulai</th>
-                                            <th>Sampai</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama Lembaga</th>
-                                            <th>Alamat</th>
-                                            <th>No. Telp</th>
-                                            <th>Jabatan</th>
-                                            <th>Mulai</th>
-                                            <th>Sampai</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php $no = 0;?> 
-                                        @forelse($pekerjaan as $d4)
-                                        <?php $no++ ;?>
-                                        <tr>
-                                            <td>{{ $no }}</td>
-                                            <td>{{ $d4->nama_lembaga }}</td>
-                                            <td>{{ $d4->alamat }}</td>
-                                            <td>{{ $d4->no_telp }}</td>
-                                            <td>{{ $d4->pekerjaan }}</td>
-                                            <td>{{ $d4->dari }}</td>
-                                            <td>{{ $d4->sampai }}</td>
-                                            <td>
-                                                <a href="{{ route('pekerjaan.edit', $d4->kode_pekerjaan) }}" class="btn btn-outline-primary btn-sm">Edit</a>
-                                                <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusData3('{{$d4->kode_pekerjaan}}')">Hapus</a>   
-                                            </td>
-                                        </tr>
-                                        @empty
-                                        <tr>
-                                            <td colspan="4">Data Kosong</td>
-                                        </tr>
-                                        @endforelse
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                @endif
+                                    <h3 class="box-title m-b-0">List Pengalaman Pekerjaan Personel</h3>
                                     <hr>
-                                    <hr>
-                                    <div class="datapekerjaan">
-                                    </div>
+                                    <div class="table-responsive">
+                                    <br>
+                                    <span id="pesanFlash"></span>
+                                    <table id="lihatpekerjaan" class="table table-condensed nowrap" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama Lembaga</th>
+                                                <th>Alamat</th>
+                                                <th>No. Telp</th>
+                                                <th>Jabatan</th>
+                                                <th>Mulai</th>
+                                                <th>Sampai</th>
+                                                @if(Auth::user()->akses==3)
+                                                <th>Aksi</th>
+                                                @elseif(Auth::user()->akses==1)
+                                                @endif
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama Lembaga</th>
+                                                <th>Alamat</th>
+                                                <th>No. Telp</th>
+                                                <th>Jabatan</th>
+                                                <th>Mulai</th>
+                                                <th>Sampai</th>
+                                                @if(Auth::user()->akses==3)
+                                                <th>Aksi</th>
+                                                @elseif(Auth::user()->akses==1)
+                                                @endif
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <?php $no = 0;?> 
+                                            @forelse($pekerjaan as $d4)
+                                            <?php $no++ ;?>
+                                            <tr>
+                                                <td>{{ $no }}</td>
+                                                <td>{{ $d4->nama_lembaga }}</td>
+                                                <td>{{ $d4->alamat }}</td>
+                                                <td>{{ $d4->no_telp }}</td>
+                                                <td>{{ $d4->pekerjaan }}</td>
+                                                <td>{{ $d4->dari }}</td>
+                                                <td>{{ $d4->sampai }}</td>
+                                                @if(Auth::user()->akses==3)
+                                                <td>
+                                                    <!-- <a href="{{ route('pekerjaan.edit', $d4->kode_pekerjaan) }}" class="btn btn-outline-primary btn-sm">Edit</a> -->
+                                                    <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusPekerjaan('{{$d4->kode_pekerjaan}}')">Hapus</a>   
+                                                </td>
+                                                @elseif(Auth::user()->akses==1)
+                                                @endif
+                                            </tr>
+                                            @empty
+                                            <tr>
+                                                <td colspan="8">Data Kosong</td>
+                                            </tr>
+                                            @endforelse
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    </div>                                    
                                 </div>
                                 <div class="tab-pane" id="bidang">
-                                @if(Auth::user()->akses==1)
-                                <table id="example5" class="cell-border compact nowrap" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Kode Bidang Profesi Pers</th>
-                                            <th>Bidang Profesi</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Kode Bidang Profesi</th>
-                                            <th>Bidang Profesi</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php $no = 0;?> 
-                                        @forelse($bidang as $d5)
-                                        <?php $no++ ;
-                                            $temp=DB::table('data_bidangpropers')->select('kode_bidangprofesi')->where('kode_bidangpropers', $d5->kode_bidangpropers )->value('kode_bidangprofesi');
-                                            $namabidang=DB::table('data_bidangprofesi')->select('bidangprofesi')->where('kode_bidangprofesi', $temp )->value('bidangprofesi');
-                                        ?>
-                                        <?php
-                                        ?>
-                                        <tr>
-                                            <td>{{ $no }}</td>
-                                            <td>{{ $d5->kode_bidangpropers }}</td>
-                                            <td>{{ $namabidang }}</td>
-                                        </tr>
-                                        @empty
-                                        <tr>
-                                            <td colspan="4">Data Kosong</td>
-                                        </tr>
-                                        @endforelse
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                @elseif(Auth::user()->akses==0)
-                                <table id="example5" class="cell-border compact nowrap" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Kode Bidang Profesi Pers</th>
-                                            <th>Bidang Profesi</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Kode Bidang Profesi</th>
-                                            <th>Bidang Profesi</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php $no = 0;?> 
-                                        @forelse($bidang as $d5)
-                                        <?php $no++ ;
-                                            $temp=DB::table('data_bidangpropers')->select('kode_bidangprofesi')->where('kode_bidangpropers', $d5->kode_bidangpropers )->value('kode_bidangprofesi');
-                                            $namabidang=DB::table('data_bidangprofesi')->select('bidangprofesi')->where('kode_bidangprofesi', $temp )->value('bidangprofesi');
-                                        ?>
-                                        <?php
-                                        ?>
-                                        <tr>
-                                            <td>{{ $no }}</td>
-                                            <td>{{ $d5->kode_bidangpropers }}</td>
-                                            <td>{{ $namabidang }}</td>
-                                            <td>
-                                            <a href="{{ route('bidangpropers.editpers', $d5->kode_bidangpropers) }}" class="btn btn-outline-primary btn-sm">Edit</a>
-                                                <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusData1('{{$d5->kode_bidangpropers}}')">Hapus</a>   
-                                            </td>
-                                        </tr>
-                                        @empty
-                                        <tr>
-                                            <td colspan="4">Data Kosong</td>
-                                        </tr>
-                                        @endforelse
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                @endif
+                                    <h3 class="box-title m-b-0">List Bidang Profesi Personel</h3>
                                     <hr>
-                                    <hr>
-                                    <div class="databidangpropers">
+                                    <div class="table-responsive">
+                                    <br>
+                                    <span id="pesanFlash"></span>
+                                    <!-- <table id="example" class="table table-striped table-bordered" style="width:100%"> -->
+                                    <table id="lihatbidang" class="table table-condensed nowrap" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Kode Bidang Profesi Pers</th>
+                                                <th>Bidang Profesi</th>
+                                                @if(Auth::user()->akses==3)
+                                                <th>Aksi</th>
+                                                @elseif(Auth::user()->akses==1)
+                                                @endif
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Kode Bidang Profesi</th>
+                                                <th>Bidang Profesi</th>
+                                                @if(Auth::user()->akses==3)
+                                                <th>Aksi</th>
+                                                @elseif(Auth::user()->akses==1)
+                                                @endif
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <?php $no = 0;?> 
+                                            @forelse($bidang as $d3)
+                                            <?php $no++ ;
+                                                $temp=DB::table('data_bidangpropers')->select('kode_bidangprofesi')->where('kode_bidangpropers', $d3->kode_bidangpropers )->value('kode_bidangprofesi');
+                                                $namabidang=DB::table('data_bidangprofesi')->select('bidangprofesi')->where('kode_bidangprofesi', $temp )->value('bidangprofesi');
+                                            ?>
+                                            <?php
+                                            ?>
+                                            <tr>
+                                                <td>{{ $no }}</td>
+                                                <td>{{ $d3->kode_bidangpropers }}</td>
+                                                <td>{{ $namabidang }}</td>
+                                                @if(Auth::user()->akses==3)
+                                                <td>
+                                                <!-- <a href="{{ route('bidangpropers.editpers', $d3->kode_bidangpropers) }}" class="btn btn-outline-primary btn-sm">Edit</a> -->
+                                                    <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusBidang('{{$d3->kode_bidangpropers}}')">Hapus</a>   
+                                                </td>
+                                                @elseif(Auth::user()->akses==1)
+                                                @endif
+                                            </tr>
+                                            @empty
+                                            <tr>
+                                                <td colspan="4">Data Kosong</td>
+                                            </tr>
+                                            @endforelse
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="praktik">
-                                @if(Auth::user()->akses==1)
-                                <table id="example4" class="cell-border compact nowrap" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Pemeriksaan</th>
-                                            <th>Tindakan</th>
-                                            <th>Tahun Pelaksanaan</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Pemeriksaan</th>
-                                            <th>Tindakan</th>
-                                            <th>Tahun Pelaksanaan</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php $no = 0;?> @forelse($praktik as $d3)
-                                        <?php $no++ ;?>
-                                        <tr>
-                                            <td>{{ $no }}</td>
-                                            <td>{{ $d3->pemeriksaan }}</td>
-                                            <td>{{ $d3->tindakan }}</td>
-                                            <td>{{ $d3->tahunpelaksanaan }}</td>
-                                        </tr>
-                                        @empty
-                                        <tr>
-                                            <td colspan="4">Data Kosong</td>
-                                        </tr>
-                                        @endforelse
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                @elseif(Auth::user()->akses==0)
-                                <table id="example4" class="cell-border compact nowrap" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Pemeriksaan</th>
-                                            <th>Tindakan</th>
-                                            <th>Tahun Pelaksanaan</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Pemeriksaan</th>
-                                            <th>Tindakan</th>
-                                            <th>Tahun Pelaksanaan</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php $no = 0;?> @forelse($praktik as $d3)
-                                        <?php $no++ ;?>
-                                        <tr>
-                                            <td>{{ $no }}</td>
-                                            <td>{{ $d3->pemeriksaan }}</td>
-                                            <td>{{ $d3->tindakan }}</td>
-                                            <td>{{ $d3->tahunpelaksanaan }}</td>
-                                            <td>
-                                            <a href="{{ route('praktik.edit', $d3->kode_praktik) }}" class="btn btn-outline-primary btn-sm">Edit</a>
-                                                <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusData5('{{$d3->kode_praktik}}')">Hapus</a>   
-                                            </td>
-                                        </tr>
-                                        @empty
-                                        <tr>
-                                            <td colspan="5">Data Kosong</td>
-                                        </tr>
-                                        @endforelse
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                @endif
+                                    <h3 class="box-title m-b-0">List Pengalaman Praktik Profesi Personel</h3>
                                     <hr>
-                                    <hr>
-                                    <div class="datapraktikpro">
+                                    <div class="table-responsive">
+                                    <br>
+                                    <span id="pesanFlash"></span>
+                                    <!-- <table id="example" class="table table-striped table-bordered" style="width:100%"> -->
+                                    <table id="lihatpraktik" class="table table-condensed nowrap" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Pemeriksaan</th>
+                                                <th>Tindakan</th>
+                                                <th>Tahun Pelaksanaan</th>
+                                                @if(Auth::user()->akses==3)
+                                                <th>Aksi</th>
+                                                @elseif(Auth::user()->akses==1)
+                                                @endif
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Pemeriksaan</th>
+                                                <th>Tindakan</th>
+                                                <th>Tahun Pelaksanaan</th>
+                                                @if(Auth::user()->akses==3)
+                                                <th>Aksi</th>
+                                                @elseif(Auth::user()->akses==1)
+                                                @endif
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <?php $no = 0;?> 
+                                            @forelse($praktik as $d2)
+                                            <?php $no++ ;?>
+                                            <tr>
+                                                <td>{{ $no }}</td>
+                                                <td>{{ $d2->pemeriksaan }}</td>
+                                                <td>{{ $d2->tindakan }}</td>
+                                                <td>{{ $d2->tahunpelaksanaan }}</td>
+                                                @if(Auth::user()->akses==3)
+                                                <td>
+                                                <!-- <a href="{{ route('praktik.edit', $d2->kode_praktik) }}" class="btn btn-outline-primary btn-sm">Edit</a> -->
+                                                    <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusPraktik('{{$d2->kode_praktik}}')">Hapus</a>   
+                                                </td>
+                                                @elseif(Auth::user()->akses==1)
+                                                @endif
+                                            </tr>
+                                            @empty
+                                            <tr>
+                                                <td colspan="5">Data Kosong</td>
+                                            </tr>
+                                            @endforelse
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="profesional">
-                                @if(Auth::user()->akses==1)
-                                <table id="example3" class="cell-border compact nowrap" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Kegiatan</th>
-                                            <th>Tempat</th>
-                                            <th>Tahun</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Kegiatan</th>
-                                            <th>Tempat</th>
-                                            <th>Tahun</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php $no = 0;?> @forelse($pengembangan as $d2)
-                                        <?php $no++ ;?>
-                                        <tr>
-                                            <td>{{ $no }}</td>
-                                            <td>{{ $d2->kegiatan }}</td>
-                                            <td>{{ $d2->tempat }}</td>
-                                            <td>{{ $d2->tahun }}</td>
-                                        </tr>
-                                        @empty
-                                        <tr>
-                                            <td colspan="4">Data Kosong</td>
-                                        </tr>
-                                        @endforelse
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                @elseif(Auth::user()->akses==0)
-                                <table id="example3" class="cell-border compact nowrap" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Kegiatan</th>
-                                            <th>Tempat</th>
-                                            <th>Tahun</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Kegiatan</th>
-                                            <th>Tempat</th>
-                                            <th>Tahun</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php $no = 0;?> @forelse($pengembangan as $d2)
-                                        <?php $no++ ;?>
-                                        <tr>
-                                            <td>{{ $no }}</td>
-                                            <td>{{ $d2->kegiatan }}</td>
-                                            <td>{{ $d2->tempat }}</td>
-                                            <td>{{ $d2->tahun }}</td>
-                                            <td>
-                                            <a href="{{ route('pengembanganprofesional.edit', $d2->kode_pro) }}" class="btn btn-outline-primary btn-sm">Edit</a>
-                                                <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusData4('{{$d2->kode_pro}}')">Hapus</a>   
-                                            </td>
-                                        </tr>
-                                        @empty
-                                        <tr>
-                                            <td colspan="4">Data Kosong</td>
-                                        </tr>
-                                        @endforelse
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                @endif
+                                    <h3 class="box-title m-b-0">List Pengembangan Profesional Personel</h3>
                                     <hr>
-                                    <hr>
-                                    <div class="datapengembanganpro">
+                                    <div class="table-responsive">
+                                    <br>
+                                    <span id="pesanFlash"></span>
+                                    <table id="lihatpro" class="table table-condensed nowrap" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Kegiatan</th>
+                                                <th>Tempat</th>
+                                                <th>Tahun</th>
+                                                @if(Auth::user()->akses==3)
+                                                <th>Aksi</th>
+                                                @elseif(Auth::user()->akses==1)
+                                                @endif
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Kegiatan</th>
+                                                <th>Tempat</th>
+                                                <th>Tahun</th>
+                                                @if(Auth::user()->akses==3)
+                                                <th>Aksi</th>
+                                                @elseif(Auth::user()->akses==1)
+                                                @endif
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <?php $no = 0;?> 
+                                            @forelse($pengembangan as $d1)
+                                            <?php $no++ ;?>
+                                            <tr>
+                                                <td>{{ $no }}</td>
+                                                <td>{{ $d1->kegiatan }}</td>
+                                                <td>{{ $d1->tempat }}</td>
+                                                <td>{{ $d1->tahun }}</td>
+                                                @if(Auth::user()->akses==3)
+                                                <td>
+                                                <!-- <a href="{{ route('pengembanganprofesional.edit', $d1->kode_pro) }}" class="btn btn-outline-primary btn-sm">Edit</a> -->
+                                                    <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusPro('{{$d1->kode_pro}}')">Hapus</a>   
+                                                </td>
+                                                @elseif(Auth::user()->akses==1)
+                                                @endif
+                                            </tr>
+                                            @empty
+                                            <tr>
+                                                <td colspan="5">Data Kosong</td>
+                                            </tr>
+                                            @endforelse
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                     </div>
                                 </div>
                             </div>

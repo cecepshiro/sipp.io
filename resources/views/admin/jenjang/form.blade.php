@@ -63,6 +63,7 @@
                                         </table>
                                     </div>
                                     <div align="center">
+                                    <a href="{{ url('/jenjang') }}" class="btn btn-outline-danger">Batal</a>
                                     <input type="submit" name="submit" class="btn btn-outline-success" value="Simpan" />
 
                                     </div>
@@ -141,8 +142,10 @@
             success:function(data)
             {
                 //console.log(data);
-            $('#item_masterjenjang').find("tr:gt(0)").remove();
-            $('#errormasterjenjang').html('<div class="alert alert-success alert-dismissable">Data Tersimpan</div>');
+                //var myUrl = "/jenjang";
+                //window.location.href =myUrl;
+                $('#item_masterjenjang').find("tr:gt(0)").remove();
+                $('#errormasterjenjang').html('<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Data Tersimpan</div>');
             }
         });
         }
