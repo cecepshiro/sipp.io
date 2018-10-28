@@ -166,27 +166,21 @@
                     </div>
                 </div> -->
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="white-box">
                             <h4 class="page-title">Statistik Jenjang Pendidikan Personel<h4>
-                            <canvas id="grafikBatang"></canvas>
+                            <canvas id="grafikBatang" width="80%" height="50%"></canvas>
                     </div>
                 </div>
-                <?php 
-                    $rentang = DB::table('data_pengembangan_pro')->select('*')->get();
-                    foreach($rentang as $row => $value){
-                        //echo $kode =  $value->user_id;
-                       
-                    }
-                    //$rentang2 = DB::table('data_pengembangan_pro')->where('user_id', $kode)->count();
-
-                    //print_r($rentang);
-                ?>
+                <!-- <?php 
+                    //  $rentang = DB::table('data_pengembangan')->select(DB::RAW('count(data_pengembangan_pro.user_id), user_id'))->from('data_pengembangan_pro')->groupBy('user_id')->havingRaw('count(data_pengembangan_pro.user_id) <?', [3])->get();                
+                    // echo count($rentang);
+                ?> -->
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="white-box">
                             <h4 class="page-title">Statistik Jabatan/Pangkat Personel<h4>
-                            <canvas id="grafikBatang2"></canvas>
+                            <canvas id="grafikBatang2" width="80%" height="50%"></canvas>
                     </div>
                 </div>
 
@@ -197,7 +191,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: ["Sarjana S1", "Sarjana S2", "Sarjana S3"],
         datasets: [{
-            label: '# Jumlah Data',
+            label: '# Jumlah Personel',
             data: [
                 <?php 
 				  echo $s1 = DB::table('data_pendidikan')->join('data_jenjang','data_pendidikan.kode_jenjang','=','data_jenjang.kode_jenjang')->select('jenjang')->where('jenjang','LIKE','Sarjana S1')->count();
@@ -207,12 +201,6 @@ var myChart = new Chart(ctx, {
                 ?>,
                 <?php 
 				  echo $s3 = DB::table('data_pendidikan')->join('data_jenjang','data_pendidikan.kode_jenjang','=','data_jenjang.kode_jenjang')->select('jenjang')->where('jenjang','LIKE','Sarjana S3')->count();
-                ?>,
-                <?php 
-				  echo $s1 = DB::table('data_pendidikan')->join('data_jenjang','data_pendidikan.kode_jenjang','=','data_jenjang.kode_jenjang')->select('jenjang')->where('jenjang','LIKE','Sarjana S1')->count();
-                ?>,
-                <?php 
-				  echo $s1 = DB::table('data_pendidikan')->join('data_jenjang','data_pendidikan.kode_jenjang','=','data_jenjang.kode_jenjang')->select('jenjang')->where('jenjang','LIKE','Sarjana S1')->count();
                 ?>,
             ],
             backgroundColor: [
@@ -253,9 +241,24 @@ var myChart = new Chart(ctx, {
     data: {
         labels: ["Pengalaman Pers < = 3", "Pengalaman Pers < = 6", "Pengalaman Pers < = 9", "Pengalaman Pers > 9"],
         datasets: [{
-            label: '# Jumlah Survei',
+            label: '# Jumlah Personel',
             data: [
-                
+                <?php 
+                    $rentang = DB::table('data_pengembangan')->select(DB::RAW('count(data_pengembangan_pro.user_id), user_id'))->from('data_pengembangan_pro')->groupBy('user_id')->havingRaw('count(data_pengembangan_pro.user_id) <?', [3])->get();                
+                    echo count($rentang);
+                ?>,
+                <?php 
+                     $rentang = DB::table('data_pengembangan')->select(DB::RAW('count(data_pengembangan_pro.user_id), user_id'))->from('data_pengembangan_pro')->groupBy('user_id')->havingRaw('count(data_pengembangan_pro.user_id) <?', [6])->get();                
+                    echo count($rentang);
+                ?>,
+                <?php 
+                     $rentang = DB::table('data_pengembangan')->select(DB::RAW('count(data_pengembangan_pro.user_id), user_id'))->from('data_pengembangan_pro')->groupBy('user_id')->havingRaw('count(data_pengembangan_pro.user_id) <?', [9])->get();                
+                    echo count($rentang);
+                ?>,
+                <?php 
+                     $rentang = DB::table('data_pengembangan')->select(DB::RAW('count(data_pengembangan_pro.user_id), user_id'))->from('data_pengembangan_pro')->groupBy('user_id')->havingRaw('count(data_pengembangan_pro.user_id) >?', [9])->get();                
+                    echo count($rentang);
+                ?>,
             ],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
