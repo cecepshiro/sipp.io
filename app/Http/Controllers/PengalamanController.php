@@ -71,6 +71,7 @@ class PengalamanController extends Controller
      */
     public function show($id)
     {
+        $ccp['ccp']=$id;
         $pengembangan['pengembangan']=PengembanganPro::where('user_id', $id)->get();
         $praktik['praktik']=PraktikPsi::where('user_id',$id)->get();
         $pekerjaan['pekerjaan']=Pekerjaan::where('user_id', $id)->get();
@@ -81,7 +82,8 @@ class PengalamanController extends Controller
         ->with($praktik)
         ->with($pekerjaan)
         ->with($pendidikan)
-        ->with($bidang);
+        ->with($bidang)
+        ->with($ccp);
     }
 
     /**

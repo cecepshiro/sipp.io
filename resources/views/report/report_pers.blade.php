@@ -63,9 +63,9 @@
     @foreach($pendidikan as $value)
     <?php
         $i++;
-        $kode=DB::table('data_pendidikan')->select('kode_jenjang')->where('user_id',  Auth::user()->id)->value('kode_jenjang');
-        $jenjang=DB::table('data_jenjang')->select('jenjang')->where('kode_jenjang',  $kode)->value('jenjang');
-    ?>
+        //$kode=DB::table('data_pendidikan')->select('kode_jenjang')->where('user_id',  $ccp)->value('kode_jenjang');
+        $jenjang=DB::table('data_jenjang')->select('jenjang')->where('kode_jenjang',  $value->kode_jenjang)->value('jenjang');
+ ?>
     <tr>
         <td width="5%">{{ $i }}</td>
         <td colspan="2" width="20%">{{ $jenjang }}</td>

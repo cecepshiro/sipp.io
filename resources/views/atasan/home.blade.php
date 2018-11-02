@@ -179,7 +179,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="white-box">
-                            <h4 class="page-title">Statistik Jabatan/Pangkat Personel<h4>
+                            <h4 class="page-title">Statistik Pengalaman Pengembangan Profesional Personel<h4>
                             <canvas id="grafikBatang2" width="80%" height="50%"></canvas>
                     </div>
                 </div>

@@ -18,6 +18,7 @@ class ReportController extends Controller
 {
     public function report_pers($id)
     {
+        $ccp['ccp']=$id;
         $datadiri['datadiri'] = DB::table('users')
         ->join('data_personil', 'users.id', '=', 'data_personil.user_id')
         ->select('users.*', 'data_personil.*')
@@ -55,7 +56,8 @@ class ReportController extends Controller
         ->with($bidangpropers)
         ->with($pengembanganpro)
         ->with($praktik)
-        ->with($pekerjaan);
+        ->with($pekerjaan)
+        ->with($ccp);
     }
 
     public function report_anggota()

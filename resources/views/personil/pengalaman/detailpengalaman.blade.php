@@ -4,6 +4,7 @@
 <link href="{{ asset('asset/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
 @extends('layouts.app2')
 @section('content')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
     <script>
         function hapusDataPendidikan(id) {
             if (confirm("Apakah anda akan menghapus ini ?!")) {
@@ -187,6 +188,9 @@
                                     <a href="#pengalaman" data-toggle="tab"> <span class="visible-xs"><i class="fa fa-user"></i></span> <span class="hidden-xs">Pengalaman Personel</span> </a>
                                 </li> -->
                                 <li class="tab active" id="">
+                                    <a href="#stats" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Statistik Personel</span> </a>
+                                </li>
+                                <li class="tab" id="">
                                     <a href="#pendidikan" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Riwayat Pendidikan</span> </a>
                                 </li>
                                 <li class="tab" id="">
@@ -203,7 +207,16 @@
                                 </li>
                             </ul>
                             <div class="tab-content">
-                                <div class="tab-pane active" id="pendidikan">
+                                <div class="tab-pane active" id="stats">
+                                    <h3 class="box-title m-b-0">Statistik Pengalaman Personel</h3>
+                                        <hr>
+                                            <div class="white-box">
+                                                <h4 class="page-title">Statistik Pengalaman Personel<h4>
+                                                <canvas id="grafikBatang" width="30%" height="10%"></canvas>
+                                            </div>
+                                        </section>
+                                    </div>
+                                <div class="tab-pane" id="pendidikan">
                                 <h3 class="box-title m-b-0">List Pendidikan Profesional Personel</h3>
                                     <hr>
                                     <div class="table-responsive">
@@ -519,5 +532,64 @@
                 </div>
                 <!-- /.row -->
             </div>
-        
+            <script>
+var ctx = document.getElementById("grafikBatang").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Pendidikan", "Pekerjaan", "Bidang Profesi", "Praktik Profesi", "Pengembangan Profesional"],
+        datasets: [{
+            label: '# Jumlah Pengalaman',
+            data: [ 
+                <?php 
+                    $rentang = DB::table('data_pendidikan')->select(DB::RAW('count(data_pendidikan.user_id), user_id'))->from('data_pendidikan')->where('user_id', $ccp)->groupBy('user_id')->value('count');                
+                    echo $rentang;
+                ?>,
+                <?php 
+                    $rentang = DB::table('data_pekerjaan')->select(DB::RAW('count(data_pekerjaan.user_id), user_id'))->from('data_pekerjaan')->where('user_id', $ccp)->groupBy('user_id')->value('count');                
+                    echo $rentang;
+                ?>,
+                <?php 
+                    $rentang = DB::table('data_bidangpropers')->select(DB::RAW('count(data_bidangpropers.user_id), user_id'))->from('data_bidangpropers')->where('user_id', $ccp)->groupBy('user_id')->value('count');                
+                    echo $rentang;
+                ?>,
+                <?php 
+                    $rentang = DB::table('data_praktik')->select(DB::RAW('count(data_praktik.user_id), user_id'))->from('data_praktik')->where('user_id', $ccp)->groupBy('user_id')->value('count');                
+                    echo $rentang;
+                ?>,
+                <?php 
+                    $rentang = DB::table('data_pengembangan_pro')->select(DB::RAW('count(data_pengembangan_pro.user_id), user_id'))->from('data_pengembangan_pro')->where('user_id', $ccp)->groupBy('user_id')->value('count');                
+                    echo $rentang;
+                ?>,
+            ],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script> 
 @endsection
