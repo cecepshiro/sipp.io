@@ -154,7 +154,18 @@ class ProfileController extends Controller
         $cari = $request->get('profil_id');
         $data = User::find($cari);
         $data2 = Personil::find($tmp);
-        return view('personil.profile.formubah', compact('data','data2'))->with('cari', $cari);
+        $pendidikan=DB::table('data_pendidikan')->select('*')->where('user_id', $id)->get();
+        $pekerjaan=DB::table('data_pekerjaan')->select('*')->where('user_id', $id)->get();
+        $bidang=DB::table('data_bidangpropers')->select('*')->where('user_id', $id)->get();
+        $praktik=DB::table('data_praktik')->select('*')->where('user_id', $id)->get();
+        $pengembangan=DB::table('data_pengembangan_pro')->select('*')->where('user_id', $id)->get();
+        return view('personil.profile.formubah', compact('data','data2'))
+        ->with('cari', $cari)
+        ->with('pendidikan', $pendidikan)
+        ->with('pekerjaan', $pekerjaan)
+        ->with('bidang', $bidang)
+        ->with('praktik', $praktik)
+        ->with('pengembangan', $pengembangan);
     }
 
     public function profil(Request $request){
