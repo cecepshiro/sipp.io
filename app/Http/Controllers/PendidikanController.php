@@ -15,6 +15,11 @@ class PendidikanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $data5['data5']=Pendidikan::where('user_id', Auth::user()->id)->get();

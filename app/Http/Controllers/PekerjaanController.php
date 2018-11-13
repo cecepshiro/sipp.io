@@ -15,6 +15,10 @@ class PekerjaanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $data4['data4']=Pekerjaan::where('user_id', Auth::user()->id)->get();

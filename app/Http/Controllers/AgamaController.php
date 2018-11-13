@@ -14,9 +14,9 @@ class AgamaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    function __construct()
+    public function __construct()
     {
-        $this->middleware('cekstatusadmin');
+        $this->middleware('auth');
     }
 
     // public function index()

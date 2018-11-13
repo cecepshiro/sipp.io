@@ -12,9 +12,9 @@ class JenjangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    function __construct()
+    public function __construct()
     {
-        $this->middleware('cekstatusinfolahta');
+        $this->middleware('auth');
     }
     public function index()
     {

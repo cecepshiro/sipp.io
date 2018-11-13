@@ -16,6 +16,11 @@ use DB;
 
 class ReportController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function report_pers($id)
     {
         $ccp['ccp']=$id;

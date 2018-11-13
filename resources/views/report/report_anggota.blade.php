@@ -7,8 +7,17 @@
     margin: 0;  /* this affects the margin in the printer settings */
 }
 </style>
+<style>
+    table{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 10px;
+        margin-right: 15px;
+    }
+</style>
 </header>
-<table class="table table-bordered-custom" style="width:100%">
+<div class="">
+<table class="table table-bordered-custom" style="width:80%">
     <tr>
         <td colspan="16">Markas Besar Angkatan Darat Dinas Psikologi</td>
     </tr>
@@ -21,6 +30,10 @@
         $man=DB::table('data_personil')->select(DB::raw('count(*) as laki'))->where('jenis_kelamin', 'L')->value('id_anggota');
         $woman=DB::table('data_personil')->select(DB::raw('count(*) as perempuan'))->where('jenis_kelamin', 'P')->value('id_anggota');
         $sum=DB::table('data_personil')->select(DB::raw('count(*) as total'))->value('id_anggota');
+        $kodejenjang=DB::table('data_pendidikan')->select('kode_jenjang')->value('kode_jenjang');
+        $s1=DB::table('data_pendidikan')->select(DB::raw('count(*) as es1'))->where('kode_jenjang', 'JN001')->value('kode_pendidikan');
+        $s2=DB::table('data_pendidikan')->select(DB::raw('count(*) as es2'))->where('kode_jenjang', 'JN002')->value('kode_pendidikan');
+        $s3=DB::table('data_pendidikan')->select(DB::raw('count(*) as es3'))->where('kode_jenjang', 'JN003')->value('kode_pendidikan');
     ?>
     <tr>
         <td colspan="16" style="background-color:yellow;">I. JUMLAH ANGGOTA</td>
@@ -36,6 +49,18 @@
     <tr>
         <td colspan="4" width="15%">Jumlah Anggota Perempuan</td>
         <td colspan="12" width="5%">{{ $woman }} Anggota</td>
+    </tr>
+    <tr>
+        <td colspan="4" width="15%">Jumlah Personel Pendidikan S1</td>
+        <td colspan="12" width="5%">{{ $s1 }} Anggota</td>
+    </tr>
+    <tr>
+        <td colspan="4" width="15%">Jumlah Personel Pendidikan S2</td>
+        <td colspan="12" width="5%">{{ $s2 }} Anggota</td>
+    </tr>
+    <tr>
+        <td colspan="4" width="15%">Jumlah Personel Pendidikan S3</td>
+        <td colspan="12" width="5%">{{ $s3 }} Anggota</td>
     </tr>
     <tr>
         <td colspan="16" style="background-color:yellow;">II. DAFTAR ANGGOTA</td>
@@ -77,6 +102,7 @@
     </tr>
     @endforeach
 </table>
+</div>
 </body>
 <script src="{{ asset('asset/plugins/bower_components/jquery/dist/jquery.min.js') }}"></script>
 </html>

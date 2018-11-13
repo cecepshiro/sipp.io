@@ -41,7 +41,7 @@ class RegisterController extends Controller
     
     public function __construct()
     {
-        $this->middleware('cekstatusadmininfolahta');
+        $this->middleware(['auth','cekstatusadmininfolahta']);
     }
 
     /**

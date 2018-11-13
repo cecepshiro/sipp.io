@@ -14,9 +14,9 @@ class BidangProfesiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    function __construct()
+    public function __construct()
     {
-       
+        $this->middleware('auth');
     }
     public function index()
     {
