@@ -48,18 +48,6 @@
             <th>Aksi</th>
         </tr>
     </thead>
-    <tfoot>
-        <tr>
-            <th>No</th>
-            <th>Nama Lembaga</th>
-            <th>Alamat</th>
-            <th>No. Telp</th>
-            <th>Jabatan</th>
-            <th>Mulai</th>
-            <th>Sampai</th>
-            <th>Aksi</th>
-        </tr>
-    </tfoot>
     <tbody>
         <?php $no = 0;?> 
         @forelse($data4 as $d4)

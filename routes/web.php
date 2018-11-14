@@ -114,3 +114,10 @@ Route::get('/getdetailbidangpropers','BidangProfesiController@lihat');
 Route::get('/getdetailpraktikpro','PraktikPsiController@lihat');
 Route::get('/getdetailpekerjaan','PekerjaanController@lihat');
 Route::get('/getdetailpendidikan','PendidikanController@lihat');
+
+//Lampiran
+Route::get('/lampiranpendidikan/download/{id}','ReportController@lampiran_pendidikan')->name('report.pendidikan');
+Route::get('/lampiranpekerjaan/download/{id}','ReportController@lampiran_pekerjaan')->name('report.pekerjaan');
+Route::get('/lampiranbidangprofesi/download/{id}','ReportController@lampiran_bidangprofesi')->name('report.bidangprofesi');
+Route::get('/lampiranpraktik/download/{id}','ReportController@lampiran_praktik')->name('report.praktik');
+Route::get('/lampiranpro/download/{id}','ReportController@lampiran_pro')->name('report.pro');

@@ -94,5 +94,31 @@ class ReportController extends Controller
         return view('report.report_anggota')->with($data);
         //print_r($selesai);
     }
+
+    public function lampiran_pendidikan($id){
+        $data=Pendidikan::find($id);
+        $pathToFile='/lampiran'.'/'.$data->lampiran;
+        return response()->download(public_path($pathToFile));
+    }
+    public function lampiran_pekerjaan($id){
+        $data=Pekerjaan::find($id);
+        $pathToFile='/lampiran'.'/'.$data->lampiran;
+        return response()->download(public_path($pathToFile));
+    }
+    public function lampiran_bidangprofesi($id){
+        $data=BidangProfesiPersonil::find($id);
+        $pathToFile='/lampiran'.'/'.$data->lampiran;
+        return response()->download(public_path($pathToFile));
+    }
+    public function lampiran_praktik($id){
+        $data=PraktikPsi::find($id);
+        $pathToFile='/lampiran'.'/'.$data->lampiran;
+        return response()->download(public_path($pathToFile));
+    }
+    public function lampiran_pro($id){
+        $data=PengembanganPro::find($id);
+        $pathToFile='/lampiran'.'/'.$data->lampiran;
+        return response()->download(public_path($pathToFile));
+    }
 }
 

@@ -236,21 +236,6 @@
                                                 @endif
                                             </tr>
                                         </thead>
-                                        <tfoot>
-                                        <tr>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Kode Jenjang</th>
-                                                <th>Nama PT</th>
-                                                <th>Kota</th>
-                                                <th>Bidang Ilmu</th>
-                                                <th>Tahun Lulus</th>
-                                                @if(Auth::user()->akses==3)
-                                                <th>Aksi</th>
-                                                @elseif(Auth::user()->akses==1)
-                                                @endif
-                                            </tr>
-                                        </tfoot>
                                         <tbody>
                                             <?php $no = 0;?> 
                                             @forelse($pendidikan as $d5)
@@ -265,6 +250,11 @@
                                                 @if(Auth::user()->akses==3)
                                                 <td>
                                                     <!-- <a href="{{ route('pendidikan.edit', $d5->kode_pendidikan) }}" class="btn btn-outline-primary btn-sm">Edit</a> -->
+                                                @if($d5->lampiran!=null)
+                                                    <a href="{{ route('report.pendidikan', $d5->kode_pendidikan) }}" class="btn btn-outline-success btn-sm">Download Lampiran</a>
+                                                @elseif($d5->lampiran==null)
+                                                    <a href="#" class="btn btn-outline-warning btn-sm">Lampiran Kosong</a>
+                                                @endif
                                                     <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusDataPendidikan('{{$d5->kode_pendidikan}}')">Hapus</a>   
                                                 </td>
                                                 @elseif(Auth::user()->akses==1)
@@ -303,21 +293,6 @@
                                                 @endif
                                             </tr>
                                         </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Nama Lembaga</th>
-                                                <th>Alamat</th>
-                                                <th>No. Telp</th>
-                                                <th>Jabatan</th>
-                                                <th>Mulai</th>
-                                                <th>Sampai</th>
-                                                @if(Auth::user()->akses==3)
-                                                <th>Aksi</th>
-                                                @elseif(Auth::user()->akses==1)
-                                                @endif
-                                            </tr>
-                                        </tfoot>
                                         <tbody>
                                             <?php $no = 0;?> 
                                             @forelse($pekerjaan as $d4)
@@ -333,6 +308,11 @@
                                                 @if(Auth::user()->akses==3)
                                                 <td>
                                                     <!-- <a href="{{ route('pekerjaan.edit', $d4->kode_pekerjaan) }}" class="btn btn-outline-primary btn-sm">Edit</a> -->
+                                                @if($d4->lampiran!=null)
+                                                    <a href="{{ route('report.pekerjaan', $d4->kode_pekerjaan) }}" class="btn btn-outline-success btn-sm">Download Lampiran</a>
+                                                @elseif($d4->lampiran==null)
+                                                    <a href="#" class="btn btn-outline-warning btn-sm">Lampiran Kosong</a>
+                                                @endif
                                                     <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusPekerjaan('{{$d4->kode_pekerjaan}}')">Hapus</a>   
                                                 </td>
                                                 @elseif(Auth::user()->akses==1)
@@ -367,17 +347,6 @@
                                                 @endif
                                             </tr>
                                         </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Kode Bidang Profesi</th>
-                                                <th>Bidang Profesi</th>
-                                                @if(Auth::user()->akses==3)
-                                                <th>Aksi</th>
-                                                @elseif(Auth::user()->akses==1)
-                                                @endif
-                                            </tr>
-                                        </tfoot>
                                         <tbody>
                                             <?php $no = 0;?> 
                                             @forelse($bidang as $d3)
@@ -394,7 +363,12 @@
                                                 @if(Auth::user()->akses==3)
                                                 <td>
                                                 <!-- <a href="{{ route('bidangpropers.editpers', $d3->kode_bidangpropers) }}" class="btn btn-outline-primary btn-sm">Edit</a> -->
-                                                    <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusBidang('{{$d3->kode_bidangpropers}}')">Hapus</a>   
+                                                @if($d3->lampiran!=null)
+                                                    <a href="{{ route('report.bidangprofesi', $d3->kode_bidangpropers) }}" class="btn btn-outline-success btn-sm">Download Lampiran</a>
+                                                @elseif($d3->lampiran==null)
+                                                    <a href="#" class="btn btn-outline-warning btn-sm">Lampiran Kosong</a>
+                                                @endif
+                                                <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusBidang('{{$d3->kode_bidangpropers}}')">Hapus</a>   
                                                 </td>
                                                 @elseif(Auth::user()->akses==1)
                                                 @endif
@@ -429,18 +403,6 @@
                                                 @endif
                                             </tr>
                                         </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Pemeriksaan</th>
-                                                <th>Tindakan</th>
-                                                <th>Tahun Pelaksanaan</th>
-                                                @if(Auth::user()->akses==3)
-                                                <th>Aksi</th>
-                                                @elseif(Auth::user()->akses==1)
-                                                @endif
-                                            </tr>
-                                        </tfoot>
                                         <tbody>
                                             <?php $no = 0;?> 
                                             @forelse($praktik as $d2)
@@ -453,6 +415,11 @@
                                                 @if(Auth::user()->akses==3)
                                                 <td>
                                                 <!-- <a href="{{ route('praktik.edit', $d2->kode_praktik) }}" class="btn btn-outline-primary btn-sm">Edit</a> -->
+                                                @if($d2->lampiran!=null)
+                                                    <a href="{{ route('report.praktik', $d2->kode_praktik) }}" class="btn btn-outline-success btn-sm">Download Lampiran</a>
+                                                @elseif($d2->lampiran==null)
+                                                    <a href="#" class="btn btn-outline-warning btn-sm">Lampiran Kosong</a>
+                                                @endif
                                                     <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusPraktik('{{$d2->kode_praktik}}')">Hapus</a>   
                                                 </td>
                                                 @elseif(Auth::user()->akses==1)
@@ -487,18 +454,6 @@
                                                 @endif
                                             </tr>
                                         </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Kegiatan</th>
-                                                <th>Tempat</th>
-                                                <th>Tahun</th>
-                                                @if(Auth::user()->akses==3)
-                                                <th>Aksi</th>
-                                                @elseif(Auth::user()->akses==1)
-                                                @endif
-                                            </tr>
-                                        </tfoot>
                                         <tbody>
                                             <?php $no = 0;?> 
                                             @forelse($pengembangan as $d1)
@@ -511,6 +466,11 @@
                                                 @if(Auth::user()->akses==3)
                                                 <td>
                                                 <!-- <a href="{{ route('pengembanganprofesional.edit', $d1->kode_pro) }}" class="btn btn-outline-primary btn-sm">Edit</a> -->
+                                                @if($d1->lampiran!=null)
+                                                    <a href="{{ route('report.pro', $d1->kode_pro) }}" class="btn btn-outline-success btn-sm">Download Lampiran</a>
+                                                @elseif($d1->lampiran==null)
+                                                    <a href="#" class="btn btn-outline-warning btn-sm">Lampiran Kosong</a>
+                                                @endif
                                                     <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusPro('{{$d1->kode_pro}}')">Hapus</a>   
                                                 </td>
                                                 @elseif(Auth::user()->akses==1)

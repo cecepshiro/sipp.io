@@ -45,15 +45,6 @@
             <th>Aksi</th>
         </tr>
     </thead>
-    <tfoot>
-        <tr>
-            <th>No</th>
-            <th>Pemeriksaan</th>
-            <th>Tindakan</th>
-            <th>Tahun Pelaksanaan</th>
-            <th>Aksi</th>
-        </tr>
-    </tfoot>
     <tbody>
         <?php $no = 0;?> @forelse($data3 as $d3)
         <?php $no++;

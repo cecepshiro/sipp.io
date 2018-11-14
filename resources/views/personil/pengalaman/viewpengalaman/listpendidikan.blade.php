@@ -49,18 +49,6 @@
             <th>Aksi</th>
         </tr>
     </thead>
-    <tfoot>
-    <tr>
-        <tr>
-            <th>No</th>
-            <th>Kode Jenjang</th>
-            <th>Nama PT</th>
-            <th>Kota</th>
-            <th>Bidang Ilmu</th>
-            <th>Tahun Lulus</th>
-            <th>Aksi</th>
-        </tr>
-    </tfoot>
     <tbody>
         <?php $no = 0;?> 
         @forelse($data5 as $d5)

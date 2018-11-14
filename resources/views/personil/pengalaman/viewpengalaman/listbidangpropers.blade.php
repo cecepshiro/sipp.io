@@ -44,14 +44,6 @@
             <th>Aksi</th>
         </tr>
     </thead>
-    <tfoot>
-        <tr>
-            <th>No</th>
-            <th>Kode Bidang Profesi</th>
-            <th>Bidang Profesi</th>
-            <th>Aksi</th>
-        </tr>
-    </tfoot>
     <tbody>
         <?php $no = 0;?> 
         @forelse($data5 as $d5)
