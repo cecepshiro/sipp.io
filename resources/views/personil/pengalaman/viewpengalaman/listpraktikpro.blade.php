@@ -56,15 +56,22 @@
     </tfoot>
     <tbody>
         <?php $no = 0;?> @forelse($data3 as $d3)
-        <?php $no++ ;?>
+        <?php $no++;
+                              $cek=DB::table('data_praktik')->select('lampiran')->where('user_id', Auth::user()->id)->value('lampiran');
+        ?>
         <tr>
             <td>{{ $no }}</td>
             <td>{{ $d3->pemeriksaan }}</td>
             <td>{{ $d3->tindakan }}</td>
             <td>{{ $d3->tahunpelaksanaan }}</td>
             <td>
+            @if($cek==null)
+            <a href="{{ route('praktik.edit', $d3->kode_praktik) }}" class="btn btn-outline-warning btn-sm">Masukan Lampiran</a>
+                <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusData5('{{$d3->kode_praktik}}')">Hapus</a>   
+            @elseif($cek!=null)
             <a href="{{ route('praktik.edit', $d3->kode_praktik) }}" class="btn btn-outline-primary btn-sm">Edit</a>
                 <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusData5('{{$d3->kode_praktik}}')">Hapus</a>   
+            @endif
             </td>
         </tr>
         @empty

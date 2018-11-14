@@ -2,10 +2,12 @@
 <header>
 <link href="{{ asset('asset/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
 <style type="text/css" media="print">
+<style type="text/css" media="print">
 @page {
     size: auto;   /* auto is the initial value */
-    margin: 0;  /* this affects the margin in the printer settings */
+    margin: 1cm;  /* this affects the margin in the printer settings */
 }
+</style>
 </style>
 </header>
 <table class="table table-bordered-custom" style="width:100%">

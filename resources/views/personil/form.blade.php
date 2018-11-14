@@ -10,7 +10,7 @@
                 <a href="{{ route('personil.index') }}" class="btn btn-outline-danger btn-sm">Kembali</a>
                 <br>
                 <br>
-                <form method="POST" action="{{ route('personil.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('report.filter') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <?php
                     $tmp=DB::table('users')->select('id_anggota')->where('id', Auth::user()->id)->value('id_anggota');

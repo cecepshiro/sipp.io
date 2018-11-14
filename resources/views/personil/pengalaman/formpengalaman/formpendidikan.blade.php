@@ -8,7 +8,7 @@
             <table class="table table-bordered nowrap" style="width:100%;" id="tabelpendidikan">
                 <tr>
                     <th>Kode Pendidikan</th>
-                    <th>Kode Jenjang</th>
+                    <th>Jenjang</th>
                     <th>Nama Perguruan</th>
                     <th>Kota</th>
                     <th>Bidang Ilmu</th>

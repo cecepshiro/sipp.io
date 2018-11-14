@@ -12,7 +12,7 @@ class Pendidikan extends Model
     public $timestamps=true;
   
       protected $fillable = [
-        'kode_pendidikan','user_id','kode_jenjang','nama_pt','kota','bidang_ilmu','tahun_lulus','created_at','updated_at',
+        'kode_pendidikan','user_id','kode_jenjang','nama_pt','kota','bidang_ilmu','tahun_lulus','created_at','updated_at','lampiran',
       ];
 
 }

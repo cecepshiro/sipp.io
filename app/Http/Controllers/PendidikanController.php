@@ -7,6 +7,7 @@ use App\Pendidikan;
 use Illuminate\Http\Request;
 use Auth;
 use Alert;
+use Illuminate\Support\Facades\Input; 
 
 class PendidikanController extends Controller
 {
@@ -95,6 +96,12 @@ class PendidikanController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(Input::hasFile('lampiran')){
+            $file= input::file('lampiran');
+                    $fileName = sha1($file->getClientOriginalName().time()).".".$file->getClientOriginalExtension();
+                    $file->move(public_path().'/lampiran/',$fileName);
+                    Pendidikan::find($id)->update(['lampiran'=>$fileName]);
+        }
         Pendidikan::find($id)->update(['kode_jenjang'=>$request->kode_jenjang]);
         Pendidikan::find($id)->update(['nama_pt'=>$request->nama_pt]);
         Pendidikan::find($id)->update(['kota'=>$request->kota]);

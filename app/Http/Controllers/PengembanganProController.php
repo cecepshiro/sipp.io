@@ -6,6 +6,7 @@ use App\PengembanganPro;
 use Auth;
 use Alert;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input; 
 
 class PengembanganProController extends Controller
 {
@@ -91,6 +92,12 @@ class PengembanganProController extends Controller
     public function update(Request $request)
     {
         $id=$request->kode_pro;
+        if(Input::hasFile('lampiran')){
+            $file= input::file('lampiran');
+                    $fileName = sha1($file->getClientOriginalName().time()).".".$file->getClientOriginalExtension();
+                    $file->move(public_path().'/lampiran/',$fileName);
+                    PengembanganPro::find($id)->update(['lampiran'=>$fileName]);
+        }
         PengembanganPro::find($id)->update(['kegiatan'=>$request->kegiatan]);
         PengembanganPro::find($id)->update(['tempat'=>$request->tempat]);
         PengembanganPro::find($id)->update(['tahun'=>$request->tahun]);

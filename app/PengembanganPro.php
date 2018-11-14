@@ -12,6 +12,6 @@ class PengembanganPro extends Model
     public $timestamps=true;
   
       protected $fillable = [
-        'kode_pro','user_id','kegiatan','tempat','tahun','created_at','updated_at',
+        'kode_pro','user_id','kegiatan','tempat','tahun','created_at','updated_at','lampiran',
       ];
 }

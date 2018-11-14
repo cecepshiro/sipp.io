@@ -7,6 +7,7 @@ use Auth;
 use Alert;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input; 
 
 class PekerjaanController extends Controller
 {
@@ -93,6 +94,12 @@ class PekerjaanController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(Input::hasFile('lampiran')){
+            $file= input::file('lampiran');
+                    $fileName = sha1($file->getClientOriginalName().time()).".".$file->getClientOriginalExtension();
+                    $file->move(public_path().'/lampiran/',$fileName);
+                    Pekerjaan::find($id)->update(['lampiran'=>$fileName]);
+        }
         Pekerjaan::find($id)->update(['nama_lembaga'=>$request->nama_lembaga]);
         Pekerjaan::find($id)->update(['alamat'=>$request->alamat]);
         Pekerjaan::find($id)->update(['no_telp'=>$request->no_telp]);

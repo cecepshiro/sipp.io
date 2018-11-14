@@ -12,6 +12,6 @@ class BidangProfesiPersonil extends Model
     public $timestamps=true;
   
       protected $fillable = [
-        'kode_bidangpropers','user_id','kode_bidangprofesi','created_at','updated_at',
+        'kode_bidangpropers','user_id','kode_bidangprofesi','created_at','updated_at','lampiran',
       ];
 }

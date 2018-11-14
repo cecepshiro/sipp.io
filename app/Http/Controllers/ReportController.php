@@ -13,6 +13,7 @@ use App\BidangProfesiPersonil;
 use App\Personil;
 use Auth;
 use DB;
+use DateTime;
 
 class ReportController extends Controller
 {
@@ -67,9 +68,31 @@ class ReportController extends Controller
 
     public function report_anggota()
     {
-        $data['data']=Personil::get();
+        $start = new DateTime($request->mulai);
+        $mulai = $start->format('Y-m-d');
+        $stop = new DateTime($request->sampai);
+        $selesai = $stop->format('Y-m-d');
+        $data['data']=Personil::whereBetween('created_at', [$start, $stop])->get();
         return view('report.report_anggota')->with($data);
 
+    }
+
+    public function index_report()
+    {
+        return view('report.filter_report');
+
+    }
+
+    public function filter_report(Request $request){
+        $tmp1=$request->mulai;
+        $tmp2=$request->sampai;
+        $start = new DateTime($tmp1);
+        $mulai = $start->format('Y-m-d');
+        $stop = new DateTime($tmp2);
+        $selesai = $stop->format('Y-m-d');
+        $data['data']=Personil::whereBetween('created_at', [$start, $stop])->get();
+        return view('report.report_anggota')->with($data);
+        //print_r($selesai);
     }
 }
 

@@ -63,7 +63,9 @@
     <tbody>
         <?php $no = 0;?> 
         @forelse($data4 as $d4)
-        <?php $no++ ;?>
+        <?php $no++ ;
+                        $cek=DB::table('data_pekerjaan')->select('lampiran')->where('user_id', Auth::user()->id)->value('lampiran');
+        ?>
         <tr>
             <td>{{ $no }}</td>
             <td>{{ $d4->nama_lembaga }}</td>
@@ -73,8 +75,13 @@
             <td>{{ $d4->dari }}</td>
             <td>{{ $d4->sampai }}</td>
             <td>
-                <a href="{{ route('pekerjaan.edit', $d4->kode_pekerjaan) }}" class="btn btn-outline-primary btn-sm">Edit</a>
+            @if($cek==null)
+                <a href="{{ route('pekerjaan.edit', $d4->kode_pekerjaan) }}" class="btn btn-outline-warning btn-sm">Masukan Lampiran</a>
                 <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusPekerjaan('{{$d4->kode_pekerjaan}}')">Hapus</a>   
+            @elseif($cek!=null)
+            <a href="{{ route('pekerjaan.edit', $d4->kode_pekerjaan) }}" class="btn btn-outline-primary btn-sm">Edit</a>
+                <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusPekerjaan('{{$d4->kode_pekerjaan}}')">Hapus</a>  
+            @endif
             </td>
         </tr>
         @empty

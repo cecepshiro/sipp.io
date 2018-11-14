@@ -4,25 +4,28 @@
 <style type="text/css" media="print">
 @page {
     size: auto;   /* auto is the initial value */
-    margin: 0;  /* this affects the margin in the printer settings */
+    size: landscape;
+    margin: 1cm;  /* this affects the margin in the printer settings */
 }
 </style>
 <style>
     table{
         margin-top: 20px;
         margin-bottom: 20px;
-        margin-left: 10px;
-        margin-right: 15px;
+        margin-left: 20px;
+        margin-right: 10px;
     }
 </style>
 </header>
 <div class="">
-<table class="table table-bordered-custom" style="width:80%">
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ route('report.index') }}" class="btn btn-success btn-md hidden-print">Kembali</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="window.print()" class="btn btn-primary btn-md hidden-print">Cetak</a>
+<table class="table table-bordered-custom" style="width:95%">
     <tr>
-        <td colspan="16">Markas Besar Angkatan Darat Dinas Psikologi</td>
+        <td colspan="16"><b>Markas Besar Angkatan Darat Dinas Psikologi</b></td>
     </tr>
     <tr>
-        <td colspan="16" align="center">LAPORAN ANGGOTA</td>
+        <td colspan="16" align="center"><b>LAPORAN ANGGOTA</b></td>
     </tr>
     <div style="font-size: 15px;">
     <?php
@@ -36,7 +39,7 @@
         $s3=DB::table('data_pendidikan')->select(DB::raw('count(*) as es3'))->where('kode_jenjang', 'JN003')->value('kode_pendidikan');
     ?>
     <tr>
-        <td colspan="16" style="background-color:yellow;">I. JUMLAH ANGGOTA</td>
+        <td colspan="16" style="background-color:yellow;"><b>I. JUMLAH ANGGOTA</b></td>
     </tr>
     <tr>
         <td colspan="4" width="15%">Jumlah Anggota</td>
@@ -63,7 +66,7 @@
         <td colspan="12" width="5%">{{ $s3 }} Anggota</td>
     </tr>
     <tr>
-        <td colspan="16" style="background-color:yellow;">II. DAFTAR ANGGOTA</td>
+        <td colspan="16" style="background-color:yellow;"><b>II. DAFTAR ANGGOTA</b></td>
     </tr>
     <tr>
         <td style="background-color:gray;" width="5%">No.</td>

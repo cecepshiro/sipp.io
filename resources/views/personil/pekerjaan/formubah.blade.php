@@ -110,6 +110,15 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="exampleInputname" class="col-sm-3 control-label">Bukti/Lampiran</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input type="file"  accept=".pdf,.doc,.docx"  onChange="validate(this.value)"  placeholder="Masukkan Lampiran" class="form-control" name="lampiran" value="{{ $data['lampiran'] }}" required>
+                                            <div class="input-group-addon"><i class="ti-menu-alt"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form-group m-b-0">
                                     <div class="col-sm-offset-3 col-sm-9 text-right">
                                         <a href="{{ url('/pengalamanpers') }}" class="btn btn-outline-danger m-t-10">Batal</a>
@@ -122,5 +131,16 @@
                 </div>
                 <!-- /.row -->
             </div>
-            
+            <script>
+function validate(file) {
+    var ext = file.split(".");
+    ext = ext[ext.length-1].toLowerCase();      
+    var arrayExtensions = ["doc" , "docx", "pdf"];
+
+    if (arrayExtensions.lastIndexOf(ext) == -1) {
+        alert("Jenis Berkas Tidak Didukung.");
+        $("#fileinput").val("");
+    }
+}
+</script> 
 @endsection

@@ -12,6 +12,6 @@ class Pengalaman extends Model
     public $timestamps=true;
   
       protected $fillable = [
-        'user_id','id_pendidikan','id_pengalaman','id_bidang_profesi','id_profesional','created_at','updated_at',
+        'user_id','id_pendidikan','id_pengalaman','id_bidang_profesi','id_profesional','created_at','updated_at','lampiran',
       ];
 }

@@ -52,7 +52,7 @@
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <input type="text" maxlenght="50"  placeholder="Masukkan Kode Pendidikan" readonly class="form-control" name="kode_pendidikan" value="{{ $data['kode_pendidikan'] }}" required autofocus>
-                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                            <div class="input-group-addon"><i class="ti-menu-alt"></i></div>
                                         </div>
                                     </div>
                                 </div>
@@ -69,7 +69,7 @@
                                                 <option <?php if($data['kode_jenjang'] == $j->kode_jenjang) echo 'selected' ; ?> value="{{ $j->kode_jenjang }}">{{ $nama_jenjang }}</option>
                                                 @endforeach
                                             </select>
-                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                            <div class="input-group-addon"><i class="ti-menu-alt"></i></div>
                                         </div>
                                     </div>
                                 </div>
@@ -78,7 +78,7 @@
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <input id="id_anggota" type="text" placeholder="Masukkan Nama Perguruan Tinggi" class="form-control" name="nama_pt" value="{{ $data['nama_pt'] }}" required>
-                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                            <div class="input-group-addon"><i class="ti-menu-alt"></i></div>
                                         </div>
                                     </div>
                                 </div>
@@ -87,7 +87,7 @@
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <input type="text" placeholder="Masukkan Kota" class="form-control" name="kota" value="{{ $data['kota'] }}" required>
-                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                            <div class="input-group-addon"><i class="ti-menu-alt"></i></div>
                                         </div>
                                     </div>
                                 </div>
@@ -96,7 +96,7 @@
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <input type="text" placeholder="Masukkan Bidang Ilmu" class="form-control" name="id_anggota" value="{{ $data['bidang_ilmu'] }}" required>
-                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                            <div class="input-group-addon"><i class="ti-menu-alt"></i></div>
                                         </div>
                                     </div>
                                 </div>
@@ -105,7 +105,16 @@
                                     <div class="col-sm-9">
                                         <div class="input-group">
                                             <input type="text" maxlength="4" onkeypress="return isNumberKey(event)" placeholder="Masukkan Tahun Lulus" class="form-control" name="tahun_lulus" value="{{ $data['tahun_lulus'] }}" required>
-                                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                                            <div class="input-group-addon"><i class="ti-menu-alt"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputname" class="col-sm-3 control-label">Bukti/Lampiran</label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <input type="file"  accept=".pdf,.doc,.docx"  onChange="validate(this.value)"  placeholder="Masukkan Lampiran" class="form-control" name="lampiran" value="{{ $data['lampiran'] }}" required>
+                                            <div class="input-group-addon"><i class="ti-menu-alt"></i></div>
                                         </div>
                                     </div>
                                 </div>
@@ -121,5 +130,16 @@
                 </div>
                 <!-- /.row -->
             </div>
-            
+<script>
+function validate(file) {
+    var ext = file.split(".");
+    ext = ext[ext.length-1].toLowerCase();      
+    var arrayExtensions = ["doc" , "docx", "pdf"];
+
+    if (arrayExtensions.lastIndexOf(ext) == -1) {
+        alert("Jenis Berkas Tidak Didukung.");
+        $("#fileinput").val("");
+    }
+}
+</script> 
 @endsection

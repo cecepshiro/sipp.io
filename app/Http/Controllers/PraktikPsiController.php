@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\PraktikPsi;
 use Auth;
+use Illuminate\Support\Facades\Input; 
 use Illuminate\Http\Request;
 use Alert;
 
@@ -90,6 +91,12 @@ class PraktikPsiController extends Controller
     public function update(Request $request)
     {
         $id=$request->kode_praktik;
+        if(Input::hasFile('lampiran')){
+            $file= input::file('lampiran');
+                    $fileName = sha1($file->getClientOriginalName().time()).".".$file->getClientOriginalExtension();
+                    $file->move(public_path().'/lampiran/',$fileName);
+                    PraktikPsi::find($id)->update(['lampiran'=>$fileName]);
+        }
         PraktikPsi::find($id)->update(['pemeriksaan'=>$request->pemeriksaan]);
         PraktikPsi::find($id)->update(['tindakan'=>$request->tindakan]);
         PraktikPsi::find($id)->update(['tahunpelaksanaan'=>$request->tahunpelaksanaan]);

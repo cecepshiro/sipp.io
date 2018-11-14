@@ -6,6 +6,7 @@ use App\BidangProfesi;
 use App\BidangProfesiPersonil;
 use Illuminate\Http\Request;
 use Alert;
+use Illuminate\Support\Facades\Input; 
 use Auth;
 class BidangProfesiController extends Controller
 {
@@ -122,6 +123,12 @@ class BidangProfesiController extends Controller
     public function updatepers(Request $request)
     {
         $id=$request->kode_bidangpropers;
+        if(Input::hasFile('lampiran')){
+            $file= input::file('lampiran');
+                    $fileName = sha1($file->getClientOriginalName().time()).".".$file->getClientOriginalExtension();
+                    $file->move(public_path().'/lampiran/',$fileName);
+                    BidangProfesiPersonil::find($id)->update(['lampiran'=>$fileName]);
+        }
         BidangProfesiPersonil::find($id)->update(['kode_bidangprofesi'=>$request->kode_bidangprofesi]);
         Alert::success('Berhasil', 'Data Diubah');
         return redirect('/pengalamanpers');

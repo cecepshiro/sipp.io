@@ -66,18 +66,24 @@
         @forelse($data5 as $d5)
         <?php $no++ ;?>
         <?php
-            //$tmp=DB::table('data_jenjang')->where('kode_jenjang', $d5->kode_jenjang)->value('jenjang');
+            $tmp=DB::table('data_jenjang')->select('jenjang')->where('kode_jenjang', $d5->kode_jenjang)->value('jenjang');
+            $cek=DB::table('data_pendidikan')->select('lampiran')->where('user_id', Auth::user()->id)->value('lampiran');
         ?>
         <tr>
             <td>{{ $no }}</td>
-            <td>{{ $d5->kode_jenjang }}</td>
+            <td>{{ $tmp }}</td>
             <td>{{ $d5->nama_pt }}</td>
             <td>{{ $d5->kota }}</td>
             <td>{{ $d5->bidang_ilmu }}</td>
             <td>{{ $d5->tahun_lulus }}</td>
             <td>
+                @if($cek==null)
+                <a href="{{ route('pendidikan.edit', $d5->kode_pendidikan) }}" class="btn btn-outline-warning btn-sm">Masukan Lampiran Pendidikan</a>
+                <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusData3('{{$d5->kode_pendidikan}}')">Hapus</a>  
+                @elseif($cek!=null)
                 <a href="{{ route('pendidikan.edit', $d5->kode_pendidikan) }}" class="btn btn-outline-primary btn-sm">Edit</a>
                 <a class="btn btn-outline-danger btn-sm remove-record" onclick="hapusData3('{{$d5->kode_pendidikan}}')">Hapus</a>   
+                @endif
             </td>
         </tr>
         @empty
